@@ -1,10 +1,12 @@
 import Image from "next/image";
-import * as styles from "./globalStyle.css";
+import * as styles from "./globalTheme.css";
+import { style } from "@vanilla-extract/css";
+
 
 export default function Home() {
     return (
         <main>
-            <div className={styles.myStyle}>hi</div>
+            <div>안녕하세용 i</div>
         </main>
     );
 }
