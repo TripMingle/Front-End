@@ -15,8 +15,13 @@ const Navbar = ({ bg }: { bg: Boolean }) => {
         <img
           src={bg ? '/icons/b_alarm.svg' : '/icons/w_alaram.svg'}
           alt="alram"
+          className={styles.icon}
         />
-        <img src={bg ? '/icons/b_menu.svg' : '/icons/w_menu.svg'} alt="menu" />
+        <img
+          src={bg ? '/icons/b_menu.svg' : '/icons/w_menu.svg'}
+          alt="menu"
+          className={styles.icon}
+        />
       </div>
     </div>
   );

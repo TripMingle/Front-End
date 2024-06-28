@@ -41,7 +41,7 @@ export const primaryLogo = style({
   fontFamily: vars.font.gmarketSans,
   fontSize: '24px',
   fontWeight: 'bold',
-  color: '#3688FF',
+  color: vars.color.primary,
   position: 'relative',
   marginRight: 'auto',
 });
@@ -55,4 +55,10 @@ export const profile = style({
 
 export const name = style({
   fontWeight: 'bold',
+});
+
+export const icon = style({
+  width: '24px',
+  height: '24px',
+  paddingLeft: '20px',
 });

@@ -8,10 +8,14 @@ const NavbarProfile = ({ url }: { url: string }) => {
       {url ? (
         <img src={url} alt="profile" className={styles.profile} />
       ) : (
-        <img src="/icons/profile.svg" alt="profile" />
+        <img
+          src="/icons/profile.svg"
+          alt="profile"
+          className={styles.profile}
+        />
       )}
       <div className={styles.name}>닉네임</div>
-      <div style={{ paddingRight: '40px' }}>님 안녕하세요!</div>
+      <div style={{ paddingRight: '20px' }}>님 안녕하세요!</div>
     </>
   );
 };
