@@ -1,4 +1,4 @@
-import { createGlobalTheme, globalFontFace } from '@vanilla-extract/css';
+import { createGlobalTheme, globalFontFace, style } from '@vanilla-extract/css';
 
 export const vars = createGlobalTheme(':root', {
   color: {
@@ -17,24 +17,7 @@ export const vars = createGlobalTheme(':root', {
     white: '#FFFFFF',
   },
   font: {
-    notoSans: 'Noto_Sans_KR',
-    gmarketSans: 'gmarketSans',
+    body: 'Noto_Sans_KR',
+    menu: 'gmarketSans',
   },
 });
-
-const gmarketSans = 'gmarketSans';
-
-globalFontFace(gmarketSans, [
-  {
-    src: 'url("/GmarketSansTTF/GamrketSansTTFBold.ttf")',
-    fontWeight: 'bold',
-  },
-  {
-    src: 'url("/GmarketSansTTF/GmarketSansTTFLight.ttf")',
-    fontWeight: 'light',
-  },
-  {
-    src: 'url("/GmarketSansTTF/GmarketSansTTFMedium.ttf")',
-    fontWeight: 'normal',
-  },
-]);

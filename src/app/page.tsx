@@ -3,6 +3,7 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import Navbar from '@/components/navbar/Navbar';
+import '../styles/font.css';
 
 export default function Home() {
   const useBearStore = create(

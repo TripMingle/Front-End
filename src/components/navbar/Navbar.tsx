@@ -13,7 +13,7 @@ const Navbar = ({ bg }: { bg: Boolean }) => {
         </div>
         <NavbarProfile url={''} />
         <img
-          src={bg ? '/icons/b_alarm.svg' : '/icons/w_alaram.svg'}
+          src={bg ? '/icons/b_alarm.svg' : '/icons/w_alarm.svg'}
           alt="alram"
           className={styles.icon}
         />

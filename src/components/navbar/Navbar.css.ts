@@ -29,18 +29,18 @@ export const whiteNavbar = style({
 });
 
 export const whiteLogo = style({
-  fontFamily: vars.font.gmarketSans,
+  fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: 'bold',
+  fontWeight: '500',
   color: vars.color.white,
   position: 'relative',
   marginRight: 'auto',
 });
 
 export const primaryLogo = style({
-  fontFamily: vars.font.gmarketSans,
+  fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: 'bold',
+  fontWeight: '500',
   color: vars.color.primary,
   position: 'relative',
   marginRight: 'auto',
@@ -54,7 +54,7 @@ export const profile = style({
 });
 
 export const name = style({
-  fontWeight: 'bold',
+  fontWeight: '500',
 });
 
 export const icon = style({
