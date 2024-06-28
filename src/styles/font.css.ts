@@ -1,20 +1,24 @@
-import { globalFontFace, fontFace, style } from "@vanilla-extract/css";
-import * as styles from "../app/globalTheme.css";
+import { globalFontFace, globalStyle } from '@vanilla-extract/css';
+import { Noto_Sans } from 'next/font/google';
 
-const gmarketSans = "gmarketSans";
+const gmarketSans = 'gmarketSans';
 
 globalFontFace(gmarketSans, [
-    {
-        src: 'url("/GmarketSansTTF/GamrketSansTTFBold.ttf")',
-        fontWeight: "bold",
-    },
-    {
-        src: 'url("/GmarketSansTTF/GmarketSansTTFLight.ttf")',
-        fontWeight: "light",
-    },
-    {
-        src: 'url("/GmarketSansTTF/GmarketSansTTFMedium.ttf")',
-        fontWeight: "normal",
-    },
+  {
+    src: 'url("/GmarketSansTTF/GamrketSansTTFBold.ttf")',
+    fontStyle: 'bold',
+  },
+  {
+    src: 'url("/GmarketSansTTF/GmarketSansTTFLight.ttf")',
+    fontStyle: 'light',
+  },
+  {
+    src: 'url("/GmarketSansTTF/GmarketSansTTFMedium.ttf")',
+    fontStyle: 'normal',
+  },
 ]);
 
+globalStyle('body', {
+  fontFamily: 'Noto_Sans',
+  fontWeight: '400',
+});
