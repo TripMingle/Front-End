@@ -30,7 +30,7 @@ export const whiteNavbar = style({
 export const whiteLogo = style({
   fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: '500',
+  fontWeight: 'bold',
   color: vars.color.white,
   position: 'relative',
   marginRight: 'auto',
@@ -39,7 +39,7 @@ export const whiteLogo = style({
 export const primaryLogo = style({
   fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: '500',
+  fontWeight: 'bold',
   color: vars.color.primary,
   position: 'relative',
   marginRight: 'auto',
