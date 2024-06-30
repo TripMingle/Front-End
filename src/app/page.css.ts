@@ -83,6 +83,9 @@ export const input = style({
   flex: 1,
   background: 'none',
   color: vars.color.white,
+  '::placeholder': {
+    color: vars.color.white,
+  },
 });
 
 export const searchIcon = style({

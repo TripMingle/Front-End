@@ -12,7 +12,11 @@ const SearchBox = () => {
         </div>
       </div>
       <div className={styles.inputBox}>
-        <input className={styles.input} type="text" />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="나라를 입력하세요."
+        />
         <img
           className={styles.searchIcon}
           src="/icons/w_search.svg"

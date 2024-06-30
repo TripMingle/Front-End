@@ -62,5 +62,6 @@ export const explain = style({
 export const continentContainer = style({
   display: 'grid',
   gap: 60,
-  gridTemplateColumns: '1fr 1fr 1fr'
+  gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+  maxWidth: 1000,
 });

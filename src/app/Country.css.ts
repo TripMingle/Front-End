@@ -40,5 +40,6 @@ export const name = style({
 export const countryContainer = style({
   display: 'grid',
   gap: 40,
-  gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+  maxWidth: 1000,
 });
