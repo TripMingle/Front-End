@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar/Navbar';
 import '../styles/font.css';
 import * as styles from './page.css';
 import SearchBox from './searchBox';
+import SelectRegion from './SelectRegion';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           </span>
           <span className={styles.line}> 구분선</span>
         </div>
+        <SelectRegion />
       </div>
     </main>
   );

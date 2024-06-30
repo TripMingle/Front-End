@@ -138,3 +138,7 @@ export const line = style({
   zIndex: -1,
   background: vars.color.g400,
 });
+
+export const selectContainer = style({
+  margin: '60px 0px',
+});
