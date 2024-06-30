@@ -6,12 +6,12 @@ export const fixedbar = style({
   left: 0,
   top: 0,
   width: '100%',
+  zIndex: 100,
 });
 
 export const clearNavbar = style({
   backgroundColor: 'rgba(255, 255, 255, 0)',
   padding: '0px 60px',
-  zIndex: 100,
   display: 'flex',
   height: '60px',
   color: vars.color.white,
@@ -21,7 +21,6 @@ export const clearNavbar = style({
 export const whiteNavbar = style({
   backgroundColor: '#ffffff',
   padding: '0px 60px',
-  zIndex: 100,
   display: 'flex',
   height: '60px',
   color: vars.color.black,
@@ -51,10 +50,6 @@ export const profile = style({
   height: '36px',
   padding: '0px 12px',
   borderRadius: '50%',
-});
-
-export const name = style({
-  fontWeight: '500',
 });
 
 export const icon = style({

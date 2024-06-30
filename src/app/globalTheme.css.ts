@@ -1,4 +1,4 @@
-import { createGlobalTheme, globalFontFace, style } from '@vanilla-extract/css';
+import { createGlobalTheme, globalStyle } from '@vanilla-extract/css';
 
 export const vars = createGlobalTheme(':root', {
   color: {
@@ -20,4 +20,10 @@ export const vars = createGlobalTheme(':root', {
     body: 'Noto_Sans_KR',
     menu: 'gmarketSans',
   },
+});
+
+globalStyle('body', {
+  margin: 0,
+  fontFamily: 'Noto_Sans',
+  fontWeight: '400',
 });

@@ -17,8 +17,3 @@ globalFontFace(gmarketSans, [
     fontStyle: 'normal',
   },
 ]);
-
-globalStyle('body', {
-  fontFamily: 'Noto_Sans',
-  fontWeight: '400',
-});
