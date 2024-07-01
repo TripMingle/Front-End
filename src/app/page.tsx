@@ -1,33 +1,32 @@
-'use client';
-
-import { create } from 'zustand';
-import { combine } from 'zustand/middleware';
 import Navbar from '@/components/navbar/Navbar';
 import '../styles/font.css';
+import * as styles from './page.css';
+import SearchBox from './searchBox';
+import SelectRegion from './SelectRegion';
 
 export default function Home() {
-  const useBearStore = create(
-    combine({ bears: 0 }, (set) => ({
-      increase: (by: number) => set((state) => ({ bears: state.bears + by })),
-    })),
-  );
-
-  const BearCounter = () => {
-    const bear = useBearStore((state) => state.bears);
-    return <h1>Bear : {bear}</h1>;
-  };
-
-  const BearIncrease = () => {
-    const increase = useBearStore((state) => state.increase);
-    return <button onClick={() => increase(5)}>up</button>;
-  };
-
   return (
     <main>
-      <Navbar bg={true} />
-      <div>안녕하세용</div>
-      <BearCounter />
-      <BearIncrease />
+      <Navbar bg={false} />
+      <div className={styles.bgContainer}>
+        <img className={styles.bg} src="/mainbg.png" alt="mainBackground" />
+        <SearchBox />
+      </div>
+      <div className={styles.contentContainer}>
+        <img
+          className={styles.airplaneIcon}
+          src="/icons/airplane.svg"
+          alt="airplane"
+        />
+        <div className={styles.textContainer}>
+          <span>
+            <div className={styles.primaryText}>어디로</div>
+            <div className={styles.plainText}>떠나시나요?</div>
+          </span>
+          <span className={styles.line}> 구분선</span>
+        </div>
+        <SelectRegion />
+      </div>
     </main>
   );
 }

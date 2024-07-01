@@ -14,8 +14,10 @@ const NavbarProfile = ({ url }: { url: string }) => {
           className={styles.profile}
         />
       )}
-      <div className={styles.name}>닉네임</div>
-      <div style={{ paddingRight: '20px' }}>님 안녕하세요!</div>
+      <div style={{ fontWeight: '500' }}>닉네임</div>
+      <div style={{ paddingRight: '20px', fontWeight: '300' }}>
+        님 안녕하세요!
+      </div>
     </>
   );
 };

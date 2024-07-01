@@ -3,17 +3,20 @@ import { style } from '@vanilla-extract/css';
 
 export const fixedbar = style({
   position: 'fixed',
-  left: 0,
+  display: 'flex',
+  justifyContent: 'center',
   top: 0,
   width: '100%',
+  zIndex: 100,
 });
 
 export const clearNavbar = style({
   backgroundColor: 'rgba(255, 255, 255, 0)',
   padding: '0px 60px',
-  zIndex: 100,
   display: 'flex',
   height: '60px',
+  width: '100%',
+  maxWidth: 1800,
   color: vars.color.white,
   alignItems: 'center',
 });
@@ -21,9 +24,10 @@ export const clearNavbar = style({
 export const whiteNavbar = style({
   backgroundColor: '#ffffff',
   padding: '0px 60px',
-  zIndex: 100,
   display: 'flex',
   height: '60px',
+  width: '100%',
+  maxWidth: 1800,
   color: vars.color.black,
   alignItems: 'center',
 });
@@ -31,7 +35,7 @@ export const whiteNavbar = style({
 export const whiteLogo = style({
   fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: '500',
+  fontWeight: 'bold',
   color: vars.color.white,
   position: 'relative',
   marginRight: 'auto',
@@ -40,8 +44,10 @@ export const whiteLogo = style({
 export const primaryLogo = style({
   fontFamily: vars.font.menu,
   fontSize: '24px',
-  fontWeight: '500',
-  color: vars.color.primary,
+  fontWeight: 'bold',
+  background: `linear-gradient(45deg, ${vars.color.primary}, ${vars.color.secondary})`,
+  backgroundClip: 'text',
+  color: 'transparent',
   position: 'relative',
   marginRight: 'auto',
 });
@@ -51,10 +57,6 @@ export const profile = style({
   height: '36px',
   padding: '0px 12px',
   borderRadius: '50%',
-});
-
-export const name = style({
-  fontWeight: '500',
 });
 
 export const icon = style({
