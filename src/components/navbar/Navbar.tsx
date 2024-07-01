@@ -1,24 +1,42 @@
-import { FaBars } from 'react-icons/fa6';
+'use client';
+
+import { useEffect, useState } from 'react';
 import * as styles from './Navbar.css';
 import NavbarProfile from './NavbarProfile';
-import { vars } from '@/app/globalTheme.css';
-import { PiBellBold } from 'react-icons/pi';
 
 const Navbar = ({ bg }: { bg: Boolean }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className={styles.fixedbar}>
-      <div className={bg ? styles.whiteNavbar : styles.clearNavbar}>
-        <div className={bg ? styles.primaryLogo : styles.whiteLogo}>
+      <div className={isScrolled ? styles.whiteNavbar : styles.clearNavbar}>
+        <div className={isScrolled ? styles.primaryLogo : styles.whiteLogo}>
           TripMingle
         </div>
         <NavbarProfile url={''} />
         <img
-          src={bg ? '/icons/b_alarm.svg' : '/icons/w_alarm.svg'}
+          src={isScrolled ? '/icons/b_alarm.svg' : '/icons/w_alarm.svg'}
           alt="alram"
           className={styles.icon}
         />
         <img
-          src={bg ? '/icons/b_menu.svg' : '/icons/w_menu.svg'}
+          src={isScrolled ? '/icons/b_menu.svg' : '/icons/w_menu.svg'}
           alt="menu"
           className={styles.icon}
         />
