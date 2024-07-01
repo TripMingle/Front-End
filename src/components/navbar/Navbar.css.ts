@@ -3,10 +3,12 @@ import { style } from '@vanilla-extract/css';
 
 export const fixedbar = style({
   position: 'fixed',
-  left: 0,
+  left: '50%',
   top: 0,
   width: '100%',
+  maxWidth: 1920,
   zIndex: 100,
+  transform: 'translate(-50%,0)',
 });
 
 export const clearNavbar = style({

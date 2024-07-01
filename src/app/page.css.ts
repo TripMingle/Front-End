@@ -13,6 +13,8 @@ export const bg = style({
   width: '100%',
   maxWidth: '1920px',
   height: 'auto',
+  left: '50%',
+  transform: 'translate(-50%,0)',
 });
 
 export const boxContainer = style({
