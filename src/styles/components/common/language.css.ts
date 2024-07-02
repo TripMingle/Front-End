@@ -4,7 +4,8 @@ import { style } from '@vanilla-extract/css';
 export const text = style({
   padding: '5px 6px',
   fontFamily: vars.font.menu,
-  fontWeight: 'bold',
+  fontWeight: 'medium',
+  fontSize: 12,
   color: vars.color.white,
 });
 

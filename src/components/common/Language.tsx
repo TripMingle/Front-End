@@ -1,6 +1,6 @@
 import * as styles from '@/styles/components/common/language.css';
 
-export const Korean = () => {
+const Korean = () => {
   return (
     <div className={styles.koreanBox}>
       <span className={styles.text}>한국어</span>
@@ -8,7 +8,7 @@ export const Korean = () => {
   );
 };
 
-export const English = () => {
+const English = () => {
   return (
     <div className={styles.englishBox}>
       <span className={styles.text}>영어</span>
@@ -16,7 +16,7 @@ export const English = () => {
   );
 };
 
-export const Chinese = () => {
+const Chinese = () => {
   return (
     <div className={styles.ChineseBox}>
       <span className={styles.text}>중국어</span>
@@ -24,10 +24,22 @@ export const Chinese = () => {
   );
 };
 
-export const Japanese = () => {
+const Japanese = () => {
   return (
     <div className={styles.JapaneseBox}>
       <span className={styles.text}>일본어</span>
     </div>
   );
+};
+
+export const Language = ({ language }: { language: string }) => {
+  if (language === 'korean') {
+    return <Korean />;
+  } else if (language === 'english') {
+    return <English />;
+  } else if (language === 'chinese') {
+    return <Chinese />;
+  } else {
+    return <Japanese />;
+  }
 };

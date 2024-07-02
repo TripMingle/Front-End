@@ -23,7 +23,7 @@ const BookMark = ({ isMarked }: { isMarked: Boolean }) => {
       ) : (
         <Image
           className={styles.bookMark}
-          src="/icons/star.svg"
+          src="/icons/star.png"
           alt="unmarked"
           width={16}
           height={16}

@@ -1,10 +1,37 @@
 import Image from 'next/image';
 import * as styles from '@/styles/components/common/trip-mingle-post-item.css';
-import { Korean } from './Language';
+import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
 
-const TripMinglePostCard = ({ isMarked }: { isMarked: Boolean }) => {
+const TripMinglePostCard = ({
+  isMarked,
+  language,
+  title,
+  startDate,
+  endDate,
+  currentCount,
+  maxCount,
+  url,
+  name,
+  age,
+  gender,
+  nationality,
+}: {
+  isMarked: Boolean;
+  language: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  currentCount: number;
+  maxCount: number;
+  url: string;
+  name: string;
+  age: number;
+  gender: Boolean;
+  nationality: string;
+}) => {
+  const sex = gender ? '남' : '여';
   return (
     <div className={styles.postCard}>
       <div className={styles.imageBox}>
@@ -18,8 +45,8 @@ const TripMinglePostCard = ({ isMarked }: { isMarked: Boolean }) => {
         <BookMark isMarked={isMarked} />
       </div>
       <div className={styles.contentContainer}>
-        <Korean />
-        <span className={styles.title}>서울 청계천 같이 걸어요~</span>
+        <Language language={language} />
+        <span className={styles.title}>{title}</span>
         <div className={styles.infoContainer}>
           <Image
             className={styles.icon}
@@ -28,7 +55,9 @@ const TripMinglePostCard = ({ isMarked }: { isMarked: Boolean }) => {
             height={16}
             alt="calendarIcon"
           />
-          <span>2023.06.14 ~ 2023.06.15</span>
+          <span>
+            {startDate} ~ {endDate}
+          </span>
         </div>
         <div className={styles.infoContainer}>
           <Image
@@ -38,11 +67,15 @@ const TripMinglePostCard = ({ isMarked }: { isMarked: Boolean }) => {
             height={16}
             alt="userIcon"
           />
-          <span>2 / 5인</span>
+          <span>
+            {currentCount} / {maxCount}인
+          </span>
         </div>
         <div className={styles.profileContainer}>
-          <Profile url="" width={24} height={24} />{' '}
-          <span className={styles.profileInfo}>홍길동·20대·남</span>
+          <Profile url={url} width={24} height={24} />
+          <span className={styles.profileInfo}>
+            {name} · {age}대 · {sex} · {nationality}
+          </span>
         </div>
       </div>
     </div>
