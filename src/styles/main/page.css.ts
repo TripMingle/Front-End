@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../styles/globalTheme.css';
+import { vars } from '../globalTheme.css';
 
 export const bgContainer = style({
   position: 'relative',

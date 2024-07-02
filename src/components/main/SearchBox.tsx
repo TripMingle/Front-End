@@ -1,4 +1,4 @@
-import * as styles from '@/app/page.css';
+import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 
 const SearchBox = () => {

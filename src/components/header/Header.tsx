@@ -4,7 +4,7 @@ import * as styles from '@/styles/components/header/header.css';
 import Image from 'next/image';
 import HeaderProfile from './HeaderProfile';
 
-const Header = ({ bg }: { bg: Boolean }) => {
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Header = ({ bg }: { bg: Boolean }) => {
   }, []);
 
   return (
-    <div className={styles.fixedbar}>
+    <nav className={styles.fixedbar}>
       <div className={isScrolled ? styles.whiteNavbar : styles.clearNavbar}>
         <div className={isScrolled ? styles.primaryLogo : styles.whiteLogo}>
           TripMingle
@@ -45,7 +45,7 @@ const Header = ({ bg }: { bg: Boolean }) => {
           className={styles.icon}
         />
       </div>
-    </div>
+    </nav>
   );
 };
 

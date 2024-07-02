@@ -1,5 +1,5 @@
 import '@/styles/font.css';
-import * as styles from './page.css';
+import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 import Header from '@/components/header/Header';
 import SearchBox from '@/components/main/SearchBox';
@@ -8,7 +8,7 @@ import SelectContent from '@/components/main/SelectContent';
 export default function Home() {
   return (
     <main>
-      <Header bg={false} />
+      <Header />
       <div className={styles.bgContainer}>
         <Image
           className={styles.bg}
