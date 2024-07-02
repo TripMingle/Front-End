@@ -1,10 +1,12 @@
-import Header from '@/components/header/Header';
+import '@/styles/font.css';
+import TripMinglePostCard from '@/components/common/TripMinglePostCard';
 
 export default function Page() {
   return (
     <main>
-      <Header />
-      <div></div>
+      <div>
+        <TripMinglePostCard isMarked={false} />
+      </div>
     </main>
   );
 }
