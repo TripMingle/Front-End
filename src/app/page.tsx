@@ -1,31 +1,41 @@
-import Navbar from '@/components/navbar/Navbar';
-import '../styles/font.css';
+import '@/styles/font.css';
 import * as styles from './page.css';
-import SearchBox from './searchBox';
-import SelectRegion from './SelectRegion';
+import Image from 'next/image';
+import Header from '@/components/header/Header';
+import SearchBox from '@/components/main/SearchBox';
+import SelectContent from '@/components/main/SelectContent';
 
 export default function Home() {
   return (
     <main>
-      <Navbar bg={false} />
+      <Header bg={false} />
       <div className={styles.bgContainer}>
-        <img className={styles.bg} src="/mainbg.png" alt="mainBackground" />
+        <Image
+          className={styles.bg}
+          src="/images/mainbg.png"
+          layout="responsive"
+          width={1920}
+          height={1000}
+          alt="mainBackground"
+        />
         <SearchBox />
       </div>
       <div className={styles.contentContainer}>
-        <img
+        <Image
           className={styles.airplaneIcon}
+          width={32}
+          height={32}
           src="/icons/airplane.svg"
           alt="airplane"
         />
         <div className={styles.textContainer}>
-          <span>
-            <div className={styles.primaryText}>어디로</div>
-            <div className={styles.plainText}>떠나시나요?</div>
-          </span>
-          <span className={styles.line}> 구분선</span>
+          <div>
+            <span className={styles.primaryText}>어디로</span>
+            <span className={styles.plainText}>떠나시나요?</span>
+          </div>
+          <span className={styles.line}></span>
         </div>
-        <SelectRegion />
+        <SelectContent />
       </div>
     </main>
   );

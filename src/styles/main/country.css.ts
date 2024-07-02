@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from './globalTheme.css';
+import { vars } from '@/styles/globalTheme.css';
 
 export const container = style({
   position: 'relative',
@@ -12,8 +12,6 @@ export const container = style({
 
 export const bgImage = style({
   position: 'absolute',
-  width: '100%',
-  height: '100%',
   zIndex: -2,
   borderRadius: '50%',
   objectFit: 'cover',
@@ -29,6 +27,7 @@ export const bgOverlay = style({
 });
 
 export const name = style({
+  display: 'block',
   width: '100%',
   textAlign: 'center',
   fontFamily: vars.font.menu,

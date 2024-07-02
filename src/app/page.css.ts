@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from './globalTheme.css';
+import { vars } from '../styles/globalTheme.css';
 
 export const bgContainer = style({
   position: 'relative',
@@ -10,9 +10,7 @@ export const bgContainer = style({
 
 export const bg = style({
   position: 'relative',
-  width: '100%',
   maxWidth: '1920px',
-  height: 'auto',
   left: '50%',
   transform: 'translate(-50%,0)',
 });
@@ -91,8 +89,6 @@ export const input = style({
 });
 
 export const searchIcon = style({
-  width: 24,
-  height: 24,
   paddingLeft: 32,
 });
 
@@ -106,8 +102,6 @@ export const contentContainer = style({
 
 export const airplaneIcon = style({
   display: 'flex',
-  width: 32,
-  height: 32,
 });
 
 export const textContainer = style({
@@ -116,6 +110,7 @@ export const textContainer = style({
 });
 
 export const primaryText = style({
+  display: 'flex',
   fontFamily: vars.font.menu,
   fontSize: 28,
   fontWeight: 'bold',
@@ -124,6 +119,7 @@ export const primaryText = style({
 });
 
 export const plainText = style({
+  display: 'flex',
   position: 'relative',
   fontFamily: vars.font.menu,
   fontWeight: 'bold',

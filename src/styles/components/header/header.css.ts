@@ -1,5 +1,5 @@
-import { vars } from '@/app/globalTheme.css';
 import { style } from '@vanilla-extract/css';
+import { vars } from '@/styles/globalTheme.css';
 
 export const fixedbar = style({
   position: 'fixed',
@@ -53,14 +53,19 @@ export const primaryLogo = style({
 });
 
 export const profile = style({
-  width: '36px',
-  height: '36px',
   padding: '0px 12px',
   borderRadius: '50%',
 });
 
 export const icon = style({
-  width: '24px',
-  height: '24px',
   paddingLeft: '20px',
+});
+
+export const name = style({
+  fontWeight: '500',
+});
+
+export const text = style({
+  paddingRight: 20,
+  fontWeight: '300',
 });

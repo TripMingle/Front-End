@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
-import Continents from './Continent';
-import { selectContainer } from './page.css';
+import { selectContainer } from '@/app/page.css';
 import Countries from './Country';
+import Continents from './Continent';
 
-const SelectRegion = () => {
+const SelectContent = () => {
   const [continent, setContinent] = useState<string>('');
 
   const continentClick = (continent: string) => {
@@ -33,4 +33,4 @@ const SelectRegion = () => {
   }
 };
 
-export default SelectRegion;
+export default SelectContent;

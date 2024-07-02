@@ -4,15 +4,15 @@ const gmarketSans = 'gmarketSans';
 
 globalFontFace(gmarketSans, [
   {
-    src: 'url("/GmarketSansTTF/GmarketSansTTFBold.ttf")',
+    src: 'url("/font/GmarketSansTTFBold.ttf")',
     fontWeight: 'bold',
   },
   {
-    src: 'url("/GmarketSansTTF/GmarketSansTTFLight.ttf")',
+    src: 'url("/font/GmarketSansTTFLight.ttf")',
     fontWeight: 'light',
   },
   {
-    src: 'url("/GmarketSansTTF/GmarketSansTTFMedium.ttf")',
+    src: 'url("/font/GmarketSansTTFMedium.ttf")',
     fontWeight: 'medium',
     fontStyle: 'normal',
   },

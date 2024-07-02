@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from './globalTheme.css';
+import { vars } from '@/styles/globalTheme.css';
 
 export const container = style({
   position: 'relative',
@@ -24,11 +24,8 @@ export const circle = style({
 
 export const bgImage = style({
   position: 'absolute',
-  width: '100%',
-  height: '100%',
   zIndex: -2,
   borderRadius: '50%',
-  objectFit: 'cover',
 });
 
 export const bgOverlay = style({
@@ -46,6 +43,7 @@ export const textContainer = style({
 });
 
 export const name = style({
+  display: 'block',
   fontFamily: vars.font.menu,
   fontWeight: 'bold',
   fontSize: 28,
@@ -53,6 +51,7 @@ export const name = style({
 });
 
 export const explain = style({
+  display: 'block',
   fontFamily: vars.font.body,
   fontSize: 16,
   color: vars.color.white,

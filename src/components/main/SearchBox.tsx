@@ -1,4 +1,5 @@
-import * as styles from './page.css';
+import * as styles from '@/app/page.css';
+import Image from 'next/image';
 
 const SearchBox = () => {
   return (
@@ -7,8 +8,11 @@ const SearchBox = () => {
         <div className={styles.bigCircle}></div>
         <div className={styles.smallCircle}></div>
         <div className={styles.exploreText}>
-          <div>EXPLORE</div>
-          <div>YOUR DREAM</div>
+          <span>
+            EXPLORE
+            <br />
+            YOUR DREAM
+          </span>
         </div>
       </div>
       <div className={styles.inputBox}>
@@ -17,9 +21,11 @@ const SearchBox = () => {
           type="text"
           placeholder="나라를 입력하세요."
         />
-        <img
+        <Image
           className={styles.searchIcon}
           src="/icons/w_search.svg"
+          width={24}
+          height={24}
           alt="search"
         />
       </div>
