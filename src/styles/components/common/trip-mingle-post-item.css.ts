@@ -2,6 +2,7 @@ import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
 export const postCard = style({
+  display: 'inline-block',
   width: 255,
   height: 338,
   borderRadius: 20,
@@ -37,6 +38,7 @@ export const bookMark = style({
 
 export const contentContainer = style({
   padding: '15px 20px',
+  background: vars.color.white,
 });
 
 export const title = style({
