@@ -1,9 +1,11 @@
 import '@/styles/font.css';
 import TripMinglePostCard from '@/components/common/TripMinglePostCard';
+import { WhiteHeader } from '@/components/header/Header';
 
 export default function Page() {
   return (
     <main>
+      <WhiteHeader />
       <div>
         <TripMinglePostCard
           isMarked={false}

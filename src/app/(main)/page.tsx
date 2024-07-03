@@ -1,7 +1,7 @@
 import '@/styles/font.css';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
-import Header from '@/components/header/Header';
+import { Header } from '@/components/header/Header';
 import SearchBox from '@/components/main/SearchBox';
 import SelectContent from '@/components/main/SelectContent';
 
