@@ -3,6 +3,7 @@ import Image from 'next/image';
 import * as styles from '@/styles/country/page.css';
 import TripMinglePostCard from '@/components/common/TripMinglePostCard';
 import { WhiteHeader } from '@/components/header/Header';
+import PostCard from '@/components/common/PostCard';
 
 export default function Page() {
   return (
@@ -48,9 +49,18 @@ export default function Page() {
               height={36}
             />
             <span className={styles.category}>맛집 추천</span>
-            <span className={styles.explain}>
-              여행객들이 엄선한 맛집! 실패는 NO!
-            </span>
+            <div className={styles.textContainer}>
+              <span className={styles.explain}>
+                여행객들이 엄선한 맛집! 실패는 NO!
+              </span>
+              <span className={styles.more}>{'더보기 >'}</span>
+            </div>
+            <div className={styles.postContainer}>
+              <Example2 />
+              <Example2 />
+              <Example2 />
+              <Example2 />
+            </div>
           </div>
           <div className={styles.categoryContainer}>
             <Image
@@ -97,4 +107,8 @@ const Example = () => {
       nationality="한국"
     />
   );
+};
+
+const Example2 = () => {
+  return <PostCard />;
 };
