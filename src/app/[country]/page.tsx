@@ -4,6 +4,8 @@ import * as styles from '@/styles/country/page.css';
 import TripMinglePostCard from '@/components/common/TripMinglePostCard';
 import { WhiteHeader } from '@/components/header/Header';
 import PostCard from '@/components/common/PostCard';
+import MoveToMain from '@/components/country/MoveToMain';
+import More from '@/components/common/More';
 
 export default function Page() {
   return (
@@ -19,7 +21,7 @@ export default function Page() {
           />
         </div>
         <div className={styles.contentContainer}>
-          <span>{'아시아 > 중국'}</span>
+          <MoveToMain />
           <div className={styles.categoryContainer}>
             <Image
               src="/icons/country/person.svg"
@@ -32,7 +34,7 @@ export default function Page() {
               <span className={styles.explain}>
                 전 세계 친구들과 자유롭게 동행해 보세요!
               </span>
-              <span className={styles.more}>{'더보기 >'}</span>
+              <More path={'/'} />
             </div>
             <div className={styles.postContainer}>
               <Example />
@@ -70,7 +72,18 @@ export default function Page() {
               height={36}
             />
             <span className={styles.category}>숙소 추천</span>
-            <span className={styles.explain}>여행에 쌓인 피로도 풀어야죠!</span>
+            <div className={styles.textContainer}>
+              <span className={styles.explain}>
+                여행에 쌓인 피로도 풀어야죠!
+              </span>{' '}
+              <span className={styles.more}>{'더보기 >'}</span>
+            </div>
+            <div className={styles.postContainer}>
+              <Example2 />
+              <Example2 />
+              <Example2 />
+              <Example2 />
+            </div>
           </div>
           <div className={styles.categoryContainer}>
             <Image
@@ -79,10 +92,19 @@ export default function Page() {
               width={36}
               height={36}
             />
-            <span className={styles.category}>일정 추천</span>
-            <span className={styles.explain}>
-              여행 계획 막막하신가요? 따라만 오세요!
-            </span>
+            <span className={styles.category}>일정 추천</span>{' '}
+            <div className={styles.textContainer}>
+              <span className={styles.explain}>
+                여행 계획 막막하신가요? 따라만 오세요!
+              </span>{' '}
+              <span className={styles.more}>{'더보기 >'}</span>
+            </div>
+            <div className={styles.postContainer}>
+              <Example2 />
+              <Example2 />
+              <Example2 />
+              <Example2 />
+            </div>
           </div>
         </div>
       </div>
