@@ -1,12 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '../globalTheme.css';
-import { relative } from 'path';
-
-export const imageContainer = style({
-  position: 'relative',
-  width: '100%',
-  height: 460,
-});
 
 export const bgOverlay = style({
   position: 'absolute',
@@ -55,5 +48,6 @@ export const plain = style({
   color: vars.color.black,
   fontWeight: 500,
   fontSize: 30,
+  marginTop: 30,
   marginBottom: 30,
 });

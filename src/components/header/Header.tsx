@@ -28,9 +28,9 @@ export const Header = () => {
 
 export const WhiteHeader = () => {
   return (
-    <nav className={styles.fixedbar}>
-      <div className={styles.whiteNavbar}>
-        <div className={styles.primaryLogo}>TripMingle</div>
+    <nav className={styles.fixedbar({ theme: 'white' })}>
+      <div className={styles.navbar({ theme: 'white' })}>
+        <div className={styles.logo({ theme: 'white' })}>TripMingle</div>
         <HeaderProfile url={''} />
         <Image
           src={'/icons/b_alarm.svg'}
@@ -53,9 +53,9 @@ export const WhiteHeader = () => {
 
 const ClearHeader = () => {
   return (
-    <nav className={styles.fixedbar}>
-      <div className={styles.clearNavbar}>
-        <div className={styles.whiteLogo}>TripMingle</div>
+    <nav className={styles.fixedbar({ theme: 'clear' })}>
+      <div className={styles.navbar({ theme: 'clear' })}>
+        <div className={styles.logo({ theme: 'clear' })}>TripMingle</div>
         <HeaderProfile url={''} />
         <Image
           src={'/icons/w_alarm.svg'}

@@ -4,13 +4,14 @@ import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/board/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import BoardCard from '@/components/common/BoardCard';
+import MoveToMain from '@/components/country/MoveToMain';
 
 export default function Page() {
   return (
     <main>
       <WhiteHeader />
       <div className={country.pageContainer}>
-        <div className={styles.imageContainer}>
+        <div className={country.imageContainer}>
           <Image
             src="/images/countrybg.png"
             alt="countryBackgroundImage"
@@ -28,6 +29,7 @@ export default function Page() {
           </div>
         </div>
         <div className={country.contentContainer}>
+          <MoveToMain />
           <div className={styles.plain}>
             <span className={styles.highlight}>{'165 '}</span>
             <span>

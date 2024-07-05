@@ -12,7 +12,7 @@ export const pageContainer = style({
 export const imageContainer = style({
   position: 'relative',
   width: '100%',
-  height: 500,
+  height: 460,
 });
 
 export const contentContainer = style({

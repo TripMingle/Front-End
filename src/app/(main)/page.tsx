@@ -5,7 +5,7 @@ import { Header } from '@/components/header/Header';
 import SearchBox from '@/components/main/SearchBox';
 import SelectContent from '@/components/main/SelectContent';
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
       <Header />
