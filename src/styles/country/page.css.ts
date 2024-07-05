@@ -3,6 +3,7 @@ import { vars } from '../globalTheme.css';
 
 export const pageContainer = style({
   position: 'relative',
+  top: 60,
   left: '50%',
   maxWidth: 1920,
   transform: 'translate(-50%,0)',
@@ -11,12 +12,12 @@ export const pageContainer = style({
 export const imageContainer = style({
   position: 'relative',
   width: '100%',
-  height: 600,
+  height: 500,
 });
 
 export const contentContainer = style({
-  display: 'inline-block',
   position: 'relative',
+  maxWidth: 1080,
   padding: '30px 60px',
   left: '50%',
   transform: 'translate(-50%,0)',
@@ -55,6 +56,8 @@ export const more = style({
 });
 
 export const postContainer = style({
-  display: 'flex',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
   gap: 20,
+  maxWidth: 1080,
 });

@@ -34,7 +34,7 @@ export default function Page() {
               <span className={styles.explain}>
                 전 세계 친구들과 자유롭게 동행해 보세요!
               </span>
-              <More path={'/'} />
+              <More path={'/board'} />
             </div>
             <div className={styles.postContainer}>
               <Example />
@@ -55,7 +55,7 @@ export default function Page() {
               <span className={styles.explain}>
                 여행객들이 엄선한 맛집! 실패는 NO!
               </span>
-              <span className={styles.more}>{'더보기 >'}</span>
+              <More path={'/board'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
@@ -76,7 +76,7 @@ export default function Page() {
               <span className={styles.explain}>
                 여행에 쌓인 피로도 풀어야죠!
               </span>{' '}
-              <span className={styles.more}>{'더보기 >'}</span>
+              <More path={'/board'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
@@ -97,7 +97,7 @@ export default function Page() {
               <span className={styles.explain}>
                 여행 계획 막막하신가요? 따라만 오세요!
               </span>{' '}
-              <span className={styles.more}>{'더보기 >'}</span>
+              <More path={'/board'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
