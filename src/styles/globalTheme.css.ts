@@ -17,7 +17,7 @@ export const vars = createGlobalTheme(':root', {
     white: '#FFFFFF',
   },
   font: {
-    body: 'Noto_Sans_KR',
+    body: 'Noto_Sans',
     menu: 'gmarketSans',
   },
 });

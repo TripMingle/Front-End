@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { selectContainer } from '@/app/page.css';
+import { selectContainer } from '@/styles/main/page.css';
 import Countries from './Country';
 import Continents from './Continent';
 

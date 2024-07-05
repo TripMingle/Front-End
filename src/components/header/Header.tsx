@@ -4,7 +4,7 @@ import * as styles from '@/styles/components/header/header.css';
 import Image from 'next/image';
 import HeaderProfile from './HeaderProfile';
 
-const Header = ({ bg }: { bg: Boolean }) => {
+export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,30 +23,55 @@ const Header = ({ bg }: { bg: Boolean }) => {
     };
   }, []);
 
+  return isScrolled ? <WhiteHeader /> : <ClearHeader />;
+};
+
+export const WhiteHeader = () => {
   return (
-    <div className={styles.fixedbar}>
-      <div className={isScrolled ? styles.whiteNavbar : styles.clearNavbar}>
-        <div className={isScrolled ? styles.primaryLogo : styles.whiteLogo}>
-          TripMingle
-        </div>
+    <nav className={styles.fixedbar({ theme: 'white' })}>
+      <div className={styles.navbar({ theme: 'white' })}>
+        <div className={styles.logo({ theme: 'white' })}>TripMingle</div>
         <HeaderProfile url={''} />
         <Image
-          src={isScrolled ? '/icons/b_alarm.svg' : '/icons/w_alarm.svg'}
+          src={'/icons/b_alarm.svg'}
           width={24}
           height={24}
           alt="alram"
           className={styles.icon}
         />
         <Image
-          src={isScrolled ? '/icons/b_menu.svg' : '/icons/w_menu.svg'}
+          src={'/icons/b_menu.svg'}
           width={24}
           height={24}
           alt="menu"
           className={styles.icon}
         />
       </div>
-    </div>
+    </nav>
   );
 };
 
-export default Header;
+const ClearHeader = () => {
+  return (
+    <nav className={styles.fixedbar({ theme: 'clear' })}>
+      <div className={styles.navbar({ theme: 'clear' })}>
+        <div className={styles.logo({ theme: 'clear' })}>TripMingle</div>
+        <HeaderProfile url={''} />
+        <Image
+          src={'/icons/w_alarm.svg'}
+          width={24}
+          height={24}
+          alt="alram"
+          className={styles.icon}
+        />
+        <Image
+          src={'/icons/w_menu.svg'}
+          width={24}
+          height={24}
+          alt="menu"
+          className={styles.icon}
+        />
+      </div>
+    </nav>
+  );
+};
