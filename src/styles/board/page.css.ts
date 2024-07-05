@@ -36,6 +36,7 @@ export const mapButton = style({
   borderRadius: 100,
   boxShadow: '0px 10px 20px 0px #0000000D',
   fontSize: 16,
+  cursor: 'pointer'
 });
 
 export const highlight = style({

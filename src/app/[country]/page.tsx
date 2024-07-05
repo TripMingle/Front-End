@@ -6,6 +6,10 @@ import { WhiteHeader } from '@/components/header/Header';
 import PostCard from '@/components/common/PostCard';
 import MoveToMain from '@/components/country/MoveToMain';
 import More from '@/components/common/More';
+import Person from '@/components/common/Icons/Person';
+import Good from '@/components/common/Icons/Good';
+import House from '@/components/common/Icons/House';
+import Calendar from '@/components/common/Icons/Calendar';
 
 export default function Page() {
   return (
@@ -23,12 +27,7 @@ export default function Page() {
         <div className={styles.contentContainer}>
           <MoveToMain />
           <div className={styles.categoryContainer}>
-            <Image
-              src="/icons/country/person.svg"
-              alt="personIcon"
-              width={36}
-              height={36}
-            />
+            <Person width={36} height={36} />
             <span className={styles.category}>여행 동행글</span>
             <div className={styles.textContainer}>
               <span className={styles.explain}>
@@ -44,18 +43,13 @@ export default function Page() {
             </div>
           </div>
           <div className={styles.categoryContainer}>
-            <Image
-              src="/icons/country/good.svg"
-              alt="personIcon"
-              width={36}
-              height={36}
-            />
+            <Good width={36} height={36} />
             <span className={styles.category}>맛집 추천</span>
             <div className={styles.textContainer}>
               <span className={styles.explain}>
                 여행객들이 엄선한 맛집! 실패는 NO!
               </span>
-              <More path={'/board'} />
+              <More path={'/post'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
@@ -65,18 +59,13 @@ export default function Page() {
             </div>
           </div>
           <div className={styles.categoryContainer}>
-            <Image
-              src="/icons/country/house.svg"
-              alt="personIcon"
-              width={36}
-              height={36}
-            />
+            <House width={36} height={36} />
             <span className={styles.category}>숙소 추천</span>
             <div className={styles.textContainer}>
               <span className={styles.explain}>
                 여행에 쌓인 피로도 풀어야죠!
               </span>{' '}
-              <More path={'/board'} />
+              <More path={'/post'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
@@ -86,18 +75,13 @@ export default function Page() {
             </div>
           </div>
           <div className={styles.categoryContainer}>
-            <Image
-              src="/icons/country/calendar2.svg"
-              alt="personIcon"
-              width={36}
-              height={36}
-            />
+            <Calendar width={36} height={36} />
             <span className={styles.category}>일정 추천</span>{' '}
             <div className={styles.textContainer}>
               <span className={styles.explain}>
                 여행 계획 막막하신가요? 따라만 오세요!
               </span>{' '}
-              <More path={'/board'} />
+              <More path={'/post'} />
             </div>
             <div className={styles.postContainer}>
               <Example2 />
