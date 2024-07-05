@@ -1,7 +1,7 @@
 import '@/styles/font.css';
 import Image from 'next/image';
 import * as styles from '@/styles/country/page.css';
-import TripMinglePostCard from '@/components/common/TripMinglePostCard';
+import BoardCard from '@/components/common/BoardCard';
 import { WhiteHeader } from '@/components/header/Header';
 import PostCard from '@/components/common/PostCard';
 import MoveToMain from '@/components/country/MoveToMain';
@@ -114,7 +114,7 @@ export default function Page() {
 
 const Example = () => {
   return (
-    <TripMinglePostCard
+    <BoardCard
       isMarked={false}
       language="japanese"
       title="파리에서 다이빙 할 사람"

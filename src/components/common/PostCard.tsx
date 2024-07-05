@@ -1,5 +1,5 @@
 import Profile from './Profile';
-import * as styles from '@/styles/components/common/post-item.css';
+import * as styles from '@/styles/components/common/post-card.css';
 
 const PostCard = () => {
   return (

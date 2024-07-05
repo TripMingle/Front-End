@@ -3,7 +3,7 @@ import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/board/page.css';
 import { WhiteHeader } from '@/components/header/Header';
-import TripMinglePostCard from '@/components/common/TripMinglePostCard';
+import BoardCard from '@/components/common/BoardCard';
 
 export default function Page() {
   return (
@@ -66,7 +66,7 @@ export default function Page() {
 
 const Example = () => {
   return (
-    <TripMinglePostCard
+    <BoardCard
       isMarked={false}
       language="japanese"
       title="파리에서 다이빙 할 사람"

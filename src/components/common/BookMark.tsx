@@ -1,5 +1,5 @@
 'use client';
-import * as styles from '@/styles/components/common/trip-mingle-post-item.css';
+import * as styles from '@/styles/components/common/board-card.css';
 import Image from 'next/image';
 import { useState } from 'react';
 

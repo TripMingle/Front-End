@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import * as styles from '@/styles/components/common/trip-mingle-post-item.css';
+import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
 
-const TripMinglePostCard = ({
+const BoardCard = ({
   isMarked,
   language,
   title,
@@ -82,4 +82,4 @@ const TripMinglePostCard = ({
   );
 };
 
-export default TripMinglePostCard;
+export default BoardCard;
