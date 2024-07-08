@@ -32,13 +32,23 @@ export const name = style({
   textAlign: 'center',
   fontFamily: vars.font.menu,
   fontWeight: 'bold',
-  fontSize: 24,
+  fontSize: 22,
   color: vars.color.white,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 24,
+    },
+  },
 });
 
 export const countryContainer = style({
   display: 'grid',
-  gap: 40,
+  gap: 16,
   gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
   maxWidth: 1000,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      gap: 40,
+    },
+  },
 });
