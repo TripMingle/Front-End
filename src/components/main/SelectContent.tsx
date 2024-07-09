@@ -7,12 +7,14 @@ import {
 } from '@/styles/main/page.css';
 import Countries from './Country';
 import Continents from './Continent';
+import { getCountryBycontinent } from '@/api/getCountryInfo';
 
 const SelectContent = () => {
   const [continent, setContinent] = useState<string>('');
 
   const continentClick = (continent: string) => {
     setContinent(continent);
+    getCountryBycontinent(continent);
   };
 
   if (continent === '') {

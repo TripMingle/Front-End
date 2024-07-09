@@ -1,8 +1,8 @@
 'use client';
 
-import Good from '@/components/common/Icons/Good';
-import House from '@/components/common/Icons/House';
-import Calendar from '@/components/common/Icons/Calendar';
+import Good from '@/components/country/Icons/Good';
+import House from '@/components/country/Icons/House';
+import Calendar from '@/components/country/Icons/Calendar';
 import { ChangeEvent, useState } from 'react';
 
 const SelectCateogry = ({ category }: { category: string }) => {

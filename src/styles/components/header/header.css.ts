@@ -55,12 +55,14 @@ export const navbar = recipe({
 export const logo = recipe({
   base: {
     position: 'relative',
+    height: 20,
     marginRight: 'auto',
     fontFamily: vars.font.menu,
     fontSize: 16,
     fontWeight: 'bold',
     '@media': {
       'screen and (min-width: 1024px)': {
+        height: 30,
         fontSize: 24,
       },
     },

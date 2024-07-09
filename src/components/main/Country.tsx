@@ -38,13 +38,13 @@ const tmpCountry = [
 
 const Countries = () => {
   return (
-    <div className={styles.countryContainer}>
-      {tmpCountry.map((e) => (
-        <div>
+    <ul className={styles.countryContainer}>
+      {tmpCountry.map((e, i) => (
+        <li key={i}>
           <Country img={e.img} country={e.country} />
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

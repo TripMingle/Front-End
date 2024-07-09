@@ -29,7 +29,7 @@ export default function Page() {
           </div>
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain />
+          <MoveToMain country={'중국'}/>
           <div className={styles.plain}>
             <span className={styles.highlight}>{'165 '}</span>
             <span>
@@ -38,7 +38,7 @@ export default function Page() {
               기다리고 있어요!
             </span>
           </div>
-          <div className={country.postContainer}>
+          <div className={country.boardContainer}>
             <Example />
             <Example />
             <Example />

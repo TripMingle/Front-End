@@ -19,7 +19,7 @@ export default function Page() {
           />
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain />
+          <MoveToMain country={'중국'} />
           <SelectCateogry category="food" />
         </div>
       </div>

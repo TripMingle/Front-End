@@ -2,14 +2,21 @@ import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
 export const postCard = style({
-  width: 215,
-  height: 118,
+  width: 191,
+  height: 99,
   borderRadius: 20,
-  padding: 20,
+  padding: 15,
   boxShadow: '0px 10px 20px 0px #0000000D',
   fontFamily: vars.font.body,
   color: vars.color.g500,
   background: vars.color.white,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 215,
+      height: 118,
+      padding: 20,
+    },
+  },
   ':hover': {
     color: vars.color.white,
     background: 'linear-gradient(284.04deg, #00C2FF 0%, #3688FF 100%)',
@@ -18,10 +25,16 @@ export const postCard = style({
 
 export const title = style({
   display: 'flex',
-  marginBottom: 12,
+  marginBottom: 10,
   color: vars.color.black,
-  fontSize: 18,
+  fontSize: 13,
   fontWeight: 700,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 18,
+      marginBottom: 12,
+    },
+  },
   selectors: {
     [`${postCard}:hover &`]: {
       color: vars.color.white,
@@ -31,11 +44,18 @@ export const title = style({
 
 export const content = style({
   display: 'flex',
-  height: 38,
-  marginBottom: 20,
-  fontSize: 13,
+  height: 32,
+  marginBottom: 15,
+  fontSize: 11,
   fontWeight: 500,
   lineHeight: 1.5,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 38,
+      marginBottom: 20,
+      fontSize: 13,
+    },
+  },
 });
 
 export const profileContainer = style({

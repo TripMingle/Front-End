@@ -212,9 +212,14 @@ export const selectContainer = style({
 
 export const moveToContinent = style({
   marginBottom: 30,
-  fontSize: 18,
-  fontWeight: 400,
+  fontSize: 16,
+  fontWeight: 500,
   color: vars.color.g500,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 18,
+    },
+  },
 });
 
 export const continentText = style({
