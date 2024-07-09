@@ -20,6 +20,7 @@ export const imageBox = style({
   position: 'relative',
   width: '100%',
   height: 95,
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 150,
@@ -56,6 +57,7 @@ export const bookMark = style({
 export const contentContainer = style({
   padding: '10px 10px',
   background: vars.color.white,
+  borderRadius: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
       padding: '15px 20px',

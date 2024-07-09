@@ -15,10 +15,11 @@ export default function Page() {
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
           <Image
+            className={styles.image}
             src="/images/countrybg.png"
             alt="countryBackgroundImage"
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="1920px"
           />
         </div>
         <div className={styles.contentContainer}>

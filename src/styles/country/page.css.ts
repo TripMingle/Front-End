@@ -17,7 +17,9 @@ export const pageContainer = style({
 export const imageContainer = style({
   position: 'relative',
   width: '100%',
-  height: 320,
+  minHeight: 320,
+  height: 'auto',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 460,
@@ -25,10 +27,14 @@ export const imageContainer = style({
   },
 });
 
+export const image = style({
+  objectFit: 'cover',
+});
+
 export const contentContainer = style({
   position: 'relative',
   maxWidth: 1080,
-  padding: '40px 24px',
+  padding: '40px 20px',
   left: '50%',
   transform: 'translate(-50%,0)',
   '@media': {
@@ -100,6 +106,7 @@ export const more = style({
 export const boardContainer = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+  justifyItems: 'center',
   gap: 15,
   maxWidth: 1080,
   '@media': {

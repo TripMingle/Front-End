@@ -16,8 +16,8 @@ const Continent = ({
       <Image
         className={styles.bgImage}
         src={img}
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="(max-width: 1023px) 160px, 240px"
         alt="continent"
       />
       <div className={styles.bgOverlay}></div>

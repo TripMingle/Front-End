@@ -10,7 +10,7 @@ export const bgOverlay = style({
 });
 
 export const mapContainer = style({
-  position: 'relative',
+  position: 'absolute',
   display: 'inline-flex',
   top: '50%',
   left: '50%',

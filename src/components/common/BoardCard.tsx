@@ -37,8 +37,8 @@ const BoardCard = ({
       <div className={styles.imageBox}>
         <Image
           src="/images/tmp.png"
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width :1023px) 160px, 255px"
           className={styles.image}
           alt="countryImage"
         />

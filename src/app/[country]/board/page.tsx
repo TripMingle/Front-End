@@ -13,10 +13,11 @@ export default function Page() {
       <div className={country.pageContainer}>
         <div className={country.imageContainer}>
           <Image
+            className={country.image}
             src="/images/countrybg.png"
             alt="countryBackgroundImage"
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="1920px"
           />
           <div className={styles.bgOverlay}></div>
           <div className={styles.mapContainer}>
@@ -29,7 +30,7 @@ export default function Page() {
           </div>
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain country={'중국'}/>
+          <MoveToMain country={'중국'} />
           <div className={styles.plain}>
             <span className={styles.highlight}>{'165 '}</span>
             <span>

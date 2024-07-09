@@ -13,9 +13,8 @@ export default function Page() {
         <Image
           className={styles.bg}
           src="/images/mainbg.png"
-          layout="responsive"
-          width={1920}
-          height={1000}
+          fill
+          sizes="1920px"
           alt="mainBackground"
         />
         <SearchBox />

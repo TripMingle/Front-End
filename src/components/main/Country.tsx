@@ -13,8 +13,8 @@ const Country = ({ img, country }: { img: string; country: string }) => {
       <Image
         className={styles.bgImage}
         src={img}
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="160px"
         alt="country"
       />
       <div className={styles.bgOverlay}></div>

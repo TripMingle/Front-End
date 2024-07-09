@@ -5,15 +5,21 @@ export const bgContainer = style({
   position: 'relative',
   display: 'flex',
   width: '100%',
+  minHeight: 320,
   justifyItems: 'center',
+  overflow: 'hidden',
+  maxWidth: '1920px',
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 720,
+    },
+  },
 });
 
 export const bg = style({
-  position: 'relative',
-  maxWidth: '1920px',
-  minHeight: 320,
-  left: '50%',
-  transform: 'translate(-50%,0)',
+  objectFit: 'cover',
 });
 
 export const boxContainer = style({
@@ -137,7 +143,7 @@ export const searchIcon = style({
 
 export const contentContainer = style({
   position: 'relative',
-  padding: '40px 20px',
+  padding: '40px 16px',
   maxWidth: 1000,
   left: '50%',
   transform: 'translate(-50%, 0)',
@@ -193,7 +199,7 @@ export const line = style({
   position: 'absolute',
   display: 'inline-flex',
   bottom: 10,
-  width: 'calc(100vw - 40px)',
+  width: 'calc(100vw - 32px)',
   maxWidth: 1000,
   height: 1,
   zIndex: -1,
@@ -207,7 +213,7 @@ export const line = style({
 });
 
 export const selectContainer = style({
-  margin: '30px 0px 60px 0px',
+  margin: '30px 0px 30px 0px',
 });
 
 export const moveToContinent = style({

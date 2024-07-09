@@ -8,13 +8,12 @@ export const container = style({
   height: 160,
   alignItems: 'center',
   justifyItems: 'center',
+  overflow: 'hidden',
 });
 
 export const bgImage = style({
-  position: 'absolute',
   zIndex: -2,
   borderRadius: '50%',
-  objectFit: 'cover',
 });
 
 export const bgOverlay = style({
@@ -43,7 +42,7 @@ export const name = style({
 
 export const countryContainer = style({
   display: 'grid',
-  gap: 16,
+  gap: 15,
   gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
   maxWidth: 1000,
   '@media': {
