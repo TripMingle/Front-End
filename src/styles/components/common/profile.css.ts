@@ -1,11 +1,14 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
+
+export const cWidth = createVar();
+export const cHeight = createVar();
 
 export const profile = style({
   borderRadius: '50%',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 24,
-      height: 24,
+      width: [cWidth],
+      height: [cHeight],
     },
   },
 });

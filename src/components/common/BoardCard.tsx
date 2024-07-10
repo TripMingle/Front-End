@@ -72,7 +72,13 @@ const BoardCard = ({
           </span>
         </div>
         <div className={styles.profileContainer}>
-          <Profile url={url} width={16} height={16} />
+          <Profile
+            url={url}
+            width={16}
+            height={16}
+            changeWidth={24}
+            changeHeight={24}
+          />
           <span className={styles.profileInfo}>
             {name} · {age}대 · {sex} · {nationality}
           </span>

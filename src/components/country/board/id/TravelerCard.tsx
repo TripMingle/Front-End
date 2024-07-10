@@ -11,7 +11,13 @@ const TravelerCard = () => {
         여행장
       </div>
       <div className={styles.profileContainer}>
-        <Profile url="" width={42} height={42} />
+        <Profile
+          url=""
+          width={42}
+          height={42}
+          changeWidth={72}
+          changeHeight={72}
+        />
         <div className={styles.mobileProfileInfo}>
           <div className={styles.profileInfo}>
             <span className={styles.profileName}>홍길동</span>
