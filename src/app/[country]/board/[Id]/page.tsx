@@ -6,7 +6,8 @@ import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
 import TripStyleButton from '@/components/common/TripStyleButton';
 import TripTypeButton from '@/components/common/TripTypeButton';
-import Profile from '@/components/common/Profile';
+import CommentInput from '@/components/common/CommentInput';
+import Comment from '@/components/common/Comment';
 
 const Page = () => {
   return (
@@ -101,24 +102,15 @@ const Page = () => {
             <p className={styles.commentTitle}>
               댓글 <strong className={styles.commentTitleStrong}>22</strong>개
             </p>
-            <div className={styles.commentInputProfileContainer}>
-              <Profile
+            <CommentInput />
+            <div>
+              <Comment
                 url=""
-                width={0}
-                height={0}
-                changeWidth={36}
-                changeHeight={36}
+                name="홍길동"
+                time="1시간전"
+                content="너무 참여하고 싶어용~!"
               />
-              <form className={styles.commentInputContainer}>
-                <input
-                  className={styles.commentInput}
-                  type="text"
-                  placeholder="내용을 입력하세요."
-                />
-                <button className={styles.commentInputButton}>등록</button>
-              </form>
             </div>
-            <div>댓글리스트다!!!!!!!!!!!</div>
           </div>
         </div>
       </div>

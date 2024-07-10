@@ -37,7 +37,7 @@ export const travelerTitle = style({
 export const profileContainer = style({
   display: 'flex',
   gap: 10,
-  alignItems: 'center',
+  alignItems: 'flex-start',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 20,
@@ -57,6 +57,7 @@ export const profileInfo = style({
   flexDirection: 'row',
   alignItems: 'center',
   gap: 5,
+  marginTop: 4,
   fontSize: 12,
   fontWeight: 400,
   color: vars.color.g500,
@@ -64,6 +65,7 @@ export const profileInfo = style({
     'screen and (min-width: 1024px)': {
       flexDirection: 'column',
       alignItems: 'normal',
+      marginTop: 14,
       fontSize: 14,
     },
   },
