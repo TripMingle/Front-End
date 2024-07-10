@@ -6,6 +6,7 @@ import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
 import TripStyleButton from '@/components/common/TripStyleButton';
 import TripTypeButton from '@/components/common/TripTypeButton';
+import Profile from '@/components/common/Profile';
 
 const Page = () => {
   return (
@@ -34,7 +35,7 @@ const Page = () => {
                   height={20}
                   alt="userIcon"
                 />
-                {'2 / 5 인'}
+                <span>{'2 / 5 인'}</span>
               </span>
               <span className={styles.iconContainer}>
                 <Image
@@ -44,7 +45,7 @@ const Page = () => {
                   height={20}
                   alt="commendIcon"
                 />
-                {'3'}
+                <span>{'3'}</span>
               </span>
             </div>
             <div className={styles.infoContainer}>
@@ -94,6 +95,31 @@ const Page = () => {
             </div>
           </div>
           <TravelerCard />
+        </div>
+        <div className={styles.container}>
+          <div className={styles.commentContainer}>
+            <p className={styles.commentTitle}>
+              댓글 <strong className={styles.commentTitleStrong}>22</strong>개
+            </p>
+            <div className={styles.commentInputProfileContainer}>
+              <Profile
+                url=""
+                width={0}
+                height={0}
+                changeWidth={36}
+                changeHeight={36}
+              />
+              <form className={styles.commentInputContainer}>
+                <input
+                  className={styles.commentInput}
+                  type="text"
+                  placeholder="내용을 입력하세요."
+                />
+                <button className={styles.commentInputButton}>등록</button>
+              </form>
+            </div>
+            <div>댓글리스트다!!!!!!!!!!!</div>
+          </div>
         </div>
       </div>
     </main>

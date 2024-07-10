@@ -36,6 +36,7 @@ export const container = style({
   left: '50%',
   transform: 'translate(-50%,0)',
   flexDirection: 'column',
+  maxWidth: 1040,
   '@media': {
     'screen and (min-width: 1024px)': {
       flexDirection: 'row',
@@ -70,14 +71,16 @@ export const title = style({
 });
 
 export const iconContainer = style({
+  display: 'inline-flex',
   marginTop: 8,
   marginRight: 20,
-  display: 'inline-flex',
+  fontSize: 13,
   alignItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
       marginTop: 12,
       marginRight: 30,
+      fontSize: 16,
     },
   },
 });
@@ -139,6 +142,78 @@ export const infoContent = style({
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 16,
+    },
+  },
+});
+
+export const commentContainer = style({
+  margin: '30px 20px',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: '100%',
+      maxWidth: 720,
+      margin: '50px auto 50px 20px',
+    },
+  },
+});
+
+export const commentTitle = style({
+  fontSize: 16,
+  fontWeight: 500,
+  color: vars.color.black,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 18,
+    },
+  },
+});
+
+export const commentTitleStrong = style({
+  fontWeight: 700,
+  color: vars.color.secondary,
+});
+
+export const commentInputProfileContainer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 0,
+  margin: '20px 0px',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      margin: '40px 0px',
+      gap: 10,
+    },
+  },
+});
+
+export const commentInputContainer = style({
+  display: 'flex',
+  flex: 1,
+  alignItems: 'center',
+  borderRadius: 5,
+  padding: '13px 15px',
+  border: `1px solid ${vars.color.g200}`,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      padding: '16px 20px',
+    },
+  },
+});
+
+export const commentInput = style({
+  flex: 1,
+  outline: 'none',
+  border: 'none',
+});
+
+export const commentInputButton = style({
+  marginLeft: 15,
+  border: 'none',
+  background: 'none',
+  color: vars.color.secondary,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      marginLeft: 20,
     },
   },
 });
