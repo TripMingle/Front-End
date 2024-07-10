@@ -44,12 +44,12 @@ export const container = style({
 });
 
 export const contentContainer = style({
-  width: '100%',
+  flex: 1,
   maxWidth: 720,
   padding: '30px 20px',
   '@media': {
     'screen and (min-width: 1024px)': {
-      padding: '50px 20px 50px 20px',
+      padding: '50px 20px',
     },
   },
 });
@@ -117,11 +117,26 @@ export const infoTitle = style({
 });
 
 export const infoItem = style({
-  display: 'inline-flex',
+  display: 'flex',
   gap: 5,
+  flexWrap: 'wrap',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 10,
+    },
+  },
+});
+
+export const infoContent = style({
+  display: 'inline',
+  whiteSpace: 'pre-wrap',
+  wordWrap: 'break-word',
+  color: vars.color.g600,
+  fontSize: 13,
+  fontWeight: 400,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 16,
     },
   },
 });

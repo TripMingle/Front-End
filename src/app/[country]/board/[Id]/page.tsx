@@ -80,14 +80,16 @@ const Page = () => {
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>여행 일정</p>
-              <div>
+              <div className={styles.infoContent}>
                 <span>2023.06.14 ~ 2023.06.15</span>
               </div>
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>내용</p>
-              <div>
-                <span>2023.06.14 ~ 2023.06.15</span>
+              <div className={styles.infoContent}>
+                {
+                  '서울 청계천 같이 걸으실 분 구해요~!\n요즘 날씨도 좋고 청계천 걷기 딱 좋은 날씨더라고요.\n\n청계천 걷고 주변 팝업스토어 가서 쇼핑도 할 생각이에요!\n\n인스타 인증샷도 남기려고요!5분만 모집합니다!연락 주세요~!'
+                }
               </div>
             </div>
           </div>
