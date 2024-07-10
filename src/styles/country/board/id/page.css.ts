@@ -39,6 +39,8 @@ export const container = style({
   '@media': {
     'screen and (min-width: 1024px)': {
       flexDirection: 'row',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
     },
   },
 });
@@ -46,10 +48,10 @@ export const container = style({
 export const contentContainer = style({
   flex: 1,
   maxWidth: 720,
-  padding: '30px 20px',
+  margin: '30px 20px',
   '@media': {
     'screen and (min-width: 1024px)': {
-      padding: '50px 20px',
+      margin: '50px 20px',
     },
   },
 });
