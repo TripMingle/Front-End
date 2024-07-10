@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
-import * as styles from '@/styles/board/page.css';
+import * as styles from '@/styles/country/board/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import BoardCard from '@/components/common/BoardCard';
 import MoveToMain from '@/components/country/MoveToMain';
