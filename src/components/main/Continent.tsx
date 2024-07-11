@@ -2,11 +2,11 @@ import * as styles from '@/styles/main/continent.css';
 import Image from 'next/image';
 
 const Continent = ({
-  img,
+  url,
   continent,
   explain,
 }: {
-  img: string;
+  url: string;
   continent: string;
   explain: string;
 }) => {
@@ -15,7 +15,7 @@ const Continent = ({
       <div className={styles.circle}></div>
       <Image
         className={styles.bgImage}
-        src={img}
+        src={url}
         fill
         sizes="(max-width: 1023px) 160px, 240px"
         alt="continent"
@@ -29,6 +29,39 @@ const Continent = ({
   );
 };
 
+const continentsInfo = [
+  {
+    url: '/images/continent/asiaBg.png',
+    continent: '아시아',
+    explain: '아는 만큼 보이는 매력',
+  },
+  {
+    url: '/images/continent/europeBg.png',
+    continent: '유럽',
+    explain: '상상 속 유럽 여행을 현실로',
+  },
+  {
+    url: '/images/continent/oceaniaBg.png',
+    continent: '오세아니아',
+    explain: '수중낙원부터 만년설까지',
+  },
+  {
+    url: '/images/continent/southAmericBg.png',
+    continent: '북아메리카',
+    explain: '숨겨놓은 신비로움이 한가득!',
+  },
+  {
+    url: '/images/continent/northAmericBg.png',
+    continent: '남아메리카',
+    explain: '너는 어디까지 가봤니?',
+  },
+  {
+    url: '/images/continent/africaBg.png',
+    continent: '아프리카',
+    explain: '나의 첫 아프리카 여행',
+  },
+];
+
 const Continents = ({
   clickHandler,
 }: {
@@ -36,48 +69,13 @@ const Continents = ({
 }) => {
   return (
     <ul className={styles.continentContainer}>
-      <li onClick={() => clickHandler('아시아')}>
-        <Continent
-          img="/images/continent/asiaBg.png"
-          continent="아시아"
-          explain="아는 만큼 보이는 매력"
-        />
-      </li>
-      <li onClick={() => clickHandler('유럽')}>
-        <Continent
-          img="/images/continent/europeBg.png"
-          continent="유럽"
-          explain="상상 속 유럽 여행을 현실로"
-        />
-      </li>
-      <li onClick={() => clickHandler('오세아니아')}>
-        <Continent
-          img="/images/continent/oceaniaBg.png"
-          continent="오세아니아"
-          explain="수중낙원부터 만년설까지"
-        />
-      </li>
-      <li onClick={() => clickHandler('남아메리카')}>
-        <Continent
-          img="/images/continent/southAmericBg.png"
-          continent="남아메리카"
-          explain="숨겨놓은 신비로움이 한가득!"
-        />
-      </li>
-      <li onClick={() => clickHandler('북아메리카')}>
-        <Continent
-          img="/images/continent/northAmericBg.png"
-          continent="북아메리카"
-          explain="너는 어디까지 가봤니?"
-        />
-      </li>
-      <li onClick={() => clickHandler('아프리카')}>
-        <Continent
-          img="/images/continent/africaBg.png"
-          continent="아프리카"
-          explain="나의 첫 아프리카 여행"
-        />
-      </li>
+      {continentsInfo.map(({ url, continent, explain }) => {
+        return (
+          <li onClick={() => clickHandler(continent)}>
+            <Continent url={url} continent={continent} explain={explain} />
+          </li>
+        );
+      })}
     </ul>
   );
 };

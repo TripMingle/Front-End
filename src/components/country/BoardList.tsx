@@ -12,9 +12,10 @@ const BoardList = () => {
         <span className={styles.explain}>
           전 세계 친구들과 자유롭게 동행해 보세요!
         </span>
-        <More path={'/board'} />
+        <More path="/board" />
       </div>
       <div className={styles.boardContainer}>
+        {/*country 페이지에서는 샘플 4개씩, 서버에서 4개만 받아서 보여줄 것*/}
         <Example />
         <Example />
         <Example />
@@ -26,6 +27,9 @@ const BoardList = () => {
 
 export default BoardList;
 
+
+// TODO 서버 연동 시 지우기 
+// 동행 게시물 샘플
 const Example = () => {
   return (
     <BoardCard
@@ -36,11 +40,16 @@ const Example = () => {
       endDate="2024.06.23"
       currentCount={3}
       maxCount={6}
-      url=""
-      name="홍길동"
-      age={20}
-      gender={false}
-      nationality="한국"
+      user={exmapleUser}
     />
   );
+};
+
+// 유저 정보 샘플
+const exmapleUser = {
+  url: '',
+  name: '홍길동',
+  age: 20,
+  gender: false,
+  nationality: '한국',
 };

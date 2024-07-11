@@ -1,4 +1,4 @@
-export async function getCountryBycontinent(continent: string) {
+export const getCountryBycontinent = async (continent: string) => {
   //   try {
   //     const res = await fetch(
   //       `${process.env.NEXT_PUBLIC_API_URL}/country/${continent}`,
@@ -10,4 +10,4 @@ export async function getCountryBycontinent(continent: string) {
   //   } catch (error) {
   //     console.log(error);
   //   }
-}
+};
