@@ -3,35 +3,10 @@ import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
+import { BoardCardProps, User } from '@/types/country/user';
 
-const BoardCard = ({
-  isMarked,
-  language,
-  title,
-  startDate,
-  endDate,
-  currentCount,
-  maxCount,
-  url,
-  name,
-  age,
-  gender,
-  nationality,
-}: {
-  isMarked: Boolean;
-  language: string;
-  title: string;
-  startDate: string;
-  endDate: string;
-  currentCount: number;
-  maxCount: number;
-  url: string;
-  name: string;
-  age: number;
-  gender: Boolean;
-  nationality: string;
-}) => {
-  const sex = gender ? '남' : '여';
+const BoardCard = (props: BoardCardProps) => {
+  const sex = props.user.gender ? '남' : '여';
   return (
     <div className={styles.postCard}>
       <div className={styles.imageBox}>
@@ -42,11 +17,11 @@ const BoardCard = ({
           className={styles.image}
           alt="countryImage"
         />
-        <BookMark isMarked={isMarked} />
+        <BookMark isMarked={props.isMarked} />
       </div>
       <div className={styles.contentContainer}>
-        <Language language={language} />
-        <span className={styles.title}>{title}</span>
+        <Language language={props.language} />
+        <span className={styles.title}>{props.title}</span>
         <div className={styles.infoContainer}>
           <Image
             className={styles.icon}
@@ -56,7 +31,7 @@ const BoardCard = ({
             alt="calendarIcon"
           />
           <span>
-            {startDate} ~ {endDate}
+            {props.startDate} ~ {props.endDate}
           </span>
         </div>
         <div className={styles.infoContainer}>
@@ -68,19 +43,19 @@ const BoardCard = ({
             alt="userIcon"
           />
           <span>
-            {currentCount} / {maxCount}인
+            {props.currentCount} / {props.maxCount}인
           </span>
         </div>
         <div className={styles.profileContainer}>
           <Profile
-            url={url}
+            url={props.user.url}
             width={16}
             height={16}
             changeWidth={24}
             changeHeight={24}
           />
           <span className={styles.profileInfo}>
-            {name} · {age}대 · {sex} · {nationality}
+            {props.user.name} · {props.user.age}대 · {sex} · {props.user.nationality}
           </span>
         </div>
       </div>

@@ -8,7 +8,7 @@ import FoodList from '@/components/country/FoodList';
 import HomeList from '@/components/country/HomeList';
 import ScheduleList from '@/components/country/ScheduleList';
 
-export default function Page() {
+const Page = () => {
   return (
     <main>
       <WhiteHeader />
@@ -32,4 +32,6 @@ export default function Page() {
       </div>
     </main>
   );
-}
+};
+
+export default Page;

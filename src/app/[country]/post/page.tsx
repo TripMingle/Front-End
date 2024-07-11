@@ -5,7 +5,7 @@ import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
 import SelectCateogry from '@/components/country/post/SelectCategory';
 
-export default function Page() {
+const Page = () => {
   return (
     <main>
       <WhiteHeader />
@@ -26,4 +26,6 @@ export default function Page() {
       </div>
     </main>
   );
-}
+};
+
+export default Page;

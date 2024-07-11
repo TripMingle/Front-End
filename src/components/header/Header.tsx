@@ -33,14 +33,14 @@ export const WhiteHeader = () => {
         <div className={styles.logo({ theme: 'white' })}>TripMingle</div>
         <HeaderProfile url={''} />
         <Image
-          src={'/icons/b_alarm.svg'}
+          src='/icons/b_alarm.svg'
           width={24}
           height={24}
           alt="alram"
           className={styles.icon}
         />
         <Image
-          src={'/icons/b_menu.svg'}
+          src='/icons/b_menu.svg'
           width={24}
           height={24}
           alt="menu"
@@ -58,14 +58,14 @@ const ClearHeader = () => {
         <div className={styles.logo({ theme: 'clear' })}>TripMingle</div>
         <HeaderProfile url={''} />
         <Image
-          src={'/icons/w_alarm.svg'}
+          src="/icons/w_alarm.svg"
           width={24}
           height={24}
           alt="alram"
           className={styles.icon}
         />
         <Image
-          src={'/icons/w_menu.svg'}
+          src="/icons/w_menu.svg"
           width={24}
           height={24}
           alt="menu"
