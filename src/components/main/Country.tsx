@@ -13,8 +13,8 @@ const Country = ({ img, country }: { img: string; country: string }) => {
       <Image
         className={styles.bgImage}
         src={img}
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="160px"
         alt="country"
       />
       <div className={styles.bgOverlay}></div>
@@ -38,13 +38,13 @@ const tmpCountry = [
 
 const Countries = () => {
   return (
-    <div className={styles.countryContainer}>
-      {tmpCountry.map((e) => (
-        <div>
+    <ul className={styles.countryContainer}>
+      {tmpCountry.map((e, i) => (
+        <li key={i}>
           <Country img={e.img} country={e.country} />
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

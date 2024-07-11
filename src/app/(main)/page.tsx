@@ -5,7 +5,7 @@ import { Header } from '@/components/header/Header';
 import SearchBox from '@/components/main/SearchBox';
 import SelectContent from '@/components/main/SelectContent';
 
-export default function Page() {
+const Page = () => {
   return (
     <main>
       <Header />
@@ -13,9 +13,8 @@ export default function Page() {
         <Image
           className={styles.bg}
           src="/images/mainbg.png"
-          layout="responsive"
-          width={1920}
-          height={1000}
+          fill
+          sizes="1920px"
           alt="mainBackground"
         />
         <SearchBox />
@@ -39,4 +38,6 @@ export default function Page() {
       </div>
     </main>
   );
-}
+};
+
+export default Page;

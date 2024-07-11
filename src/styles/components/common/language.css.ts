@@ -2,11 +2,17 @@ import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
 export const text = style({
-  padding: '5px 6px',
+  padding: '4px 5px',
   fontFamily: vars.font.menu,
   fontWeight: 'medium',
-  fontSize: 12,
+  fontSize: 10,
   color: vars.color.white,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      padding: '5px 6px',
+      fontSize: 12,
+    },
+  },
 });
 
 export const koreanBox = style({

@@ -1,14 +1,20 @@
 'use client';
 import { useState } from 'react';
-import { selectContainer } from '@/styles/main/page.css';
+import {
+  selectContainer,
+  moveToContinent,
+  continentText,
+} from '@/styles/main/page.css';
 import Countries from './Country';
 import Continents from './Continent';
+import { getCountryBycontinent } from '@/api/getCountryInfo';
 
 const SelectContent = () => {
   const [continent, setContinent] = useState<string>('');
 
   const continentClick = (continent: string) => {
     setContinent(continent);
+    getCountryBycontinent(continent);
   };
 
   if (continent === '') {
@@ -20,14 +26,16 @@ const SelectContent = () => {
   } else {
     return (
       <div className={selectContainer}>
-        <Countries />
         <div
+          className={moveToContinent}
           onClick={() => {
             setContinent('');
           }}
         >
-          {'< 대륙 선택'}
+          <span>{'홈 > '}</span>
+          <span className={continentText}>{continent}</span>
         </div>
+        <Countries />
       </div>
     );
   }

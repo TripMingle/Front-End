@@ -10,7 +10,7 @@ export const bgOverlay = style({
 });
 
 export const mapContainer = style({
-  position: 'relative',
+  position: 'absolute',
   display: 'inline-flex',
   top: '50%',
   left: '50%',
@@ -22,21 +22,33 @@ export const mapContainer = style({
 export const mapText = style({
   color: vars.color.white,
   fontFamily: vars.font.menu,
-  fontSize: 48,
+  fontSize: 24,
   fontWeight: 'bold',
   textAlign: 'center',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 48,
+    },
+  },
 });
 
 export const mapButton = style({
-  padding: '12px 20px',
-  marginTop: 40,
+  padding: '10px 15px',
+  marginTop: 20,
   color: vars.color.white,
   background: '#00C2FF',
   border: 0,
   borderRadius: 100,
   boxShadow: '0px 10px 20px 0px #0000000D',
-  fontSize: 16,
-  cursor: 'pointer'
+  fontSize: 14,
+  cursor: 'pointer',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      padding: '12px 20px',
+      marginTop: 40,
+      fontSize: 16,
+    },
+  },
 });
 
 export const highlight = style({
@@ -48,7 +60,13 @@ export const plain = style({
   position: 'relative',
   color: vars.color.black,
   fontWeight: 500,
-  fontSize: 30,
+  fontSize: 20,
   marginTop: 30,
-  marginBottom: 30,
+  marginBottom: 20,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 30,
+      marginBottom: 30,
+    },
+  },
 });
