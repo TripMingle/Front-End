@@ -11,10 +11,12 @@ import { getCountryBycontinent } from '@/api/getCountryInfo';
 
 const SelectContent = () => {
   const [continent, setContinent] = useState<string>('');
+  const [country, setCountry] = useState<Country[]>([]);
 
-  const continentClick = (continent: string) => {
+  const continentClick = async (continent: string) => {
+    const data = await getCountryBycontinent(continent);
+    setCountry(data.data);
     setContinent(continent);
-    getCountryBycontinent(continent);
   };
 
   if (continent === '') {
@@ -35,7 +37,7 @@ const SelectContent = () => {
           <span>{'홈 > '}</span>
           <span className={continentText}>{continent}</span>
         </div>
-        <Countries />
+        <Countries props={country} />
       </div>
     );
   }

@@ -71,7 +71,7 @@ const Continents = ({
     <ul className={styles.continentContainer}>
       {continentsInfo.map(({ url, continent, explain }) => {
         return (
-          <li onClick={() => clickHandler(continent)}>
+          <li key={continent} onClick={() => clickHandler(continent)}>
             <Continent url={url} continent={continent} explain={explain} />
           </li>
         );
