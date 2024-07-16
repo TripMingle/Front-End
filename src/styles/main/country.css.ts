@@ -14,6 +14,7 @@ export const container = style({
 export const bgImage = style({
   zIndex: -2,
   borderRadius: '50%',
+  objectFit: 'cover',
 });
 
 export const bgOverlay = style({

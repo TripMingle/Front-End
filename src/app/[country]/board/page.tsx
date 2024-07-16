@@ -5,6 +5,7 @@ import * as styles from '@/styles/country/board/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import BoardCard from '@/components/common/BoardCard';
 import MoveToMain from '@/components/country/MoveToMain';
+import CountryBackground from '@/components/country/CountryBackground';
 
 const Page = () => {
   return (
@@ -12,13 +13,7 @@ const Page = () => {
       <WhiteHeader />
       <div className={country.pageContainer}>
         <div className={country.imageContainer}>
-          <Image
-            className={country.image}
-            src="/images/countrybg.png"
-            alt="countryBackgroundImage"
-            fill
-            sizes="1920px"
-          />
+          <CountryBackground />
           <div className={styles.bgOverlay}></div>
           <div className={styles.mapContainer}>
             <span className={styles.mapText}>

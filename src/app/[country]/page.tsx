@@ -7,6 +7,7 @@ import BoardList from '@/components/country/BoardList';
 import FoodList from '@/components/country/FoodList';
 import HomeList from '@/components/country/HomeList';
 import ScheduleList from '@/components/country/ScheduleList';
+import CountryBackground from '@/components/country/CountryBackground';
 
 const Page = () => {
   return (
@@ -14,13 +15,7 @@ const Page = () => {
       <WhiteHeader />
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src="/images/countrybg.png"
-            alt="countryBackgroundImage"
-            fill
-            sizes="1920px"
-          />
+          <CountryBackground />
         </div>
         <div className={styles.contentContainer}>
           <MoveToMain />
