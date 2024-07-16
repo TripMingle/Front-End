@@ -1,17 +1,37 @@
 'use client';
+import { useCountryStore } from '@/store/countryStore';
 import { countryText, moveToMain } from '@/styles/country/page.css';
 import { useRouter } from 'next/navigation';
 
-const MoveToMain = ({ country }: { country: string }) => {
+const MoveToMain = () => {
   const router = useRouter();
-  const clickHandler = () => {
+  const continent = useCountryStore((state) => state.continent);
+  const country = useCountryStore((state) => state.country);
+  const setContinent = useCountryStore((state) => state.setContinent);
+  const setCountry = useCountryStore((state) => state.setCountry);
+
+  const continentClickHandler = () => {
+    setCountry('');
+    router.push('/');
+  };
+
+  const countryClickHandler = () => {
+    router.push('/' + country);
+  };
+
+  const homeClickHandler = () => {
+    setCountry('');
+    setContinent('');
     router.push('/');
   };
 
   return (
-    <div className={moveToMain} onClick={() => clickHandler()}>
-      <span>{'홈 > 아시아 > '}</span>
-      <span className={countryText}>{country}</span>
+    <div className={moveToMain}>
+      <span onClick={homeClickHandler}>{'홈 > '}</span>
+      <span onClick={continentClickHandler}>{`${continent} > `}</span>
+      <span className={countryText} onClick={countryClickHandler}>
+        {country}
+      </span>
     </div>
   );
 };

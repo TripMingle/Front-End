@@ -8,7 +8,7 @@ const NonsmokeIcon = (props: SVGProps<SVGSVGElement>) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g clip-path="url(#clip0_2411_890)">
+      <g clipPath="url(#clip0_2411_890)">
         <path
           d="M14.25 11.7309L15.4375 12.9184V8.90625H14.25V11.7309Z"
           fill={props.color}

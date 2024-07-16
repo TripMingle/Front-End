@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   selectContainer,
   moveToContinent,
@@ -8,16 +8,27 @@ import {
 import Countries from './Country';
 import Continents from './Continent';
 import { getCountryBycontinent } from '@/api/getCountryInfo';
+import { useCountryStore } from '@/store/countryStore';
 
 const SelectContent = () => {
-  const [continent, setContinent] = useState<string>('');
   const [country, setCountry] = useState<Country[]>([]);
+  const continent = useCountryStore((state) => state.continent);
+  const setContinent = useCountryStore((state) => state.setContinent);
 
   const continentClick = async (continent: string) => {
     const data = await getCountryBycontinent(continent);
     setCountry(data.data);
     setContinent(continent);
   };
+
+  const getCountryData = async (continent: string) => {
+    const data = await getCountryBycontinent(continent);
+    setCountry(data.data);
+  };
+
+  useEffect(() => {
+    if (continent) getCountryData(continent);
+  }, []);
 
   if (continent === '') {
     return (
@@ -28,12 +39,7 @@ const SelectContent = () => {
   } else {
     return (
       <div className={selectContainer}>
-        <div
-          className={moveToContinent}
-          onClick={() => {
-            setContinent('');
-          }}
-        >
+        <div className={moveToContinent} onClick={() => setContinent('')}>
           <span>{'홈 > '}</span>
           <span className={continentText}>{continent}</span>
         </div>

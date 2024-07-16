@@ -23,7 +23,7 @@ const Page = () => {
           />
         </div>
         <div className={styles.contentContainer}>
-          <MoveToMain country={'중국'} />
+          <MoveToMain />
           <BoardList />
           <FoodList />
           <HomeList />

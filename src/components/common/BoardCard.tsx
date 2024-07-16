@@ -1,14 +1,25 @@
+'use client';
 import Image from 'next/image';
 import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
-import { BoardCardProps, User } from '@/types/country/user';
+import { BoardCardProps } from '@/types/country/user';
+import { usePathname, useRouter } from 'next/navigation';
 
 const BoardCard = (props: BoardCardProps) => {
   const sex = props.user.gender ? '남' : '여';
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const clickHandler = () => {
+    if (pathname.indexOf('board') === -1)
+      router.push(pathname + '/board' + '/123');
+    else router.push(pathname + '/324');
+  };
+
   return (
-    <div className={styles.postCard}>
+    <div className={styles.postCard} onClick={() => clickHandler()}>
       <div className={styles.imageBox}>
         <Image
           src="/images/tmp.png"
@@ -55,7 +66,8 @@ const BoardCard = (props: BoardCardProps) => {
             changeHeight={24}
           />
           <span className={styles.profileInfo}>
-            {props.user.name} · {props.user.age}대 · {sex} · {props.user.nationality}
+            {props.user.name} · {props.user.age}대 · {sex} ·{' '}
+            {props.user.nationality}
           </span>
         </div>
       </div>

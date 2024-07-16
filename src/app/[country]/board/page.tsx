@@ -30,7 +30,7 @@ const Page = () => {
           </div>
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain country={'중국'} />
+          <MoveToMain />
           <div className={styles.plain}>
             <span className={styles.highlight}>{'165'}</span>
             <span>
@@ -70,7 +70,7 @@ const Page = () => {
 
 export default Page;
 
-// 
+//
 const Example = () => {
   return (
     <BoardCard

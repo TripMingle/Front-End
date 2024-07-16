@@ -10,7 +10,7 @@ const PostCard = () => {
         건강어쩌구
       </span>
       <div className={styles.profileContainer}>
-        <Profile url={''} width={24} height={24} />
+        <Profile url={''} width={18} height={18} changeWidth={24} changeHeight={24} />
         <span className={styles.profileInfo}>
           {'홍길동'} · {30}대 · {'여'} · {'중국'}
         </span>

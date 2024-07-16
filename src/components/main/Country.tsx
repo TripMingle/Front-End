@@ -1,34 +1,43 @@
+import { useCountryStore } from '@/store/countryStore';
 import * as styles from '@/styles/main/country.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const Country = ({ img, country }: { img: string; country: string }) => {
+const Country = ({ props }: { props: Country }) => {
   const router = useRouter();
-  const clickHandler = () => {
-    router.push('/' + country);
+  const setCountry = useCountryStore((state) => state.setCountry);
+  const setCountryUrl = useCountryStore((state) => state.setCountryUrl);
+
+  const clickHandler = (country: string, url: string) => {
+    setCountry(country);
+    setCountryUrl(url);
+    router.push('/' + props.countryNameEnglish.toLowerCase());
   };
 
   return (
-    <div className={styles.container} onClick={() => clickHandler()}>
+    <div
+      className={styles.container}
+      onClick={() => clickHandler(props.countryName, props.primaryImageUrl)}
+    >
       <Image
         className={styles.bgImage}
-        src={img ? img : '/images/mainbg.png'}
+        src={props.primaryImageUrl}
         fill
         sizes="160px"
-        alt="country"
+        alt={props.countryNameEnglish}
       />
       <div className={styles.bgOverlay}></div>
-      <span className={styles.name}>{country}</span>
+      <span className={styles.name}>{props.countryName}</span>
     </div>
   );
 };
 
-const Countries = ({ props }: { props: Country[] }) => {  
+const Countries = ({ props }: { props: Country[] }) => {
   return (
     <ul className={styles.countryContainer}>
       {props.map((e) => (
         <li key={e.countryName}>
-          <Country img={e.primaryImageUrl} country={e.countryName} />
+          <Country props={e} />
         </li>
       ))}
     </ul>
