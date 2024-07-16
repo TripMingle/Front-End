@@ -13,12 +13,13 @@ import { useCountryStore } from '@/store/countryStore';
 const SelectContent = () => {
   const [country, setCountry] = useState<Country[]>([]);
   const continent = useCountryStore((state) => state.continent);
+  const continentKor = useCountryStore((state) => state.continentKor);
   const setContinent = useCountryStore((state) => state.setContinent);
 
-  const continentClick = async (continent: string) => {
+  const continentClick = async (continent: string, continentKor: string) => {
     const data = await getCountryBycontinent(continent);
     setCountry(data.data);
-    setContinent(continent);
+    setContinent(continent, continentKor);
   };
 
   const getCountryData = async (continent: string) => {
@@ -39,9 +40,9 @@ const SelectContent = () => {
   } else {
     return (
       <div className={selectContainer}>
-        <div className={moveToContinent} onClick={() => setContinent('')}>
+        <div className={moveToContinent} onClick={() => setContinent('', '')}>
           <span>{'홈 > '}</span>
-          <span className={continentText}>{continent}</span>
+          <span className={continentText}>{continentKor}</span>
         </div>
         <Countries props={country} />
       </div>

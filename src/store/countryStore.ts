@@ -3,10 +3,12 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 type CountryState = {
   continent: string;
+  continentKor: string;
   country: string;
+  countryKor: string;
   countryUrl: string;
-  setContinent: (continent: string) => void;
-  setCountry: (country: string) => void;
+  setContinent: (continent: string, continentKor: string) => void;
+  setCountry: (country: string, countryKor: string) => void;
   setCountryUrl: (url: string) => void;
 };
 
@@ -14,10 +16,14 @@ export const useCountryStore = create<CountryState>()(
   persist(
     (set) => ({
       continent: '',
+      continentKor: '',
       country: '',
+      countryKor: '',
       countryUrl: '',
-      setContinent: (continent: string) => set({ continent }),
-      setCountry: (country: string) => set({ country }),
+      setContinent: (continent: string, continentKor: string) =>
+        set({ continent, continentKor }),
+      setCountry: (country: string, countryKor: string) =>
+        set({ country, countryKor }),
       setCountryUrl: (url: string) => set({ countryUrl: url }),
     }),
     {

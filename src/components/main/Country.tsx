@@ -8,16 +8,22 @@ const Country = ({ props }: { props: Country }) => {
   const setCountry = useCountryStore((state) => state.setCountry);
   const setCountryUrl = useCountryStore((state) => state.setCountryUrl);
 
-  const clickHandler = (country: string, url: string) => {
-    setCountry(country);
+  const clickHandler = (country: string, countryKor: string, url: string) => {
+    setCountry(country, countryKor);
     setCountryUrl(url);
-    router.push('/' + props.countryNameEnglish.toLowerCase());
+    router.push('/' + country.replace(/\s+/g, '').toLowerCase());
   };
 
   return (
     <div
       className={styles.container}
-      onClick={() => clickHandler(props.countryName, props.primaryImageUrl)}
+      onClick={() =>
+        clickHandler(
+          props.countryNameEnglish,
+          props.countryName,
+          props.primaryImageUrl,
+        )
+      }
     >
       <Image
         className={styles.bgImage}
@@ -36,7 +42,7 @@ const Countries = ({ props }: { props: Country[] }) => {
   return (
     <ul className={styles.countryContainer}>
       {props.map((e) => (
-        <li key={e.countryName}>
+        <li key={e.countryNameEnglish}>
           <Country props={e} />
         </li>
       ))}

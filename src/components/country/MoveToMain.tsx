@@ -6,12 +6,14 @@ import { useRouter } from 'next/navigation';
 const MoveToMain = () => {
   const router = useRouter();
   const continent = useCountryStore((state) => state.continent);
+  const continentKor = useCountryStore((state) => state.continentKor);
   const country = useCountryStore((state) => state.country);
+  const countryKor = useCountryStore((state) => state.countryKor);
   const setContinent = useCountryStore((state) => state.setContinent);
   const setCountry = useCountryStore((state) => state.setCountry);
 
   const continentClickHandler = () => {
-    setCountry('');
+    setCountry('', '');
     router.push('/');
   };
 
@@ -20,17 +22,17 @@ const MoveToMain = () => {
   };
 
   const homeClickHandler = () => {
-    setCountry('');
-    setContinent('');
+    setCountry('', '');
+    setContinent('', '');
     router.push('/');
   };
 
   return (
     <div className={moveToMain}>
       <span onClick={homeClickHandler}>{'홈 > '}</span>
-      <span onClick={continentClickHandler}>{`${continent} > `}</span>
+      <span onClick={continentClickHandler}>{`${continentKor} > `}</span>
       <span className={countryText} onClick={countryClickHandler}>
-        {country}
+        {countryKor}
       </span>
     </div>
   );
