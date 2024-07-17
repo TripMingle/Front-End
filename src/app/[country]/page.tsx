@@ -3,7 +3,7 @@ import Image from 'next/image';
 import * as styles from '@/styles/country/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
-import BoardList from '@/components/country/BoardList';
+import BoardPreview from '@/components/country/BoardPreview';
 import FoodList from '@/components/country/FoodList';
 import HomeList from '@/components/country/HomeList';
 import ScheduleList from '@/components/country/ScheduleList';
@@ -19,7 +19,7 @@ const Page = () => {
         </div>
         <div className={styles.contentContainer}>
           <MoveToMain />
-          <BoardList />
+          <BoardPreview />
           <FoodList />
           <HomeList />
           <ScheduleList />

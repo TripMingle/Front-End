@@ -6,13 +6,29 @@ export type User = {
   nationality: string;
 };
 
-export type BoardCardProps = {
-  isMarked: boolean;
-  language: string;
+export type BoardPreviewProps = {
+  continent: string;
+  countryName: string;
+  boardId: number;
   title: string;
+  createdAt: string;
   startDate: string;
   endDate: string;
   currentCount: number;
   maxCount: number;
-  user: User;
+  language: string;
+  commentCount: number;
+  likeCount: number;
+  bookMarkCount: number;
+  imageUrl: string;
+  userImageUrl: string;
+  nickName: string;
+  ageRange: string;
+  gender: string;
+  nationality: string;
+  expired: boolean;
+  liked: boolean;
+  bookMarked: boolean;
+  participating: boolean;
+  mine: boolean;
 };

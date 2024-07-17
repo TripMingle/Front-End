@@ -3,9 +3,9 @@ import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/country/board/page.css';
 import { WhiteHeader } from '@/components/header/Header';
-import BoardCard from '@/components/common/BoardCard';
 import MoveToMain from '@/components/country/MoveToMain';
 import CountryBackground from '@/components/country/CountryBackground';
+import BoardList from '@/components/country/board/BoardList';
 
 const Page = () => {
   return (
@@ -34,29 +34,7 @@ const Page = () => {
               기다리고 있어요!
             </span>
           </div>
-          <div className={country.boardContainer}>
-            {/* TODO : 한 페이지당 동행 게시물 최대 16개, 웹 : 페이지 버튼 형식 */}
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-            <Example />
-          </div>
+          <BoardList />
         </div>
       </div>
     </main>
@@ -64,27 +42,3 @@ const Page = () => {
 };
 
 export default Page;
-
-//
-const Example = () => {
-  return (
-    <BoardCard
-      isMarked={false}
-      language="japanese"
-      title="파리에서 다이빙 할 사람"
-      startDate="2024.06.13"
-      endDate="2024.06.23"
-      currentCount={3}
-      maxCount={6}
-      user={exmapleUser}
-    />
-  );
-};
-
-const exmapleUser = {
-  url: '',
-  name: '홍길동',
-  age: 20,
-  gender: false,
-  nationality: '한국',
-};
