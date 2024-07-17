@@ -8,7 +8,7 @@ const CountryBackground = () => {
   return (
     <Image
       className={image}
-      src={url}
+      src={url || '/images/emptyBackground.png'}
       alt="countryBackgroundImage"
       fill
       sizes="1920px"

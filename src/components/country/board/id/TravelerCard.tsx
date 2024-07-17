@@ -1,9 +1,12 @@
+'use client';
 import Profile from '@/components/common/Profile';
 import * as styles from '@/styles/country/board/id/traveler-card.css';
 import Image from 'next/image';
 import ChatButton from './ChatButton';
+import { useBoardStore } from '@/store/boardStore';
 
 const TravelerCard = () => {
+  const boardDetail = useBoardStore((state) => state.boardDetail);
   return (
     <div className={styles.cardContainer}>
       <div className={styles.travelerTitle}>
@@ -12,7 +15,7 @@ const TravelerCard = () => {
       </div>
       <div className={styles.profileContainer}>
         <Profile
-          url=""
+          url={boardDetail.userImageUrl}
           width={42}
           height={42}
           changeWidth={72}
@@ -20,11 +23,15 @@ const TravelerCard = () => {
         />
         <div className={styles.mobileProfileInfo}>
           <div className={styles.profileInfo}>
-            <span className={styles.profileName}>홍길동</span>
-            <span>20대 . 남 . 한국</span>
+            <span className={styles.profileName}>{boardDetail.nickName}</span>
+            <span>
+              {boardDetail.ageRange.slice(0, 2)}대 .{' '}
+              {boardDetail.gender === 'male' ? '남' : '여'} .{' '}
+              {boardDetail.nationality}
+            </span>
           </div>
           <span className={styles.mobileInfoContent}>
-            여행을 좋아하는 20대 대학생 입니다.
+            {boardDetail.selfIntroduction}
           </span>
         </div>
         <span className={styles.mobileInfoContent}>별 네개</span>
@@ -32,7 +39,7 @@ const TravelerCard = () => {
       <div className={styles.infoContainer}>
         <span className={styles.infoTitle}>자기소개</span>
         <span className={styles.infoContent}>
-          여행을 좋아하는 20대 대학생 입니다.
+          {boardDetail.selfIntroduction}
         </span>
       </div>
       <div className={styles.infoContainer}>

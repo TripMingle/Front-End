@@ -35,3 +35,43 @@ export type BoardListProps = {
   totalPages: number;
   content: BoardPreviewProps;
 };
+
+export type BoardDetailType = {
+  boardId: number;
+  continent: string;
+  countryName: string;
+  title: string;
+  content: string;
+  language: string;
+  tripType: string[];
+  preferGender: number;
+  preferSmoking: number;
+  preferShopping: number;
+  preferInstagramPicture: number;
+  preferDrink: number;
+  startDate: string;
+  endDate: string;
+  currentCount: number;
+  maxCount: number;
+  createdAt: string;
+  commentCount: number;
+  likeCount: number;
+  bookMarkCount: number;
+  userId: number;
+  nickName: string;
+  ageRange: string;
+  gender: string;
+  nationality: string;
+  selfIntroduction: string | null;
+  userImageUrl: string;
+  userRating: number;
+  imageUrl: string;
+  boardCommentResDTOS: CommentType[];
+  expired: boolean;
+  mine: boolean;
+  liked: boolean;
+  bookMarked: boolean;
+  participating: boolean;
+};
+
+export type CommentType = {};

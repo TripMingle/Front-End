@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
@@ -6,15 +5,20 @@ import BookMark from './BookMark';
 import Profile from './Profile';
 import { BoardPreviewProps } from '@/types/country/board';
 import { usePathname, useRouter } from 'next/navigation';
+import { getBoardDetail } from '@/api/getBoard';
+import { useBoardStore } from '@/store/boardStore';
 
 const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
 
-  const clickHandler = () => {
+  const clickHandler = async () => {
+    const data = await getBoardDetail(props.boardId);
+    setBoardDetail(data.data);
     if (pathname.indexOf('board') === -1)
-      router.push(pathname + '/board' + '/123');
-    else router.push(pathname + '/324');
+      router.push(pathname + `/board/${props.boardId}`);
+    else router.push(pathname + `/${props.boardId}`);
   };
 
   return (
