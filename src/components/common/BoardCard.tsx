@@ -4,7 +4,7 @@ import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
-import { BoardPreviewProps } from '@/types/country/user';
+import { BoardPreviewProps } from '@/types/country/board';
 import { usePathname, useRouter } from 'next/navigation';
 
 const BoardCard = ({ props }: { props: BoardPreviewProps }) => {

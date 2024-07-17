@@ -7,7 +7,7 @@ import BoardCard from '../common/BoardCard';
 import { getBoardPreview } from '@/api/getBoard';
 import { useEffect, useState } from 'react';
 import { useCountryStore } from '@/store/countryStore';
-import { BoardPreviewProps } from '@/types/country/user';
+import { BoardPreviewProps } from '@/types/country/board';
 
 const BoardPreview = () => {
   const continent = useCountryStore((state) => state.country);

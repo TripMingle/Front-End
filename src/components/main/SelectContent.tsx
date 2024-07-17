@@ -29,7 +29,7 @@ const SelectContent = () => {
 
   useEffect(() => {
     if (continent) getCountryData(continent);
-  }, []);
+  }, [continent]);
 
   if (continent === '') {
     return (

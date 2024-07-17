@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/country/board/page.css';
@@ -26,14 +25,6 @@ const Page = () => {
         </div>
         <div className={country.contentContainer}>
           <MoveToMain />
-          <div className={styles.plain}>
-            <span className={styles.highlight}>{'165'}</span>
-            <span>
-              개의 동행이
-              <br />
-              기다리고 있어요!
-            </span>
-          </div>
           <BoardList />
         </div>
       </div>
