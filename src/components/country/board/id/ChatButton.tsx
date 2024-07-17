@@ -1,9 +1,9 @@
 import * as styles from '@/styles/country/board/id/chat-button.css';
 import Image from 'next/image';
 
-const ChatButton = () => {
+const ChatButton = ({ chatHandler }: { chatHandler: () => void }) => {
   return (
-    <button className={styles.buttonContainer}>
+    <button className={styles.buttonContainer} onClick={chatHandler}>
       <Image
         className={styles.icon}
         src="/icons/send.svg"

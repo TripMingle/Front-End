@@ -1,11 +1,10 @@
-'use client';
 import Profile from '@/components/common/Profile';
 import * as styles from '@/styles/country/board/id/traveler-card.css';
 import Image from 'next/image';
 import ChatButton from './ChatButton';
 import { useBoardStore } from '@/store/boardStore';
 
-const TravelerCard = () => {
+const TravelerCard = ({ chatHandler }: { chatHandler: () => void }) => {
   const boardDetail = useBoardStore((state) => state.boardDetail);
   return (
     <div className={styles.cardContainer}>
@@ -46,7 +45,7 @@ const TravelerCard = () => {
         <span className={styles.infoTitle}>동행 평점</span>
         <span className={styles.infoContent}>별 네개</span>
       </div>
-      <ChatButton />
+      <ChatButton chatHandler={chatHandler} />
     </div>
   );
 };

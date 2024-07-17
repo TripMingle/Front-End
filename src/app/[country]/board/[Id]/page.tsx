@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import '@/styles/font.css';
+import { useState } from 'react';
 import { WhiteHeader } from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
@@ -10,12 +11,25 @@ import TripTypeButton from '@/components/common/TripTypeButton';
 import CommentInput from '@/components/common/CommentInput';
 import Comment from '@/components/common/Comment';
 import { useBoardStore } from '@/store/boardStore';
+import ChatModal from '@/components/country/board/id/ChatModal';
 
 const Page = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const boardDetail = useBoardStore((state) => state.boardDetail);
+
+  const chatHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <main>
       <WhiteHeader />
+      <ChatModal
+        isOpen={isOpen}
+        nickName="홍길동"
+        userId={1}
+        chatHandler={chatHandler}
+      />
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
           <Image
@@ -96,7 +110,7 @@ const Page = () => {
               <div className={styles.infoContent}>{boardDetail.content}</div>
             </div>
           </div>
-          <TravelerCard />
+          <TravelerCard chatHandler={chatHandler} />
         </div>
         <div className={styles.container}>
           <div className={styles.commentContainer}>
