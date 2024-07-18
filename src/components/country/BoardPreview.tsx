@@ -8,7 +8,7 @@ import { getBoardPreview } from '@/api/getBoard';
 import { useEffect, useState } from 'react';
 import { useCountryStore } from '@/store/countryStore';
 import { BoardPreviewProps } from '@/types/country/board';
-import { EmptyBoardPreview } from './EmptyBoard';
+import { EmptyBoard } from './EmptyBoard';
 
 const BoardPreview = () => {
   const continent = useCountryStore((state) => state.country);
@@ -46,7 +46,7 @@ const BoardPreview = () => {
           ))}
         </ul>
       ) : (
-        <EmptyBoardPreview />
+        <EmptyBoard />
       )}
     </div>
   );

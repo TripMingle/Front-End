@@ -4,13 +4,11 @@ import { vars } from '@/styles/globalTheme.css';
 export const postContainer = style({
   position: 'relative',
   display: 'grid',
-  marginTop: 20,
   gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
   gap: 15,
   justifyItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
-      marginTop: 30,
       gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
       gap: 20,
     },

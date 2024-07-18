@@ -7,6 +7,7 @@ import PostCard from '../common/PostCard';
 import { useCountryStore } from '@/store/countryStore';
 import { PostPreviewProps } from '@/types/country/post';
 import { getPostPreview } from '@/api/getPost';
+import EmptyPost from './EmptyPost';
 
 const RestaurantPreview = () => {
   const country = useCountryStore((state) => state.country);
@@ -35,11 +36,17 @@ const RestaurantPreview = () => {
         </span>
         <More path="/post" category="RESTAURANT" />
       </div>
-      <div className={styles.postContainer}>
-        {restaurantPreview.map((restaurant) => (
-          <PostCard props={restaurant} key={restaurant.postingId} />
-        ))}
-      </div>
+      {restaurantPreview.length ? (
+        <ul className={styles.postContainer}>
+          {restaurantPreview.map((restaurant) => (
+            <li key={restaurant.postingId}>
+              <PostCard props={restaurant} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EmptyPost />
+      )}
     </div>
   );
 };

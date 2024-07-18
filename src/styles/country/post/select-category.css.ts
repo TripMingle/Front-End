@@ -7,6 +7,7 @@ export const categoryContainer = style({
   position: 'relative',
   left: '50%',
   marginTop: 20,
+  marginBottom: 20,
   borderRadius: 20,
   zIndex: 500,
   background: vars.color.white,
@@ -16,7 +17,7 @@ export const categoryContainer = style({
   transform: 'translate(-50%,0)',
   '@media': {
     'screen and (min-width: 1024px)': {
-      marginTop: 20,
+      marginBottom: 30,
       borderRadius: 28,
     },
   },

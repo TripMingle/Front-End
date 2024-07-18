@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useCountryStore } from '@/store/countryStore';
 import { BoardPreviewProps } from '@/types/country/board';
 import Pagination from '@/components/common/Pagination';
-import { EmptyBoardPreview } from '../EmptyBoard';
+import { EmptyBoard } from '../EmptyBoard';
 
 const BoardList = () => {
   const continent = useCountryStore((state) => state.country);
@@ -60,7 +60,7 @@ const BoardList = () => {
           />
         </div>
       ) : (
-        <EmptyBoardPreview />
+        <EmptyBoard />
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import { useCountryStore } from '@/store/countryStore';
 import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
 import { getPostPreview } from '@/api/getPost';
+import EmptyPost from './EmptyPost';
 
 const RentalHomePreview = () => {
   const country = useCountryStore((state) => state.country);
@@ -33,11 +34,17 @@ const RentalHomePreview = () => {
         <span className={styles.explain}>여행에 쌓인 피로도 풀어야죠!</span>
         <More path="/post" category="RENTAL_HOME" />
       </div>
-      <div className={styles.postContainer}>
-        {rentalHomePreview.map((rentalHome) => (
-          <PostCard props={rentalHome} key={rentalHome.postingId} />
-        ))}
-      </div>
+      {rentalHomePreview.length ? (
+        <ul className={styles.postContainer}>
+          {rentalHomePreview.map((rentalHome) => (
+            <li key={rentalHome.postingId}>
+              <PostCard props={rentalHome} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EmptyPost />
+      )}
     </div>
   );
 };

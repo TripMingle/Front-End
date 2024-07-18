@@ -8,6 +8,7 @@ import { PostPreviewProps } from '@/types/country/post';
 import { getPost } from '@/api/getPost';
 import { useCountryStore } from '@/store/countryStore';
 import { usePostStore } from '@/store/postStore';
+import EmptyPost from '../EmptyPost';
 
 const PostCardList = () => {
   const country = useCountryStore((state) => state.country);
@@ -46,14 +47,24 @@ const PostCardList = () => {
   return (
     <>
       <SelectCateogry categoryHandler={categoryHandler} />
-      <ul className={styles.postContainer}>
-        {postList.map((post) => (
-          <li key={post.postingId} className={styles.postItemContainer}>
-            <PostPreview props={post} />
-          </li>
-        ))}
-      </ul>
-      <Pagenation current={page} total={totalPage} clickHandler={pageMove} />
+      {postList.length ? (
+        <>
+          <ul className={styles.postContainer}>
+            {postList.map((post) => (
+              <li key={post.postingId} className={styles.postItemContainer}>
+                <PostPreview props={post} />
+              </li>
+            ))}
+          </ul>
+          <Pagenation
+            current={page}
+            total={totalPage}
+            clickHandler={pageMove}
+          />
+        </>
+      ) : (
+        <EmptyPost />
+      )}
     </>
   );
 };

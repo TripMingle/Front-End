@@ -7,6 +7,7 @@ import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
 import { useCountryStore } from '@/store/countryStore';
 import { getPostPreview } from '@/api/getPost';
+import EmptyPost from './EmptyPost';
 
 const SchedulePreview = () => {
   const country = useCountryStore((state) => state.country);
@@ -35,11 +36,17 @@ const SchedulePreview = () => {
         </span>
         <More path="/post" category="SCHEDULE" />
       </div>
-      <div className={styles.postContainer}>
-        {schedulePreview.map((schedule) => (
-          <PostCard props={schedule} key={schedule.postingId} />
-        ))}
-      </div>
+      {schedulePreview.length ? (
+        <ul className={styles.postContainer}>
+          {schedulePreview.map((schedule) => (
+            <li key={schedule.postingId}>
+              <PostCard props={schedule} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EmptyPost />
+      )}
     </div>
   );
 };
