@@ -124,10 +124,11 @@ export const postContainer = style({
   gap: 15,
   padding: '20px 0px',
   maxWidth: 1080,
+  gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 20,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
     },
   },
 });

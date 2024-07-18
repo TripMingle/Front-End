@@ -4,7 +4,7 @@ import { style } from '@vanilla-extract/css';
 export const postCard = style({
   width: 191,
   height: 99,
-  borderRadius: 20,
+  borderRadius: 10,
   padding: 15,
   boxShadow: '0px 10px 20px 0px #0000000D',
   fontFamily: vars.font.body,
@@ -49,6 +49,7 @@ export const content = style({
   fontSize: 11,
   fontWeight: 500,
   lineHeight: 1.5,
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 38,

@@ -34,7 +34,7 @@ const BoardPreview = () => {
         <span className={styles.explain}>
           전 세계 친구들과 자유롭게 동행해 보세요!
         </span>
-        <More path="/board" />
+        <More path="/board" category="" />
       </div>
 
       {boardPreview.length ? (

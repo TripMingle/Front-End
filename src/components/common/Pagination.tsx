@@ -3,7 +3,7 @@ import * as styles from '@/styles/components/common/pagination.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const Pagenation = ({
+const Pagination = ({
   current,
   total,
   clickHandler,
@@ -93,4 +93,4 @@ const Pagenation = ({
   );
 };
 
-export default Pagenation;
+export default Pagination;
