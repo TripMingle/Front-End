@@ -146,3 +146,26 @@ export const moveToMain = style({
 export const countryText = style({
   color: vars.color.black,
 });
+
+export const emptyConatiner = style({
+  display: 'flex',
+  width: '100%',
+  height: 226,
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: vars.color.g200,
+  color: vars.color.g400,
+  fontSize: 20,
+  fontFamily: vars.font.menu,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  lineHeight: 1.5,
+  borderRadius: 16,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 338,
+      fontSize: 24,
+      borderRadius: 20,
+    },
+  },
+});

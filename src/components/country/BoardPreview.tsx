@@ -8,6 +8,7 @@ import { getBoardPreview } from '@/api/getBoard';
 import { useEffect, useState } from 'react';
 import { useCountryStore } from '@/store/countryStore';
 import { BoardPreviewProps } from '@/types/country/board';
+import { EmptyBoardPreview } from './EmptyBoard';
 
 const BoardPreview = () => {
   const continent = useCountryStore((state) => state.country);
@@ -35,13 +36,18 @@ const BoardPreview = () => {
         </span>
         <More path="/board" />
       </div>
-      <ul className={styles.boardContainer}>
-        {boardPreview.map((board) => (
-          <li key={board.boardId}>
-            <BoardCard props={board} />
-          </li>
-        ))}
-      </ul>
+
+      {boardPreview.length ? (
+        <ul className={styles.boardContainer}>
+          {boardPreview.map((board) => (
+            <li key={board.boardId}>
+              <BoardCard props={board} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EmptyBoardPreview />
+      )}
     </div>
   );
 };
