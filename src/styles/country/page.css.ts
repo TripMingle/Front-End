@@ -96,6 +96,7 @@ export const more = style({
   color: vars.color.g500,
   fontFamily: vars.font.body,
   fontSize: 13,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 16,
@@ -137,6 +138,7 @@ export const moveToMain = style({
   fontSize: 16,
   fontWeight: 500,
   color: vars.color.g500,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 18,
@@ -170,7 +172,6 @@ export const emptyBoardContainer = style({
     },
   },
 });
-
 
 export const emptyPostContainer = style({
   display: 'flex',

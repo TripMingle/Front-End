@@ -7,6 +7,7 @@ export const postCard = style({
   height: 226,
   borderRadius: 10,
   boxShadow: '0px 10px 20px 0px #0000000D',
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 255,

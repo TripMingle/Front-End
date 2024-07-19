@@ -18,7 +18,7 @@ const SelectContent = () => {
 
   const continentClick = async (continent: string, continentKor: string) => {
     const data = await getCountryBycontinent(continent);
-    setCountry(data.data);
+    setCountry(data.data);  
     setContinent(continent, continentKor);
   };
 

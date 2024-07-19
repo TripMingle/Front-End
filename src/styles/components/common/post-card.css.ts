@@ -10,6 +10,7 @@ export const postCard = style({
   fontFamily: vars.font.body,
   color: vars.color.g500,
   background: vars.color.white,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 215,

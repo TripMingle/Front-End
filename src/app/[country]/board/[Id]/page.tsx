@@ -115,7 +115,7 @@ const Page = () => {
         <div className={styles.container}>
           <div className={styles.commentContainer}>
             <p className={styles.commentTitle}>
-              댓글{' '}
+              댓글
               <strong className={styles.commentTitleStrong}>
                 {boardDetail.commentCount}
               </strong>

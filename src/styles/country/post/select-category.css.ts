@@ -37,6 +37,7 @@ export const labelContainer = recipe({
     fontSize: 16,
     padding: '10px 20px',
     borderRight: `1px solid ${vars.color.g300}`,
+    cursor: 'pointer',
     ':last-child': { borderRight: 0 },
     '@media': {
       'screen and (min-width: 1024px)': {

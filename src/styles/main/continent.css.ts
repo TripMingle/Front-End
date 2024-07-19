@@ -8,6 +8,7 @@ export const container = style({
   height: 160,
   alignItems: 'center',
   justifyItems: 'center',
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 240,

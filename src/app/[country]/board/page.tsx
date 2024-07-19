@@ -5,6 +5,7 @@ import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
 import CountryBackground from '@/components/country/CountryBackground';
 import BoardList from '@/components/country/board/BoardList';
+import CountryWrite from '@/components/common/CountryWrite';
 
 const Page = () => {
   return (
@@ -28,6 +29,7 @@ const Page = () => {
           <BoardList />
         </div>
       </div>
+      <CountryWrite />
     </main>
   );
 };

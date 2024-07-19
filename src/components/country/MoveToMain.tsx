@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 const MoveToMain = () => {
   const router = useRouter();
-  const continent = useCountryStore((state) => state.continent);
   const continentKor = useCountryStore((state) => state.continentKor);
   const country = useCountryStore((state) => state.country);
   const countryKor = useCountryStore((state) => state.countryKor);
@@ -18,7 +17,7 @@ const MoveToMain = () => {
   };
 
   const countryClickHandler = () => {
-    router.push('/' + country);
+    router.push('/' + country.replace(/\s+/g, '').toLowerCase());
   };
 
   const homeClickHandler = () => {

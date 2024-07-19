@@ -69,7 +69,7 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
             changeHeight={24}
           />
           <span className={styles.profileInfo}>
-            {props.nickName} · {props.ageRange.slice(0, 2)}대 ·{' '}
+            {props.nickName} · {props.ageRange.slice(0, 2)}대 ·
             {props.gender === 'male' ? '남' : '여'} · {props.nationality}
           </span>
         </div>
