@@ -32,6 +32,6 @@ const Page = () => {
       <CountryWrite />
     </main>
   );
-}
+};
 
-
+export default Page;

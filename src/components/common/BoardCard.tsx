@@ -31,8 +31,6 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
       <div className={styles.contentContainer}>
         <Language language={props.language} />
         <span className={styles.title}>{props.title}</span>
-        <Language language={props.language} />
-        <span className={styles.title}>{props.title}</span>
         <div className={styles.infoContainer}>
           <Image
             className={styles.icon}
@@ -42,7 +40,6 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
             alt="calendarIcon"
           />
           <span>
-            {props.startDate} ~ {props.endDate}
             {props.startDate} ~ {props.endDate}
           </span>
         </div>
@@ -55,7 +52,6 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
             alt="userIcon"
           />
           <span>
-            {props.currentCount} / {props.maxCount}인
             {props.currentCount} / {props.maxCount}인
           </span>
         </div>

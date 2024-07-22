@@ -36,7 +36,6 @@ const BoardPreview = () => {
         </span>
         <More path="/board" category="" />
       </div>
-
       {boardPreview.length ? (
         <ul className={styles.boardContainer}>
           {boardPreview.map((board) => (
