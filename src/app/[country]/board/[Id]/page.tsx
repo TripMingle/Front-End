@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import '@/styles/font.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WhiteHeader } from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
@@ -9,13 +9,32 @@ import { Language } from '@/components/common/Language';
 import TripStyleButton from '@/components/common/TripStyleButton';
 import TripTypeButton from '@/components/common/TripTypeButton';
 import CommentInput from '@/components/common/CommentInput';
-import Comment from '@/components/common/Comment';
 import { useBoardStore } from '@/store/boardStore';
 import ChatModal from '@/components/country/board/id/ChatModal';
+import CommentList from '@/components/common/CommentList';
+import { usePathname } from 'next/navigation';
+import { getBoardDetail } from '@/api/getBoard';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const boardDetail = useBoardStore((state) => state.boardDetail);
+  const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
+  const pathname = usePathname();
+
+  const getBoardId = () => {
+    const idx = pathname.lastIndexOf('/');
+    return Number(pathname.slice(idx + 1));
+  };
+
+  const getBoardData = async () => {
+    const boardId = getBoardId();
+    const data = await getBoardDetail(boardId);
+    setBoardDetail(data.data);
+  };
+
+  useEffect(() => {
+    getBoardData();
+  }, []);
 
   const chatHandler = () => {
     setIsOpen(!isOpen);
@@ -58,7 +77,7 @@ const Page = () => {
               <span className={styles.iconContainer}>
                 <Image
                   className={styles.icon}
-                  src="/icons/calendar.svg"
+                  src="/icons/comment.svg"
                   width={20}
                   height={20}
                   alt="commendIcon"
@@ -115,21 +134,17 @@ const Page = () => {
         <div className={styles.container}>
           <div className={styles.commentContainer}>
             <p className={styles.commentTitle}>
-              댓글
+              {'댓글 '}
               <strong className={styles.commentTitleStrong}>
                 {boardDetail.commentCount}
               </strong>
-              개
+              {' 개'}
             </p>
-            <CommentInput />
-            <div>
-              <Comment
-                url=""
-                name="홍길동"
-                time="1시간전"
-                content="너무 참여하고 싶어용~!"
-              />
-            </div>
+            <CommentInput
+              boardId={boardDetail.boardId}
+              inputHandler={getBoardData}
+            />
+            <CommentList />
           </div>
         </div>
       </div>

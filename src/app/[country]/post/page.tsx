@@ -6,6 +6,7 @@ import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
 import CountryBackground from '@/components/country/CountryBackground';
 import PostCardList from '@/components/country/post/PostCardList';
+import CountryWrite from '@/components/common/CountryWrite';
 
 const Page = () => {
   return (
@@ -20,6 +21,7 @@ const Page = () => {
           <PostCardList />
         </div>
       </div>
+      <CountryWrite />
     </main>
   );
 };

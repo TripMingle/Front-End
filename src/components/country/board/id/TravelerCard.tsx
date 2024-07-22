@@ -24,9 +24,9 @@ const TravelerCard = ({ chatHandler }: { chatHandler: () => void }) => {
           <div className={styles.profileInfo}>
             <span className={styles.profileName}>{boardDetail.nickName}</span>
             <span>
-              {boardDetail.ageRange.slice(0, 2)}대 .
-              {boardDetail.gender === 'male' ? '남' : '여'} .
-              {boardDetail.nationality}
+              {`${boardDetail.ageRange.slice(0, 2)}대 · 
+              ${boardDetail.gender === 'male' ? '남' : '여'} · 
+              ${boardDetail.nationality}`}
             </span>
           </div>
           <span className={styles.mobileInfoContent}>

@@ -5,17 +5,12 @@ import BookMark from './BookMark';
 import Profile from './Profile';
 import { BoardPreviewProps } from '@/types/country/board';
 import { usePathname, useRouter } from 'next/navigation';
-import { getBoardDetail } from '@/api/getBoard';
-import { useBoardStore } from '@/store/boardStore';
 
 const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
 
   const clickHandler = async () => {
-    const data = await getBoardDetail(props.boardId);
-    setBoardDetail(data.data);
     if (pathname.indexOf('board') === -1)
       router.push(pathname + `/board/${props.boardId}`);
     else router.push(pathname + `/${props.boardId}`);
@@ -69,8 +64,8 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
             changeHeight={24}
           />
           <span className={styles.profileInfo}>
-            {props.nickName} · {props.ageRange.slice(0, 2)}대 ·
-            {props.gender === 'male' ? '남' : '여'} · {props.nationality}
+            {`${props.nickName} · ${props.ageRange.slice(0, 2)}대 · 
+            ${props.gender === 'male' ? '남' : '여'} · ${props.nationality}`}
           </span>
         </div>
       </div>

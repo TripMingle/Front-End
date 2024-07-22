@@ -1,18 +1,13 @@
 import * as styles from '@/styles/components/common/comment.css';
 import Profile from './Profile';
+import { CommentType } from '@/types/country/board';
+import { formatDate } from '@/utils/date';
 
-type Props = {
-  url: string;
-  name: string;
-  time: string;
-  content: string;
-};
-
-const Comment = (props: Props) => {
+const Comment = ({ props }: { props: CommentType }) => {
   return (
     <div className={styles.commentContainer}>
       <Profile
-        url={props.url}
+        url={''}
         width={30}
         height={30}
         changeWidth={36}
@@ -20,8 +15,8 @@ const Comment = (props: Props) => {
       />
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
-          <span className={styles.name}>{props.name}</span>
-          <span className={styles.time}>{props.time}</span>
+          <span className={styles.name}>{props.userNickname}</span>
+          <span className={styles.time}>{formatDate(props.registeredDate)}</span>
         </div>
         <p className={styles.content}>{props.content}</p>
       </div>

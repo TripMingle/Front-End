@@ -65,3 +65,14 @@ export const content = style({
     },
   },
 });
+
+export const commentListContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 24,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      gap: 30,
+    },
+  },
+});

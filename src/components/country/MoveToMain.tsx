@@ -1,6 +1,7 @@
 'use client';
 import { useCountryStore } from '@/store/countryStore';
 import { countryText, moveToMain } from '@/styles/country/page.css';
+import { formatCountryUrl } from '@/utils/country';
 import { useRouter } from 'next/navigation';
 
 const MoveToMain = () => {
@@ -17,7 +18,7 @@ const MoveToMain = () => {
   };
 
   const countryClickHandler = () => {
-    router.push('/' + country.replace(/\s+/g, '').toLowerCase());
+    router.push('/' + formatCountryUrl(country));
   };
 
   const homeClickHandler = () => {

@@ -1,5 +1,6 @@
 import { useCountryStore } from '@/store/countryStore';
 import * as styles from '@/styles/main/country.css';
+import { formatCountryUrl } from '@/utils/country';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -11,7 +12,7 @@ const Country = ({ props }: { props: Country }) => {
   const clickHandler = (country: string, countryKor: string, url: string) => {
     setCountry(country, countryKor);
     setCountryUrl(url);
-    router.push('/' + country.replace(/\s+/g, '').toLowerCase());
+    router.push('/' + formatCountryUrl(country));
   };
 
   return (

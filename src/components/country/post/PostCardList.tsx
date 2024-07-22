@@ -83,8 +83,8 @@ const PostPreview = ({ props }: { props: PostPreviewProps }) => {
           changeHeight={24}
         />
         <span className={styles.profileInfo}>
-          {props.userNickName} · {props.userAgeRange.slice(0, 2)}대 ·
-          {props.userGender == 'male' ? '남' : '여'} · {props.userNationality}
+          {`${props.userNickName} · ${props.userAgeRange.slice(0, 2)}대 · 
+          ${props.userGender === 'male' ? '남' : '여'} · ${props.userNationality}`}
         </span>
       </div>
     </div>

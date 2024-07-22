@@ -74,4 +74,13 @@ export type BoardDetailType = {
   participating: boolean;
 };
 
-export type CommentType = {};
+export type CommentType = {
+  boardId: number; // 게시판 ID
+  boardCommentId: number; // 댓글 ID
+  content: string; // 댓글 내용
+  registeredDate: string; // 등록 날짜 (ISO 8601 형식)
+  userId: number; // 사용자 ID
+  userNickname: string; // 사용자 닉네임
+  childBoards: CommentType[]; // 자식 댓글 배열
+  mine: boolean; // 내 댓글 여부
+};

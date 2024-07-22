@@ -4,6 +4,7 @@ import * as styles from '@/styles/components/common/countryWrite.css';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCountryStore } from '@/store/countryStore';
+import { formatCountryUrl } from '@/utils/country';
 
 const CountryWrite = () => {
   const [active, setActive] = useState<boolean>(false);
@@ -12,7 +13,7 @@ const CountryWrite = () => {
 
   const clickHandler = (type: string) => {
     if (country) {
-      router.push(`/${country.replace(/\s+/g, '').toLowerCase()}/${type}/write`);
+      router.push(`/${formatCountryUrl(country)}/${type}/write`);
     }
   };
 
