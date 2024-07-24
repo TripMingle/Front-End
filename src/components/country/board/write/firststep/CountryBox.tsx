@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/country-box.css';
+import * as styles from '@/styles/country/board/write/firststep/country-box.css';
 import Image from 'next/image';
 
 const CountryBox = ({

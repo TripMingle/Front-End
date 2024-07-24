@@ -1,4 +1,7 @@
-import { listContainer, resultContainer } from '@/styles/country/board/write/country-box.css';
+import {
+  listContainer,
+  resultContainer,
+} from '@/styles/country/board/write/firststep/country-box.css';
 import CountryBox from './CountryBox';
 import { useEffect, useState } from 'react';
 import {

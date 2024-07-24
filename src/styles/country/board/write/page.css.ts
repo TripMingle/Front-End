@@ -1,6 +1,5 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 
 export const pageContainer = style({
   position: 'relative',
@@ -46,36 +45,3 @@ export const explainStrongText = style({
   color: vars.color.secondary,
 });
 
-export const nextButton = recipe({
-  base: {
-    position: 'relative',
-    left: '50%',
-    width: '100%',
-    height: 50,
-    border: 'none',
-    borderRadius: 10,
-    fontWeight: 500,
-    fontSize: 14,
-    transform: 'translate(-50%,0)',
-    cursor: 'pointer',
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        maxWidth: 320,
-        height: 60,
-        fontSize: 16,
-      },
-    },
-  },
-  variants: {
-    select: {
-      true: {
-        background: vars.color.secondary,
-        color: vars.color.white,
-      },
-      false: {
-        background: vars.color.g200,
-        color: vars.color.g400,
-      },
-    },
-  },
-});

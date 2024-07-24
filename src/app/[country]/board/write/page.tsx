@@ -4,10 +4,10 @@ import { useState } from 'react';
 import * as styles from '@/styles/country/board/write/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import Progress from '@/components/country/board/write/Progress';
-import SearchBox from '@/components/country/board/write/SearchBox';
-import CountrySelect from '@/components/country/board/write/CountrySelect';
-import NextButton from '@/components/country/board/write/NextButton';
-import ContinentList from '@/components/country/board/write/CountrySelect';
+import SearchBox from '@/components/country/board/write/firststep/SearchBox';
+import CountrySelect from '@/components/country/board/write/firststep/CountrySelect';
+import StepButton from '@/components/country/board/write/StepButton';
+import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
 
 const Page = () => {
   const [step, setStep] = useState<number>(1);
@@ -36,6 +36,9 @@ const Page = () => {
         countrySearchHandler={countrySearchHandler}
       />
     </>,
+    <>
+      <InfoInput />
+    </>,
   ];
 
   const explains = [
@@ -62,11 +65,13 @@ const Page = () => {
         <Progress step={step} />
         <p className={styles.explainText}>{explains[step - 1]}</p>
         <div className={styles.contentContainer}>{components[step - 1]}</div>
-        <NextButton
+        <StepButton
           step={step}
           country={country}
+          searchCountry={searchCountry}
           stepHandler={stepHandler}
           searchHandler={countrySearchHandler}
+          countryHandler={countryClickHandler}
         />
       </div>
     </main>
