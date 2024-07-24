@@ -105,14 +105,12 @@ export const inputBox = style({
   borderRadius: '50px',
   background: '#ffffff33',
   backdropFilter: 'blur(3px)',
-  fontSize: 14,
   justifyItems: 'center',
   display: 'inline-flex',
   minWidth: 300,
   '@media': {
     'screen and (min-width: 1024px)': {
       padding: '16px 32px',
-      fontSize: 24,
       width: 600,
     },
   },
@@ -124,8 +122,14 @@ export const input = style({
   flex: 1,
   background: 'none',
   color: vars.color.white,
+  fontSize: 14,
   '::placeholder': {
     color: vars.color.white,
+  },
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 20,
+    },
   },
 });
 

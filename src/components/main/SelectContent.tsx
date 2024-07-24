@@ -7,7 +7,7 @@ import {
 } from '@/styles/main/page.css';
 import Countries from './Country';
 import Continents from './Continent';
-import { getCountryBycontinent } from '@/api/getCountryInfo';
+import { getCountryByContinent } from '@/api/getCountryInfo';
 import { useCountryStore } from '@/store/countryStore';
 
 const SelectContent = () => {
@@ -17,13 +17,13 @@ const SelectContent = () => {
   const setContinent = useCountryStore((state) => state.setContinent);
 
   const continentClick = async (continent: string, continentKor: string) => {
-    const data = await getCountryBycontinent(continent);
-    setCountry(data.data);  
+    const data = await getCountryByContinent(continent);
+    setCountry(data.data);
     setContinent(continent, continentKor);
   };
 
   const getCountryData = async (continent: string) => {
-    const data = await getCountryBycontinent(continent);
+    const data = await getCountryByContinent(continent);
     setCountry(data.data);
   };
 

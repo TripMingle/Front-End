@@ -66,7 +66,7 @@ export type BoardDetailType = {
   userImageUrl: string;
   userRating: number;
   imageUrl: string;
-  boardCommentResDTOS: CommentType[];
+  boardComments: CommentType[];
   expired: boolean;
   mine: boolean;
   liked: boolean;
@@ -81,6 +81,7 @@ export type CommentType = {
   registeredDate: string; // 등록 날짜 (ISO 8601 형식)
   userId: number; // 사용자 ID
   userNickname: string; // 사용자 닉네임
+  userImageUrl: string; // 사용자 프로필
   childBoards: CommentType[]; // 자식 댓글 배열
   mine: boolean; // 내 댓글 여부
 };

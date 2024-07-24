@@ -52,16 +52,17 @@ export const modalContainer = style({
   position: 'absolute',
   maxWidth: 540,
   zIndex: 200,
-  width: 'calc(100% - 80px)',
+  width: 'calc(100% - 40px)',
   padding: 20,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   background: vars.color.white,
   borderRadius: 20,
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 'calc(100% - 100px)',
+      width: 'calc(100% - 40px)',
       padding: 30,
     },
   },
@@ -101,7 +102,7 @@ export const closeIcon = style({
 });
 
 export const textContainer = style({
-  width: 'calc(100% - 30px)',
+  width: '100%',
   padding: 15,
   borderColor: vars.color.g200,
   borderRadius: 10,
@@ -110,12 +111,12 @@ export const textContainer = style({
   fontSize: 13,
   fontWeight: 400,
   fontFamily: vars.font.body,
+  boxSizing: 'border-box',
   '::placeholder': {
     color: vars.color.g400,
   },
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 'calc(100% - 40px)',
       padding: 20,
       fontSize: 14,
     },

@@ -19,6 +19,9 @@ const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const boardDetail = useBoardStore((state) => state.boardDetail);
   const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
+  const initializeBoardDetail = useBoardStore(
+    (state) => state.initializeBoardDetail,
+  );
   const pathname = usePathname();
 
   const getBoardId = () => {
@@ -34,6 +37,9 @@ const Page = () => {
 
   useEffect(() => {
     getBoardData();
+    return () => {
+      initializeBoardDetail();
+    };
   }, []);
 
   const chatHandler = () => {

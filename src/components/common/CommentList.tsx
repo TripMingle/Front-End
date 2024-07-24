@@ -3,9 +3,7 @@ import Comment from './Comment';
 import { commentListContainer } from '@/styles/components/common/comment.css';
 
 const CommentList = () => {
-  const commentList = useBoardStore(
-    (state) => state.boardDetail,
-  ).boardCommentResDTOS;
+  const commentList = useBoardStore((state) => state.boardDetail).boardComments;
   return (
     <ul className={commentListContainer}>
       {commentList.map((comment) => (
