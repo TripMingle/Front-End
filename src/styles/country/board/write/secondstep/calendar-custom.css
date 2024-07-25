@@ -1,0 +1,371 @@
+.react-calendar {
+  position: absolute;
+  width: 400px;
+  height: 312px;
+  top: 68px;
+  right: 0px;
+  border-radius: 20px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 10px 20px 0px #0000000d;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 30px;
+  margin-bottom: 20px;
+  border: none;
+  font-family: Noto_Sans;
+  font-weight: 700;
+  font-size: 20px;
+  align-items: center;
+}
+
+/*년 월 화살표 포함*/
+.react-calendar__navigation button {
+  border: none;
+  background: none;
+  font-family: Noto_Sans;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/*prev2 버튼 사용 안되게*/
+.react-calendar__navigation__prev2-button {
+  display: none;
+}
+
+/*next2 버튼 사용 안되게*/
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+/*요일 부분*/
+.react-calendar__month-view__weekdays__weekday {
+  text-align: center;
+  font-family: Noto_Sans;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/*월 화 수 목 금 토 일 밑줄 없애기*/
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+/*월 클릭했을 때 월목록 감싸는 컴포넌트*/
+.react-calendar__year-view__months {
+  display: flex;
+}
+
+/*각 월별 컴포넌트*/
+.react-calendar__year-view__months__month {
+  width: 36px;
+  height: 60px !important;
+  padding: 0px 12px;
+  border: none;
+  background: none;
+}
+
+/*타일 선택 됐을 떼 (기간 모두 포함)*/
+.react-calendar__year-view__months .react-calendar__tile--range {
+  height: 30px !important;
+  margin: 15px 0px;
+  background: #3686ff20;
+}
+
+/*기간 첫, 끝 날짜 배경 색 입히기*/
+.react-calendar__year-view__months .react-calendar__tile--rangeStart {
+  position: relative;
+  height: 30px;
+  color: white;
+  background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+}
+
+.react-calendar__year-view__months .react-calendar__tile--rangeEnd {
+  position: relative;
+  height: 30px;
+  color: white;
+  background: linear-gradient(to right, #3688ff20 50%, white 50%);
+}
+
+/*기간 첫, 끝 날짜 배경 원 그리기*/
+.react-calendar__year-view__months .react-calendar__tile--rangeStart abbr {
+  content: '';
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+.react-calendar__year-view__months .react-calendar__tile--rangeEnd abbr {
+  content: '';
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+/*달력 일 컴포넌트*/
+.react-calendar__month-view__days__day {
+  width: 36px;
+  height: 36px;
+  padding: 0px 12px;
+  border: none;
+  background: none;
+}
+
+/*타일 선택 됐을 떼 (기간 모두 포함)*/
+.react-calendar__month-view__days .react-calendar__tile--range {
+  height: 30px;
+  margin: 3px 0px;
+  background: #3686ff20;
+}
+
+/*기간 첫, 끝 날짜 배경 색 입히기*/
+.react-calendar__month-view__days .react-calendar__tile--rangeStart {
+  position: relative;
+  color: white;
+  background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+}
+
+.react-calendar__month-view__days .react-calendar__tile--rangeEnd {
+  position: relative;
+  color: white;
+  background: linear-gradient(to right, #3688ff20 50%, white 50%);
+}
+
+/*기간 첫, 끝 날짜 배경 원 그리기*/
+.react-calendar__month-view__days .react-calendar__tile--rangeStart abbr {
+  content: '';
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+.react-calendar__month-view__days .react-calendar__tile--rangeEnd abbr {
+  content: '';
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+.react-calendar__tile--now {
+  color: red;
+}
+
+@media (max-width: 1023px) {
+  .react-calendar {
+    position: absolute;
+    width: 100%;
+    height: 312px;
+    top: 58px;
+    border-radius: 20px;
+    padding: 12px;
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0px 10px 20px 0px #0000000d;
+  }
+
+  .react-calendar__navigation {
+    display: flex;
+    height: 24px;
+    margin-bottom: 20px;
+    border: none;
+    font-family: Noto_Sans;
+    font-weight: 700;
+    font-size: 18px;
+    align-items: center;
+  }
+
+  /*년 월 화살표 포함*/
+  .react-calendar__navigation button {
+    border: none;
+    background: none;
+    font-family: Noto_Sans;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  /*prev2 버튼 사용 안되게*/
+  .react-calendar__navigation__prev2-button {
+    display: none;
+  }
+
+  /*next2 버튼 사용 안되게*/
+  .react-calendar__navigation__next2-button {
+    display: none;
+  }
+
+  /*요일 부분*/
+  .react-calendar__month-view__weekdays__weekday {
+    text-align: center;
+    font-family: Noto_Sans;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  /*월 화 수 목 금 토 일 밑줄 없애기*/
+  .react-calendar__month-view__weekdays__weekday abbr {
+    text-decoration: none;
+  }
+
+  /*월 클릭했을 때 월목록 감싸는 컴포넌트*/
+  .react-calendar__year-view__months {
+    display: flex;
+  }
+
+  /*각 월별 컴포넌트*/
+  .react-calendar__year-view__months__month {
+    width: 36px;
+    height: 60px !important;
+    padding: 0px 12px;
+    border: none;
+    background: none;
+  }
+
+  /*타일 선택 됐을 떼 (기간 모두 포함)*/
+  .react-calendar__year-view__months .react-calendar__tile--range {
+    height: 30px !important;
+    margin: 15px 0px;
+    background: #3686ff20;
+  }
+
+  /*기간 첫, 끝 날짜 배경 색 입히기*/
+  .react-calendar__year-view__months .react-calendar__tile--rangeStart {
+    position: relative;
+    height: 30px;
+    color: white;
+    background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+  }
+
+  .react-calendar__year-view__months .react-calendar__tile--rangeEnd {
+    position: relative;
+    height: 30px;
+    color: white;
+    background: linear-gradient(to right, #3688ff20 50%, white 50%);
+  }
+
+  /*기간 첫, 끝 날짜 배경 원 그리기*/
+  .react-calendar__year-view__months .react-calendar__tile--rangeStart abbr {
+    content: '';
+    position: absolute;
+    display: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #3688ff;
+    color: white;
+    border-radius: 50%;
+    align-content: center;
+  }
+
+  .react-calendar__year-view__months .react-calendar__tile--rangeEnd abbr {
+    content: '';
+    position: absolute;
+    display: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #3688ff;
+    color: white;
+    border-radius: 50%;
+    align-content: center;
+  }
+
+  /*달력 일 컴포넌트*/
+  .react-calendar__month-view__days__day {
+    width: 36px;
+    height: 36px;
+    padding: 0px 12px;
+    border: none;
+    background: none;
+  }
+
+  /*타일 선택 됐을 떼 (기간 모두 포함)*/
+  .react-calendar__month-view__days .react-calendar__tile--range {
+    height: 30px;
+    margin: 3px 0px;
+    background: #3686ff20;
+  }
+
+  /*기간 첫, 끝 날짜 배경 색 입히기*/
+  .react-calendar__month-view__days .react-calendar__tile--rangeStart {
+    position: relative;
+    color: white;
+    background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+  }
+
+  .react-calendar__month-view__days .react-calendar__tile--rangeEnd {
+    position: relative;
+    color: white;
+    background: linear-gradient(to right, #3688ff20 50%, white 50%);
+  }
+
+  /*기간 첫, 끝 날짜 배경 원 그리기*/
+  .react-calendar__month-view__days .react-calendar__tile--rangeStart abbr {
+    content: '';
+    position: absolute;
+    display: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #3688ff;
+    color: white;
+    border-radius: 50%;
+    align-content: center;
+  }
+
+  .react-calendar__month-view__days .react-calendar__tile--rangeEnd abbr {
+    content: '';
+    position: absolute;
+    display: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #3688ff;
+    color: white;
+    border-radius: 50%;
+    align-content: center;
+  }
+}

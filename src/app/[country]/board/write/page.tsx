@@ -10,7 +10,7 @@ import StepButton from '@/components/country/board/write/StepButton';
 import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
 
 const Page = () => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(2);
   const [country, setCountry] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');
 

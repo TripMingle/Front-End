@@ -1,5 +1,6 @@
-import CalendarBox from './CalendarBox';
 import * as styles from '@/styles/country/board/write/secondstep/info-input.css';
+import CalendarBox from './CalendarBox';
+import LanguageBox from './LanguageBox';
 
 const InfoInput = () => {
   return (
@@ -7,6 +8,13 @@ const InfoInput = () => {
       <div className={styles.fieldContainer}>
         <p className={styles.title}>날짜</p>
         <CalendarBox />
+      </div>
+      <div className={styles.fieldContainer}>
+        <p className={styles.title}>언어</p>
+        <LanguageBox />
+      </div>
+      <div className={styles.fieldContainer}>
+        <p className={styles.title}>동행자 특성</p>
       </div>
     </div>
   );
