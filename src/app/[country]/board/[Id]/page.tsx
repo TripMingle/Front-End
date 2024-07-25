@@ -9,19 +9,17 @@ import { Language } from '@/components/common/Language';
 import TripStyleButton from '@/components/common/TripStyleButton';
 import TripTypeButton from '@/components/common/TripTypeButton';
 import CommentInput from '@/components/common/CommentInput';
-import { useBoardStore } from '@/store/boardStore';
 import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
 import { usePathname } from 'next/navigation';
 import { getBoardDetail } from '@/api/getBoard';
+import { BoardDetailType } from '@/types/country/board';
+import { initialBoardDetail } from '@/store/boardStore';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const boardDetail = useBoardStore((state) => state.boardDetail);
-  const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
-  const initializeBoardDetail = useBoardStore(
-    (state) => state.initializeBoardDetail,
-  );
+  const [boardDetail, setBoardDetail] =
+    useState<BoardDetailType>(initialBoardDetail);
   const pathname = usePathname();
 
   const getBoardId = () => {
@@ -37,9 +35,7 @@ const Page = () => {
 
   useEffect(() => {
     getBoardData();
-    return () => {
-      initializeBoardDetail();
-    };
+    console.log(boardDetail);
   }, []);
 
   const chatHandler = () => {
@@ -135,7 +131,17 @@ const Page = () => {
               <div className={styles.infoContent}>{boardDetail.content}</div>
             </div>
           </div>
-          <TravelerCard chatHandler={chatHandler} />
+          <TravelerCard
+            props={{
+              userImageUrl: boardDetail.userImageUrl,
+              nickName: boardDetail.nickName,
+              ageRange: boardDetail.ageRange,
+              gender: boardDetail.gender,
+              nationality: boardDetail.nationality,
+              selfIntroduction: boardDetail.selfIntroduction ?? '',
+            }}
+            chatHandler={chatHandler}
+          />
         </div>
         <div className={styles.container}>
           <div className={styles.commentContainer}>
@@ -150,7 +156,7 @@ const Page = () => {
               boardId={boardDetail.boardId}
               inputHandler={getBoardData}
             />
-            <CommentList />
+            <CommentList comments={boardDetail.boardComments} />
           </div>
         </div>
       </div>

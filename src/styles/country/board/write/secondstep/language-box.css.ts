@@ -2,40 +2,35 @@ import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-export const container = style({
-  display: 'flex',
-  width: '100%',
-  padding: '12px 20px',
-  border: `1px solid ${vars.color.g200}`,
-  borderRadius: 10,
-  boxSizing: 'border-box',
-  flexDirection: 'column',
-  cursor: 'pointer',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      padding: '15px 20px',
+export const container = recipe({
+  base: {
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    padding: '12px 20px',
+    border: `1px solid ${vars.color.g200}`,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    boxSizing: 'border-box',
+    flexDirection: 'column',
+    cursor: 'pointer',
+    '@media': {
+      'screen and (min-width: 1024px)': {
+        padding: '15px 20px',
+      },
+    },
+  },
+  variants: {
+    show: {
+      true: {},
+      false: { borderBottomLeftRadius: 10, borderBottomRightRadius: 10 },
     },
   },
 });
 
-export const explainContainer = recipe({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  variants: {
-    show: {
-      true: {
-        paddingBottom: 12,
-        '@media': {
-          'screen and (min-width: 1024px)': {
-            paddingBottom: 15,
-          },
-        },
-      },
-      false: {},
-    },
-  },
+export const explainContainer = style({
+  display: 'flex',
+  alignItems: 'center',
 });
 
 export const explain = recipe({
@@ -85,9 +80,25 @@ export const dropIcon = recipe({
 });
 
 export const languageListContainer = style({
+  position: 'absolute',
+  top: 44,
+  left: 0,
+  width: '100%',
   height: 282,
-  overflow: 'scroll',
   zIndex: 5,
+  padding: '8px 20px',
+  overflow: 'scroll',
+  background: vars.color.white,
+  boxSizing: 'border-box',
+  border: `1px solid ${vars.color.g200}`,
+  borderBottomLeftRadius: 10,
+  borderBottomRightRadius: 10,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      top: 54,
+      padding: '0px 20px',
+    },
+  },
 });
 
 export const languageContainer = recipe({

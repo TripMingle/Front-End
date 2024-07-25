@@ -1,7 +1,7 @@
 import { BoardDetailType } from '@/types/country/board';
 import { create } from 'zustand';
 
-const exampleBoardDetail: BoardDetailType = {
+export const initialBoardDetail: BoardDetailType = {
   boardId: 0,
   continent: '',
   countryName: '',
@@ -46,7 +46,7 @@ type BoardState = {
 };
 
 export const useBoardStore = create<BoardState>()((set) => ({
-  boardDetail: exampleBoardDetail,
+  boardDetail: initialBoardDetail,
   setBoardDetail: (boardDetail: BoardDetailType) => set({ boardDetail }),
-  initializeBoardDetail: () => set({ boardDetail: exampleBoardDetail }),
+  initializeBoardDetail: () => set({ boardDetail: initialBoardDetail }),
 }));

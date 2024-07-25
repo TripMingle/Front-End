@@ -9,10 +9,10 @@ const LanguageBox = () => {
 
   return (
     <div
-      className={styles.container}
+      className={styles.container({ show: showLanguages })}
       onClick={() => SetShowLanguages(!showLanguages)}
     >
-      <div className={styles.explainContainer({ show: showLanguages })}>
+      <div className={styles.explainContainer}>
         <span className={styles.explain({ select: language.length > 0 })}>
           {language.length ? language[1] : '사용하시는 언어를 선택해 주세요.'}
         </span>
