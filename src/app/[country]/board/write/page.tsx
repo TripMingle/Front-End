@@ -1,6 +1,6 @@
 'use client';
 import '@/styles/font.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import * as styles from '@/styles/country/board/write/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import Progress from '@/components/country/board/write/Progress';
@@ -15,6 +15,8 @@ const Page = () => {
   const [country, setCountry] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');
 
+  const pageContentRef = useRef<any>(null);
+
   const countryClickHandler = (country: string) => {
     setCountry(country);
   };
@@ -25,6 +27,10 @@ const Page = () => {
 
   const stepHandler = (step: number) => {
     setStep(step);
+  };
+
+  const scrollToBottom = () => {
+    pageContentRef.current.scrollTop = pageContentRef.current.scrollHeight;
   };
 
   const components = [
@@ -42,7 +48,7 @@ const Page = () => {
     </>,
     <></>,
     <>
-      <ContentInput />
+      <ContentInput scrollHandler={scrollToBottom} />
     </>,
   ];
 
@@ -69,7 +75,9 @@ const Page = () => {
       <div className={styles.pageContainer}>
         <Progress step={step} />
         <p className={styles.explainText}>{explains[step - 1]}</p>
-        <div className={styles.contentContainer}>{components[step - 1]}</div>
+        <div className={styles.contentContainer} ref={pageContentRef}>
+          {components[step - 1]}
+        </div>
         <StepButton
           step={step}
           country={country}
