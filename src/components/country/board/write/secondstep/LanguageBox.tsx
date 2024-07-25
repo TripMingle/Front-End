@@ -31,6 +31,7 @@ const LanguageBox = () => {
               className={styles.languageContainer({
                 select: l.eng === language[0],
               })}
+              key={l.eng}
               onClick={() => setLanguage([l.eng, l.kor])}
             >
               <span className={styles.language}>{l.kor}</span>

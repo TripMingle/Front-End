@@ -21,12 +21,19 @@ const StepButton = ({
       searchHandler('');
     } else if (step === 2) {
       stepHandler(step - 1);
+    } else {
+      stepHandler(step - 1);
     }
   };
 
   const nextClickHandler = () => {
     if (step === 1) {
       if (country !== '') stepHandler(step + 1);
+    }
+    if (step === 2) {
+      stepHandler(step + 1);
+    } else {
+      stepHandler(step + 1);
     }
   };
 
@@ -43,7 +50,7 @@ const StepButton = ({
         className={styles.nextButton({ select: country !== '' })}
         onClick={nextClickHandler}
       >
-        {'다음'}
+        {step < 4 ? '다음' : '게시'}
       </button>
     </div>
   );

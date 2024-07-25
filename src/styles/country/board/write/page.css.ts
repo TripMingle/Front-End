@@ -20,6 +20,8 @@ export const pageContainer = style({
 export const contentContainer = style({
   height: 'calc(100vh - 243px)',
   margin: '20px 0px',
+  overflowX: 'hidden',
+  overflowY: 'scroll',
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 'calc(100vh - 418px)',
@@ -44,4 +46,3 @@ export const explainText = style({
 export const explainStrongText = style({
   color: vars.color.secondary,
 });
-

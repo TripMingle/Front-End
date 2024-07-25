@@ -8,9 +8,10 @@ import SearchBox from '@/components/country/board/write/firststep/SearchBox';
 import CountrySelect from '@/components/country/board/write/firststep/CountrySelect';
 import StepButton from '@/components/country/board/write/StepButton';
 import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
+import ContentInput from '@/components/country/board/write/fourthstep/ContentInput';
 
 const Page = () => {
-  const [step, setStep] = useState<number>(2);
+  const [step, setStep] = useState<number>(1);
   const [country, setCountry] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');
 
@@ -38,6 +39,10 @@ const Page = () => {
     </>,
     <>
       <InfoInput />
+    </>,
+    <></>,
+    <>
+      <ContentInput />
     </>,
   ];
 

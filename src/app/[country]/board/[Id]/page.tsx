@@ -113,7 +113,7 @@ const Page = () => {
                 <TripTypeButton
                   isButton={false}
                   isSelected={true}
-                  type="couple"
+                  type="simple"
                 />
                 <TripTypeButton isButton={false} isSelected={true} type="bed" />
               </div>

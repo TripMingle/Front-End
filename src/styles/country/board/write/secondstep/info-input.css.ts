@@ -25,3 +25,11 @@ export const title = style({
     },
   },
 });
+
+export const typeContainer = style({
+  display: 'flex',
+  flexWrap: 'wrap',
+  marginTop: 10,
+  marginLeft: 6,
+  gap: 20,
+});

@@ -92,7 +92,6 @@
 
 /*기간 첫, 끝 날짜 배경 원 그리기*/
 .react-calendar__year-view__months .react-calendar__tile--rangeStart abbr {
-  content: '';
   position: absolute;
   display: center;
   top: 50%;
@@ -107,7 +106,6 @@
 }
 
 .react-calendar__year-view__months .react-calendar__tile--rangeEnd abbr {
-  content: '';
   position: absolute;
   display: center;
   top: 50%;
@@ -167,7 +165,6 @@
 }
 
 .react-calendar__month-view__days .react-calendar__tile--rangeEnd abbr {
-  content: '';
   position: absolute;
   display: center;
   top: 50%;
@@ -280,7 +277,6 @@
 
   /*기간 첫, 끝 날짜 배경 원 그리기*/
   .react-calendar__year-view__months .react-calendar__tile--rangeStart abbr {
-    content: '';
     position: absolute;
     display: center;
     top: 50%;
@@ -295,7 +291,6 @@
   }
 
   .react-calendar__year-view__months .react-calendar__tile--rangeEnd abbr {
-    content: '';
     position: absolute;
     display: center;
     top: 50%;

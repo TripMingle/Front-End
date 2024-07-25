@@ -16,8 +16,8 @@ const TripTypeButton = ({
   isSelected: boolean;
   type: string;
 }) => {
-  if (type === 'couple') {
-    return <CoupleType isButton={isButton} isSelected={isSelected} />;
+  if (type === 'simple') {
+    return <SimpleType isButton={isButton} isSelected={isSelected} />;
   } else if (type === 'bed') {
     return <BedType isButton={isButton} isSelected={isSelected} />;
   } else if (type === 'food') {
@@ -29,7 +29,7 @@ const TripTypeButton = ({
   }
 };
 
-const CoupleType = ({
+export const SimpleType = ({
   isButton,
   isSelected,
 }: {
@@ -57,7 +57,7 @@ const CoupleType = ({
         height={19}
         color={select ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>부부 동행</span>
+      <span className={styles.text({ select })}>단순 동행</span>
     </div>
   );
 };
