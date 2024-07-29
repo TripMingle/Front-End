@@ -1,6 +1,7 @@
 import {
   ActivityType,
   BedType,
+  CarType,
   ClubType,
   FoodType,
   SimpleType,
@@ -15,6 +16,7 @@ const TypeBox = () => {
       <ActivityType isButton={true} isSelected={false} />
       <ClubType isButton={true} isSelected={false} />
       <SimpleType isButton={true} isSelected={false} />
+      <CarType isButton={true} isSelected={false} />
     </div>
   );
 };

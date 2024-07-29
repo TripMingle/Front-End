@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/attribute-box.css';
-import ShoppingIcon from '@/components/common/icons/ShoppingIcon';
+import WalletIcon from '@/components/common/icons/WalletIcon';
 
 const BudgetAttribute = () => {
   const [value, setValue] = useState<number>(3);
@@ -12,7 +12,7 @@ const BudgetAttribute = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <ShoppingIcon width={36} height={36} color={'#3688ff'} />
+        <WalletIcon width={36} height={36} color={'#3688ff'} />
         <span>예산</span>
       </div>
       <ul className={styles.radioContainer}>

@@ -85,3 +85,39 @@ export type CommentType = {
   childBoards: CommentType[]; // 자식 댓글 배열
   mine: boolean; // 내 댓글 여부
 };
+
+export type BoardForm = {
+  continent: string;
+  countryName: string;
+  startDate: string;
+  endDate: string;
+  maxCount: number;
+  language: string;
+  preferGender: number;
+  preferSmoking: number;
+  preferShopping: number;
+  preferInstagramPicture: number;
+  preferDrink: number;
+  title: string;
+  content: string;
+  tripType: string[];
+  createBoardSchedule: string[];
+};
+
+export const boardFormDefault: BoardForm = {
+  continent: '',
+  countryName: '',
+  startDate: '',
+  endDate: '',
+  maxCount: 0,
+  language: '',
+  preferGender: 3,
+  preferSmoking: 3,
+  preferShopping: 3,
+  preferInstagramPicture: 3,
+  preferDrink: 3,
+  title: '',
+  content: '',
+  tripType: [],
+  createBoardSchedule: [],
+};

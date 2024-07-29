@@ -1,6 +1,7 @@
 'use client';
 import '@/styles/font.css';
 import { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import * as styles from '@/styles/country/board/write/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import Progress from '@/components/country/board/write/Progress';
@@ -9,26 +10,14 @@ import CountrySelect from '@/components/country/board/write/firststep/CountrySel
 import StepButton from '@/components/country/board/write/StepButton';
 import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
 import ContentInput from '@/components/country/board/write/fourthstep/ContentInput';
-
-type FormInut = {
-  continent: string;
-  countryName: string;
-  startDate: string;
-  endDate: string;
-  maxCount: number;
-  language: string;
-  preferGender: number;
-  preferSmoking: number;
-  preferShopping: number;
-  preferInstagramPicture: number;
-  preferDrink: number;
-  title: string;
-  content: string;
-  tripType: string[];
-  createBoardSchedule: string[];
-};
+import { BoardForm, boardFormDefault } from '@/types/country/board';
 
 const Page = () => {
+  const { register, watch, handleSubmit } = useForm<BoardForm>({
+    mode: 'onSubmit',
+    defaultValues: boardFormDefault,
+  });
+
   const [step, setStep] = useState<number>(2);
   const [country, setCountry] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/attribute-box.css';
-import CoupleIcon from '@/components/common/icons/CoupleIcon';
+import DrinkIcon from '@/components/common/icons/DrinkIcon';
 
 const DrinkAttribute = () => {
   const [value, setValue] = useState<number>(3);
@@ -12,7 +12,7 @@ const DrinkAttribute = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
-        <CoupleIcon width={36} height={36} color={'#3688ff'} />
+        <DrinkIcon width={36} height={36} color={'#3688ff'} />
         <span>음주</span>
       </div>
       <ul className={styles.radioContainer}>
