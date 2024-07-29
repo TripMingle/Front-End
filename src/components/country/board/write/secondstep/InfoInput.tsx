@@ -3,6 +3,7 @@ import CalendarBox from './CalendarBox';
 import LanguageBox from './LanguageBox';
 import AttributeBox from './AttributeBox';
 import TypeBox from './TypeBox';
+import PeopleCountBox from './PeopleCountBox';
 
 const InfoInput = () => {
   return (
@@ -14,6 +15,10 @@ const InfoInput = () => {
       <div className={styles.fieldContainer}>
         <p className={styles.title}>언어</p>
         <LanguageBox />
+      </div>
+      <div className={styles.fieldContainer}>
+        <p className={styles.title}>인원</p>
+        <PeopleCountBox />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>동행자 특성</p>

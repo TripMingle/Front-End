@@ -1,17 +1,25 @@
 import * as styles from '@/styles/country/board/write/firststep/search-box.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SearchBox = ({
-  searchHandler,
+  searchCountry,
+  countrySearchHandler,
 }: {
-  searchHandler: (search: string) => void;
+  searchCountry: string;
+  countrySearchHandler: (search: string) => void;
 }) => {
   const [search, setSearch] = useState<string>('');
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
+
+  useEffect(() => {
+    if (searchCountry === '') {
+      setSearch('');
+    }
+  }, [searchCountry]);
 
   return (
     <div className={styles.inputBox}>
@@ -28,7 +36,7 @@ const SearchBox = ({
         width={30}
         height={30}
         alt="search"
-        onClick={() => searchHandler(search)}
+        onClick={() => countrySearchHandler(search)}
       />
     </div>
   );

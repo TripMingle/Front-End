@@ -8,7 +8,6 @@ export const container = style({
   height: 160,
   alignItems: 'center',
   justifyItems: 'center',
-  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 240,
@@ -23,10 +22,11 @@ export const circle = style({
   right: 0,
   width: 48,
   height: 48,
-  zIndex: -3,
+  zIndex: 0,
   background: vars.color.primary,
   opacity: '50%',
   borderRadius: '50%',
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 80,
@@ -37,7 +37,7 @@ export const circle = style({
 
 export const bgImage = style({
   position: 'absolute',
-  zIndex: -2,
+  zIndex: 1,
   borderRadius: '50%',
 });
 
@@ -45,14 +45,17 @@ export const bgOverlay = style({
   position: 'absolute',
   width: '100%',
   height: '100%',
-  zIndex: -1,
+  zIndex: 2,
   borderRadius: '50%',
   background: '#00000033',
+  cursor: 'pointer',
 });
 
 export const textContainer = style({
   width: '100%',
+  zIndex: 3,
   textAlign: 'center',
+  cursor: 'pointer',
 });
 
 export const name = style({

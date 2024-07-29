@@ -225,6 +225,7 @@ export const moveToContinent = style({
   fontSize: 16,
   fontWeight: 500,
   color: vars.color.g500,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 18,

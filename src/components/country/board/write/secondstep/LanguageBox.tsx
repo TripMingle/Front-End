@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/language-box.css';
-import { style } from '@vanilla-extract/css';
 
 const LanguageBox = () => {
   const [showLanguages, SetShowLanguages] = useState<boolean>(false);

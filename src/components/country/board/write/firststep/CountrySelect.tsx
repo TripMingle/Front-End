@@ -35,7 +35,10 @@ const CountrySelect = ({
   useEffect(() => {
     if (searchCountry) {
       getCountryList(searchCountry);
+    } else {
+      setCountryList([]);
     }
+    if (country) countryClickHandler('');
   }, [searchCountry]);
 
   return (

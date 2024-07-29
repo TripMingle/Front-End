@@ -10,8 +10,26 @@ import StepButton from '@/components/country/board/write/StepButton';
 import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
 import ContentInput from '@/components/country/board/write/fourthstep/ContentInput';
 
+type FormInut = {
+  continent: string;
+  countryName: string;
+  startDate: string;
+  endDate: string;
+  maxCount: number;
+  language: string;
+  preferGender: number;
+  preferSmoking: number;
+  preferShopping: number;
+  preferInstagramPicture: number;
+  preferDrink: number;
+  title: string;
+  content: string;
+  tripType: string[];
+  createBoardSchedule: string[];
+};
+
 const Page = () => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(2);
   const [country, setCountry] = useState<string>('');
   const [searchCountry, setSearchCountry] = useState<string>('');
 
@@ -35,7 +53,10 @@ const Page = () => {
 
   const components = [
     <>
-      <SearchBox searchHandler={countrySearchHandler} />
+      <SearchBox
+        searchCountry={searchCountry}
+        countrySearchHandler={countrySearchHandler}
+      />
       <CountrySelect
         country={country}
         searchCountry={searchCountry}

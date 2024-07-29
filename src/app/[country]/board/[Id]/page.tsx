@@ -35,7 +35,6 @@ const Page = () => {
 
   useEffect(() => {
     getBoardData();
-    console.log(boardDetail);
   }, []);
 
   const chatHandler = () => {
@@ -47,8 +46,8 @@ const Page = () => {
       <WhiteHeader />
       <ChatModal
         isOpen={isOpen}
-        nickName="홍길동"
-        userId={1}
+        nickName={boardDetail.nickName}
+        userId={boardDetail.userId}
         chatHandler={chatHandler}
       />
       <div className={styles.pageContainer}>

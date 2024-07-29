@@ -10,7 +10,7 @@ import Continents from './Continent';
 import { getCountryByContinent } from '@/api/getCountryInfo';
 import { useCountryStore } from '@/store/countryStore';
 
-const SelectContent = () => {
+const CountrySelect = () => {
   const [country, setCountry] = useState<Country[]>([]);
   const continent = useCountryStore((state) => state.continent);
   const continentKor = useCountryStore((state) => state.continentKor);
@@ -41,7 +41,7 @@ const SelectContent = () => {
     return (
       <div className={selectContainer}>
         <div className={moveToContinent} onClick={() => setContinent('', '')}>
-          <span>{'홈 > '}</span>
+          <span className={moveToContinent}>{'홈 > '}</span>
           <span className={continentText}>{continentKor}</span>
         </div>
         <Countries props={country} />
@@ -50,4 +50,4 @@ const SelectContent = () => {
   }
 };
 
-export default SelectContent;
+export default CountrySelect;
