@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useCountryStore } from '@/store/countryStore';
 import { formatCountryUrl } from '@/utils/country';
 
-const CountryWrite = () => {
-  const [active, setActive] = useState<boolean>(false);
+const CountryWrite = ({ type }: { type: string }) => {
+  // const [active, setActive] = useState<boolean>(false);
   const country = useCountryStore((state) => state.country);
   const router = useRouter();
 
@@ -21,19 +21,19 @@ const CountryWrite = () => {
     <div className={styles.countryWriteContainer}>
       <div className={styles.writeItemContainer}>
         <div
-          className={styles.writeContainer({ active: active, type: 'board' })}
+          className={styles.writeContainer({ active: false, type: 'board' })}
           onClick={() => clickHandler('board')}
         >
           동행글
         </div>
         <div
-          className={styles.writeContainer({ active: active, type: 'post' })}
+          className={styles.writeContainer({ active: false, type: 'post' })}
           onClick={() => clickHandler('post')}
         >
           정보글
         </div>
         <div
-          onClick={() => setActive(!active)}
+          onClick={() => clickHandler(type)}
           className={styles.iconContainer}
         >
           <Image

@@ -8,28 +8,18 @@ import {
 import Countries from './Country';
 import Continents from './Continent';
 import { getCountryByContinent } from '@/api/getCountryInfo';
-import { useCountryStore } from '@/store/countryStore';
 
 const CountrySelect = () => {
-  const [country, setCountry] = useState<Country[]>([]);
-  const continent = useCountryStore((state) => state.continent);
-  const continentKor = useCountryStore((state) => state.continentKor);
-  const setContinent = useCountryStore((state) => state.setContinent);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [continent, setContinent] = useState<string>('');
+  const [continentKor, setContinentKor] = useState<string>('');
 
   const continentClick = async (continent: string, continentKor: string) => {
     const data = await getCountryByContinent(continent);
-    setCountry(data.data);
-    setContinent(continent, continentKor);
+    setCountries(data.data);
+    setContinent(continent);
+    setContinentKor(continentKor);
   };
-
-  const getCountryData = async (continent: string) => {
-    const data = await getCountryByContinent(continent);
-    setCountry(data.data);
-  };
-
-  useEffect(() => {
-    if (continent) getCountryData(continent);
-  }, [continent]);
 
   if (continent === '') {
     return (
@@ -40,11 +30,17 @@ const CountrySelect = () => {
   } else {
     return (
       <div className={selectContainer}>
-        <div className={moveToContinent} onClick={() => setContinent('', '')}>
+        <div
+          className={moveToContinent}
+          onClick={() => {
+            setContinent('');
+            setContinentKor('');
+          }}
+        >
           <span className={moveToContinent}>{'홈 > '}</span>
           <span className={continentText}>{continentKor}</span>
         </div>
-        <Countries props={country} />
+        <Countries props={countries} />
       </div>
     );
   }

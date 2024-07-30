@@ -7,3 +7,10 @@ type Country = {
   countryNameEnglish: string;
   primaryImageUrl: string;
 };
+
+type CountryInfo = {
+  continentName: string;
+  continentEnglishName: string;
+  countryName: string;
+  countryEnglishName: string;
+};

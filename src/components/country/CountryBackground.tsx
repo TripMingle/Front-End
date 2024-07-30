@@ -1,35 +1,47 @@
 'use client';
 import Image from 'next/image';
-import { image } from '@/styles/country/page.css';
+import { image, imageContainer } from '@/styles/country/page.css';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getCountryInfo } from '@/api/getCountryInfo';
+import MoveToMain from './MoveToMain';
+import { getCountryName } from '@/utils/country';
 
 const CountryBackground = () => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    const country = getCountryName();
-    
-  }, []);
+  const [imageUrl, setImageUrl] = useState<string>('');
+  const [countryInfo, setCountryInfo] = useState<CountryInfo>({
+    continentName: '',
+    continentEnglishName: '',
+    countryName: '',
+    countryEnglishName: '',
+  });
 
-  const getCountryName = () => {
-    return pathname.split('/')[1];
+  const getInformation = async (country: string) => {
+    const data = await getCountryInfo(country);
+    setImageUrl(data.data.countryImageUrl);
+    setCountryInfo(data.data);
   };
 
-  const getInformation = async(country: string) => {
-    const data = await getCountryInfo(country)
-    
-  }
+  useEffect(() => {
+    const country = getCountryName(pathname);
+    getInformation(country);
+  }, []);
 
   return (
-    <Image
-      className={image}
-      src={'' || '/images/emptyBackground.png'}
-      alt="countryBackgroundImage"
-      fill
-      sizes="1920px"
-    />
+    <>
+      <div className={imageContainer}>
+        <Image
+          className={image}
+          src={imageUrl || '/images/emptyBackground.png'}
+          alt="countryBackgroundImage"
+          fill
+          sizes="1920px"
+        />
+      </div>
+      <MoveToMain props={countryInfo} />
+    </>
   );
 };
 

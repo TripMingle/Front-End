@@ -13,11 +13,8 @@ const Page = () => {
     <main>
       <WhiteHeader />
       <div className={styles.pageContainer}>
-        <div className={styles.imageContainer}>
-          <CountryBackground />
-        </div>
+        <CountryBackground />
         <div className={styles.contentContainer}>
-          <MoveToMain />
           <BoardPreview />
           <RestaurantPreview />
           <RentalHomePreview />

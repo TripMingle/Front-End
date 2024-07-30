@@ -6,7 +6,6 @@ export const categoryContainer = style({
   display: 'inline-flex',
   position: 'relative',
   left: '50%',
-  marginTop: 20,
   marginBottom: 20,
   borderRadius: 20,
   zIndex: 500,
