@@ -15,6 +15,12 @@ const SearchBox = ({
     setSearch(event.target.value);
   };
 
+  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      countrySearchHandler(search);
+    }
+  };
+
   useEffect(() => {
     if (searchCountry === '') {
       setSearch('');
@@ -29,6 +35,7 @@ const SearchBox = ({
         placeholder="나라 검색하기"
         value={search}
         onChange={changeHandler}
+        onKeyDown={keyDownHandler}
       />
       <Image
         className={styles.searchIcon}

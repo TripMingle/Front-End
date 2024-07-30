@@ -2,19 +2,17 @@
 import Image from 'next/image';
 import * as styles from '@/styles/components/common/countryWrite.css';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCountryStore } from '@/store/countryStore';
 import { formatCountryUrl } from '@/utils/country';
 
 const CountryWrite = ({ type }: { type: string }) => {
   // const [active, setActive] = useState<boolean>(false);
-  const country = useCountryStore((state) => state.country);
+  const pathname = usePathname();
   const router = useRouter();
 
   const clickHandler = (type: string) => {
-    if (country) {
-      router.push(`/${formatCountryUrl(country)}/${type}/write`);
-    }
+    router.push(`${pathname}/write`);
   };
 
   return (
