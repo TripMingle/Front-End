@@ -8,10 +8,10 @@ import PhotoIcon from '@/components/common/icons/PhotoIcon';
 const PhotoAttribute = () => {
   const { watch, setValue } = useFormContext<BoardForm>();
 
-  const value = watch('preferInstagramPicture');
+  const value = watch('preferPhoto');
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue('preferInstagramPicture', Number(event.target.value));
+    setValue('preferPhoto', Number(event.target.value));
   };
   return (
     <div className={styles.container}>

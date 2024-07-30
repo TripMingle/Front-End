@@ -8,10 +8,10 @@ import WalletIcon from '@/components/common/icons/WalletIcon';
 
 const BudgetAttribute = () => {
   const { watch, setValue } = useFormContext<BoardForm>();
-  const value = watch('preferShopping');
+  const value = watch('preferBudget');
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue('preferShopping', Number(event.target.value));
+    setValue('preferBudget', Number(event.target.value));
   };
   return (
     <div className={styles.container}>

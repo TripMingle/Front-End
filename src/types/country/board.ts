@@ -46,8 +46,8 @@ export type BoardDetailType = {
   tripType: string[];
   preferGender: number;
   preferSmoking: number;
-  preferShopping: number;
-  preferInstagramPicture: number;
+  preferBudget: number;
+  preferPhoto: number;
   preferDrink: number;
   startDate: string;
   endDate: string;
@@ -95,8 +95,8 @@ export type BoardForm = {
   language: string;
   preferGender: number;
   preferSmoking: number;
-  preferShopping: number;
-  preferInstagramPicture: number;
+  preferBudget: number;
+  preferPhoto: number;
   preferDrink: number;
   title: string;
   content: string;
@@ -113,8 +113,8 @@ export const boardFormDefault: BoardForm = {
   language: '',
   preferGender: 3,
   preferSmoking: 3,
-  preferShopping: 3,
-  preferInstagramPicture: 3,
+  preferBudget: 3,
+  preferPhoto: 3,
   preferDrink: 3,
   title: '',
   content: '',

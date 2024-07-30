@@ -51,9 +51,9 @@ const SmokeAttribute = () => {
 };
 
 const explain = [
-  { text: '흡연자선호', value: 1 },
+  { text: '비흡연자선호', value: 1 },
   { text: '상관없음', value: 3 },
-  { text: '비흡연자선호 ', value: 5 },
+  { text: '흡연자선호 ', value: 5 },
 ];
 
 export default SmokeAttribute;

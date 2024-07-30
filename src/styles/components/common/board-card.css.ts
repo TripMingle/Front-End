@@ -68,12 +68,15 @@ export const contentContainer = style({
 
 export const title = style({
   display: 'flex',
+  height: 15,
   fontSize: 12,
   fontWeight: 700,
   marginTop: 5,
   justifyItems: 'center',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
+      height: 21,
       fontSize: 18,
       marginTop: 10,
     },

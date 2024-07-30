@@ -8,17 +8,41 @@ import ClubIcon from './icons/ClubIcon';
 import CarIcon from './icons/CarIcon';
 import SimpleIcon from './icons/SimpleIcon';
 
-export const SimpleType = ({
+export const TripTypeButton = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  type,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  type: string;
+}) => {
+  if (type === 'food') {
+    return <FoodType isButton={isButton} isSelected={isSelected} />;
+  } else if (type === 'bed') {
+    return <BedType isButton={isButton} isSelected={isSelected} />;
+  } else if (type === 'activity') {
+    return <ActivityType isButton={isButton} isSelected={isSelected} />;
+  } else if (type === 'simple') {
+    return <SimpleType isButton={isButton} isSelected={isSelected} />;
+  } else if (type === 'club') {
+    return <ClubType isButton={isButton} isSelected={isSelected} />;
+  } else if (type === 'car') {
+    return <CarType isButton={isButton} isSelected={isSelected} />;
+  }
+};
+
+export const SimpleType = ({
+  isButton,
+  isSelected,
+  selectHandler,
+}: {
+  isButton: boolean;
+  isSelected: boolean;
+  selectHandler?: (type: string) => void;
 }) => {
   const clickHandler = () => {
-    if (isButton) selectHandler('simple');
+    if (selectHandler && isButton) selectHandler('simple');
   };
 
   return (
@@ -42,14 +66,14 @@ export const SimpleType = ({
 export const BedType = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  selectHandler,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  selectHandler?: (type: string) => void;
 }) => {
   const clickHandler = () => {
-    if (isButton) selectHandler('bed');
+    if (selectHandler && isButton) selectHandler('bed');
   };
 
   return (
@@ -73,16 +97,14 @@ export const BedType = ({
 export const FoodType = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  selectHandler,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  selectHandler?: (type: string) => void;
 }) => {
-  const [select, setselect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) selectHandler('food');
+    if (selectHandler && isButton) selectHandler('food');
   };
 
   return (
@@ -106,14 +128,14 @@ export const FoodType = ({
 export const ActivityType = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  selectHandler,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  selectHandler?: (type: string) => void;
 }) => {
   const clickHandler = () => {
-    if (isButton) selectHandler('activity');
+    if (selectHandler && isButton) selectHandler('activity');
   };
 
   return (
@@ -137,16 +159,14 @@ export const ActivityType = ({
 export const ClubType = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  selectHandler,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  selectHandler?: (type: string) => void;
 }) => {
-  const [select, setselect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) selectHandler('club');
+    if (selectHandler && isButton) selectHandler('club');
   };
 
   return (
@@ -170,16 +190,14 @@ export const ClubType = ({
 export const CarType = ({
   isButton,
   isSelected,
-  selectHandler = (type: string) => {},
+  selectHandler,
 }: {
   isButton: boolean;
   isSelected: boolean;
-  selectHandler: (type: string) => void;
+  selectHandler?: (type: string) => void;
 }) => {
-  const [select, setselect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) selectHandler('car');
+    if (selectHandler && isButton) selectHandler('car');
   };
 
   return (

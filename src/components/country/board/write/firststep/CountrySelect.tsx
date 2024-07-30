@@ -33,8 +33,9 @@ const CountrySelect = ({
     }
   };
 
-  const countryHandler = (country: string) => {
+  const countryHandler = (country: string, continent: string) => {
     setValue('countryName', country);
+    setValue('continent', continent);
   };
 
   useEffect(() => {
@@ -65,7 +66,12 @@ const CountrySelect = ({
           : countryList.map((countryItem) => (
               <li
                 key={countryItem.countryNameEnglish}
-                onClick={() => countryHandler(countryItem.countryNameEnglish)}
+                onClick={() =>
+                  countryHandler(
+                    countryItem.countryNameEnglish,
+                    countryItem.continentNameEnglish,
+                  )
+                }
               >
                 <CountryBox
                   name={countryItem.countryNameEnglish}
