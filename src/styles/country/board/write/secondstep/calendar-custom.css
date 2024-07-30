@@ -3,7 +3,6 @@
   width: 400px;
   height: 312px;
   top: 68px;
-  right: 0px;
   border-radius: 20px;
   padding: 20px;
   background: #ffffff;
@@ -185,9 +184,10 @@
 @media (max-width: 1023px) {
   .react-calendar {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 16px);
     height: 312px;
     top: 58px;
+    right: 8px;
     border-radius: 20px;
     padding: 12px;
     background: #ffffff;

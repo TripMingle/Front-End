@@ -6,8 +6,6 @@ import { WhiteHeader } from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
-import TripStyleButton from '@/components/common/TripStyleButton';
-import TripTypeButton from '@/components/common/TripTypeButton';
 import CommentInput from '@/components/common/CommentInput';
 import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
@@ -88,34 +86,11 @@ const Page = () => {
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>여행 스타일</p>
-              <div className={styles.infoItem}>
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="nonSmoke"
-                />
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="shopping"
-                />
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="photo"
-                />
-              </div>
+              <div className={styles.infoItem}></div>
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>여행 타입</p>
-              <div className={styles.infoItem}>
-                <TripTypeButton
-                  isButton={false}
-                  isSelected={true}
-                  type="simple"
-                />
-                <TripTypeButton isButton={false} isSelected={true} type="bed" />
-              </div>
+              <div className={styles.infoItem}></div>
             </div>
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>여행 일정</p>

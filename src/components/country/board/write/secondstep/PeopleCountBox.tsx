@@ -1,13 +1,11 @@
 import * as styles from '@/styles/country/board/write/secondstep/people-count-box.css';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 
 const PeopleCountBox = () => {
-  const [count, setCount] = useState<number>();
-
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCount(Number(event.target.value));
-  };
+  const { register } = useFormContext<BoardForm>();
 
   return (
     <div className={styles.container}>
@@ -15,8 +13,7 @@ const PeopleCountBox = () => {
       <input
         className={styles.input}
         type="number"
-        value={count}
-        onChange={changeHandler}
+        {...register('maxCount', { valueAsNumber: true })}
       />
       <span>명</span>
     </div>

@@ -8,6 +8,7 @@ export const typeContainer = recipe({
     alignItems: 'center',
     borderRadius: 20,
     gap: 5,
+    cursor: 'pointer',
     '@media': {
       'screen and (min-width: 1024px)': {
         borderRadius: 50,

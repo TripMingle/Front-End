@@ -1,19 +1,28 @@
 import * as styles from '@/styles/country/board/write/fourthstep/content-input.css';
 import { useRef, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 
-const ContentInput = ({ scrollHandler }: { scrollHandler: () => void }) => {
-  const [title, setTitle] = useState<string>('');
-  const [content, setContent] = useState<string>('');
+const ContentInput = ({
+  content,
+  contentHandler,
+  scrollHandler,
+}: {
+  content: string;
+  contentHandler: (content: string) => void;
+  scrollHandler: () => void;
+}) => {
+  const { watch, register } = useFormContext<BoardForm>();
+
+  const title = watch('title');
+
   const contentRef = useRef<any>(null);
-
-  const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length <= 30) setTitle(event.target.value);
-  };
 
   const contentChangeHandler = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
-    if (event.target.value.length <= 1000) setContent(event.target.value);
+    contentHandler(event.target.value);
+
     if (contentRef.current) {
       contentRef.current.style.height = `auto`;
       contentRef.current.style.height = `${contentRef.current.scrollHeight}px`;
@@ -30,8 +39,8 @@ const ContentInput = ({ scrollHandler }: { scrollHandler: () => void }) => {
             className={styles.titleInput}
             type="text"
             placeholder="제목을 입력하세요."
-            value={title}
-            onChange={titleChangeHandler}
+            {...register('title', { required: true, maxLength: 30 })}
+            maxLength={30}
           />
           <span>{`${title.length}/30`}</span>
         </div>
@@ -42,10 +51,12 @@ const ContentInput = ({ scrollHandler }: { scrollHandler: () => void }) => {
           <textarea
             className={styles.contentInput}
             placeholder="Ex) 파리 에펠탑에서 7시에 피크닉할 분 구해요!"
+            {...register('content', { maxLength: 1000 })}
             value={content}
-            rows={10}
             onChange={contentChangeHandler}
             ref={contentRef}
+            maxLength={1000}
+            rows={10}
           />
           <span
             className={styles.contentLength}

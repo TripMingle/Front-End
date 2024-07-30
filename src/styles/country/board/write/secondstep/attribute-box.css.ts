@@ -50,6 +50,7 @@ export const radioGroup = style({
   fontWeight: 700,
   fontSize: 10,
   color: vars.color.g400,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 72,

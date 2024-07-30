@@ -63,6 +63,8 @@ export const contentInput = style({
   fontWeight: 400,
   fontSize: 13,
   color: vars.color.black,
+  overflow: 'hidden',
+  boxSizing: 'border-box',
   '::placeholder': {
     color: vars.color.g400,
   },

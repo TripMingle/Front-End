@@ -4,14 +4,19 @@ import * as styles from '@/styles/country/board/write/secondstep/calendar-box.cs
 import '@/styles/country/board/write/secondstep/calendar-custom.css';
 import { useState } from 'react';
 import { formatDay } from '@/utils/date';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 
 type Value = Date | null;
 type Range<T> = [T, T];
 
 const CalendarBox = () => {
+  const { watch, setValue } = useFormContext<BoardForm>();
+
+  const startDate = watch('startDate');
+  const endDate = watch('endDate');
+
   const [showCalendar, setShowCalendar] = useState<boolean>(false);
-  const [startDate, setStartDate] = useState<string>('');
-  const [endDate, setEndDate] = useState<string>('');
 
   const formatCalendarDay = (
     locale: string | undefined,
@@ -30,8 +35,8 @@ const CalendarBox = () => {
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     if (Array.isArray(value) && value[0] && value[1]) {
-      setStartDate(formatDay(value[0]));
-      setEndDate(formatDay(value[1]));
+      setValue('startDate', formatDay(value[0]));
+      setValue('endDate', formatDay(value[1]));
       setShowCalendar(!showCalendar);
     }
   };

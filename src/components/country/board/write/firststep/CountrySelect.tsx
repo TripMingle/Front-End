@@ -2,24 +2,25 @@ import {
   listContainer,
   resultContainer,
 } from '@/styles/country/board/write/firststep/country-box.css';
-import CountryBox from './CountryBox';
 import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import {
   getCountryByContinent,
   getCountryByKeyword,
 } from '@/api/getCountryInfo';
+import { BoardForm } from '@/types/country/board';
+import CountryBox from './CountryBox';
 
 const CountrySelect = ({
-  country,
   searchCountry,
-  countryClickHandler,
   countrySearchHandler,
 }: {
-  country: string;
   searchCountry: string;
-  countryClickHandler: (country: string) => void;
   countrySearchHandler: (search: string) => void;
 }) => {
+  const { watch, setValue } = useFormContext<BoardForm>();
+  const country = watch('countryName');
+
   const [countryList, setCountryList] = useState<Country[]>([]);
 
   const getCountryList = async (keyword: string) => {
@@ -32,13 +33,17 @@ const CountrySelect = ({
     }
   };
 
+  const countryHandler = (country: string) => {
+    setValue('countryName', country);
+  };
+
   useEffect(() => {
     if (searchCountry) {
       getCountryList(searchCountry);
     } else {
       setCountryList([]);
     }
-    if (country) countryClickHandler('');
+    if (country) setValue('countryName', '');
   }, [searchCountry]);
 
   return (
@@ -60,9 +65,7 @@ const CountrySelect = ({
           : countryList.map((countryItem) => (
               <li
                 key={countryItem.countryNameEnglish}
-                onClick={() =>
-                  countryClickHandler(countryItem.countryNameEnglish)
-                }
+                onClick={() => countryHandler(countryItem.countryNameEnglish)}
               >
                 <CountryBox
                   name={countryItem.countryNameEnglish}

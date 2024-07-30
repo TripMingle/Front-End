@@ -8,46 +8,22 @@ import ClubIcon from './icons/ClubIcon';
 import CarIcon from './icons/CarIcon';
 import SimpleIcon from './icons/SimpleIcon';
 
-const TripTypeButton = ({
-  isButton,
-  isSelected,
-  type,
-}: {
-  isButton: boolean;
-  isSelected: boolean;
-  type: string;
-}) => {
-  if (type === 'simple') {
-    return <SimpleType isButton={isButton} isSelected={isSelected} />;
-  } else if (type === 'bed') {
-    return <BedType isButton={isButton} isSelected={isSelected} />;
-  } else if (type === 'food') {
-    return <FoodType isButton={isButton} isSelected={isSelected} />;
-  } else if (type === 'activity') {
-    return <ActivityType isButton={isButton} isSelected={isSelected} />;
-  } else if (type === 'club') {
-    return <ClubType isButton={isButton} isSelected={isSelected} />;
-  }
-};
-
 export const SimpleType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
-  const [select, setSelect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) {
-      setSelect(!select);
-    }
+    if (isButton) selectHandler('simple');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -56,9 +32,9 @@ export const SimpleType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>단순 동행</span>
+      <span className={styles.text({ select: isSelected })}>단순 동행</span>
     </div>
   );
 };
@@ -66,21 +42,19 @@ export const SimpleType = ({
 export const BedType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
-  const [select, setselect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) {
-      setselect(!select);
-    }
+    if (isButton) selectHandler('bed');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -89,9 +63,9 @@ export const BedType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>숙소 동행</span>
+      <span className={styles.text({ select: isSelected })}>숙소 동행</span>
     </div>
   );
 };
@@ -99,21 +73,21 @@ export const BedType = ({
 export const FoodType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
   const [select, setselect] = useState(isSelected);
 
   const clickHandler = () => {
-    if (isButton) {
-      setselect(!select);
-    }
+    if (isButton) selectHandler('food');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -122,9 +96,9 @@ export const FoodType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>식사 동행</span>
+      <span className={styles.text({ select: isSelected })}>식사 동행</span>
     </div>
   );
 };
@@ -132,21 +106,19 @@ export const FoodType = ({
 export const ActivityType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
-  const [select, setselect] = useState(isSelected);
-
   const clickHandler = () => {
-    if (isButton) {
-      setselect(!select);
-    }
+    if (isButton) selectHandler('activity');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -155,9 +127,9 @@ export const ActivityType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>액티비티 동행</span>
+      <span className={styles.text({ select: isSelected })}>액티비티 동행</span>
     </div>
   );
 };
@@ -165,21 +137,21 @@ export const ActivityType = ({
 export const ClubType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
   const [select, setselect] = useState(isSelected);
 
   const clickHandler = () => {
-    if (isButton) {
-      setselect(!select);
-    }
+    if (isButton) selectHandler('club');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -188,9 +160,9 @@ export const ClubType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>클럽 동행</span>
+      <span className={styles.text({ select: isSelected })}>클럽 동행</span>
     </div>
   );
 };
@@ -198,21 +170,21 @@ export const ClubType = ({
 export const CarType = ({
   isButton,
   isSelected,
+  selectHandler = (type: string) => {},
 }: {
   isButton: boolean;
   isSelected: boolean;
+  selectHandler: (type: string) => void;
 }) => {
   const [select, setselect] = useState(isSelected);
 
   const clickHandler = () => {
-    if (isButton) {
-      setselect(!select);
-    }
+    if (isButton) selectHandler('car');
   };
 
   return (
     <div
-      className={styles.typeContainer({ select })}
+      className={styles.typeContainer({ select: isSelected })}
       onClick={() => {
         clickHandler();
       }}
@@ -221,11 +193,9 @@ export const CarType = ({
         className={styles.icon}
         width={19}
         height={19}
-        color={select ? '#3688FF' : '#888888'}
+        color={isSelected ? '#3688FF' : '#888888'}
       />
-      <span className={styles.text({ select })}>차량 동행</span>
+      <span className={styles.text({ select: isSelected })}>차량 동행</span>
     </div>
   );
 };
-
-export default TripTypeButton;

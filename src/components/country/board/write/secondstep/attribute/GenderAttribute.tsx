@@ -1,13 +1,17 @@
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/attribute-box.css';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 import CoupleIcon from '@/components/common/icons/CoupleIcon';
 
 const GenderAttribute = () => {
-  const [value, setValue] = useState<number>(3);
+  const { watch, setValue } = useFormContext<BoardForm>();
+
+  const value = watch('preferGender');
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
+    setValue('preferGender', Number(event.target.value));
   };
 
   return (
@@ -27,9 +31,12 @@ const GenderAttribute = () => {
               checked={element.value === value}
               onChange={changeHandler}
             />
-            <label className={styles.radioGroup} htmlFor={'gender' + element.text}>
+            <label
+              className={styles.radioGroup}
+              htmlFor={'gender' + element.text}
+            >
               <Image
-              className={styles.check({select: element.value === value})}
+                className={styles.check({ select: element.value === value })}
                 src={'/icons/w_check.svg'}
                 alt="checkIcon"
                 width={16}

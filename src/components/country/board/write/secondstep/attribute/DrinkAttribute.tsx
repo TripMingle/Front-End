@@ -1,13 +1,17 @@
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/attribute-box.css';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 import DrinkIcon from '@/components/common/icons/DrinkIcon';
 
 const DrinkAttribute = () => {
-  const [value, setValue] = useState<number>(3);
+  const { watch, setValue } = useFormContext<BoardForm>();
+
+  const value = watch('preferDrink');
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
+    setValue('preferDrink', Number(event.target.value));
   };
   return (
     <div className={styles.container}>

@@ -1,19 +1,33 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/language-box.css';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 
-const LanguageBox = () => {
-  const [showLanguages, SetShowLanguages] = useState<boolean>(false);
-  const [language, setLanguage] = useState<string[]>([]);
+const LanguageBox = ({
+  languages,
+  languagesHandler,
+}: {
+  languages: string[];
+  languagesHandler: (eng: string, kor: string) => void;
+}) => {
+  const { setValue, watch } = useFormContext<BoardForm>();
+  const language = watch('language');
+  const [showLanguages, setShowLanguages] = useState<boolean>(false);
+
+  const clickHandler = (eng: string, kor: string) => {
+    setValue('language', eng);
+    languagesHandler(eng, kor);
+  };
 
   return (
     <div
       className={styles.container({ show: showLanguages })}
-      onClick={() => SetShowLanguages(!showLanguages)}
+      onClick={() => setShowLanguages(!showLanguages)}
     >
       <div className={styles.explainContainer}>
-        <span className={styles.explain({ select: language.length > 0 })}>
-          {language.length ? language[1] : '사용하시는 언어를 선택해 주세요.'}
+        <span className={styles.explain({ select: languages.length > 0 })}>
+          {languages.length ? languages[1] : '사용하시는 언어를 선택해 주세요.'}
         </span>
         <Image
           className={styles.dropIcon({ show: showLanguages })}
@@ -28,14 +42,14 @@ const LanguageBox = () => {
           {Languages.map((l) => (
             <li
               className={styles.languageContainer({
-                select: l.eng === language[0],
+                select: l.eng === languages[0],
               })}
               key={l.eng}
-              onClick={() => setLanguage([l.eng, l.kor])}
+              onClick={() => clickHandler(l.eng, l.kor)}
             >
               <span className={styles.language}>{l.kor}</span>
               <Image
-                className={styles.checkIcon({ select: l.eng === language[0] })}
+                className={styles.checkIcon({ select: l.eng === languages[0] })}
                 src="/icons/blue_check.svg"
                 alt="checkIcon"
                 width={24}

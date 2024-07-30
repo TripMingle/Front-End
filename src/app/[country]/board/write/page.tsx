@@ -1,7 +1,7 @@
 'use client';
 import '@/styles/font.css';
 import { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/country/board/write/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import Progress from '@/components/country/board/write/Progress';
@@ -13,27 +13,29 @@ import ContentInput from '@/components/country/board/write/fourthstep/ContentInp
 import { BoardForm, boardFormDefault } from '@/types/country/board';
 
 const Page = () => {
-  const { register, watch, handleSubmit } = useForm<BoardForm>({
-    mode: 'onSubmit',
-    defaultValues: boardFormDefault,
-  });
+  const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
 
-  const [step, setStep] = useState<number>(2);
-  const [country, setCountry] = useState<string>('');
+  const [step, setStep] = useState<number>(1);
   const [searchCountry, setSearchCountry] = useState<string>('');
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [content, setContent] = useState<string>('');
 
   const pageContentRef = useRef<any>(null);
 
-  const countryClickHandler = (country: string) => {
-    setCountry(country);
+  const stepHandler = (step: number) => {
+    setStep(step);
   };
 
   const countrySearchHandler = (search: string) => {
     setSearchCountry(search);
   };
 
-  const stepHandler = (step: number) => {
-    setStep(step);
+  const languagesHandler = (eng: string, kor: string) => {
+    setLanguages([eng, kor]);
+  };
+
+  const contentHandler = (content: string) => {
+    setContent(content);
   };
 
   const scrollToBottom = () => {
@@ -47,18 +49,20 @@ const Page = () => {
         countrySearchHandler={countrySearchHandler}
       />
       <CountrySelect
-        country={country}
         searchCountry={searchCountry}
-        countryClickHandler={countryClickHandler}
         countrySearchHandler={countrySearchHandler}
       />
     </>,
     <>
-      <InfoInput />
+      <InfoInput languages={languages} languagesHandler={languagesHandler} />
     </>,
     <></>,
     <>
-      <ContentInput scrollHandler={scrollToBottom} />
+      <ContentInput
+        content={content}
+        contentHandler={contentHandler}
+        scrollHandler={scrollToBottom}
+      />
     </>,
   ];
 
@@ -85,17 +89,18 @@ const Page = () => {
       <div className={styles.pageContainer}>
         <Progress step={step} />
         <p className={styles.explainText}>{explains[step - 1]}</p>
-        <div className={styles.contentContainer} ref={pageContentRef}>
-          {components[step - 1]}
-        </div>
-        <StepButton
-          step={step}
-          country={country}
-          searchCountry={searchCountry}
-          stepHandler={stepHandler}
-          searchHandler={countrySearchHandler}
-          countryHandler={countryClickHandler}
-        />
+        <FormProvider {...methods}>
+          <div className={styles.contentContainer} ref={pageContentRef}>
+            {components[step - 1]}
+          </div>
+          <StepButton
+            step={step}
+            content={content}
+            stepHandler={stepHandler}
+            searchCountry={searchCountry}
+            searchHandler={countrySearchHandler}
+          />
+        </FormProvider>
       </div>
     </main>
   );

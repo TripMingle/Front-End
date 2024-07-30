@@ -1,39 +1,66 @@
+import { postBoard } from '@/api/postBoard';
 import * as styles from '@/styles/country/board/write/step-button.css';
+import { BoardForm } from '@/types/country/board';
+import { useFormContext } from 'react-hook-form';
 
 const StepButton = ({
   step,
-  country,
+  content,
   searchCountry,
   stepHandler,
   searchHandler,
-  countryHandler,
 }: {
   step: number;
-  country: string;
+  content: string;
   searchCountry: string;
   stepHandler: (step: number) => void;
   searchHandler: (search: string) => void;
-  countryHandler: (country: string) => void;
 }) => {
+  const { watch, setValue, handleSubmit } = useFormContext<BoardForm>();
+  const country = watch('countryName');
+  const endDate = watch('endDate');
+  const language = watch('language');
+  const maxCount = watch('maxCount');
+  const title = watch('title');
+
+  const checkValue = () => {
+    if (step === 1) {
+      if (country) return true;
+      return false;
+    } else if (step === 2) {
+      if (endDate && language && maxCount > 0) return true;
+      return false;
+    } else if (step === 3) {
+      return true;
+    } else {
+      if (title && content) return true;
+      return false;
+    }
+  };
+
+  const submit = async (data: BoardForm) => {
+    console.log(data);
+    const response = await postBoard(data);
+    console.log(response);
+  };
+
   const beforeClickHandler = () => {
     if (step === 1) {
-      countryHandler('');
+      setValue('countryName', '');
       searchHandler('');
-    } else if (step === 2) {
-      stepHandler(step - 1);
     } else {
       stepHandler(step - 1);
     }
   };
 
   const nextClickHandler = () => {
-    if (step === 1) {
-      if (country !== '') stepHandler(step + 1);
-    }
-    if (step === 2) {
-      stepHandler(step + 1);
+    if (step === 4) {
+      if (content) {
+        setValue('content', content);
+        handleSubmit(submit)();
+      }
     } else {
-      stepHandler(step + 1);
+      if (checkValue()) stepHandler(step + 1);
     }
   };
 
@@ -47,7 +74,7 @@ const StepButton = ({
         <></>
       )}
       <button
-        className={styles.nextButton({ select: country !== '' })}
+        className={styles.nextButton({ select: checkValue() })}
         onClick={nextClickHandler}
       >
         {step < 4 ? '다음' : '게시'}

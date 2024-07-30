@@ -1,13 +1,17 @@
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/board/write/secondstep/attribute-box.css';
+import { useFormContext } from 'react-hook-form';
+import { BoardForm } from '@/types/country/board';
 import PhotoIcon from '@/components/common/icons/PhotoIcon';
 
 const PhotoAttribute = () => {
-  const [value, setValue] = useState<number>(3);
+  const { watch, setValue } = useFormContext<BoardForm>();
+
+  const value = watch('preferInstagramPicture');
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
+    setValue('preferInstagramPicture', Number(event.target.value));
   };
   return (
     <div className={styles.container}>

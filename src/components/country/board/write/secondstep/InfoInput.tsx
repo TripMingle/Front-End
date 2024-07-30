@@ -5,7 +5,13 @@ import AttributeBox from './AttributeBox';
 import TypeBox from './TypeBox';
 import PeopleCountBox from './PeopleCountBox';
 
-const InfoInput = () => {
+const InfoInput = ({
+  languages,
+  languagesHandler,
+}: {
+  languages: string[];
+  languagesHandler: (eng: string, kor: string) => void;
+}) => {
   return (
     <div>
       <div className={styles.fieldContainer}>
@@ -14,7 +20,10 @@ const InfoInput = () => {
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>언어</p>
-        <LanguageBox />
+        <LanguageBox
+          languages={languages}
+          languagesHandler={languagesHandler}
+        />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>인원</p>
