@@ -6,19 +6,20 @@ import { WhiteHeader } from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
-import TripStyleButton from '@/components/common/TripStyleButton';
-import TripTypeButton from '@/components/common/TripTypeButton';
 import CommentInput from '@/components/common/CommentInput';
-import { useBoardStore } from '@/store/boardStore';
 import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
 import { usePathname } from 'next/navigation';
 import { getBoardDetail } from '@/api/getBoard';
+import { BoardDetailType } from '@/types/country/board';
+import { initialBoardDetail } from '@/store/boardStore';
+import { TripTypeButton } from '@/components/common/TripTypeButton';
+import AttributeBox from '@/components/country/board/id/AttributeBox';
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const boardDetail = useBoardStore((state) => state.boardDetail);
-  const setBoardDetail = useBoardStore((state) => state.setBoardDetail);
+  const [boardDetail, setBoardDetail] =
+    useState<BoardDetailType>(initialBoardDetail);
   const pathname = usePathname();
 
   const getBoardId = () => {
@@ -30,6 +31,15 @@ const Page = () => {
     const boardId = getBoardId();
     const data = await getBoardDetail(boardId);
     setBoardDetail(data.data);
+  };
+
+  const hasTripStyle = () => {
+    if (boardDetail.preferGender !== 3) return true;
+    if (boardDetail.preferSmoking !== 3) return true;
+    if (boardDetail.preferBudget !== 3) return true;
+    if (boardDetail.preferPhoto !== 3) return true;
+    if (boardDetail.preferDrink !== 3) return true;
+    return false;
   };
 
   useEffect(() => {
@@ -45,8 +55,8 @@ const Page = () => {
       <WhiteHeader />
       <ChatModal
         isOpen={isOpen}
-        nickName="홍길동"
-        userId={1}
+        nickName={boardDetail.nickName}
+        userId={boardDetail.userId}
         chatHandler={chatHandler}
       />
       <div className={styles.pageContainer}>
@@ -85,37 +95,41 @@ const Page = () => {
                 <span>{boardDetail.commentCount}</span>
               </span>
             </div>
-            <div className={styles.infoContainer}>
-              <p className={styles.infoTitle}>여행 스타일</p>
-              <div className={styles.infoItem}>
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="nonSmoke"
-                />
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="shopping"
-                />
-                <TripStyleButton
-                  isButton={false}
-                  isSelected={true}
-                  type="photo"
-                />
+            {hasTripStyle() ? (
+              <div className={styles.infoContainer}>
+                <p className={styles.infoTitle}>동행자 특성</p>
+                <div className={styles.infoItem}>
+                  <AttributeBox
+                    props={{
+                      preferGender: boardDetail.preferGender,
+                      preferSmoking: boardDetail.preferSmoking,
+                      preferBudget: boardDetail.preferBudget,
+                      preferPhoto: boardDetail.preferPhoto,
+                      preferDrink: boardDetail.preferDrink,
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            <div className={styles.infoContainer}>
-              <p className={styles.infoTitle}>여행 타입</p>
-              <div className={styles.infoItem}>
-                <TripTypeButton
-                  isButton={false}
-                  isSelected={true}
-                  type="couple"
-                />
-                <TripTypeButton isButton={false} isSelected={true} type="bed" />
+            ) : (
+              <></>
+            )}
+            {boardDetail.tripType.length ? (
+              <div className={styles.infoContainer}>
+                <p className={styles.infoTitle}>동행 타입</p>
+                <div className={styles.infoItem}>
+                  {boardDetail.tripType.map((type) => (
+                    <TripTypeButton
+                      key={type}
+                      isButton={false}
+                      isSelected={true}
+                      type={type}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <></>
+            )}
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>여행 일정</p>
               <div className={styles.infoContent}>
@@ -129,7 +143,17 @@ const Page = () => {
               <div className={styles.infoContent}>{boardDetail.content}</div>
             </div>
           </div>
-          <TravelerCard chatHandler={chatHandler} />
+          <TravelerCard
+            props={{
+              userImageUrl: boardDetail.userImageUrl,
+              nickName: boardDetail.nickName,
+              ageRange: boardDetail.ageRange,
+              gender: boardDetail.gender,
+              nationality: boardDetail.nationality,
+              selfIntroduction: boardDetail.selfIntroduction ?? '',
+            }}
+            chatHandler={chatHandler}
+          />
         </div>
         <div className={styles.container}>
           <div className={styles.commentContainer}>
@@ -144,7 +168,7 @@ const Page = () => {
               boardId={boardDetail.boardId}
               inputHandler={getBoardData}
             />
-            <CommentList />
+            <CommentList comments={boardDetail.boardComments} />
           </div>
         </div>
       </div>

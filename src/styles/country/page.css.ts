@@ -45,7 +45,7 @@ export const contentContainer = style({
 });
 
 export const categoryContainer = style({
-  padding: '30px 0px',
+  paddingBottom: 60,
 });
 
 export const icon = style({
@@ -135,12 +135,18 @@ export const postContainer = style({
 });
 
 export const moveToMain = style({
+  position: 'relative',
+  left: '50%',
+  maxWidth: 1080,
+  padding: '40px 20px 0px 20px',
   fontSize: 16,
   fontWeight: 500,
   color: vars.color.g500,
   cursor: 'pointer',
+  transform: 'translate(-50%,0)',
   '@media': {
     'screen and (min-width: 1024px)': {
+      padding: '30px 60px 0px 60px',
       fontSize: 18,
     },
   },

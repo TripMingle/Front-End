@@ -7,7 +7,7 @@ const Comment = ({ props }: { props: CommentType }) => {
   return (
     <div className={styles.commentContainer}>
       <Profile
-        url={''}
+        url={props.userImageUrl}
         width={30}
         height={30}
         changeWidth={36}
@@ -16,7 +16,9 @@ const Comment = ({ props }: { props: CommentType }) => {
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
           <span className={styles.name}>{props.userNickname}</span>
-          <span className={styles.time}>{formatDate(props.registeredDate)}</span>
+          <span className={styles.time}>
+            {formatDate(props.registeredDate)}
+          </span>
         </div>
         <p className={styles.content}>{props.content}</p>
       </div>

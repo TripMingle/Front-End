@@ -9,14 +9,17 @@ import { getPost } from '@/api/getPost';
 import { useCountryStore } from '@/store/countryStore';
 import { usePostStore } from '@/store/postStore';
 import EmptyPost from '../EmptyPost';
+import { usePathname } from 'next/navigation';
+import { getCountryName } from '@/utils/country';
 
 const PostCardList = () => {
-  const country = useCountryStore((state) => state.country);
-  const category = usePostStore((state) => state.category);
-  const setCategory = usePostStore((state) => state.setCategory);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [postList, setPostList] = useState<PostPreviewProps[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
+  const category = usePostStore((state) => state.category);
+  const setCategory = usePostStore((state) => state.setCategory);
 
   const getPostList = async () => {
     if (country) {
@@ -34,6 +37,10 @@ const PostCardList = () => {
   const categoryHandler = (category: string) => {
     setCategory(category);
   };
+
+  useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
 
   useEffect(() => {
     getPostList();

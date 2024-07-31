@@ -3,7 +3,7 @@
 import Good from '@/components/country/Icons/Good';
 import House from '@/components/country/Icons/House';
 import Calendar from '@/components/country/Icons/Calendar';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/post/select-category.css';
 import { usePostStore } from '@/store/postStore';
 

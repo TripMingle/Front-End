@@ -4,18 +4,26 @@ import { vars } from '../../globalTheme.css';
 export const bgOverlay = style({
   position: 'absolute',
   width: '100%',
-  height: '100%',
-  background: 'linear-gradient(45deg, #2F90FF 0%, #04BEFF 100%)',
-  opacity: 0.3,
+  height: 320,
+  top: 0,
+  left: 0,
+  zIndex: 1,
+  background:
+    'linear-gradient(45deg, rgba(47, 144, 255, 0.3) 0%, rgba(4, 190, 255, 0.3) 100%)',
+  textAlign: 'center',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 460,
+    },
+  },
 });
 
 export const mapContainer = style({
-  position: 'absolute',
+  position: 'relative',
   display: 'inline-flex',
   width: 292,
   top: '50%',
-  left: '50%',
-  transform: 'translate(-50%,-50%)',
+  transform: 'translate(0,-50%)',
   flexDirection: 'column',
   alignItems: 'center',
   '@media': {
@@ -67,7 +75,6 @@ export const plain = style({
   color: vars.color.black,
   fontWeight: 500,
   fontSize: 20,
-  marginTop: 30,
   marginBottom: 20,
   '@media': {
     'screen and (min-width: 1024px)': {

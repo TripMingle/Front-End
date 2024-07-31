@@ -2,38 +2,36 @@
 import Image from 'next/image';
 import * as styles from '@/styles/components/common/countryWrite.css';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useCountryStore } from '@/store/countryStore';
 import { formatCountryUrl } from '@/utils/country';
 
-const CountryWrite = () => {
-  const [active, setActive] = useState<boolean>(false);
-  const country = useCountryStore((state) => state.country);
+const CountryWrite = ({ type }: { type: string }) => {
+  // const [active, setActive] = useState<boolean>(false);
+  const pathname = usePathname();
   const router = useRouter();
 
   const clickHandler = (type: string) => {
-    if (country) {
-      router.push(`/${formatCountryUrl(country)}/${type}/write`);
-    }
+    router.push(`${pathname}/write`);
   };
 
   return (
     <div className={styles.countryWriteContainer}>
       <div className={styles.writeItemContainer}>
         <div
-          className={styles.writeContainer({ active: active, type: 'board' })}
+          className={styles.writeContainer({ active: false, type: 'board' })}
           onClick={() => clickHandler('board')}
         >
           동행글
         </div>
         <div
-          className={styles.writeContainer({ active: active, type: 'post' })}
+          className={styles.writeContainer({ active: false, type: 'post' })}
           onClick={() => clickHandler('post')}
         >
           정보글
         </div>
         <div
-          onClick={() => setActive(!active)}
+          onClick={() => clickHandler(type)}
           className={styles.iconContainer}
         >
           <Image

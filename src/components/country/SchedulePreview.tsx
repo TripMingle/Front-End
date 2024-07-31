@@ -5,12 +5,14 @@ import More from '../common/More';
 import PostCard from '../common/PostCard';
 import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
-import { useCountryStore } from '@/store/countryStore';
 import { getPostPreview } from '@/api/getPost';
 import EmptyPost from './EmptyPost';
+import { usePathname } from 'next/navigation';
+import { getCountryName } from '@/utils/country';
 
 const SchedulePreview = () => {
-  const country = useCountryStore((state) => state.country);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [schedulePreview, setSchedulePreview] = useState<PostPreviewProps[]>(
     [],
   );
@@ -21,6 +23,10 @@ const SchedulePreview = () => {
       setSchedulePreview(data.data);
     }
   };
+
+  useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
 
   useEffect(() => {
     getPreview();

@@ -5,21 +5,23 @@ import * as styles from '@/styles/country/page.css';
 import BoardCard from '@/components/common/BoardCard';
 import { getBoard } from '@/api/getBoard';
 import { useEffect, useState } from 'react';
-import { useCountryStore } from '@/store/countryStore';
 import { BoardPreviewProps } from '@/types/country/board';
 import Pagination from '@/components/common/Pagination';
 import { EmptyBoard } from '../EmptyBoard';
+import { getCountryName } from '@/utils/country';
+import { usePathname } from 'next/navigation';
 
 const BoardList = () => {
-  const continent = useCountryStore((state) => state.country);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [boardList, setBoardList] = useState<BoardPreviewProps[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
   const [totalBoard, setTotalBoard] = useState<number>(0);
 
   const getBoardList = async () => {
-    if (continent) {
-      const data = await getBoard(continent, page);
+    if (country) {
+      const data = await getBoard(country, page);
       setTotalPage(data.data.totalPages);
       setTotalBoard(data.data.totalElements);
       setBoardList(data.data.content);
@@ -31,8 +33,12 @@ const BoardList = () => {
   };
 
   useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
+
+  useEffect(() => {
     getBoardList();
-  }, [continent, page]);
+  }, [country, page]);
 
   return (
     <div>

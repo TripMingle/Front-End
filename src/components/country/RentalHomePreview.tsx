@@ -3,14 +3,16 @@ import * as styles from '@/styles/country/page.css';
 import House from './Icons/House';
 import More from '../common/More';
 import PostCard from '../common/PostCard';
-import { useCountryStore } from '@/store/countryStore';
 import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
 import { getPostPreview } from '@/api/getPost';
 import EmptyPost from './EmptyPost';
+import { usePathname } from 'next/navigation';
+import { getCountryName } from '@/utils/country';
 
 const RentalHomePreview = () => {
-  const country = useCountryStore((state) => state.country);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [rentalHomePreview, setRentalHomePreview] = useState<
     PostPreviewProps[]
   >([]);
@@ -21,6 +23,10 @@ const RentalHomePreview = () => {
       setRentalHomePreview(data.data);
     }
   };
+
+  useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
 
   useEffect(() => {
     getPreview();
