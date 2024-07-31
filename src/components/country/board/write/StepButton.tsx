@@ -1,6 +1,8 @@
 import { postBoard } from '@/api/postBoard';
 import * as styles from '@/styles/country/board/write/step-button.css';
 import { BoardForm } from '@/types/country/board';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 const StepButton = ({
@@ -23,6 +25,10 @@ const StepButton = ({
   const maxCount = watch('maxCount');
   const title = watch('title');
 
+  const router = useRouter();
+
+  const [isSubmit, setIsSubmit] = useState<boolean>(true);
+
   const checkValue = () => {
     if (step === 1) {
       if (country) return true;
@@ -33,7 +39,7 @@ const StepButton = ({
     } else if (step === 3) {
       return true;
     } else {
-      if (title && content) return true;
+      if (isSubmit && title && content) return true;
       return false;
     }
   };
@@ -41,7 +47,12 @@ const StepButton = ({
   const submit = async (data: BoardForm) => {
     console.log(data);
     const response = await postBoard(data);
-    console.log(response);
+    console.log(response.data);
+    if (response.data)
+      router.push(
+        `/${response.data.countryName}/board/${response.data.boardId}`,
+      );
+    setIsSubmit(true);
   };
 
   const beforeClickHandler = () => {
@@ -55,7 +66,8 @@ const StepButton = ({
 
   const nextClickHandler = () => {
     if (step === 4) {
-      if (content) {
+      if (isSubmit && content) {
+        setIsSubmit(false);
         setValue('content', content);
         handleSubmit(submit)();
       }
@@ -77,7 +89,7 @@ const StepButton = ({
         className={styles.nextButton({ select: checkValue() })}
         onClick={nextClickHandler}
       >
-        {step < 4 ? '다음' : '게시'}
+        {step < 4 ? '다음' : isSubmit ? '게시' : '게시중...'}
       </button>
     </div>
   );
