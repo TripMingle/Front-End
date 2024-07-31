@@ -19,7 +19,10 @@ export const fixedbar = recipe({
   },
   variants: {
     theme: {
-      white: { background: vars.color.white },
+      white: {
+        background: vars.color.white,
+        boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.1)',
+      },
       clear: { background: 'rgba(0,0,0,0)' },
     },
   },
@@ -33,8 +36,9 @@ export const navbar = recipe({
     padding: '0px 24px',
     display: 'flex',
     width: '100%',
-    maxWidth: 1800,
+    maxWidth: 1920,
     alignItems: 'center',
+    boxSizing: 'border-box',
     '@media': {
       'screen and (min-width: 1024px)': {
         padding: '0px 60px',
@@ -43,7 +47,9 @@ export const navbar = recipe({
   },
   variants: {
     theme: {
-      white: { color: vars.color.black },
+      white: {
+        color: vars.color.black,
+      },
       clear: { color: vars.color.white },
     },
   },
@@ -80,6 +86,11 @@ export const logo = recipe({
   defaultVariants: {
     theme: 'white',
   },
+});
+
+export const user = style({
+  display: 'flex',
+  cursor: 'pointer',
 });
 
 export const profileContainer = style({
