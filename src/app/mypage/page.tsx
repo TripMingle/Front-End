@@ -1,3 +1,5 @@
+import '@/styles/font.css';
+
 const Page = () => {
   return <></>;
 };

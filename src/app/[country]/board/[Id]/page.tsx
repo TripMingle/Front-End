@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import '@/styles/font.css';
 import { useEffect, useState } from 'react';
-import { WhiteHeader } from '@/components/header/Header';
+import Header from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
@@ -52,7 +52,7 @@ const Page = () => {
 
   return (
     <main>
-      <WhiteHeader />
+      <Header />
       <ChatModal
         isOpen={isOpen}
         nickName={boardDetail.nickName}
