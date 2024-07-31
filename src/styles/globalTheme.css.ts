@@ -43,26 +43,7 @@ globalStyle('ul', {
   margin: 0,
 });
 
-export const bpStyle = (
-  bp: 'mobile' | 'tablet' | 'desktop',
-  rule: StyleRule,
-) => {
-  let breakpoint;
-  switch (bp) {
-    case 'mobile':
-      breakpoint = '320px';
-      break;
-    case 'tablet':
-      breakpoint = '768px';
-      break;
-    case 'desktop':
-      breakpoint = '1024px';
-      break;
-  }
+globalStyle('p', {
+  margin: 0,
+});
 
-  return {
-    '@media': {
-      [`screen and (min-width: ${breakpoint})`]: rule,
-    },
-  };
-};

@@ -96,6 +96,7 @@ export const more = style({
   color: vars.color.g500,
   fontFamily: vars.font.body,
   fontSize: 13,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 16,
@@ -124,10 +125,11 @@ export const postContainer = style({
   gap: 15,
   padding: '20px 0px',
   maxWidth: 1080,
+  gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 20,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
     },
   },
 });
@@ -136,6 +138,7 @@ export const moveToMain = style({
   fontSize: 16,
   fontWeight: 500,
   color: vars.color.g500,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 18,
@@ -145,4 +148,50 @@ export const moveToMain = style({
 
 export const countryText = style({
   color: vars.color.black,
+});
+
+export const emptyBoardContainer = style({
+  display: 'flex',
+  width: '100%',
+  height: 226,
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: vars.color.g200,
+  color: vars.color.g400,
+  fontSize: 20,
+  fontFamily: vars.font.menu,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  lineHeight: 1.5,
+  borderRadius: 16,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 338,
+      fontSize: 24,
+      borderRadius: 20,
+    },
+  },
+});
+
+export const emptyPostContainer = style({
+  display: 'flex',
+  width: '100%',
+  height: 129,
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: vars.color.g200,
+  color: vars.color.g400,
+  fontSize: 20,
+  fontFamily: vars.font.menu,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  lineHeight: 1.5,
+  borderRadius: 16,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 158,
+      fontSize: 24,
+      borderRadius: 20,
+    },
+  },
 });

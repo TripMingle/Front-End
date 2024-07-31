@@ -1,18 +1,23 @@
 import Profile from './Profile';
 import * as styles from '@/styles/components/common/post-card.css';
+import { PostPreviewProps } from '@/types/country/post';
 
-const PostCard = () => {
+const PostCard = ({ props }: { props: PostPreviewProps }) => {
   return (
     <div className={styles.postCard}>
-      <span className={styles.title}>분식을 품다 강남본점</span>
-      <span className={styles.content}>
-        분식을 품다는 당일 조리, 매장 청결을 최우선으로 하여 좋은 식자재로
-        건강어쩌구
-      </span>
+      <span className={styles.title}>{props.title}</span>
+      <span className={styles.content}>{props.content}</span>
       <div className={styles.profileContainer}>
-        <Profile url={''} width={24} height={24} />
+        <Profile
+          url={props.userImageUrl}
+          width={18}
+          height={18}
+          changeWidth={24}
+          changeHeight={24}
+        />
         <span className={styles.profileInfo}>
-          {'홍길동'} · {30}대 · {'여'} · {'중국'}
+          {`${props.userNickName} · ${props.userAgeRange.slice(0, 2)}대 · 
+          ${props.userGender === 'male' ? '남' : '여'} · ${props.userNationality}`}
         </span>
       </div>
     </div>

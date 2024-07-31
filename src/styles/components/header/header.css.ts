@@ -1,6 +1,6 @@
-import { StyleRule, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import { vars, bpStyle } from '@/styles/globalTheme.css';
+import { vars } from '@/styles/globalTheme.css';
 
 export const fixedbar = recipe({
   base: {

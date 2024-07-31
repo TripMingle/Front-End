@@ -9,11 +9,13 @@ export const container = style({
   alignItems: 'center',
   justifyItems: 'center',
   overflow: 'hidden',
+  cursor: 'pointer',
 });
 
 export const bgImage = style({
   zIndex: -2,
   borderRadius: '50%',
+  objectFit: 'cover',
 });
 
 export const bgOverlay = style({

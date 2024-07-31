@@ -1,12 +1,12 @@
 import '@/styles/font.css';
-import Image from 'next/image';
 import * as styles from '@/styles/country/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
-import BoardList from '@/components/country/BoardList';
-import FoodList from '@/components/country/FoodList';
-import HomeList from '@/components/country/HomeList';
-import ScheduleList from '@/components/country/ScheduleList';
+import BoardPreview from '@/components/country/BoardPreview';
+import CountryBackground from '@/components/country/CountryBackground';
+import RestaurantPreview from '@/components/country/RestaurantPreview';
+import RentalHomePreview from '@/components/country/RentalHomePreview';
+import SchedulePreview from '@/components/country/SchedulePreview';
 
 const Page = () => {
   return (
@@ -14,20 +14,14 @@ const Page = () => {
       <WhiteHeader />
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src="/images/countrybg.png"
-            alt="countryBackgroundImage"
-            fill
-            sizes="1920px"
-          />
+          <CountryBackground />
         </div>
         <div className={styles.contentContainer}>
-          <MoveToMain country={'중국'} />
-          <BoardList />
-          <FoodList />
-          <HomeList />
-          <ScheduleList />
+          <MoveToMain />
+          <BoardPreview />
+          <RestaurantPreview />
+          <RentalHomePreview />
+          <SchedulePreview />
         </div>
       </div>
     </main>

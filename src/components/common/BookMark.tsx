@@ -6,12 +6,13 @@ import { useState } from 'react';
 const BookMark = ({ isMarked }: { isMarked: Boolean }) => {
   const [marked, setMarked] = useState(isMarked);
 
-  const clickHandler = () => {
+  const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     setMarked(!marked);
   };
 
   return (
-    <div className={styles.bookMarkContainer} onClick={() => clickHandler()}>
+    <div className={styles.bookMarkContainer} onClick={clickHandler}>
       {marked ? (
         <Image
           className={styles.bookMark}
