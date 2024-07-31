@@ -3,7 +3,7 @@ import '@/styles/font.css';
 import { useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/country/board/write/page.css';
-import { WhiteHeader } from '@/components/header/Header';
+import Header from '@/components/header/Header';
 import Progress from '@/components/country/board/write/Progress';
 import SearchBox from '@/components/country/board/write/firststep/SearchBox';
 import CountrySelect from '@/components/country/board/write/firststep/CountrySelect';
@@ -85,7 +85,7 @@ const Page = () => {
 
   return (
     <main>
-      <WhiteHeader />
+      <Header />
       <div className={styles.pageContainer}>
         <Progress step={step} />
         <p className={styles.explainText}>{explains[step - 1]}</p>
