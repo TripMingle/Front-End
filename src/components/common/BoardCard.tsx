@@ -3,30 +3,21 @@ import * as styles from '@/styles/components/common/board-card.css';
 import { Language } from './Language';
 import BookMark from './BookMark';
 import Profile from './Profile';
-import { BoardPreviewProps } from '@/types/country/board';
-import { usePathname, useRouter } from 'next/navigation';
+import { BoardCardProps, User } from '@/types/country/user';
 
-const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const clickHandler = async () => {
-    if (pathname.indexOf('board') === -1)
-      router.push(pathname + `/board/${props.boardId}`);
-    else router.push(pathname + `/${props.boardId}`);
-  };
-
+const BoardCard = (props: BoardCardProps) => {
+  const sex = props.user.gender ? '남' : '여';
   return (
-    <div className={styles.postCard} onClick={() => clickHandler()}>
+    <div className={styles.postCard}>
       <div className={styles.imageBox}>
         <Image
-          src={props.imageUrl}
+          src="/images/tmp.png"
           fill
           sizes="(max-width :1023px) 160px, 255px"
           className={styles.image}
           alt="countryImage"
         />
-        <BookMark isMarked={props.bookMarked} />
+        <BookMark isMarked={props.isMarked} />
       </div>
       <div className={styles.contentContainer}>
         <Language language={props.language} />
@@ -56,16 +47,9 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
           </span>
         </div>
         <div className={styles.profileContainer}>
-          <Profile
-            url={props.userImageUrl}
-            width={16}
-            height={16}
-            changeWidth={24}
-            changeHeight={24}
-          />
+          <Profile url={props.user.url} width={16} height={16} />
           <span className={styles.profileInfo}>
-            {`${props.nickName} · ${props.ageRange.slice(0, 2)}대 · 
-            ${props.gender === 'male' ? '남' : '여'} · ${props.nationality}`}
+            {props.user.name} · {props.user.age}대 · {sex} · {props.user.nationality}
           </span>
         </div>
       </div>

@@ -33,11 +33,11 @@ const Japanese = () => {
 };
 
 export const Language = ({ language }: { language: string }) => {
-  if (language === 'Korean') {
+  if (language === 'korean') {
     return <Korean />;
-  } else if (language === 'English') {
+  } else if (language === 'english') {
     return <English />;
-  } else if (language === 'Chinese') {
+  } else if (language === 'chinese') {
     return <Chinese />;
   } else {
     return <Japanese />;

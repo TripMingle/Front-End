@@ -3,72 +3,45 @@
 import Good from '@/components/country/Icons/Good';
 import House from '@/components/country/Icons/House';
 import Calendar from '@/components/country/Icons/Calendar';
-import { ChangeEvent, useEffect, useState } from 'react';
-import * as styles from '@/styles/country/post/select-category.css';
-import { usePostStore } from '@/store/postStore';
+import { ChangeEvent, useState } from 'react';
 
-const SelectCateogry = ({
-  categoryHandler,
-}: {
-  categoryHandler: (category: string) => void;
-}) => {
+const SelectCateogry = ({ category }: { category: string }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>(category);
+
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    categoryHandler(event.target.value);
+    setSelectedCategory(event.target.value);
   };
-  const category = usePostStore((state) => state.category);
-
   return (
-    <div className={styles.categoryContainer}>
+    <div>
       <input
-        className={styles.inputContainer}
         type="radio"
-        id="RESTAURANT"
-        value="RESTAURANT"
-        checked={category === 'RESTAURANT'}
+        id="food"
+        value="food"
+        checked={selectedCategory === 'food'}
         onChange={changeHandler}
       />
-      <label
-        className={styles.labelContainer({
-          select: category === 'RESTAURANT',
-        })}
-        htmlFor="RESTAURANT"
-      >
-        <Good className={styles.icon} width={28} height={28} />
-        {'맛집'}
+      <label htmlFor="food">
+        <Good width={28} height={28} />
       </label>
       <input
-        className={styles.inputContainer}
         type="radio"
-        id="RENTAL_HOME"
-        value="RENTAL_HOME"
-        checked={category === 'RENTAL_HOME'}
+        id="house"
+        value="house"
+        checked={selectedCategory === 'house'}
         onChange={changeHandler}
       />
-      <label
-        className={styles.labelContainer({
-          select: category === 'RENTAL_HOME',
-        })}
-        htmlFor="RENTAL_HOME"
-      >
-        <House className={styles.icon} width={28} height={28} />
-        {'숙소'}
+      <label htmlFor="house">
+        <House width={28} height={28} />
       </label>
       <input
-        className={styles.inputContainer}
         type="radio"
-        id="SCHEDULE"
-        value="SCHEDULE"
-        checked={category === 'SCHEDULE'}
+        id="schedule"
+        value="schedule"
+        checked={selectedCategory === 'schedule'}
         onChange={changeHandler}
       />
-      <label
-        className={styles.labelContainer({
-          select: category === 'SCHEDULE',
-        })}
-        htmlFor="SCHEDULE"
-      >
-        <Calendar className={styles.icon} width={28} height={28} />
-        {'일정'}
+      <label htmlFor="schedule">
+        <Calendar width={28} height={28} />
       </label>
     </div>
   );

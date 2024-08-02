@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
-import * as styles from '@/styles/country/post/page.css';
 import { WhiteHeader } from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
-import CountryBackground from '@/components/country/CountryBackground';
-import PostCardList from '@/components/country/post/PostCardList';
-import CountryWrite from '@/components/common/CountryWrite';
+import SelectCateogry from '@/components/country/post/SelectCategory';
 
 const Page = () => {
   return (
@@ -14,14 +11,19 @@ const Page = () => {
       <WhiteHeader />
       <div className={country.pageContainer}>
         <div className={country.imageContainer}>
-          <CountryBackground />
+          <Image
+            className={country.image}
+            src="/images/countrybg.png"
+            alt="countryBackgroundImage"
+            fill
+            sizes="1920px"
+          />
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain />
-          <PostCardList />
+          <MoveToMain country={'중국'} />
+          <SelectCateogry category="food" />
         </div>
       </div>
-      <CountryWrite />
     </main>
   );
 };

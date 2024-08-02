@@ -4,10 +4,9 @@ import { style } from '@vanilla-extract/css';
 export const postCard = style({
   display: 'inline-block',
   width: 160,
-  height: 226,
+  height: 211,
   borderRadius: 10,
   boxShadow: '0px 10px 20px 0px #0000000D',
-  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 255,

@@ -32,38 +32,32 @@ const Continent = ({
 const continentsInfo = [
   {
     url: '/images/continent/asiaBg.png',
-    continent: 'Asia',
-    continentKor: '아시아',
+    continent: '아시아',
     explain: '아는 만큼 보이는 매력',
   },
   {
     url: '/images/continent/europeBg.png',
-    continent: 'Europe',
-    continentKor: '유럽',
+    continent: '유럽',
     explain: '상상 속 유럽 여행을 현실로',
   },
   {
     url: '/images/continent/oceaniaBg.png',
-    continent: 'Oceania',
-    continentKor: '오세아니아',
+    continent: '오세아니아',
     explain: '수중낙원부터 만년설까지',
   },
   {
     url: '/images/continent/southAmericBg.png',
-    continent: 'South America',
-    continentKor: '남아메리카',
+    continent: '북아메리카',
     explain: '숨겨놓은 신비로움이 한가득!',
   },
   {
     url: '/images/continent/northAmericBg.png',
-    continent: 'North America',
-    continentKor: '북아메리카',
+    continent: '남아메리카',
     explain: '너는 어디까지 가봤니?',
   },
   {
     url: '/images/continent/africaBg.png',
-    continent: 'Africa',
-    continentKor: '아프리카',
+    continent: '아프리카',
     explain: '나의 첫 아프리카 여행',
   },
 ];
@@ -71,17 +65,14 @@ const continentsInfo = [
 const Continents = ({
   clickHandler,
 }: {
-  clickHandler: (continent: string, continentKor: string) => void;
+  clickHandler: (continent: string) => void;
 }) => {
   return (
     <ul className={styles.continentContainer}>
-      {continentsInfo.map(({ url, continent, continentKor, explain }) => {
+      {continentsInfo.map(({ url, continent, explain }) => {
         return (
-          <li
-            key={continent}
-            onClick={() => clickHandler(continent, continentKor)}
-          >
-            <Continent url={url} continent={continentKor} explain={explain} />
+          <li onClick={() => clickHandler(continent)}>
+            <Continent url={url} continent={continent} explain={explain} />
           </li>
         );
       })}

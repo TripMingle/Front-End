@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../../globalTheme.css';
+import { vars } from '../globalTheme.css';
 
 export const bgOverlay = style({
   position: 'absolute',
@@ -12,17 +12,11 @@ export const bgOverlay = style({
 export const mapContainer = style({
   position: 'absolute',
   display: 'inline-flex',
-  width: 292,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%,-50%)',
   flexDirection: 'column',
   alignItems: 'center',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      width: 504,
-    },
-  },
 });
 
 export const mapText = style({
