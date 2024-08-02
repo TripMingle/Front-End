@@ -5,7 +5,7 @@ import Image from 'next/image';
 import HeaderProfile from './HeaderProfile';
 import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
@@ -15,6 +15,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!accessToken);
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const router = useRouter();
+  const pathName = usePathname();
 
   const dropDownClickHandler = () => {
     if (isLoggedIn) {
@@ -22,8 +23,13 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
     }
   };
 
+  const moveToLogin = () => {
+    window.sessionStorage.setItem('prevPage', pathName);
+    router.push('/login');
+  };
+
   const userClickHandler = () => {
-    if (!isLoggedIn) router.push('/login');
+    if (!isLoggedIn) moveToLogin();
   };
 
   return (
