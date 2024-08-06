@@ -1,19 +1,16 @@
 'use client';
 import { useState } from 'react';
-import * as styles from '@/styles/components/header/header.css';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import * as styles from '@/styles/components/header/header.css';
 import HeaderProfile from './HeaderProfile';
 import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
-import { usePathname, useRouter } from 'next/navigation';
 
 const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
-  const imageUrl = useUserStore((state) => state.imageUrl);
-  const nickName = useUserStore((state) => state.nickName);
-  const accessToken = useUserStore((state) => state.accessToken);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!accessToken);
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const router = useRouter();
   const pathName = usePathname();
 
@@ -38,11 +35,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
         <div className={styles.navbar({ theme })}>
           <div className={styles.logo({ theme })}>TripMingle</div>
           <div className={styles.user} onClick={() => userClickHandler()}>
-            <HeaderProfile
-              url={imageUrl}
-              nickName={nickName}
-              isLoggedIn={isLoggedIn}
-            />
+            <HeaderProfile />
             <Image
               src={`/icons/${color}alarm.svg`}
               width={24}

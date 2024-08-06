@@ -5,12 +5,17 @@ export const storeToken = (access_token: string, refresh_token: string) => {
   Cookies.set('refresh_token', refresh_token);
 };
 
-export const getToken = async () => {
+export const getToken = () => {
   const clientAccessToken = Cookies.get('access_token');
   return clientAccessToken;
 };
 
-export const getRefreshToken = async () => {
+export const removeToken = () => {
+  Cookies.remove('access_token');
+  Cookies.remove('refresh_token');
+};
+
+export const getRefreshToken = () => {
   const clientRefreshToken = Cookies.get('refresh_token');
   return clientRefreshToken;
 };

@@ -49,14 +49,7 @@ export const kakaoLogin = async (code: string) => {
 
     if (!res.ok) throw new Error('로그인 실패');
 
-    const data = await res.json();
-
-    if (data.data.memberState) {
-      const login = useUserStore((state) => state.login);
-      login(data.data.profileImage, data.data.nickName);
-    }
-
-    return data.data.memberState;
+    return res.json();
   } catch (error) {
     console.log(error);
   }

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type userState = {
+  isLoggedIn: boolean;
   imageUrl: string;
   nickName: string;
   login: (imageUrl: string, nickName: string) => void;
@@ -11,12 +12,13 @@ type userState = {
 export const useUserStore = create<userState>()(
   persist(
     (set) => ({
+      isLoggedIn: false,
       imageUrl: '',
       nickName: '',
       login: (imageUrl: string, nickName: string) =>
-        set({ imageUrl, nickName }),
+        set({ isLoggedIn: true, imageUrl, nickName }),
       logout: () => {
-        set({ imageUrl: '', nickName: '' });
+        set({ isLoggedIn: false, imageUrl: '', nickName: '' });
       },
     }),
     {
