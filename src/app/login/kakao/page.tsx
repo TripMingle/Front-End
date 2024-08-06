@@ -3,12 +3,14 @@ import { kakaoLogin } from '@/api/user';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import { useUserStore } from '@/store/userStore';
 import { pageContainer } from '@/styles/login/page.css';
+import { getToken } from '@/utils/token';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const Page = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [result, setResult] = useState<string>('로그인 완료');
   const login = useUserStore((state) => state.login);
 
   /* 
@@ -19,12 +21,12 @@ const Page = () => {
   */
   const kakaoLoginHandler = async (code: string) => {
     const data = await kakaoLogin(code);
+    const token = getToken();
     setIsLoading(false);
-    if (data) {
+    if (token && data) {
       const info = data.data;
       if (info.memberState) {
         login(info.profileImage, info.nickName);
-
         const prev = window.sessionStorage.getItem('prevPage');
         if (prev) {
           window.sessionStorage.removeItem('prev');
@@ -33,6 +35,9 @@ const Page = () => {
       } else {
         router.push('/signup');
       }
+    } else {
+      setResult('로그인 실패');
+      router.push('/signup');
     }
   };
 
@@ -46,9 +51,7 @@ const Page = () => {
   return (
     <>
       <NonProfileHeader />
-      <div className={pageContainer}>
-        {isLoading ? '로그인중' : '로그인완료'}
-      </div>
+      <div className={pageContainer}>{isLoading ? '로그인중' : result}</div>
     </>
   );
 };

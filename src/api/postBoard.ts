@@ -1,14 +1,16 @@
 import { BoardForm } from '@/types/country/board';
+import { getToken } from '@/utils/token';
 
-export const postBoard = async (params: BoardForm) => {
+export const postBoard = async (data: BoardForm) => {
   try {
     const baseurl = `${process.env.NEXT_PUBLIC_API_URL}/board`;
-    const data = params;
+    const access_token = getToken();
+
     const res = await fetch(baseurl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${access_token}`,
       },
       body: JSON.stringify(data),
     });
@@ -32,11 +34,13 @@ export const postBoardComment = async (
       parentBoardCommentId: parentBoardCommentId ?? -1,
       content: content,
     };
+
+    const access_token = getToken();
     const res = await fetch(baseurl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${access_token}`,
       },
       body: JSON.stringify(data),
     });

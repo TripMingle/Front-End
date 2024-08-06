@@ -2,8 +2,8 @@
 import '@/styles/font.css';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import * as styles from '@/styles/signup/page.css';
-import { useState } from 'react';
-import { checkNickName } from '@/api/user';
+import { useEffect, useState } from 'react';
+import { checkNickName, kakaoSignup } from '@/api/user';
 
 const Page = () => {
   const [nickName, setNickName] = useState<string>('');
