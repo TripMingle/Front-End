@@ -1,5 +1,8 @@
-import { useUserStore } from '@/store/userStore';
-import { storeToken } from '@/utils/token';
+import {
+  getKakaoAuthorization,
+  storeKakaoAuthorization,
+  storeToken,
+} from '@/utils/token';
 
 export const acquireAccessToken = async (code: string) => {
   try {
@@ -20,34 +23,65 @@ export const acquireAccessToken = async (code: string) => {
 
     if (!res.ok) throw new Error('액세스 토큰 받기 실패');
 
-    const data = await res.json();
-
-    const access_token = data.data.access_token;
-    const refresh_token = data.data.refresh_token;
-
-    storeToken(access_token, refresh_token);
-
-    return access_token;
+    return res.json();
   } catch (error) {
     console.log(error);
   }
 };
 
-export const kakaoSignup = async () => {};
+export const kakaoSignup = async (nickName: string, nationality: string) => {
+  try {
+    const kakaoAuthorization = getKakaoAuthorization();
+    const data = {
+      nickName,
+      nationality,
+    };
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kakao/join`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Kakao-Authorization': `${kakaoAuthorization}`,
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error('회원가입 실패');
+    const accessToken = res.headers.get('access-token');
+    const refreshToken = res.headers.get('refresh-token');
+    console.log(accessToken, refreshToken);
+
+    if (accessToken && refreshToken) {
+      storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const kakaoLogin = async (code: string) => {
   try {
-    const access_token = await acquireAccessToken(code);
-
+    const token = await acquireAccessToken(code);
+    const kakaoAuthorization = token.data.access_token;
+    storeKakaoAuthorization(kakaoAuthorization);
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kakao/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Kakao-Authorization': `${access_token}`,
+        'Kakao-Authorization': `${kakaoAuthorization}`,
       },
     });
 
     if (!res.ok) throw new Error('로그인 실패');
+    const accessToken = res.headers.get('access-token');
+    const refreshToken = res.headers.get('refresh-token');
+    console.log(accessToken, refreshToken);
+
+    if (accessToken && refreshToken) {
+      storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+    }
 
     return res.json();
   } catch (error) {

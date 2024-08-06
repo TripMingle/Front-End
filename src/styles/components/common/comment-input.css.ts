@@ -39,6 +39,7 @@ export const commentInputButton = style({
   border: 'none',
   background: 'none',
   color: vars.color.secondary,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       marginLeft: 20,

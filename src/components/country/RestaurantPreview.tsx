@@ -20,7 +20,6 @@ const RestaurantPreview = () => {
   const getPreview = async () => {
     if (country) {
       const data = await getPostPreview(country, 'RESTAURANT');
-      console.log(data);
       setRestaurantPreview(data.data);
     }
   };
