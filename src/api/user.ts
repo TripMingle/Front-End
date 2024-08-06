@@ -1,4 +1,7 @@
-export const getAccessToken = async (code: string) => {
+import { useUserStore } from '@/store/userStore';
+import { storeToken } from '@/utils/token';
+
+export const acquireAccessToken = async (code: string) => {
   try {
     const params = {
       code: code,
@@ -15,8 +18,16 @@ export const getAccessToken = async (code: string) => {
       },
     );
 
-    if (!res.ok) throw new Error('데이터 가져오기 실패');
-    return res.json();
+    if (!res.ok) throw new Error('액세스 토큰 받기 실패');
+
+    const data = await res.json();
+
+    const access_token = data.data.access_token;
+    const refresh_token = data.data.refresh_token;
+
+    storeToken(access_token, refresh_token);
+
+    return access_token;
   } catch (error) {
     console.log(error);
   }
@@ -26,10 +37,7 @@ export const kakaoSignup = async () => {};
 
 export const kakaoLogin = async (code: string) => {
   try {
-    const data = await getAccessToken(code);
-    const access_token = data.data.access_token;
-
-    console.log(access_token)
+    const access_token = await acquireAccessToken(code);
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kakao/login`, {
       method: 'POST',
@@ -40,7 +48,15 @@ export const kakaoLogin = async (code: string) => {
     });
 
     if (!res.ok) throw new Error('로그인 실패');
-    return res.json();
+
+    const data = await res.json();
+
+    if (data.data.memberState) {
+      const login = useUserStore((state) => state.login);
+      login(data.data.profileImage, data.data.nickName);
+    }
+
+    return data.data.memberState;
   } catch (error) {
     console.log(error);
   }

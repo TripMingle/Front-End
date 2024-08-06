@@ -2,23 +2,21 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type userState = {
-  accessToken: string;
   imageUrl: string;
   nickName: string;
-  login: (accessToken: string, imageUrl: string, nickName: string) => void;
+  login: (imageUrl: string, nickName: string) => void;
   logout: () => void;
 };
 
 export const useUserStore = create<userState>()(
   persist(
     (set) => ({
-      accessToken: '',
       imageUrl: '',
       nickName: '',
-      login: (accessToken: string, imageUrl: string, nickName: string) =>
-        set({ accessToken, imageUrl, nickName }),
+      login: (imageUrl: string, nickName: string) =>
+        set({ imageUrl, nickName }),
       logout: () => {
-        set({ accessToken: '', imageUrl: '', nickName: '' });
+        set({ imageUrl: '', nickName: '' });
       },
     }),
     {
