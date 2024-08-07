@@ -1,5 +1,6 @@
 import {
   getKakaoAuthorization,
+  removeKakaoAuthorization,
   storeKakaoAuthorization,
   storeToken,
 } from '@/utils/token';
@@ -49,10 +50,10 @@ export const kakaoSignup = async (nickName: string, nationality: string) => {
     if (!res.ok) throw new Error('회원가입 실패');
     const accessToken = res.headers.get('access-token');
     const refreshToken = res.headers.get('refresh-token');
-    console.log(accessToken, refreshToken);
 
     if (accessToken && refreshToken) {
       storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+      removeKakaoAuthorization();
     }
 
     return res.json();
@@ -77,7 +78,6 @@ export const kakaoLogin = async (code: string) => {
     if (!res.ok) throw new Error('로그인 실패');
     const accessToken = res.headers.get('access-token');
     const refreshToken = res.headers.get('refresh-token');
-    console.log(accessToken, refreshToken);
 
     if (accessToken && refreshToken) {
       storeToken(accessToken.replace('Bearer ', ''), refreshToken);
