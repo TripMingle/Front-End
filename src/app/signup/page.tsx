@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { checkNickName, kakaoSignup } from '@/api/user';
 import CountrySearch from '@/components/signup/CountrySearch';
 import useModal from '@/hooks/useModal';
-import { getToken } from '@/utils/token';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
 
@@ -45,17 +44,17 @@ const Page = () => {
   const signupHandler = async () => {
     if (!!nickName && !!nationality[0]) {
       const data = await kakaoSignup(nickName, nationality[0]);
-      const token = getToken();
-      const info = data.data;
-      if (token && info) {
-        login(info.profileImage, info.nickName);
+      if (data.data) {
+        login(data.data.profileImage, data.data.nickName);
         const prev = window.sessionStorage.getItem('prevPage');
         if (prev) {
           window.sessionStorage.removeItem('prev');
           router.push(prev);
         } else router.push('/');
+      } else if (typeof data === 'string') {
+        // 화면에 에러 메시지 보여주기
+        setNickNameResult(false);
       }
-      console.log(data);
     }
   };
 
