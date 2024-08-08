@@ -1,5 +1,4 @@
 import { getCountryByKeyword } from '@/api/getCountryInfo';
-import useModal from '@/hooks/useModal';
 import * as styles from '@/styles/signup/country-search.css';
 import Image from 'next/image';
 import { useState } from 'react';
