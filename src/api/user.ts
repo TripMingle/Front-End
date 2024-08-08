@@ -1,5 +1,6 @@
 import {
   getKakaoAuthorization,
+  getRefreshToken,
   getToken,
   removeKakaoAuthorization,
   storeKakaoAuthorization,
@@ -50,8 +51,12 @@ export const kakaoSignup = async (nickName: string, nationality: string) => {
 
     if (!res.ok) {
       // TODO :: 403, U003 -> 같은 닉네임이 존재함, 나중에 에러처리
-      console.log(res);
-      return;
+      const data = await res.json();
+      if (res.status === 403 && data.code === 'U003') {
+        return data.message;
+      } else {
+        throw new Error('회원가입 실패');
+      }
     }
 
     const accessToken = res.headers.get('access-token');
@@ -130,6 +135,30 @@ export const kakaoLogout = async () => {
     });
 
     if (!res.ok) throw new Error('로그아웃 실패');
+    return res.ok;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateAccessToken = async () => {
+  try {
+    const token = getRefreshToken();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Refresh: `${token}`,
+      },
+    });
+
+    if (!res.ok) throw new Error('액세스 토큰 재발급 실패');
+    const accessToken = res.headers.get('access-token');
+    const refreshToken = res.headers.get('refresh-token');
+
+    if (accessToken && refreshToken) {
+      storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+    }
     return res.ok;
   } catch (error) {
     console.error(error);
