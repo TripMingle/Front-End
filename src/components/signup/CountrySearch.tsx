@@ -37,8 +37,10 @@ const CountrySearch = ({
   };
 
   const searchHandler = async () => {
-    const data = await getCountryByKeyword(input);
-    setCountryList(data.data);
+    if (input) {
+      const data = await getCountryByKeyword(input);
+      setCountryList(data.data);
+    }
   };
 
   return (
