@@ -47,7 +47,12 @@ export const kakaoSignup = async (nickName: string, nationality: string) => {
       body: JSON.stringify(data),
     });
 
-    if (!res.ok) throw new Error('회원가입 실패');
+    if (!res.ok) {
+      // TODO :: 403, U003 -> 같은 닉네임이 존재함, 나중에 에러처리
+      console.log(res);
+      return;
+    }
+
     const accessToken = res.headers.get('access-token');
     const refreshToken = res.headers.get('refresh-token');
 
@@ -91,5 +96,23 @@ export const kakaoLogin = async (code: string) => {
 
 export const checkNickName = async (nickName: string) => {
   try {
-  } catch (error) {}
+    const params = {
+      nickName: `${nickName}`,
+    };
+    const queryString = new URLSearchParams(params).toString();
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/validate/duplication?${queryString}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    if (!res.ok) throw new Error('데이터 가져오기 실패');
+    return res.json();
+  } catch (error) {
+    console.error(error);
+  }
 };

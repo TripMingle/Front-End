@@ -3,12 +3,15 @@ import '@/styles/font.css';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import * as styles from '@/styles/signup/page.css';
 import { useState } from 'react';
-import { checkNickName } from '@/api/user';
+import { checkNickName, kakaoSignup } from '@/api/user';
 import CountrySearch from '@/components/signup/CountrySearch';
 import useModal from '@/hooks/useModal';
+import { getToken } from '@/utils/token';
+import { useRouter } from 'next/navigation';
+import { useUserStore } from '@/store/userStore';
 
 const Page = () => {
-  const [nickName, setNickName] = useState<string>('');
+  const [nickName, setNickName] = useState<string>('kimminji');
   const [nickNameInput, setNickNameInput] = useState<string>('');
   const [nationality, setNationaliy] = useState<string[]>([]);
 
@@ -16,6 +19,9 @@ const Page = () => {
   const [nickNameResult, setNickNameResult] = useState<boolean>(false);
 
   const { isOpen, openModal, closeModal } = useModal();
+
+  const router = useRouter();
+  const login = useUserStore((state) => state.login);
 
   const nickNameChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -29,8 +35,28 @@ const Page = () => {
 
   const checkDuplilcated = async () => {
     // TODO :: 서버에서 중복확인 함수 제대로 작동되면 결과에 따라 setNickNameResult 값 변경
-    const data = await checkNickName(nickName);
+    const data = await checkNickName(nickNameInput);
+    const result = !data.data.duplicationStatus;
     if (!isChecked) setIsChecked(!isChecked);
+    setNickNameResult(result);
+    if (result) setNickName(nickNameInput);
+  };
+
+  const signupHandler = async () => {
+    if (!!nickName && !!nationality[0]) {
+      const data = await kakaoSignup(nickName, nationality[0]);
+      const token = getToken();
+      const info = data.data;
+      if (token && info) {
+        login(info.profileImage, info.nickName);
+        const prev = window.sessionStorage.getItem('prevPage');
+        if (prev) {
+          window.sessionStorage.removeItem('prev');
+          router.push(prev);
+        } else router.push('/');
+      }
+      console.log(data);
+    }
   };
 
   return (
@@ -80,6 +106,7 @@ const Page = () => {
           className={styles.signupButton({
             select: !!nickName && !!nationality[0],
           })}
+          onClick={signupHandler}
         >
           완료
         </button>
