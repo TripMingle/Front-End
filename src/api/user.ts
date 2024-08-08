@@ -1,5 +1,6 @@
 import {
   getKakaoAuthorization,
+  getToken,
   removeKakaoAuthorization,
   storeKakaoAuthorization,
   storeToken,
@@ -112,6 +113,24 @@ export const checkNickName = async (nickName: string) => {
 
     if (!res.ok) throw new Error('데이터 가져오기 실패');
     return res.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const kakaoLogout = async () => {
+  try {
+    const token = getToken();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) throw new Error('로그아웃 실패');
+    return res.ok;
   } catch (error) {
     console.error(error);
   }
