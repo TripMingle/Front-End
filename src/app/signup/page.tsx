@@ -10,12 +10,18 @@ import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
 
 const Page = () => {
-  const [nickName, setNickName] = useState<string>('kimminji');
+  // 닉네임 특수문자나 다른 공백 확인용
+  const regex = /^[가-힣a-zA-Z0-9_-]+$/;
+
+  const [nickName, setNickName] = useState<string>('');
   const [nickNameInput, setNickNameInput] = useState<string>('');
+  const [nickNameResult, setNickNameResult] = useState<string>('');
+  const [isNickNameAvailable, setIsNickNameAvailable] =
+    useState<boolean>(false);
+
   const [nationality, setNationaliy] = useState<string[]>([]);
 
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [nickNameResult, setNickNameResult] = useState<boolean>(false);
+  const [introduction, setIntroduction] = useState<string>('');
 
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -32,28 +38,47 @@ const Page = () => {
     setNationaliy(nationality);
   };
 
+  const introductionHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIntroduction(event.target.value);
+  };
+
   const checkDuplilcated = async () => {
-    // TODO :: 서버에서 중복확인 함수 제대로 작동되면 결과에 따라 setNickNameResult 값 변경
-    const data = await checkNickName(nickNameInput);
-    const result = !data.data.duplicationStatus;
-    if (!isChecked) setIsChecked(!isChecked);
-    setNickNameResult(result);
-    if (result) setNickName(nickNameInput);
+    setNickName('');
+    console.log(regex.test(nickNameInput));
+    if (regex.test(nickNameInput)) {
+      const data = await checkNickName(nickNameInput);
+      const result = !data.data.duplicationStatus;
+      setIsNickNameAvailable(result);
+      if (result) {
+        setNickName(nickNameInput);
+        setNickNameResult('사용 가능한 닉네임입니다.');
+      } else {
+        setNickNameResult('이미 사용 중인 닉네임입니다.');
+      }
+    } else {
+      setIsNickNameAvailable(false);
+      setNickNameResult(
+        '닉네임이 유효하지 않습니다. 닉네임은 영문자, 숫자, 밑줄 및 하이픈만 포함할 수 있으며 공백이나 특수 문자를 포함할 수 없습니다',
+      );
+    }
   };
 
   const signupHandler = async () => {
     if (!!nickName && !!nationality[0]) {
-      const data = await kakaoSignup(nickName, nationality[0]);
-      if (data.data) {
+      const data = await kakaoSignup(nickName, nationality[0], introduction);
+
+      if (typeof data === 'string') {
+        // 회원 가입 했을 때 닉네임이 중복된 경우 에러 메세지(data)를 리턴해준다.
+        setIsNickNameAvailable(false);
+        setNickNameResult('이미 사용 중인 닉네임입니다.');
+      } else if (data) {
+        // 회원가입에 성공했을 때
         login(data.data.profileImage, data.data.nickName);
         const prev = window.sessionStorage.getItem('prevPage');
         if (prev) {
           window.sessionStorage.removeItem('prev');
           router.push(prev);
         } else router.push('/');
-      } else if (typeof data === 'string') {
-        // 화면에 에러 메시지 보여주기
-        setNickNameResult(false);
       }
     }
   };
@@ -81,12 +106,10 @@ const Page = () => {
                 중복 확인
               </button>
             </div>
-            <span className={styles.nickNameResult({ result: nickNameResult })}>
-              {isChecked
-                ? nickNameResult
-                  ? '사용 가능한 닉네임 입니다.'
-                  : '이미 사용된 닉네임 입니다.'
-                : ''}
+            <span
+              className={styles.nickNameResult({ result: isNickNameAvailable })}
+            >
+              {nickNameResult}
             </span>
           </div>
           <div className={styles.fieldContainer}>
@@ -98,6 +121,18 @@ const Page = () => {
               >
                 {nationality[1] || '나라 선택'}
               </span>
+            </div>
+          </div>
+          <div className={styles.fieldContainer}>
+            <p className={styles.title}>자기소개</p>
+            <div className={styles.nickNameContainer}>
+              <input
+                className={styles.container({ select: true })}
+                type="text"
+                placeholder="자기 소개를 입력하세요.(선택 사항)"
+                value={introduction}
+                onChange={introductionHandler}
+              />
             </div>
           </div>
         </div>

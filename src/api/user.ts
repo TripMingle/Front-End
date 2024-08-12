@@ -32,12 +32,17 @@ export const acquireAccessToken = async (code: string) => {
   }
 };
 
-export const kakaoSignup = async (nickName: string, nationality: string) => {
+export const kakaoSignup = async (
+  nickName: string,
+  nationality: string,
+  selfIntroduction: string,
+) => {
   try {
     const kakaoAuthorization = getKakaoAuthorization();
     const data = {
       nickName,
       nationality,
+      selfIntroduction,
     };
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kakao/join`, {
@@ -50,9 +55,8 @@ export const kakaoSignup = async (nickName: string, nationality: string) => {
     });
 
     if (!res.ok) {
-      // TODO :: 403, U003 -> 같은 닉네임이 존재함, 나중에 에러처리
       const data = await res.json();
-      if (res.status === 403 && data.code === 'U003') {
+      if (res.status === 409 && data.code === 'U003') {
         return data.message;
       } else {
         throw new Error('회원가입 실패');

@@ -72,6 +72,9 @@ export const container = recipe({
         fontSize: 16,
       },
     },
+    '::placeholder' : {
+      color: vars.color.g400
+    }
   },
   variants: {
     select: {
