@@ -48,9 +48,7 @@ export const SimpleType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <SimpleIcon
         className={styles.icon}
@@ -79,9 +77,7 @@ export const BedType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <BedIcon
         className={styles.icon}
@@ -110,9 +106,7 @@ export const FoodType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <FoodIcon
         className={styles.icon}
@@ -141,9 +135,7 @@ export const ActivityType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <MountainIcon
         className={styles.icon}
@@ -172,9 +164,7 @@ export const ClubType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <ClubIcon
         className={styles.icon}
@@ -203,9 +193,7 @@ export const CarType = ({
   return (
     <div
       className={styles.typeContainer({ select: isSelected })}
-      onClick={() => {
-        clickHandler();
-      }}
+      onClick={clickHandler}
     >
       <CarIcon
         className={styles.icon}
