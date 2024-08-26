@@ -1,6 +1,5 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
 
 export const background = style({
   position: 'fixed',
@@ -54,4 +53,3 @@ export const title = style({
     },
   },
 });
-

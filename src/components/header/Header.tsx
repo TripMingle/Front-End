@@ -6,17 +6,19 @@ import * as styles from '@/styles/components/header/header.css';
 import HeaderProfile from './HeaderProfile';
 import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
+import useModal from '@/hooks/useModal';
 
 const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
-  const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  const { isOpen, openModal, closeModal } = useModal();
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const router = useRouter();
   const pathName = usePathname();
 
   const dropDownClickHandler = () => {
     if (isLoggedIn) {
-      setShowDropDown(!showDropDown);
+      if (isOpen) closeModal();
+      else openModal();
     }
   };
 
@@ -54,7 +56,11 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
           </div>
         </div>
       </nav>
-      {isLoggedIn && showDropDown ? <HeaderDropDown /> : <></>}
+      {isLoggedIn ? (
+        <HeaderDropDown dropDownOpen={isOpen} closeHandler={closeModal} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

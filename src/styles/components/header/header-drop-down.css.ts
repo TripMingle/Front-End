@@ -1,6 +1,13 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
+export const background = style({
+  position: 'absolute',
+  width: '100vw',
+  height: '100vh',
+  zIndex: 100,
+});
+
 export const container = style({
   position: 'fixed',
   display: 'flex',
@@ -22,7 +29,6 @@ export const container = style({
 export const menuContainer = style({
   position: 'relative',
   display: 'flex',
-  top: 12,
   width: 160,
   marginLeft: 'auto',
   marginRight: 12,
