@@ -6,7 +6,7 @@ import {
   FoodType,
   SimpleType,
 } from '@/components/common/TripTypeButton';
-import { typeContainer } from '@/styles/country/board/write/secondstep/info-input.css';
+import { typeContainer } from '@/styles/write/secondstep/info-input.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 

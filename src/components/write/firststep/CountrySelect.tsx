@@ -1,7 +1,7 @@
 import {
   listContainer,
   resultContainer,
-} from '@/styles/country/board/write/firststep/country-box.css';
+} from '@/styles/write/firststep/country-box.css';
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import {

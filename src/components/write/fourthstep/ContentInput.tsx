@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/fourthstep/content-input.css';
+import * as styles from '@/styles/write/fourthstep/content-input.css';
 import { useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';

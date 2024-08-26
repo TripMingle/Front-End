@@ -1,5 +1,5 @@
 import { postBoard } from '@/api/postBoard';
-import * as styles from '@/styles/country/board/write/step-button.css';
+import * as styles from '@/styles/write/step-button.css';
 import { BoardForm } from '@/types/country/board';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -73,7 +73,7 @@ const StepButton = ({
       }
     } else {
       /*일정 추가 페이지 완료되면 수정*/
-      if (step === 2 && checkValue()) stepHandler(step + 2)
+      if (step === 2 && checkValue()) stepHandler(step + 2);
       else if (checkValue()) stepHandler(step + 1);
     }
   };

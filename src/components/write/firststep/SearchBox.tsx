@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/firststep/search-box.css';
+import * as styles from '@/styles/write/firststep/search-box.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

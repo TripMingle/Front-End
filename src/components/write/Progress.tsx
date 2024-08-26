@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/progress.css';
+import * as styles from '@/styles/write/progress.css';
 import Image from 'next/image';
 
 const Progress = ({ step }: { step: number }) => {

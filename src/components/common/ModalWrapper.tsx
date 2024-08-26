@@ -1,6 +1,6 @@
 'use client';
 import * as styles from '@/styles/components/common/modal-wrapper.css';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -9,12 +9,6 @@ type Props = {
 };
 
 const ModalWrapper = ({ isOpen, closeModal, children }: Props) => {
-  if (isOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
-
   const propagationHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
@@ -23,6 +17,14 @@ const ModalWrapper = ({ isOpen, closeModal, children }: Props) => {
     propagationHandler(event);
     closeModal();
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
 
   if (!isOpen) return <></>;
 

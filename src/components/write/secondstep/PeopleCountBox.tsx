@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/secondstep/people-count-box.css';
+import * as styles from '@/styles/write/secondstep/people-count-box.css';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';

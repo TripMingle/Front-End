@@ -1,4 +1,4 @@
-import * as styles from '@/styles/country/board/write/secondstep/info-input.css';
+import * as styles from '@/styles/write/secondstep/info-input.css';
 import CalendarBox from './CalendarBox';
 import LanguageBox from './LanguageBox';
 import AttributeBox from './AttributeBox';

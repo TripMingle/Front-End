@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import * as styles from '@/styles/country/board/write/secondstep/language-box.css';
+import * as styles from '@/styles/write/secondstep/language-box.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 

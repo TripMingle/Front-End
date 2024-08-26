@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Calendar from 'react-calendar';
-import * as styles from '@/styles/country/board/write/secondstep/calendar-box.css';
-import '@/styles/country/board/write/secondstep/calendar-custom.css';
+import * as styles from '@/styles/write/secondstep/calendar-box.css';
+import '@/styles/write/secondstep/calendar-custom.css';
 import { useState } from 'react';
 import { formatDay } from '@/utils/date';
 import { useFormContext } from 'react-hook-form';
