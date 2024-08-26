@@ -4,13 +4,15 @@ import * as styles from '@/styles/country/page.css';
 import Good from './Icons/Good';
 import More from '../common/More';
 import PostCard from '../common/PostCard';
-import { useCountryStore } from '@/store/countryStore';
 import { PostPreviewProps } from '@/types/country/post';
 import { getPostPreview } from '@/api/getPost';
 import EmptyPost from './EmptyPost';
+import { usePathname } from 'next/navigation';
+import { getCountryName } from '@/utils/country';
 
 const RestaurantPreview = () => {
-  const country = useCountryStore((state) => state.country);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [restaurantPreview, setRestaurantPreview] = useState<
     PostPreviewProps[]
   >([]);
@@ -18,9 +20,14 @@ const RestaurantPreview = () => {
   const getPreview = async () => {
     if (country) {
       const data = await getPostPreview(country, 'RESTAURANT');
+      console.log(data);
       setRestaurantPreview(data.data);
     }
   };
+
+  useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
 
   useEffect(() => {
     getPreview();

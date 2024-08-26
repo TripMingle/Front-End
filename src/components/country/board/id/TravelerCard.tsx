@@ -2,10 +2,23 @@ import Profile from '@/components/common/Profile';
 import * as styles from '@/styles/country/board/id/traveler-card.css';
 import Image from 'next/image';
 import ChatButton from './ChatButton';
-import { useBoardStore } from '@/store/boardStore';
 
-const TravelerCard = ({ chatHandler }: { chatHandler: () => void }) => {
-  const boardDetail = useBoardStore((state) => state.boardDetail);
+type Props = {
+  userImageUrl: string;
+  nickName: string;
+  ageRange: string;
+  gender: string;
+  nationality: string;
+  selfIntroduction: string;
+};
+
+const TravelerCard = ({
+  props,
+  chatHandler,
+}: {
+  props: Props;
+  chatHandler: () => void;
+}) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.travelerTitle}>
@@ -14,7 +27,7 @@ const TravelerCard = ({ chatHandler }: { chatHandler: () => void }) => {
       </div>
       <div className={styles.profileContainer}>
         <Profile
-          url={boardDetail.userImageUrl}
+          url={props.userImageUrl}
           width={42}
           height={42}
           changeWidth={72}
@@ -22,24 +35,22 @@ const TravelerCard = ({ chatHandler }: { chatHandler: () => void }) => {
         />
         <div className={styles.mobileProfileInfo}>
           <div className={styles.profileInfo}>
-            <span className={styles.profileName}>{boardDetail.nickName}</span>
+            <span className={styles.profileName}>{props.nickName}</span>
             <span>
-              {`${boardDetail.ageRange.slice(0, 2)}대 · 
-              ${boardDetail.gender === 'male' ? '남' : '여'} · 
-              ${boardDetail.nationality}`}
+              {`${props.ageRange.slice(0, 2)}대 · 
+              ${props.gender === 'male' ? '남' : '여'} · 
+              ${props.nationality}`}
             </span>
           </div>
           <span className={styles.mobileInfoContent}>
-            {boardDetail.selfIntroduction}
+            {props.selfIntroduction}
           </span>
         </div>
         <span className={styles.mobileInfoContent}>별 네개</span>
       </div>
       <div className={styles.infoContainer}>
         <span className={styles.infoTitle}>자기소개</span>
-        <span className={styles.infoContent}>
-          {boardDetail.selfIntroduction}
-        </span>
+        <span className={styles.infoContent}>{props.selfIntroduction}</span>
       </div>
       <div className={styles.infoContainer}>
         <span className={styles.infoTitle}>동행 평점</span>

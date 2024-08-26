@@ -6,7 +6,7 @@ export const getPost = async (
   try {
     const baseurl = `${process.env.NEXT_PUBLIC_API_URL}/postings`;
     const params = {
-      country: `${country}`,
+      country: `${country.replace(/%20/g, ' ')}`,
       postingType: `${postingType}`,
       page: `${page}`,
     };
@@ -31,7 +31,7 @@ export const getPostPreview = async (country: string, postingType: string) => {
   try {
     const baseurl = `${process.env.NEXT_PUBLIC_API_URL}/postings/preview`;
     const params = {
-      country: `${country}`,
+      country: `${country.replace(/%20/g, ' ')}`,
       postingType: `${postingType}`,
     };
     const queryString = new URLSearchParams(params).toString();

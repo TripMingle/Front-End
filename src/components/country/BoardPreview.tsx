@@ -6,25 +6,30 @@ import More from '../common/More';
 import BoardCard from '../common/BoardCard';
 import { getBoardPreview } from '@/api/getBoard';
 import { useEffect, useState } from 'react';
-import { useCountryStore } from '@/store/countryStore';
 import { BoardPreviewProps } from '@/types/country/board';
 import { EmptyBoard } from './EmptyBoard';
+import { usePathname } from 'next/navigation';
+import { getCountryName } from '@/utils/country';
 
 const BoardPreview = () => {
-  const continent = useCountryStore((state) => state.country);
+  const pathname = usePathname();
+  const [country, setCountry] = useState<string>('');
   const [boardPreview, setBoardPreview] = useState<BoardPreviewProps[]>([]);
 
   const getBoardPreviewList = async () => {
-    if (continent) {
-      const data = await getBoardPreview(continent);
-      console.log(data.data);
+    if (country) {
+      const data = await getBoardPreview(country);
       setBoardPreview(data.data);
     }
   };
 
   useEffect(() => {
+    setCountry(getCountryName(pathname));
+  }, []);
+
+  useEffect(() => {
     getBoardPreviewList();
-  }, [continent]);
+  }, [country]);
 
   return (
     <div className={styles.categoryContainer}>

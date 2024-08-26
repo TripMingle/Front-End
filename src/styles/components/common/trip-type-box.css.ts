@@ -8,6 +8,7 @@ export const typeContainer = recipe({
     alignItems: 'center',
     borderRadius: 20,
     gap: 5,
+    cursor: 'pointer',
     '@media': {
       'screen and (min-width: 1024px)': {
         borderRadius: 50,
@@ -18,14 +19,14 @@ export const typeContainer = recipe({
     select: {
       true: {
         backgroundColor: vars.color.white,
-        border: '1px solid transparent',
+        border: '2px solid transparent',
         backgroundImage:
           'linear-gradient(#fff, #fff), linear-gradient(98.24deg, #2F90FF 0%, #04BEFF 100%)',
         backgroundOrigin: 'border-box',
         backgroundClip: 'content-box, border-box',
       },
       false: {
-        border: `1px solid ${vars.color.g300}`,
+        border: `2px solid ${vars.color.g300}`,
       },
     },
   },

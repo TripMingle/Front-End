@@ -1,8 +1,7 @@
 import { BoardDetailType } from '@/types/country/board';
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
 
-const exampleBoardDetail: BoardDetailType = {
+export const initialBoardDetail: BoardDetailType = {
   boardId: 0,
   continent: '',
   countryName: '',
@@ -12,8 +11,8 @@ const exampleBoardDetail: BoardDetailType = {
   tripType: [],
   preferGender: 0,
   preferSmoking: 0,
-  preferShopping: 0,
-  preferInstagramPicture: 0,
+  preferBudget: 0,
+  preferPhoto: 0,
   preferDrink: 0,
   startDate: '',
   endDate: '',
@@ -32,7 +31,7 @@ const exampleBoardDetail: BoardDetailType = {
   userImageUrl: '',
   userRating: 0,
   imageUrl: '',
-  boardCommentResDTOS: [],
+  boardComments: [],
   expired: false,
   mine: false,
   liked: false,
@@ -46,16 +45,8 @@ type BoardState = {
   initializeBoardDetail: () => void;
 };
 
-export const useBoardStore = create<BoardState>()(
-  persist(
-    (set) => ({
-      boardDetail: exampleBoardDetail,
-      setBoardDetail: (boardDetail: BoardDetailType) => set({ boardDetail }),
-      initializeBoardDetail: () => set({ boardDetail: exampleBoardDetail }),
-    }),
-    {
-      name: 'board-store',
-      storage: createJSONStorage(() => sessionStorage),
-    },
-  ),
-);
+export const useBoardStore = create<BoardState>()((set) => ({
+  boardDetail: initialBoardDetail,
+  setBoardDetail: (boardDetail: BoardDetailType) => set({ boardDetail }),
+  initializeBoardDetail: () => set({ boardDetail: initialBoardDetail }),
+}));

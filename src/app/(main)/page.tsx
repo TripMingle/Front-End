@@ -3,7 +3,7 @@ import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 import { Header } from '@/components/header/Header';
 import SearchBox from '@/components/main/SearchBox';
-import SelectContent from '@/components/main/SelectContent';
+import CountrySelect from '@/components/main/CountrySelect';
 
 const Page = () => {
   return (
@@ -34,7 +34,7 @@ const Page = () => {
           </div>
           <span className={styles.line}></span>
         </div>
-        <SelectContent />
+        <CountrySelect />
       </div>
     </main>
   );

@@ -1,35 +1,49 @@
 import * as styles from '@/styles/main/continent.css';
 import Image from 'next/image';
 
-const Continent = ({
-  url,
-  continent,
-  explain,
-}: {
+type Props = {
   url: string;
   continent: string;
+  continentKor: string;
   explain: string;
+};
+
+const Continent = ({
+  props,
+  clickHandler,
+}: {
+  props: Props;
+  clickHandler: (continent: string, continentKor: string) => void;
 }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.circle}></div>
+      <div
+        className={styles.circle}
+        onClick={() => clickHandler(props.continent, props.continentKor)}
+      ></div>
       <Image
         className={styles.bgImage}
-        src={url}
+        src={props.url}
         fill
         sizes="(max-width: 1023px) 160px, 240px"
         alt="continent"
       />
-      <div className={styles.bgOverlay}></div>
-      <div className={styles.textContainer}>
-        <span className={styles.name}>{continent}</span>
-        <span className={styles.explain}>{explain}</span>
+      <div
+        className={styles.bgOverlay}
+        onClick={() => clickHandler(props.continent, props.continentKor)}
+      ></div>
+      <div
+        className={styles.textContainer}
+        onClick={() => clickHandler(props.continent, props.continentKor)}
+      >
+        <span className={styles.name}>{props.continentKor}</span>
+        <span className={styles.explain}>{props.explain}</span>
       </div>
     </div>
   );
 };
 
-const continentsInfo = [
+const continentsInfo: Props[] = [
   {
     url: '/images/continent/asiaBg.png',
     continent: 'Asia',
@@ -75,13 +89,10 @@ const Continents = ({
 }) => {
   return (
     <ul className={styles.continentContainer}>
-      {continentsInfo.map(({ url, continent, continentKor, explain }) => {
+      {continentsInfo.map((continent) => {
         return (
-          <li
-            key={continent}
-            onClick={() => clickHandler(continent, continentKor)}
-          >
-            <Continent url={url} continent={continentKor} explain={explain} />
+          <li key={continent.continent}>
+            <Continent props={continent} clickHandler={clickHandler} />
           </li>
         );
       })}

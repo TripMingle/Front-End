@@ -12,9 +12,8 @@ const Page = () => {
     <main>
       <WhiteHeader />
       <div className={country.pageContainer}>
-        <div className={country.imageContainer}>
-          <CountryBackground />
-          <div className={styles.bgOverlay}></div>
+        <CountryBackground />
+        <div className={styles.bgOverlay}>
           <div className={styles.mapContainer}>
             <span className={styles.mapText}>
               지도를 통해
@@ -25,11 +24,10 @@ const Page = () => {
           </div>
         </div>
         <div className={country.contentContainer}>
-          <MoveToMain />
           <BoardList />
         </div>
       </div>
-      <CountryWrite />
+      <CountryWrite type="board" />
     </main>
   );
 };
