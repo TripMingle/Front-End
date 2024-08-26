@@ -3,17 +3,18 @@
 import Image from 'next/image';
 import * as styles from '@/styles/country/board/id/chat-button.css';
 import { useEffect } from 'react';
+import ModalWrapper from '@/components/common/ModalWrapper';
 
 const ChatModal = ({
   isOpen,
   nickName,
   userId,
-  chatHandler,
+  closeModal,
 }: {
   isOpen: boolean;
   nickName: string;
   userId: number;
-  chatHandler: () => void;
+  closeModal: () => void;
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -28,13 +29,13 @@ const ChatModal = ({
 
   if (isOpen)
     return (
-      <div className={styles.modalBackground}>
+      <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
         <div className={styles.modalContainer}>
           <div className={styles.modalTitle}>
             <p>
               <strong>{nickName}</strong> 님에게 보내기
             </p>
-            <button className={styles.modalClose} onClick={chatHandler}>
+            <button className={styles.modalClose} onClick={closeModal}>
               <Image
                 className={styles.closeIcon}
                 src="/icons/close.svg"
@@ -60,7 +61,7 @@ const ChatModal = ({
             보내기
           </button>
         </div>
-      </div>
+      </ModalWrapper>
     );
   else return <></>;
 };

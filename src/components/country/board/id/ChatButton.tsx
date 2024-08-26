@@ -1,9 +1,9 @@
 import * as styles from '@/styles/country/board/id/chat-button.css';
 import Image from 'next/image';
 
-const ChatButton = ({ chatHandler }: { chatHandler: () => void }) => {
+const ChatButton = ({ openModal }: { openModal: () => void }) => {
   return (
-    <button className={styles.buttonContainer} onClick={chatHandler}>
+    <button className={styles.buttonContainer} onClick={openModal}>
       <Image
         className={styles.icon}
         src="/icons/send.svg"
@@ -11,7 +11,7 @@ const ChatButton = ({ chatHandler }: { chatHandler: () => void }) => {
         width={15}
         height={15}
       />
-      채팅하기
+      동행 요청
     </button>
   );
 };

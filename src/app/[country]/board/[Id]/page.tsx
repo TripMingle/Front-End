@@ -15,12 +15,17 @@ import { BoardDetailType } from '@/types/country/board';
 import { initialBoardDetail } from '@/store/boardStore';
 import { TripTypeButton } from '@/components/common/TripTypeButton';
 import AttributeBox from '@/components/country/board/id/AttributeBox';
+import LoginModal from '@/components/common/LoginModal';
+import { useUserStore } from '@/store/userStore';
+import useModal from '@/hooks/useModal';
 
 const Page = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [boardDetail, setBoardDetail] =
     useState<BoardDetailType>(initialBoardDetail);
   const pathname = usePathname();
+
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const { isOpen, openModal, closeModal } = useModal();
 
   const getBoardId = () => {
     const idx = pathname.lastIndexOf('/');
@@ -46,19 +51,19 @@ const Page = () => {
     getBoardData();
   }, []);
 
-  const chatHandler = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <main>
       <Header />
-      <ChatModal
-        isOpen={isOpen}
-        nickName={boardDetail.nickName}
-        userId={boardDetail.userId}
-        chatHandler={chatHandler}
-      />
+      {isLoggedIn ? (
+        <ChatModal
+          isOpen={isOpen}
+          nickName={boardDetail.nickName}
+          userId={boardDetail.userId}
+          closeModal={closeModal}
+        />
+      ) : (
+        <LoginModal isOpen={isOpen} closeModal={closeModal} />
+      )}
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
           <Image
@@ -152,7 +157,7 @@ const Page = () => {
               nationality: boardDetail.nationality,
               selfIntroduction: boardDetail.selfIntroduction ?? '',
             }}
-            chatHandler={chatHandler}
+            openModal={openModal}
           />
         </div>
         <div className={styles.container}>
@@ -167,6 +172,8 @@ const Page = () => {
             <CommentInput
               boardId={boardDetail.boardId}
               inputHandler={getBoardData}
+              isOpen={isOpen}
+              openModal={openModal}
             />
             <CommentList comments={boardDetail.boardComments} />
           </div>
