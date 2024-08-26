@@ -1,7 +1,7 @@
 import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/country/board/page.css';
-import { WhiteHeader } from '@/components/header/Header';
+import Header from '@/components/header/Header';
 import MoveToMain from '@/components/country/MoveToMain';
 import CountryBackground from '@/components/country/CountryBackground';
 import BoardList from '@/components/country/board/BoardList';
@@ -10,7 +10,7 @@ import CountryWrite from '@/components/common/CountryWrite';
 const Page = () => {
   return (
     <main>
-      <WhiteHeader />
+      <Header />
       <div className={country.pageContainer}>
         <CountryBackground />
         <div className={styles.bgOverlay}>

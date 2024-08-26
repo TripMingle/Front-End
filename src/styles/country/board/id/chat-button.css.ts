@@ -40,30 +40,18 @@ export const icon = style({
   },
 });
 
-export const modalBackground = style({
-  position: 'fixed',
-  zIndex: 100,
-  width: '100vw',
-  height: '100vh',
-  background: 'rgba(0,0,0,0.4)',
-});
-
 export const modalContainer = style({
-  position: 'absolute',
-  maxWidth: 540,
-  zIndex: 200,
-  width: 'calc(100% - 40px)',
-  padding: 20,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  display: 'flex',
+  width: 'calc(100vw - 80px)',
+  maxWidth: 400,
+  flexDirection: 'column',
+  alignItems: 'center',
   background: vars.color.white,
   borderRadius: 20,
   boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 'calc(100% - 40px)',
-      padding: 30,
+      maxWidth: 480,
     },
   },
 });
@@ -126,7 +114,6 @@ export const textContainer = style({
 export const sendContainer = style({
   position: 'relative',
   display: 'inline-flex',
-  left: '50%',
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
@@ -137,7 +124,6 @@ export const sendContainer = style({
   marginTop: 20,
   borderRadius: 5,
   gap: 5,
-  transform: 'translate(-50%,0)',
   '@media': {
     'screen and (min-width: 1024px)': {
       marginTop: 30,

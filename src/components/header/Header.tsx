@@ -1,77 +1,66 @@
 'use client';
-import { useEffect, useState } from 'react';
-import * as styles from '@/styles/components/header/header.css';
+import { useState } from 'react';
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import * as styles from '@/styles/components/header/header.css';
 import HeaderProfile from './HeaderProfile';
+import HeaderDropDown from './HeaderDropDown';
+import { useUserStore } from '@/store/userStore';
+import useModal from '@/hooks/useModal';
+import LoginModal from '../common/LoginModal';
 
-export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
+  const color = theme === 'white' ? 'b_' : 'w_';
+  const { isOpen, openModal, closeModal } = useModal();
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const router = useRouter();
+  const pathName = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  const dropDownClickHandler = () => {
+    if (isLoggedIn) {
+      if (isOpen) closeModal();
+      else openModal();
+    }
+  };
 
-    window.addEventListener('scroll', handleScroll);
+  const userClickHandler = () => {
+    if (!isLoggedIn) {
+      openModal();
+    }
+  };
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  return isScrolled ? <WhiteHeader /> : <ClearHeader />;
-};
-
-export const WhiteHeader = () => {
   return (
-    <nav className={styles.fixedbar({ theme: 'white' })}>
-      <div className={styles.navbar({ theme: 'white' })}>
-        <div className={styles.logo({ theme: 'white' })}>TripMingle</div>
-        <HeaderProfile url={''} />
-        <Image
-          src='/icons/b_alarm.svg'
-          width={24}
-          height={24}
-          alt="alram"
-          className={styles.icon}
-        />
-        <Image
-          src='/icons/b_menu.svg'
-          width={24}
-          height={24}
-          alt="menu"
-          className={styles.icon}
-        />
-      </div>
-    </nav>
+    <div>
+      <nav className={styles.fixedbar({ theme })}>
+        <div className={styles.navbar({ theme })}>
+          <div className={styles.logo({ theme })}>TripMingle</div>
+          <div className={styles.user} onClick={userClickHandler}>
+            <HeaderProfile />
+            <Image
+              src={`/icons/${color}alarm.svg`}
+              width={24}
+              height={24}
+              alt="alram"
+              className={styles.icon}
+            />
+            <Image
+              src={`/icons/${color}menu.svg`}
+              width={24}
+              height={24}
+              alt="menu"
+              className={styles.icon}
+              onClick={dropDownClickHandler}
+            />
+          </div>
+        </div>
+      </nav>
+      {isLoggedIn ? (
+        <HeaderDropDown dropDownOpen={isOpen} closeHandler={closeModal} />
+      ) : (
+        <LoginModal isOpen={isOpen} closeModal={closeModal} />
+      )}
+    </div>
   );
 };
 
-const ClearHeader = () => {
-  return (
-    <nav className={styles.fixedbar({ theme: 'clear' })}>
-      <div className={styles.navbar({ theme: 'clear' })}>
-        <div className={styles.logo({ theme: 'clear' })}>TripMingle</div>
-        <HeaderProfile url={''} />
-        <Image
-          src="/icons/w_alarm.svg"
-          width={24}
-          height={24}
-          alt="alram"
-          className={styles.icon}
-        />
-        <Image
-          src="/icons/w_menu.svg"
-          width={24}
-          height={24}
-          alt="menu"
-          className={styles.icon}
-        />
-      </div>
-    </nav>
-  );
-};
+export default Header;
