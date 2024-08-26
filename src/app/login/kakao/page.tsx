@@ -29,7 +29,7 @@ const Page = () => {
         login(info.profileImage, info.nickName);
         const prev = window.sessionStorage.getItem('prevPage');
         if (prev) {
-          window.sessionStorage.removeItem('prev');
+          window.sessionStorage.removeItem('prevPage');
           router.push(prev);
         } else router.push('/');
       } else {

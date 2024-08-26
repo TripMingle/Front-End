@@ -1,6 +1,6 @@
 'use client';
 import '@/styles/font.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/country/board/write/page.css';
 import Header from '@/components/header/Header';
@@ -11,9 +11,15 @@ import StepButton from '@/components/country/board/write/StepButton';
 import InfoInput from '@/components/country/board/write/secondstep/InfoInput';
 import ContentInput from '@/components/country/board/write/fourthstep/ContentInput';
 import { BoardForm, boardFormDefault } from '@/types/country/board';
+import { useUserStore } from '@/store/userStore';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Page = () => {
   const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
+
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [step, setStep] = useState<number>(1);
   const [searchCountry, setSearchCountry] = useState<string>('');
@@ -41,6 +47,13 @@ const Page = () => {
   const scrollToBottom = () => {
     pageContentRef.current.scrollTop = pageContentRef.current.scrollHeight;
   };
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      window.sessionStorage.setItem('prevPage', pathname);
+      router.push('/login');
+    }
+  }, [isLoggedIn]);
 
   const components = [
     <>

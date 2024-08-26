@@ -12,9 +12,8 @@ type Props = {
   closeModal: () => void;
 };
 
-const LoginModal = () => {
+const LoginModal = ({ isOpen, closeModal }: Props) => {
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
-  const { isOpen, openModal, closeModal } = useModal();
   const router = useRouter();
   const pathName = usePathname();
 
@@ -22,11 +21,6 @@ const LoginModal = () => {
     window.sessionStorage.setItem('prevPage', pathName);
     router.push('/login');
   };
-
-  useEffect(() => {
-    if (!isLoggedIn) openModal();
-    else closeModal();
-  }, [isLoggedIn]);
 
   if (isLoggedIn) return <></>;
   else
@@ -56,7 +50,7 @@ const LoginModal = () => {
               className={styles.button({ select: true })}
               onClick={loginHandler}
             >
-              로그인화면으로 이동
+              로그인
             </button>
           </div>
         </div>

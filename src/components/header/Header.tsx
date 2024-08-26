@@ -7,6 +7,7 @@ import HeaderProfile from './HeaderProfile';
 import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
 import useModal from '@/hooks/useModal';
+import LoginModal from '../common/LoginModal';
 
 const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
@@ -22,13 +23,10 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
     }
   };
 
-  const moveToLogin = () => {
-    window.sessionStorage.setItem('prevPage', pathName);
-    router.push('/login');
-  };
-
   const userClickHandler = () => {
-    if (!isLoggedIn) moveToLogin();
+    if (!isLoggedIn) {
+      openModal();
+    }
   };
 
   return (
@@ -36,7 +34,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
       <nav className={styles.fixedbar({ theme })}>
         <div className={styles.navbar({ theme })}>
           <div className={styles.logo({ theme })}>TripMingle</div>
-          <div className={styles.user} onClick={() => userClickHandler()}>
+          <div className={styles.user} onClick={userClickHandler}>
             <HeaderProfile />
             <Image
               src={`/icons/${color}alarm.svg`}
@@ -51,7 +49,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
               height={24}
               alt="menu"
               className={styles.icon}
-              onClick={() => dropDownClickHandler()}
+              onClick={dropDownClickHandler}
             />
           </div>
         </div>
@@ -59,7 +57,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
       {isLoggedIn ? (
         <HeaderDropDown dropDownOpen={isOpen} closeHandler={closeModal} />
       ) : (
-        <></>
+        <LoginModal isOpen={isOpen} closeModal={closeModal} />
       )}
     </div>
   );
