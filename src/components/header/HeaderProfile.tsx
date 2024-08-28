@@ -3,9 +3,9 @@ import * as styles from '@/styles/components/header/header.css';
 import { useUserStore } from '@/store/userStore';
 
 const HeaderProfile = () => {
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const url = useUserStore((state) => state.imageUrl);
   const nickName = useUserStore((state) => state.nickName);
-  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
   return (
     <div className={styles.profileContainer}>
@@ -19,10 +19,10 @@ const HeaderProfile = () => {
       {isLoggedIn ? (
         <>
           <span className={styles.name}>{nickName}</span>
-          <span className={styles.text}>님 안녕하세요!</span>
+          <span className={styles.text}> 님 안녕하세요!</span>
         </>
       ) : (
-        <span>로그인이 필요합니다.</span>
+        <div>로그인이 필요합니다.</div>
       )}
     </div>
   );

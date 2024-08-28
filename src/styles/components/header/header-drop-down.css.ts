@@ -11,7 +11,7 @@ export const background = style({
 export const container = style({
   position: 'fixed',
   display: 'flex',
-  top: 44,
+  top: 56,
   left: '50%',
   width: '100%',
   maxWidth: 1920,
@@ -21,7 +21,7 @@ export const container = style({
   transform: 'translate(-50%,0)',
   '@media': {
     'screen and (min-width: 1024px)': {
-      top: 60,
+      top: 72,
     },
   },
 });
