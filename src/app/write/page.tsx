@@ -50,12 +50,12 @@ const Page = () => {
     pageContentRef.current.scrollTop = pageContentRef.current.scrollHeight;
   };
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      window.sessionStorage.setItem('prevPage', pathname);
-      router.push('/login');
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     window.sessionStorage.setItem('prevPage', pathname);
+  //     router.push('/login');
+  //   }
+  // }, [isLoggedIn]);
 
   const components = [
     <>
