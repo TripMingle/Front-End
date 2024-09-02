@@ -13,6 +13,7 @@ import ContentInput from '@/components/write/fourthstep/ContentInput';
 import { BoardForm, boardFormDefault } from '@/types/country/board';
 import { useUserStore } from '@/store/userStore';
 import { usePathname, useRouter } from 'next/navigation';
+import ScheduleInput from '@/components/write/thirdstep/ScheduleInput';
 
 const Page = () => {
   const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
@@ -21,7 +22,8 @@ const Page = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [step, setStep] = useState<number>(1);
+  // step  = 1 로 나중에 수정
+  const [step, setStep] = useState<number>(3);
   const [searchCountry, setSearchCountry] = useState<string>('');
   const [languages, setLanguages] = useState<string[]>([]);
   const [content, setContent] = useState<string>('');
@@ -69,7 +71,9 @@ const Page = () => {
     <>
       <InfoInput languages={languages} languagesHandler={languagesHandler} />
     </>,
-    <></>,
+    <>
+      <ScheduleInput />
+    </>,
     <>
       <ContentInput
         content={content}

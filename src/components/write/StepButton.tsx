@@ -72,9 +72,7 @@ const StepButton = ({
         handleSubmit(submit)();
       }
     } else {
-      /*일정 추가 페이지 완료되면 수정*/
-      if (step === 2 && checkValue()) stepHandler(step + 2);
-      else if (checkValue()) stepHandler(step + 1);
+      if (checkValue()) stepHandler(step + 1);
     }
   };
 
