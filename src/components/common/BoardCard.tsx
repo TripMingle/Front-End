@@ -17,7 +17,7 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
   };
 
   return (
-    <div className={styles.postCard} onClick={() => clickHandler()}>
+    <div className={styles.postCard} onClick={clickHandler}>
       <div className={styles.imageBox}>
         <Image
           src={props.imageUrl}

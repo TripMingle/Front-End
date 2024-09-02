@@ -42,12 +42,7 @@ const NonSmokeType = ({
   };
 
   return (
-    <div
-      className={styles.typeContainer({ select })}
-      onClick={() => {
-        clickHandler();
-      }}
-    >
+    <div className={styles.typeContainer({ select })} onClick={clickHandler}>
       <NonsmokeIcon
         className={styles.icon}
         width={19}
@@ -75,12 +70,7 @@ export const SmokeType = ({
   };
 
   return (
-    <div
-      className={styles.typeContainer({ select })}
-      onClick={() => {
-        clickHandler();
-      }}
-    >
+    <div className={styles.typeContainer({ select })} onClick={clickHandler}>
       <SmokeIcon
         className={styles.icon}
         width={19}
@@ -108,12 +98,7 @@ export const ShoppingType = ({
   };
 
   return (
-    <div
-      className={styles.typeContainer({ select })}
-      onClick={() => {
-        clickHandler();
-      }}
-    >
+    <div className={styles.typeContainer({ select })} onClick={clickHandler}>
       <ShoppingIcon
         className={styles.icon}
         width={19}
@@ -141,12 +126,7 @@ export const PhotoType = ({
   };
 
   return (
-    <div
-      className={styles.typeContainer({ select })}
-      onClick={() => {
-        clickHandler();
-      }}
-    >
+    <div className={styles.typeContainer({ select })} onClick={clickHandler}>
       <PhotoIcon
         className={styles.icon}
         width={19}

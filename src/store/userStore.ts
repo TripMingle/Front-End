@@ -1,19 +1,26 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
 import Cookies from 'js-cookie';
 
 type userState = {
   isLoggedIn: boolean;
   imageUrl: string;
   nickName: string;
+  initialize: () => void;
   login: (imageUrl: string, nickName: string) => void;
   logout: () => void;
 };
 
 export const useUserStore = create<userState>()((set) => ({
-  isLoggedIn: !!Cookies.get('access_token'),
-  imageUrl: Cookies.get('imageUrl') || '',
-  nickName: Cookies.get('nickName') || '',
+  isLoggedIn: false,
+  imageUrl: '',
+  nickName: '',
+  initialize: () => {
+    set({
+      isLoggedIn: !!Cookies.get('access_token'),
+      imageUrl: Cookies.get('imageUrl') || '',
+      nickName: Cookies.get('nickName') || '',
+    });
+  },
   login: (imageUrl: string, nickName: string) => {
     Cookies.set('imageUrl', imageUrl);
     Cookies.set('nickName', nickName);

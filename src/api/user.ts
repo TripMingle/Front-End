@@ -6,30 +6,13 @@ import {
   storeKakaoAuthorization,
   storeToken,
 } from '@/utils/token';
+import apiFetch from '.';
 
 export const acquireAccessToken = async (code: string) => {
-  try {
-    const params = {
-      code: code,
-    };
-    const queryString = new URLSearchParams(params).toString();
-
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/kakao/callback?${queryString}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-
-    if (!res.ok) throw new Error('액세스 토큰 받기 실패');
-
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
+  const params = {
+    code: code,
+  };
+  return apiFetch().get(`/kakao/callback`, false, params);
 };
 
 export const kakaoSignup = async (
@@ -44,7 +27,6 @@ export const kakaoSignup = async (
       nationality,
       selfIntroduction,
     };
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/kakao/join`, {
       method: 'POST',
       headers: {
@@ -105,29 +87,14 @@ export const kakaoLogin = async (code: string) => {
 };
 
 export const checkNickName = async (nickName: string) => {
-  try {
-    const params = {
-      nickName: `${nickName}`,
-    };
-    const queryString = new URLSearchParams(params).toString();
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/validate/duplication?${queryString}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-
-    if (!res.ok) throw new Error('데이터 가져오기 실패');
-    return res.json();
-  } catch (error) {
-    console.error(error);
-  }
+  const params = {
+    nickName: `${nickName}`,
+  };
+  return apiFetch().get('/auth/validate/duplication', false, params);
 };
 
 export const kakaoLogout = async () => {
+  // apiFetch 사용하기엔 res.json()에서 오류
   try {
     const token = getToken();
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
@@ -163,7 +130,7 @@ export const updateAccessToken = async () => {
     if (accessToken && refreshToken) {
       storeToken(accessToken.replace('Bearer ', ''), refreshToken);
     }
-    return res.ok;
+    return accessToken || '';
   } catch (error) {
     console.error(error);
   }

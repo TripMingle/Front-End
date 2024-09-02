@@ -1,7 +1,5 @@
 'use client';
-import { useState } from 'react';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
 import * as styles from '@/styles/components/header/header.css';
 import HeaderProfile from './HeaderProfile';
 import HeaderDropDown from './HeaderDropDown';
@@ -13,8 +11,6 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
   const { isOpen, openModal, closeModal } = useModal();
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
-  const router = useRouter();
-  const pathName = usePathname();
 
   const dropDownClickHandler = () => {
     if (isLoggedIn) {

@@ -13,7 +13,7 @@ const More = ({ path, category }: { path: string; category: string }) => {
     router.push(pathname + path);
   };
   return (
-    <span className={more} onClick={() => clickHandler()}>
+    <span className={more} onClick={clickHandler}>
       {'더보기 > '}
     </span>
   );
