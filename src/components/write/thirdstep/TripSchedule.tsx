@@ -1,5 +1,6 @@
 import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
 import Image from 'next/image';
+import SchedulePlace from './SchedulePlace';
 
 type Props = {
   date: string;
@@ -22,6 +23,9 @@ const TripSchedule = ({ date, day }: Props) => {
           <span>Day {day}</span>
         </div>
         <span className={styles.date}>{date}</span>
+      </div>
+      <div>
+        <SchedulePlace name={'바토무슈'} nameKor={'바토무슈'}/>
       </div>
       <div className={styles.buttonContainer}>
         <button className={styles.button}>+ 장소 추가</button>
