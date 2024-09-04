@@ -8,6 +8,7 @@ export const listContainer = style({
 export const listLine = style({
   position: 'absolute',
   display: 'flex',
+  zIndex: 1,
   width: 2,
   height: 'calc(100% - 40px)',
   marginTop: 14,
@@ -113,7 +114,63 @@ export const button = style({
 });
 
 export const placeListCotainer = style({
+  position: 'relative',
   display: 'flex',
+  marginLeft: 16,
   flexDirection: 'column',
   gap: 10,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      marginLeft: 24,
+    },
+  },
+});
+
+export const placeListLine = style({
+  position: 'absolute',
+  top: 11,
+  left: 10,
+  height: 'calc(100% - 22px)',
+  borderRight: `2px dashed ${vars.color.g300}`,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      top: 22,
+      left: 15,
+      height: 'calc(100% - 44px)',
+    },
+  },
+});
+
+export const placeItemContainer = style({
+  display: 'flex',
+  height: 44,
+  alignItems: 'center',
+  gap: 10,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 64,
+      gap: 20,
+    },
+  },
+});
+
+export const placeNumber = style({
+  display: 'flex',
+  width: 20,
+  height: 20,
+  zIndex: 4,
+  borderRadius: 30,
+  fontSize: 10,
+  fontWeight: 700,
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: vars.color.white,
+  background: vars.color.secondary,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 30,
+      height: 30,
+      fontSize: 14,
+    },
+  },
 });

@@ -35,9 +35,13 @@ const TripSchedule = ({ date, day, data }: Props) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {data.map((e, i) => (
-                <li key={e.id}>
-                  <SchedulePlace place={e} index={i} />
+              <span className={styles.placeListLine}></span>
+              {data.map((element, index) => (
+                <li key={element.id}>
+                  <div className={styles.placeItemContainer}>
+                    <span className={styles.placeNumber}>{index + 1}</span>
+                    <SchedulePlace place={element} index={index} />
+                  </div>
                 </li>
               ))}
               {provided.placeholder}
