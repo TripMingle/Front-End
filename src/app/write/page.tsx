@@ -104,20 +104,22 @@ const Page = () => {
     <main>
       <Header />
       <div className={styles.pageContainer}>
-        <Progress step={step} />
-        <p className={styles.explainText}>{explains[step - 1]}</p>
-        <FormProvider {...methods}>
-          <div className={styles.contentContainer} ref={pageContentRef}>
-            {components[step - 1]}
-          </div>
-          <StepButton
-            step={step}
-            content={content}
-            stepHandler={stepHandler}
-            searchCountry={searchCountry}
-            searchHandler={countrySearchHandler}
-          />
-        </FormProvider>
+        <div className={styles.pageContent}>
+          <Progress step={step} />
+          <p className={styles.explainText}>{explains[step - 1]}</p>
+          <FormProvider {...methods}>
+            <div className={styles.contentContainer} ref={pageContentRef}>
+              {components[step - 1]}
+            </div>
+            <StepButton
+              step={step}
+              content={content}
+              stepHandler={stepHandler}
+              searchCountry={searchCountry}
+              searchHandler={countrySearchHandler}
+            />
+          </FormProvider>
+        </div>
       </div>
     </main>
   );
