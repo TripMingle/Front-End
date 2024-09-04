@@ -111,3 +111,9 @@ export const button = style({
     },
   },
 });
+
+export const placeListCotainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 10,
+});

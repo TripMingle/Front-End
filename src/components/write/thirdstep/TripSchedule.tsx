@@ -1,13 +1,16 @@
-import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
 import Image from 'next/image';
+import { Droppable } from '@hello-pangea/dnd';
+import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
 import SchedulePlace from './SchedulePlace';
+import { SchedulePlaceType } from '@/types/country/place';
 
 type Props = {
   date: string;
   day: number;
+  data: SchedulePlaceType[];
 };
 
-const TripSchedule = ({ date, day }: Props) => {
+const TripSchedule = ({ date, day, data }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.dateContainer}>
@@ -25,7 +28,22 @@ const TripSchedule = ({ date, day }: Props) => {
         <span className={styles.date}>{date}</span>
       </div>
       <div>
-        <SchedulePlace name={'바토무슈'} nameKor={'바토무슈'}/>
+        <Droppable droppableId={date}>
+          {(provided) => (
+            <ul
+              className={styles.placeListCotainer}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {data.map((e, i) => (
+                <li key={e.id}>
+                  <SchedulePlace place={e} index={i} />
+                </li>
+              ))}
+              {provided.placeholder}
+            </ul>
+          )}
+        </Droppable>
       </div>
       <div className={styles.buttonContainer}>
         <button className={styles.button}>+ 장소 추가</button>

@@ -8,10 +8,12 @@ export const container = style({
   gap: 20,
   border: `1px solid ${vars.color.g300}`,
   borderRadius: 10,
+  background: vars.color.white,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       padding: '16px 20px',
-      borderRadius: 16,
+      borderRadius: 14,
     },
   },
 });
