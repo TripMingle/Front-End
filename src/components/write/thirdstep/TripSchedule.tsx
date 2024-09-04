@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Droppable } from '@hello-pangea/dnd';
 import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
@@ -8,9 +10,10 @@ type Props = {
   date: string;
   day: number;
   data: SchedulePlaceType[];
+  openModal: () => void;
 };
 
-const TripSchedule = ({ date, day, data }: Props) => {
+const TripSchedule = ({ date, day, data, openModal }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.dateContainer}>
@@ -50,7 +53,9 @@ const TripSchedule = ({ date, day, data }: Props) => {
         </Droppable>
       </div>
       <div className={styles.buttonContainer}>
-        <button className={styles.button}>+ 장소 추가</button>
+        <button className={styles.button} onClick={openModal}>
+          + 장소 추가
+        </button>
       </div>
     </div>
   );

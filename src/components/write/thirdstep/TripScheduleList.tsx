@@ -11,6 +11,8 @@ import {
 } from '@/styles/write/thirdstep/trip-schedule.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
+import useModal from '@/hooks/useModal';
+import AddPlaceModal from './AddPlaceModal';
 
 const TripScheduleList = () => {
   // TODO :: 일정 추가 페이지 완료 시 변경
@@ -19,6 +21,8 @@ const TripScheduleList = () => {
   // const endDate = watch('endDate)
   const startDate = '2024-03-24';
   const endDate = '2024-03-27';
+
+  const { isOpen, openModal, closeModal } = useModal();
 
   const [dateArray, setDateArray] = useState<string[]>([]);
   const [placeList, setPlaceList] = useState<{
@@ -99,25 +103,29 @@ const TripScheduleList = () => {
   }, []);
 
   return (
-    <div className={listContainer}>
-      <span className={listLine}></span>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <ul className={listItemContainer}>
-          {dateArray.map((date, index) => (
-            <li
-              className={`${index === dateArray.length - 1 ? lastListItem : ''}`}
-              key={date}
-            >
-              <TripSchedule
-                day={index + 1}
-                date={date}
-                data={placeList[date]}
-              />
-            </li>
-          ))}
-        </ul>
-      </DragDropContext>
-    </div>
+    <>
+      <div className={listContainer}>
+        <span className={listLine}></span>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <ul className={listItemContainer}>
+            {dateArray.map((date, index) => (
+              <li
+                className={`${index === dateArray.length - 1 ? lastListItem : ''}`}
+                key={date}
+              >
+                <TripSchedule
+                  day={index + 1}
+                  date={date}
+                  data={placeList[date]}
+                  openModal={openModal}
+                />
+              </li>
+            ))}
+          </ul>
+        </DragDropContext>
+      </div>
+      <AddPlaceModal isOpen={isOpen} closeModal={closeModal} />
+    </>
   );
 };
 
