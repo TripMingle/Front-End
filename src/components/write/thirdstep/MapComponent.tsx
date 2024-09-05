@@ -19,18 +19,14 @@ const MapComponent = () => {
   useEffect(() => {}, []);
 
   return (
-    <LoadScript
-      googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || ''}
-    >
-      <div className={styles.mapConatiner}>
-        <GoogleMap
-          mapContainerStyle={defaultMapContainerStyle}
-          center={center}
-          zoom={13}
-          onLoad={onLoad}
-        />
-      </div>
-    </LoadScript>
+    <div className={styles.mapConatiner}>
+      <GoogleMap
+        mapContainerStyle={defaultMapContainerStyle}
+        center={center}
+        zoom={13}
+        onLoad={onLoad}
+      />
+    </div>
   );
 };
 

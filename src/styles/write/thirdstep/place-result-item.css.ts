@@ -19,8 +19,8 @@ export const placePhoto = style({
   borderRadius: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 84,
-      height: 84,
+      width: 64,
+      height: 64,
     },
   },
 });

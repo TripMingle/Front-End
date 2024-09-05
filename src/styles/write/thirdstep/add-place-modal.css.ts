@@ -74,6 +74,7 @@ export const searchText = style({
 export const searchIcon = style({
   width: 20,
   height: 20,
+  cursor: 'pointer',
 });
 
 export const buttonContainer = style({
@@ -116,9 +117,11 @@ export const resultContainer = style({
   height: 184,
   flexDirection: 'column',
   overflow: 'scroll',
+  gap: 20,
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 282,
+      gap: 15,
     },
   },
 });

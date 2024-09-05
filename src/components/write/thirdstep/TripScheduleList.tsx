@@ -69,27 +69,27 @@ const TripScheduleList = () => {
       // TODO:: 날짜마다 빈 배열로 초기화, 잠시 테스트를 위해 목업 데이터 tmp 넣어두기
       if (i === 0) {
         const tmp: SchedulePlaceType[] = [
-          {
-            id: 1231,
-            placeName: 'Golden Gate Bridge',
-            pointX: 37.8199,
-            pointY: -122.4783,
-            googlePlaceId: 'ChIJiQHsW0mAhYARmWQwLt1iD9g',
-          },
-          {
-            id: 23,
-            placeName: 'Eiffel Tower',
-            pointX: 48.8584,
-            pointY: 2.2945,
-            googlePlaceId: 'ChIJLU7jZClu5kcR4PcOOO6p3I0',
-          },
-          {
-            id: 11,
-            placeName: 'Sydney Opera House',
-            pointX: -33.8568,
-            pointY: 151.2153,
-            googlePlaceId: 'ChIJ3S-JXmauEmsRUcIaWtf4MzE',
-          },
+          // {
+          //   id: 1231,
+          //   placeName: 'Golden Gate Bridge',
+          //   pointX: 37.8199,
+          //   pointY: -122.4783,
+          //   googlePlaceId: 'ChIJiQHsW0mAhYARmWQwLt1iD9g',
+          // },
+          // {
+          //   id: 23,
+          //   placeName: 'Eiffel Tower',
+          //   pointX: 48.8584,
+          //   pointY: 2.2945,
+          //   googlePlaceId: 'ChIJLU7jZClu5kcR4PcOOO6p3I0',
+          // },
+          // {
+          //   id: 11,
+          //   placeName: 'Sydney Opera House',
+          //   pointX: -33.8568,
+          //   pointY: 151.2153,
+          //   googlePlaceId: 'ChIJ3S-JXmauEmsRUcIaWtf4MzE',
+          // },
         ];
         setPlaceList((prev) => {
           return { ...prev, [e]: tmp };

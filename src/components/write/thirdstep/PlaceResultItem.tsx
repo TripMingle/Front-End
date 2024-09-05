@@ -7,18 +7,19 @@ type Props = {
 };
 
 const PlaceResultItem = ({ place }: Props) => {
+  console.log(place);
   return (
     <div className={styles.container}>
       <Image
+        src={place.imageUrl}
         className={styles.placePhoto}
-        src=""
-        width={24}
-        height={24}
+        width={64}
+        height={64}
         alt="placeImage"
       />
       <div className={styles.infoContainer}>
         <p className={styles.placeName}>{place.placeName}</p>
-        <p className={styles.placeAddress}>주소</p>
+        <p className={styles.placeAddress}>{place.address}</p>
       </div>
       <button className={styles.selectContainer({ select: true })}>
         <Image

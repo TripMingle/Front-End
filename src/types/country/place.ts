@@ -1,7 +1,9 @@
 export type SchedulePlaceType = {
-  id: number;
+  id: string;
+  googlePlaceId: string;
   placeName: string;
   pointX: number;
   pointY: number;
-  googlePlaceId: string;
+  imageUrl: string;
+  address: string;
 };
