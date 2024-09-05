@@ -6,12 +6,12 @@ import Image from 'next/image';
 type Props = {
   place: SchedulePlaceType;
   index: number;
+  removeHandler: (index: number) => void;
 };
 
-const SchedulePlace = ({ place, index }: Props) => {
+const SchedulePlace = ({ place, index, removeHandler }: Props) => {
   return (
-    // TODO:: draggableId의 경우 나중에 uuid로 바꿔서 수정해야함
-    <Draggable draggableId={place.id.toString()} index={index}>
+    <Draggable draggableId={place.id} index={index}>
       {(provided) => (
         <div
           className={styles.container}
@@ -25,6 +25,7 @@ const SchedulePlace = ({ place, index }: Props) => {
             width={30}
             height={30}
             alt="deleteIcon"
+            onClick={() => removeHandler(index)}
           />
           <Image
             {...provided.dragHandleProps}

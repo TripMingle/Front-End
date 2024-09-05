@@ -6,6 +6,7 @@ export const container = style({
   display: 'flex',
   alignItems: 'center',
   gap: 10,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 20,
@@ -69,6 +70,7 @@ export const selectContainer = recipe({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer',
     '@media': {
       'screen and (min-width: 1024px)': {
         width: 20,

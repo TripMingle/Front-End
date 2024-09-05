@@ -4,10 +4,11 @@ import Image from 'next/image';
 
 type Props = {
   place: SchedulePlaceType;
+  index: number;
+  select: number[];
 };
 
-const PlaceResultItem = ({ place }: Props) => {
-  console.log(place);
+const PlaceResultItem = ({ place, index, select }: Props) => {
   return (
     <div className={styles.container}>
       <Image
@@ -21,7 +22,9 @@ const PlaceResultItem = ({ place }: Props) => {
         <p className={styles.placeName}>{place.placeName}</p>
         <p className={styles.placeAddress}>{place.address}</p>
       </div>
-      <button className={styles.selectContainer({ select: true })}>
+      <button
+        className={styles.selectContainer({ select: select.includes(index) })}
+      >
         <Image
           className={styles.selectIcon}
           src="/icons/w_check.svg"

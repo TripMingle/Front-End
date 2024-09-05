@@ -5,15 +5,33 @@ import { Droppable } from '@hello-pangea/dnd';
 import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
 import SchedulePlace from './SchedulePlace';
 import { SchedulePlaceType } from '@/types/country/place';
+import AddPlaceModal from './AddPlaceModal';
+import useModal from '@/hooks/useModal';
 
 type Props = {
   date: string;
   day: number;
   data: SchedulePlaceType[];
-  openModal: () => void;
+  schedulePlaceHandler: (
+    schedulePlaces: SchedulePlaceType[],
+    date: string,
+  ) => void;
 };
 
-const TripSchedule = ({ date, day, data, openModal }: Props) => {
+const TripSchedule = ({ date, day, data, schedulePlaceHandler }: Props) => {
+  const { isOpen, openModal, closeModal } = useModal();
+
+  const addPlaceHandler = (placeList: SchedulePlaceType[]) => {
+    const tmp = [...data, ...placeList];
+    schedulePlaceHandler(tmp, date);
+  };
+
+  const removePlaceHandler = (index: number) => {
+    const tmp = [...data];
+    tmp.splice(index, 1);
+    schedulePlaceHandler(tmp, date);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.dateContainer}>
@@ -43,7 +61,11 @@ const TripSchedule = ({ date, day, data, openModal }: Props) => {
                 <li key={element.id}>
                   <div className={styles.placeItemContainer}>
                     <span className={styles.placeNumber}>{index + 1}</span>
-                    <SchedulePlace place={element} index={index} />
+                    <SchedulePlace
+                      place={element}
+                      index={index}
+                      removeHandler={removePlaceHandler}
+                    />
                   </div>
                 </li>
               ))}
@@ -57,6 +79,11 @@ const TripSchedule = ({ date, day, data, openModal }: Props) => {
           + 장소 추가
         </button>
       </div>
+      <AddPlaceModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        addPlaceHandler={addPlaceHandler}
+      />
     </div>
   );
 };

@@ -80,7 +80,6 @@ export const searchIcon = style({
 export const buttonContainer = style({
   display: 'flex',
   justifyContent: 'center',
-  cursor: 'pointer',
 });
 
 export const button = recipe({
@@ -90,6 +89,7 @@ export const button = recipe({
     borderRadius: 6,
     fontSize: 13,
     fontWeight: 500,
+    cursor: 'pointer',
     '@media': {
       'screen and (min-width: 1024px)': {
         padding: '12px 40px',

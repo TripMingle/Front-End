@@ -11,8 +11,6 @@ import {
 } from '@/styles/write/thirdstep/trip-schedule.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
-import useModal from '@/hooks/useModal';
-import AddPlaceModal from './AddPlaceModal';
 
 const TripScheduleList = () => {
   // TODO :: 일정 추가 페이지 완료 시 변경
@@ -22,12 +20,20 @@ const TripScheduleList = () => {
   const startDate = '2024-03-24';
   const endDate = '2024-03-27';
 
-  const { isOpen, openModal, closeModal } = useModal();
-
   const [dateArray, setDateArray] = useState<string[]>([]);
   const [placeList, setPlaceList] = useState<{
     [key: string]: SchedulePlaceType[];
   }>({});
+
+  const schedulePlaceHandler = (
+    schedulePlaces: SchedulePlaceType[],
+    date: string,
+  ) => {
+    setPlaceList((prev) => ({
+      ...prev,
+      [date]: schedulePlaces,
+    }));
+  };
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
@@ -66,39 +72,9 @@ const TripScheduleList = () => {
     const result = getDateInRange(startDate, endDate);
     setDateArray(result);
     result.forEach((e, i) => {
-      // TODO:: 날짜마다 빈 배열로 초기화, 잠시 테스트를 위해 목업 데이터 tmp 넣어두기
-      if (i === 0) {
-        const tmp: SchedulePlaceType[] = [
-          // {
-          //   id: 1231,
-          //   placeName: 'Golden Gate Bridge',
-          //   pointX: 37.8199,
-          //   pointY: -122.4783,
-          //   googlePlaceId: 'ChIJiQHsW0mAhYARmWQwLt1iD9g',
-          // },
-          // {
-          //   id: 23,
-          //   placeName: 'Eiffel Tower',
-          //   pointX: 48.8584,
-          //   pointY: 2.2945,
-          //   googlePlaceId: 'ChIJLU7jZClu5kcR4PcOOO6p3I0',
-          // },
-          // {
-          //   id: 11,
-          //   placeName: 'Sydney Opera House',
-          //   pointX: -33.8568,
-          //   pointY: 151.2153,
-          //   googlePlaceId: 'ChIJ3S-JXmauEmsRUcIaWtf4MzE',
-          // },
-        ];
-        setPlaceList((prev) => {
-          return { ...prev, [e]: tmp };
-        });
-      } else {
-        setPlaceList((prev) => {
-          return { ...prev, [e]: [] };
-        });
-      }
+      setPlaceList((prev) => {
+        return { ...prev, [e]: [] };
+      });
     });
   }, []);
 
@@ -117,14 +93,13 @@ const TripScheduleList = () => {
                   day={index + 1}
                   date={date}
                   data={placeList[date]}
-                  openModal={openModal}
+                  schedulePlaceHandler={schedulePlaceHandler}
                 />
               </li>
             ))}
           </ul>
         </DragDropContext>
       </div>
-      <AddPlaceModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };

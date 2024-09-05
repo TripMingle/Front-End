@@ -16,8 +16,6 @@ const MapComponent = () => {
     height: '100%',
   };
 
-  useEffect(() => {}, []);
-
   return (
     <div className={styles.mapConatiner}>
       <GoogleMap
