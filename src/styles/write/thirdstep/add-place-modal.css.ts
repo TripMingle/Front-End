@@ -5,12 +5,13 @@ import { recipe } from '@vanilla-extract/recipes';
 export const modalContainer = style({
   display: 'flex',
   width: 'calc(100vw - 80px)',
-  maxWidth: 540,
+  maxWidth: 380,
   padding: 2,
   flexDirection: 'column',
   gap: 16,
   '@media': {
     'screen and (min-width: 1024px)': {
+      maxWidth: 540,
       padding: 6,
       gap: 20,
     },
@@ -78,6 +79,7 @@ export const searchIcon = style({
 export const buttonContainer = style({
   display: 'flex',
   justifyContent: 'center',
+  cursor: 'pointer',
 });
 
 export const button = recipe({
@@ -105,6 +107,18 @@ export const button = recipe({
         color: vars.color.g400,
         background: vars.color.g200,
       },
+    },
+  },
+});
+
+export const resultContainer = style({
+  display: 'flex',
+  height: 184,
+  flexDirection: 'column',
+  overflow: 'scroll',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 282,
     },
   },
 });
