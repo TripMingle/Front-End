@@ -54,13 +54,13 @@ const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
   };
 
   const selectHandler = (index: number) => {
-    if (select.includes(index)) {
-      const tmp = [...select];
-      tmp.splice(index, 1);
-      setSelect(tmp);
-    } else {
-      setSelect((prev) => [...prev, index]);
-    }
+    setSelect((select) => {
+      if (select.includes(index)) {
+        return select.filter((i) => i !== index);
+      } else {
+        return [...select, index];
+      }
+    });
   };
 
   const clickHandler = useCallback(() => {
