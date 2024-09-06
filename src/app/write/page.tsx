@@ -23,7 +23,7 @@ const Page = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(3);
   const [searchCountry, setSearchCountry] = useState<string>('');
   const [languages, setLanguages] = useState<string[]>([]);
   const [content, setContent] = useState<string>('');

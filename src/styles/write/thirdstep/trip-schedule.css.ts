@@ -10,6 +10,7 @@ export const container = style({
 export const dateContainer = style({
   display: 'flex',
   alignItems: 'center',
+  gap: 10,
 });
 
 export const dayCircle = style({
@@ -24,7 +25,6 @@ export const dayCircle = style({
 export const dayContainer = style({
   display: 'flex',
   padding: '5px 8px',
-  margin: '0px 10px',
   alignItems: 'center',
   borderRadius: 50,
   background: vars.color.black,
@@ -50,9 +50,40 @@ export const airplaneIcon = style({
   },
 });
 
+export const mapIcon = style({
+  paddingBottom: 2,
+  width: 13,
+  height: 13,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 15,
+      height: 15,
+    },
+  },
+});
+
 export const date = style({
   color: vars.color.g500,
   fontSize: 13,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 16,
+    },
+  },
+});
+
+export const mapButton = style({
+  display: 'flex',
+  gap: 4,
+  alignItems: 'center',
+  border: `1px solid ${vars.color.secondary}`,
+  borderRadius: 20,
+  padding: '5px 8px',
+  color: vars.color.secondary,
+  background: vars.color.white,
+  fontWeight: 700,
+  fontSize: 13,
+  cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 16,

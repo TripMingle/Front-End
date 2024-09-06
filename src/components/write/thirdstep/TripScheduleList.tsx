@@ -8,16 +8,24 @@ import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
 
 type Props = {
+  placeList: { [key: string]: SchedulePlaceType[] };
   placeListHandler: (newPlaceList: {
     [key: string]: SchedulePlaceType[];
   }) => void;
-  placeList: { [key: string]: SchedulePlaceType[] };
+  mapDateHandler: (date: string) => void;
 };
 
-const TripScheduleList = ({ placeListHandler, placeList }: Props) => {
+const TripScheduleList = ({
+  placeList,
+  placeListHandler,
+  mapDateHandler,
+}: Props) => {
   const { watch } = useFormContext<BoardForm>();
-  const startDate = watch('startDate');
-  const endDate = watch('endDate');
+  // const startDate = watch('startDate');
+  // const endDate = watch('endDate');
+
+  const startDate = '2023-09-24';
+  const endDate = '2023-09-27';
 
   const [dateArray, setDateArray] = useState<string[]>([]);
 
@@ -80,6 +88,7 @@ const TripScheduleList = ({ placeListHandler, placeList }: Props) => {
                   date={date}
                   data={placeList[date]}
                   placeListHandler={placeListHandler}
+                  mapDateHandler={mapDateHandler}
                 />
               </li>
             ))}
