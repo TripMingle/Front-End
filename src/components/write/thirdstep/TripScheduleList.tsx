@@ -12,13 +12,13 @@ type Props = {
   placeListHandler: (newPlaceList: {
     [key: string]: SchedulePlaceType[];
   }) => void;
-  mapDateHandler: (date: string) => void;
+  mapHandler: (date: string, index: number) => void;
 };
 
 const TripScheduleList = ({
   placeList,
   placeListHandler,
-  mapDateHandler,
+  mapHandler,
 }: Props) => {
   const { watch } = useFormContext<BoardForm>();
   // const startDate = watch('startDate');
@@ -88,7 +88,7 @@ const TripScheduleList = ({
                   date={date}
                   data={placeList[date]}
                   placeListHandler={placeListHandler}
-                  mapDateHandler={mapDateHandler}
+                  mapHandler={mapHandler}
                 />
               </li>
             ))}

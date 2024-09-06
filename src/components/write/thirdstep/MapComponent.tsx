@@ -1,19 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { GoogleMap, Marker, MarkerClusterer } from '@react-google-maps/api';
+import {
+  GoogleMap,
+  Marker,
+  MarkerClusterer,
+  OverlayView,
+} from '@react-google-maps/api';
 import * as styles from '@/styles/write/thirdstep/map-component.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 import { SchedulePlaceType } from '@/types/country/place';
+import MapMarker from './MapMarker';
 
 type Props = {
   placeList: { [key: string]: SchedulePlaceType[] };
   date: string;
+  index: number;
 };
 
-const MapComponent = ({ placeList, date }: Props) => {
+const MapComponent = ({ placeList, date, index }: Props) => {
   const mapRef = useRef<google.maps.Map | null>(null);
-  const [center, setCenter] = useState({ lat: 0, lng: 0 });
+  const [countryCenter, setCountryCenter] = useState<google.maps.LatLngLiteral>(
+    { lat: 0, lng: 0 },
+  );
+  const [center, setCenter] = useState<google.maps.LatLngLiteral>({
+    lat: 0,
+    lng: 0,
+  });
   const [markers, setMarkers] = useState<google.maps.LatLngLiteral[]>([]);
+  const [zoom, setZoom] = useState<number>(6);
 
   const { watch } = useFormContext<BoardForm>();
   // const country = watch('countryName');
@@ -35,7 +49,7 @@ const MapComponent = ({ placeList, date }: Props) => {
     geocoder.geocode({ address: country }, (results, status) => {
       if (status === 'OK' && results && results[0]) {
         const location = results[0].geometry.location;
-        setCenter({
+        setCountryCenter({
           lat: location.lat(),
           lng: location.lng(),
         });
@@ -52,24 +66,59 @@ const MapComponent = ({ placeList, date }: Props) => {
       });
       setMarkers(dateMarkers);
     }
-  }, [date]);
+  }, [date, placeList[date]]);
+
+  useEffect(() => {
+    let zoom = 12;
+    let lat = countryCenter.lat;
+    let lng = countryCenter.lng;
+
+    if (index === -1) {
+      // 지도 버튼 클릭했을 때 index = -1
+      index = 0;
+      zoom = 6;
+    }
+
+    if (placeList[date] !== undefined) {
+      if (placeList[date][index]) {
+        lat = placeList[date][index].pointX;
+        lng = placeList[date][index].pointY;
+      } else {
+        zoom = 6;
+      }
+    }
+    setZoom(zoom);
+    setCenter({ lat, lng });
+  }, [date, index]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.setZoom(zoom);
+    }
+  }, [zoom]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.panTo(center);
+    }
+  }, [center]);
 
   return (
     <div className={styles.mapConatiner}>
       <GoogleMap
         mapContainerStyle={defaultMapContainerStyle}
-        center={center}
+        center={countryCenter}
         zoom={6}
         onLoad={onLoad}
       >
         {markers.map((marker, index) => (
-          <Marker
+          <OverlayView
             key={index}
             position={marker}
-            icon={{
-              url: '/icons/map_marker.svg',
-            }}
-          />
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <MapMarker index={index} />
+          </OverlayView>
         ))}
       </GoogleMap>
     </div>

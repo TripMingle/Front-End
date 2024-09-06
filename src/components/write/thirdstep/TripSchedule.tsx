@@ -15,7 +15,7 @@ type Props = {
   placeListHandler: (newPlaceList: {
     [key: string]: SchedulePlaceType[];
   }) => void;
-  mapDateHandler: (date: string) => void;
+  mapHandler: (date: string, index: number) => void;
 };
 
 const TripSchedule = ({
@@ -23,7 +23,7 @@ const TripSchedule = ({
   day,
   data,
   placeListHandler,
-  mapDateHandler,
+  mapHandler,
 }: Props) => {
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -55,7 +55,7 @@ const TripSchedule = ({
           <span>Day {day}</span>
         </div>
         <span className={styles.date}>{date}</span>
-        <div className={styles.mapButton} onClick={() => mapDateHandler(date)}>
+        <div className={styles.mapButton} onClick={() => mapHandler(date, -1)}>
           <Image
             className={styles.mapIcon}
             src="/icons/mini_map.svg"
@@ -83,7 +83,7 @@ const TripSchedule = ({
               ref={provided.innerRef}
             >
               {data.map((element, index) => (
-                <li key={element.id}>
+                <li key={element.id} onClick={() => mapHandler(date, index)}>
                   <SchedulePlace
                     place={element}
                     index={index}

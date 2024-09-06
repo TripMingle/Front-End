@@ -18,9 +18,13 @@ type Props = {
 
 const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
   const { getValues } = useFormContext<BoardForm>();
-  const [mapDate, setMapDate] = useState<string>(getValues('startDate'));
-  const mapDateHandler = (date: string) => {
-    setMapDate(date);
+  const [mapCenterDate, setMapCenterDate] = useState<string>(
+    getValues('startDate'),
+  );
+  const [mapCenterIndex, setMapCenterIndex] = useState<number>(-1);
+  const mapHandler = (date: string, index: number) => {
+    setMapCenterDate(date);
+    setMapCenterIndex(index);
   };
 
   return (
@@ -29,12 +33,16 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || ''}
         libraries={libraries}
       >
-        <MapComponent placeList={placeList} date={mapDate} />
+        <MapComponent
+          placeList={placeList}
+          date={mapCenterDate}
+          index={mapCenterIndex}
+        />
         <TripDate />
         <TripScheduleList
           placeListHandler={placeListHandler}
           placeList={placeList}
-          mapDateHandler={mapDateHandler}
+          mapHandler={mapHandler}
         />
       </LoadScript>
     </div>
