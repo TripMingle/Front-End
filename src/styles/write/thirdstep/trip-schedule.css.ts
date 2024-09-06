@@ -1,39 +1,6 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
-export const listContainer = style({
-  position: 'relative',
-});
-
-export const listLine = style({
-  position: 'absolute',
-  display: 'flex',
-  zIndex: 1,
-  width: 2,
-  height: 'calc(100% - 40px)',
-  marginTop: 14,
-  marginLeft: 4,
-  background: vars.color.g200,
-});
-
-export const listItemContainer = style({
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '30px 0px',
-  gap: 30,
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      margin: '40px 0px',
-    },
-  },
-});
-
-export const lastListItem = style({
-  zIndex: 4,
-  background:
-    'linear-gradient(to bottom, transparent 0px, transparent 14px, #ffffff 14px)',
-});
-
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
@@ -113,48 +80,57 @@ export const button = style({
   },
 });
 
-export const placeListCotainer = style({
-  position: 'relative',
+export const schedulePlaceContainer = style({
   display: 'flex',
-  marginLeft: 16,
+});
+
+export const listOrderContainer = style({
+  display: 'flex',
   flexDirection: 'column',
+  marginLeft: 16,
+  marginRight: 10,
   gap: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
       marginLeft: 24,
-    },
-  },
-});
-
-export const placeListLine = style({
-  position: 'absolute',
-  top: 11,
-  left: 10,
-  height: 'calc(100% - 22px)',
-  borderRight: `2px dashed ${vars.color.g300}`,
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      top: 22,
-      left: 15,
-      height: 'calc(100% - 44px)',
-    },
-  },
-});
-
-export const placeItemContainer = style({
-  display: 'flex',
-  height: 44,
-  alignItems: 'center',
-  gap: 10,
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      height: 64,
+      marginRight: 20,
       gap: 20,
     },
   },
 });
 
-export const placeNumber = style({
+export const listOrderItem = style({
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  height: 44,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 64,
+    },
+  },
+});
+
+export const listLine = style({
+  position: 'absolute',
+  top: 21,
+  left: 10,
+  height: '100%',
+  borderRight: `2px dashed ${vars.color.g300}`,
+  selectors: {
+    [`${listOrderItem}:last-child > &`]: {
+      display: 'none',
+    },
+  },
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      top: 37,
+      left: 15,
+    },
+  },
+});
+
+export const listNumber = style({
   display: 'flex',
   width: 20,
   height: 20,
@@ -173,4 +149,10 @@ export const placeNumber = style({
       fontSize: 14,
     },
   },
+});
+
+export const placeListContainer = style({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
 });

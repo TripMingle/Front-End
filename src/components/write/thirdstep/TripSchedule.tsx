@@ -48,25 +48,29 @@ const TripSchedule = ({ date, day, data, schedulePlaceHandler }: Props) => {
         </div>
         <span className={styles.date}>{date}</span>
       </div>
-      <div>
+      <div className={styles.schedulePlaceContainer}>
+        <ul className={styles.listOrderContainer}>
+          {data.map((element, index) => (
+            <li className={styles.listOrderItem}>
+              <span className={styles.listLine}></span>
+              <span className={styles.listNumber}>{index + 1}</span>
+            </li>
+          ))}
+        </ul>
         <Droppable droppableId={date}>
           {(provided) => (
             <ul
-              className={styles.placeListCotainer}
+              className={styles.placeListContainer}
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <span className={styles.placeListLine}></span>
               {data.map((element, index) => (
                 <li key={element.id}>
-                  <div className={styles.placeItemContainer}>
-                    <span className={styles.placeNumber}>{index + 1}</span>
-                    <SchedulePlace
-                      place={element}
-                      index={index}
-                      removeHandler={removePlaceHandler}
-                    />
-                  </div>
+                  <SchedulePlace
+                    place={element}
+                    index={index}
+                    removeHandler={removePlaceHandler}
+                  />
                 </li>
               ))}
               {provided.placeholder}

@@ -4,6 +4,7 @@ import { style } from '@vanilla-extract/css';
 export const container = style({
   display: 'flex',
   zIndex: 4,
+  height: 44,
   padding: '12px 16px',
   alignItems: 'center',
   gap: 20,
@@ -12,10 +13,14 @@ export const container = style({
   background: vars.color.white,
   cursor: 'pointer',
   flex: 1,
+  marginBottom: 10,
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
+      height: 64,
       padding: '16px 20px',
       borderRadius: 14,
+      marginBottom: 20,
     },
   },
 });

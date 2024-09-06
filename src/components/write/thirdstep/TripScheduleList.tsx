@@ -3,12 +3,7 @@ import { BoardForm } from '@/types/country/board';
 import { useFormContext } from 'react-hook-form';
 import { getDateInRange } from '@/utils/date';
 import TripSchedule from './TripSchedule';
-import {
-  lastListItem,
-  listContainer,
-  listItemContainer,
-  listLine,
-} from '@/styles/write/thirdstep/trip-schedule.css';
+import * as styles from '@/styles/write/thirdstep/trip-schedule-list.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
 
@@ -80,15 +75,12 @@ const TripScheduleList = () => {
 
   return (
     <>
-      <div className={listContainer}>
-        <span className={listLine}></span>
+      <div className={styles.container}>
         <DragDropContext onDragEnd={onDragEnd}>
-          <ul className={listItemContainer}>
+          <ul className={styles.listContainer}>
             {dateArray.map((date, index) => (
-              <li
-                className={`${index === dateArray.length - 1 ? lastListItem : ''}`}
-                key={date}
-              >
+              <li className={styles.listItemContainer} key={date}>
+                <span className={styles.listItemLine}></span>
                 <TripSchedule
                   day={index + 1}
                   date={date}
