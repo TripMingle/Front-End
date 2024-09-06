@@ -4,13 +4,10 @@ import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
 const TripDate = () => {
-  const { watch, setValue } = useFormContext<BoardForm>();
+  const { watch } = useFormContext<BoardForm>();
 
-  // TODO:: ScheduleInput 개발 완료 시 watch값으로 변경
-  //   const startDate = watch('startDate');
-  //   const endDate = watch('endDate');
-  const startDate = `2024.03.23`;
-  const endDate = `2024.03.27`;
+  const startDate = watch('startDate');
+  const endDate = watch('endDate');
 
   return (
     <div className={styles.container}>

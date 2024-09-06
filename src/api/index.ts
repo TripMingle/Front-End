@@ -45,7 +45,7 @@ const apiFetch = () => {
       const response = await fetch(url, config);
 
       // 액세스토큰이 만료 됐을 때
-      if (response.status === 403) {
+      if (response.status === 401 || response.status === 403) {
         const result = await updateAccessToken();
         if (result !== '') {
           const authorization = { Authorization: `Bearer ${result}` };

@@ -7,31 +7,22 @@ import * as styles from '@/styles/write/thirdstep/trip-schedule-list.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
 
-const TripScheduleList = () => {
-  // TODO :: 일정 추가 페이지 완료 시 변경
-  // const { watch, setValue } = useFormContext<BoardForm>();
-  // const startDate = watch('startDate')
-  // const endDate = watch('endDate)
-  const startDate = '2024-03-24';
-  const endDate = '2024-03-27';
+type Props = {
+  placeListHandler: (newPlaceList: {
+    [key: string]: SchedulePlaceType[];
+  }) => void;
+  placeList: { [key: string]: SchedulePlaceType[] };
+};
+
+const TripScheduleList = ({ placeListHandler, placeList }: Props) => {
+  const { watch } = useFormContext<BoardForm>();
+  const startDate = watch('startDate');
+  const endDate = watch('endDate');
 
   const [dateArray, setDateArray] = useState<string[]>([]);
-  const [placeList, setPlaceList] = useState<{
-    [key: string]: SchedulePlaceType[];
-  }>({});
-
-  const schedulePlaceHandler = (
-    schedulePlaces: SchedulePlaceType[],
-    date: string,
-  ) => {
-    setPlaceList((prev) => ({
-      ...prev,
-      [date]: schedulePlaces,
-    }));
-  };
 
   const onDragEnd = (result: DropResult) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source } = result;
 
     if (!destination) return;
     if (
@@ -42,36 +33,39 @@ const TripScheduleList = () => {
     if (source.droppableId === destination.droppableId) {
       const newArray = Array.from(placeList[source.droppableId] || []);
       const [movedItem] = newArray.splice(source.index, 1);
+
       newArray.splice(destination.index, 0, movedItem);
-      setPlaceList((prev) => ({
-        ...prev,
-        [source.droppableId]: newArray,
-      }));
+      const newPlaceList = { [source.droppableId]: newArray };
+
+      placeListHandler(newPlaceList);
     } else {
       const newSourceArray = Array.from(placeList[source.droppableId] || []);
       const [movedItem] = newSourceArray.splice(source.index, 1);
+
       const newDestinationArray = Array.from(
         placeList[destination.droppableId] || [],
       );
       newDestinationArray.splice(destination.index, 0, movedItem);
-
-      setPlaceList((prev) => ({
-        ...prev,
+      const newPlaceList = {
         [source.droppableId]: newSourceArray,
         [destination.droppableId]: newDestinationArray,
-      }));
+      };
+
+      placeListHandler(newPlaceList);
     }
   };
 
   useEffect(() => {
     const result = getDateInRange(startDate, endDate);
     setDateArray(result);
-    result.forEach((e, i) => {
-      setPlaceList((prev) => {
-        return { ...prev, [e]: [] };
-      });
+    const newPlaceList: { [key: string]: [] } = {};
+    // TODO:: 날짜바꾸면 모두 다시 빈배열로 바꿀지, 아니면 이전에 해당 날짜에 넣어놓은 데이터는 냅둘지 고민
+    // 모두 빈배열로 바꾸고 싶다면 if문 제거하고 그냥 newPlaceList[e] = [] 적용
+    result.forEach((e) => {
+      if (!placeList[e]) newPlaceList[e] = [];
     });
-  }, []);
+    placeListHandler(newPlaceList);
+  }, [startDate, endDate]);
 
   return (
     <>
@@ -85,7 +79,7 @@ const TripScheduleList = () => {
                   day={index + 1}
                   date={date}
                   data={placeList[date]}
-                  schedulePlaceHandler={schedulePlaceHandler}
+                  placeListHandler={placeListHandler}
                 />
               </li>
             ))}

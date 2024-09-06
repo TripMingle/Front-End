@@ -12,24 +12,25 @@ type Props = {
   date: string;
   day: number;
   data: SchedulePlaceType[];
-  schedulePlaceHandler: (
-    schedulePlaces: SchedulePlaceType[],
-    date: string,
-  ) => void;
+  placeListHandler: (newPlaceList: {
+    [key: string]: SchedulePlaceType[];
+  }) => void;
 };
 
-const TripSchedule = ({ date, day, data, schedulePlaceHandler }: Props) => {
+const TripSchedule = ({ date, day, data, placeListHandler }: Props) => {
   const { isOpen, openModal, closeModal } = useModal();
 
   const addPlaceHandler = (placeList: SchedulePlaceType[]) => {
     const tmp = [...data, ...placeList];
-    schedulePlaceHandler(tmp, date);
+    const newPlaceList = { [date]: tmp };
+    placeListHandler(newPlaceList);
   };
 
   const removePlaceHandler = (index: number) => {
     const tmp = [...data];
     tmp.splice(index, 1);
-    schedulePlaceHandler(tmp, date);
+    const newPlaceList = { [date]: tmp };
+    placeListHandler(newPlaceList);
   };
 
   return (
@@ -51,7 +52,7 @@ const TripSchedule = ({ date, day, data, schedulePlaceHandler }: Props) => {
       <div className={styles.schedulePlaceContainer}>
         <ul className={styles.listOrderContainer}>
           {data.map((element, index) => (
-            <li className={styles.listOrderItem}>
+            <li className={styles.listOrderItem} key={element.id}>
               <span className={styles.listLine}></span>
               <span className={styles.listNumber}>{index + 1}</span>
             </li>

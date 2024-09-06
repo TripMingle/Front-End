@@ -2,10 +2,18 @@ import { Libraries, LoadScript } from '@react-google-maps/api';
 import MapComponent from './MapComponent';
 import TripDate from './TripDate';
 import TripScheduleList from './TripScheduleList';
+import { SchedulePlaceType } from '@/types/country/place';
 
 const libraries: Libraries = ['places'];
 
-const ScheduleInput = () => {
+type Props = {
+  placeListHandler: (newPlaceList: {
+    [key: string]: SchedulePlaceType[];
+  }) => void;
+  placeList: { [key: string]: SchedulePlaceType[] };
+};
+
+const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
   return (
     <div>
       <LoadScript
@@ -14,7 +22,10 @@ const ScheduleInput = () => {
       >
         <MapComponent />
         <TripDate />
-        <TripScheduleList />
+        <TripScheduleList
+          placeListHandler={placeListHandler}
+          placeList={placeList}
+        />
       </LoadScript>
     </div>
   );
