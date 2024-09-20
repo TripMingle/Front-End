@@ -13,6 +13,8 @@ type Props = {
 };
 
 const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
+  // const country = watch('countryName');
+  const country = 'France';
   const [result, setResult] = useState<SchedulePlaceType[]>([]);
   const [input, setInput] = useState<string>('');
   const [select, setSelect] = useState<number[]>([]);
@@ -22,8 +24,6 @@ const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
 
   const [placesService, setPlacesService] =
     useState<google.maps.places.PlacesService | null>(null);
-  const [autocompleteService, setAutocompleteService] =
-    useState<google.maps.places.AutocompleteService | null>(null);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
@@ -63,85 +63,52 @@ const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
     });
   };
 
-  const clickHandler = useCallback(() => {
-    if (autocompleteService && input) {
-      const tempResults: SchedulePlaceType[] = []; // 지역변수로 결과 저장
-      autocompleteService.getPlacePredictions(
-        { input, language: 'ko' },
-        (predictions, status) => {
-          if (status !== google.maps.places.PlacesServiceStatus.OK) return;
+  const clickHandler = useCallback(async () => {
+    if (input) {
+      let request = {
+        query: country + input,
+        fields: ['formatted_address', 'geometry', 'name', 'place_id', 'photos'],
+      };
 
-          if (predictions) {
-            const promises = predictions.map(
-              (prediction) =>
-                new Promise<void>((resolve) => {
-                  placesService?.getDetails(
-                    {
-                      placeId: prediction.place_id,
-                      language: 'ko',
-                      fields: [
-                        'formatted_address',
-                        'geometry',
-                        'place_id',
-                        'name',
-                        'photos',
-                      ],
-                    },
-                    (placeResults, status) => {
-                      if (
-                        status === google.maps.places.PlacesServiceStatus.OK &&
-                        placeResults
-                      ) {
-                        const pointX =
-                          placeResults.geometry?.location?.lat() || 0;
-                        const pointY =
-                          placeResults.geometry?.location?.lng() || 0;
-                        const placeName = placeResults.name || '';
-                        let imageUrl = '';
-                        if (placeResults.photos) {
-                          imageUrl = placeResults.photos[0].getUrl({
-                            maxWidth: 64,
-                            maxHeight: 64,
-                          });
-                        }
-                        const googlePlaceId = placeResults.place_id || '';
-                        const address = placeResults.formatted_address || '';
-                        const id = generateRandomId();
-                        const result: SchedulePlaceType = {
-                          id,
-                          pointX,
-                          pointY,
-                          placeName,
-                          imageUrl,
-                          googlePlaceId,
-                          address,
-                        };
-                        tempResults.push(result); // 지역변수에 결과 저장
-                      }
-                      resolve(); // Promise 완료
-                    },
-                  );
-                }),
-            );
+      let searchResults: SchedulePlaceType[] = [];
 
-            Promise.all(promises).then(() => {
-              setResult(tempResults); // 모든 요청이 완료된 후에 상태 업데이트
-            });
-          }
-        },
-      );
+      placesService?.textSearch(request, (results, status) => {
+        console.log(results);
+        if (results) {
+          searchResults = results.map((e) => {
+            let pointX = 0;
+            let pointY = 0;
+            if (e.geometry?.location) {
+              pointX = e.geometry.location.lat();
+              pointY = e.geometry.location.lng();
+            }
+
+            let imageUrl = '';
+            if (e.photos)
+              imageUrl = e.photos[0].getUrl({ maxHeight: 64, maxWidth: 64 });
+
+            return {
+              id: generateRandomId(),
+              pointX,
+              pointY,
+              placeName: e.name || '',
+              imageUrl,
+              googlePlaceId: e.place_id || '',
+              address: e.formatted_address || '',
+            };
+          });
+          setResult(searchResults);
+        }
+      });
     }
-  }, [autocompleteService, input, placesService]);
+  }, [input]);
 
   useEffect(() => {
     if (!inputRef.current || !emptyRef.current) return;
 
-    const autoCompleteService = new google.maps.places.AutocompleteService();
     const placesService = new google.maps.places.PlacesService(
-      emptyRef.current,
+      inputRef.current,
     );
-
-    setAutocompleteService(autoCompleteService);
     setPlacesService(placesService);
   }, [inputRef.current]);
 

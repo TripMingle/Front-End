@@ -6,7 +6,10 @@ import Image from 'next/image';
 type Props = {
   place: SchedulePlaceType;
   index: number;
-  removeHandler: (index: number) => void;
+  removeHandler: (
+    event: React.MouseEvent<HTMLImageElement>,
+    index: number,
+  ) => void;
 };
 
 const SchedulePlace = ({ place, index, removeHandler }: Props) => {
@@ -25,7 +28,7 @@ const SchedulePlace = ({ place, index, removeHandler }: Props) => {
             width={30}
             height={30}
             alt="deleteIcon"
-            onClick={() => removeHandler(index)}
+            onClick={(event) => removeHandler(event, index)}
           />
           <Image
             {...provided.dragHandleProps}

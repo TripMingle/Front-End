@@ -33,7 +33,11 @@ const TripSchedule = ({
     placeListHandler(newPlaceList);
   };
 
-  const removePlaceHandler = (index: number) => {
+  const removePlaceHandler = (
+    event: React.MouseEvent<HTMLImageElement>,
+    index: number,
+  ) => {
+    event.stopPropagation();
     const tmp = [...data];
     tmp.splice(index, 1);
     const newPlaceList = { [date]: tmp };
