@@ -6,6 +6,7 @@ import { SchedulePlaceType } from '@/types/country/place';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
+import { scheduleInputContainer } from '@/styles/write/thirdstep/trip-schedule-list.css';
 
 const libraries: Libraries = ['places'];
 
@@ -28,7 +29,7 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
   };
 
   return (
-    <div>
+    <div className={scheduleInputContainer}>
       <LoadScript
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || ''}
         libraries={libraries}
@@ -38,7 +39,8 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
           date={mapCenterDate}
           index={mapCenterIndex}
         />
-        <TripDate />
+        {/* <TripDate />
+        TODO::여행 일정 들어가면 화면 차지가 너무 커서 일단 뺐음. */}
         <TripScheduleList
           placeListHandler={placeListHandler}
           placeList={placeList}

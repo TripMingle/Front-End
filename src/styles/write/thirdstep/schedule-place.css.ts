@@ -17,10 +17,10 @@ export const container = style({
   boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 64,
+      height: 52,
       padding: '16px 20px',
       borderRadius: 14,
-      marginBottom: 20,
+      marginBottom: 12,
     },
   },
 });
@@ -31,7 +31,7 @@ export const place = style({
   fontWeight: 500,
   '@media': {
     'screen and (min-width: 1024px)': {
-      fontSize: 16,
+      fontSize: 15,
     },
   },
 });
@@ -41,8 +41,8 @@ export const icon = style({
   height: 18,
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 30,
-      height: 30,
+      width: 24,
+      height: 24,
     },
   },
 });

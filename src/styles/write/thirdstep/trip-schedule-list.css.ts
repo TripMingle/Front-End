@@ -1,18 +1,36 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
+export const scheduleInputContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      flexDirection: 'row',
+    },
+  },
+});
+
 export const container = style({
   position: 'relative',
+  flexGrow: 1,
+  overflowY: 'scroll',
+  margin: '30px 0px',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      margin: 0,
+    },
+  },
 });
 
 export const listContainer = style({
   display: 'flex',
   flexDirection: 'column',
-  margin: '30px 0px',
   gap: 30,
   '@media': {
     'screen and (min-width: 1024px)': {
-      margin: '40px 0px',
+      marginLeft: 20,
     },
   },
 });

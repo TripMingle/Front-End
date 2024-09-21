@@ -123,9 +123,9 @@ export const listOrderContainer = style({
   gap: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
-      marginLeft: 24,
-      marginRight: 20,
-      gap: 20,
+      marginLeft: 20,
+      marginRight: 16,
+      gap:12,
     },
   },
 });
@@ -137,7 +137,7 @@ export const listOrderItem = style({
   height: 44,
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 64,
+      height: 52,
     },
   },
 });
@@ -156,7 +156,7 @@ export const listLine = style({
   '@media': {
     'screen and (min-width: 1024px)': {
       top: 37,
-      left: 15,
+      left: 12,
     },
   },
 });
@@ -175,9 +175,9 @@ export const listNumber = style({
   background: vars.color.secondary,
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 30,
-      height: 30,
-      fontSize: 14,
+      width: 24,
+      height: 24,
+      fontSize: 12,
     },
   },
 });

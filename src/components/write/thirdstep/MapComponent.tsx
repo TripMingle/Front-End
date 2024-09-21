@@ -69,7 +69,7 @@ const MapComponent = ({ placeList, date, index }: Props) => {
   }, [date, placeList[date]]);
 
   useEffect(() => {
-    let zoom = 12;
+    let zoom = 15;
     let lat = countryCenter.lat;
     let lng = countryCenter.lng;
 
@@ -110,6 +110,11 @@ const MapComponent = ({ placeList, date, index }: Props) => {
         center={countryCenter}
         zoom={6}
         onLoad={onLoad}
+        options={{
+          mapTypeControl: false,
+          fullscreenControl: false,
+          streetViewControl: false,
+        }}
       >
         {markers.map((marker, index) => (
           <OverlayView
