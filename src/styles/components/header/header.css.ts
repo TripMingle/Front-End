@@ -58,35 +58,72 @@ export const navbar = recipe({
   },
 });
 
-export const logo = recipe({
-  base: {
-    position: 'relative',
-    height: 20,
-    marginRight: 'auto',
-    fontFamily: vars.font.menu,
-    fontSize: 16,
-    fontWeight: 'bold',
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        height: 30,
-        fontSize: 24,
-      },
+export const logoContainer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 6,
+  marginRight: 'auto',
+  cursor: 'pointer',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      gap: 10,
     },
-  },
-  variants: {
-    theme: {
-      white: {
-        color: 'transparent',
-        background: `linear-gradient(45deg, ${vars.color.primary}, ${vars.color.secondary})`,
-        backgroundClip: 'text',
-      },
-      clear: { color: vars.color.white },
-    },
-  },
-  defaultVariants: {
-    theme: 'white',
   },
 });
+
+export const logo = style({
+  display: 'flex',
+  width: 24,
+  height: 24,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 40,
+      height: 40,
+    },
+  },
+});
+
+export const title = style({
+  width: 108,
+  height: 12,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      display: 'flex',
+      width: 180,
+      height: 20,
+    },
+  },
+});
+
+// export const title2 = recipe({
+//   base: {
+//     position: 'relative',
+//     height: 20,
+//     marginRight: 'auto',
+//     fontFamily: vars.font.menu,
+//     fontSize: 16,
+//     fontWeight: 'bold',
+//     '@media': {
+//       'screen and (min-width: 1024px)': {
+//         height: 30,
+//         fontSize: 24,
+//       },
+//     },
+//   },
+//   variants: {
+//     theme: {
+//       white: {
+//         color: 'transparent',
+//         background: `linear-gradient(45deg, ${vars.color.primary}, ${vars.color.secondary})`,
+//         backgroundClip: 'text',
+//       },
+//       clear: { color: vars.color.white },
+//     },
+//   },
+//   defaultVariants: {
+//     theme: 'white',
+//   },
+// });
 
 export const user = style({
   display: 'flex',
