@@ -18,7 +18,7 @@ type Props = {
   mapHandler: (date: string, index: number) => void;
 };
 
-const TripScheduleItem = ({
+const ScheduleListItem = ({
   date,
   day,
   data,
@@ -114,4 +114,4 @@ const TripScheduleItem = ({
   );
 };
 
-export default TripScheduleItem;
+export default ScheduleListItem;
