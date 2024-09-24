@@ -1,9 +1,9 @@
 import * as styles from '@/styles/write/fourthstep/content-input.css';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 
-const ContentInput = ({
+const ContentForm = ({
   content,
   contentHandler,
   scrollHandler,
@@ -67,4 +67,4 @@ const ContentInput = ({
   );
 };
 
-export default ContentInput;
+export default ContentForm;

@@ -1,7 +1,7 @@
 import {
   listContainer,
   resultContainer,
-} from '@/styles/write/firststep/country-box.css';
+} from '@/styles/write/firststep/country-list.css';
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import {
@@ -9,7 +9,7 @@ import {
   getCountryByKeyword,
 } from '@/api/getCountryInfo';
 import { BoardForm } from '@/types/country/board';
-import CountryBox from './CountryBox';
+import CountryListItem from './CountryListItem';
 
 const CountrySelect = ({
   searchCountry,
@@ -56,7 +56,7 @@ const CountrySelect = ({
                 key={continent.continent}
                 onClick={() => countrySearchHandler(continent.continent)}
               >
-                <CountryBox
+                <CountryListItem
                   name={continent.continent}
                   nameKor={continent.continentKor}
                   select={country}
@@ -73,7 +73,7 @@ const CountrySelect = ({
                   )
                 }
               >
-                <CountryBox
+                <CountryListItem
                   name={countryItem.countryNameEnglish}
                   nameKor={countryItem.countryName}
                   select={country}

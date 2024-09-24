@@ -16,3 +16,18 @@ export const formatDay = (date: Date) => {
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
+
+export const getDateInRange = (date1: string, date2: string) => {
+  const start = new Date(date1);
+  const end = new Date(date2);
+  const dateArray: string[] = [];
+
+  let currentDate = start;
+
+  while (currentDate <= end) {
+    dateArray.push(formatDay(currentDate)); // 'YYYY-MM-DD' 형식으로 날짜 추가
+    currentDate.setDate(currentDate.getDate() + 1); // 다음 날짜로 이동
+  }
+
+  return dateArray;
+};

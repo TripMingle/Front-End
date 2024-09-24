@@ -86,6 +86,15 @@ export type CommentType = {
   mine: boolean; // 내 댓글 여부
 };
 
+export type BoardScheduleType = {
+  date: string;
+  placeName: string;
+  number: number;
+  pointX: number;
+  pointY: number;
+  googlePlaceId: string;
+};
+
 export type BoardForm = {
   continent: string;
   countryName: string;
@@ -101,7 +110,7 @@ export type BoardForm = {
   title: string;
   content: string;
   tripType: string[];
-  createBoardSchedule: string[];
+  createBoardSchedule: BoardScheduleType[];
 };
 
 export const boardFormDefault: BoardForm = {

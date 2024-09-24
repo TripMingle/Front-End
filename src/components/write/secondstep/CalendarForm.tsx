@@ -10,7 +10,7 @@ import { BoardForm } from '@/types/country/board';
 type Value = Date | null;
 type Range<T> = [T, T];
 
-const CalendarBox = () => {
+const CalendarForm = () => {
   const { watch, setValue } = useFormContext<BoardForm>();
 
   const startDate = watch('startDate');
@@ -71,4 +71,4 @@ const CalendarBox = () => {
   );
 };
 
-export default CalendarBox;
+export default CalendarForm;

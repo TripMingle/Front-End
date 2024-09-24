@@ -1,6 +1,8 @@
 import { postBoard } from '@/api/postBoard';
 import * as styles from '@/styles/write/step-button.css';
-import { BoardForm } from '@/types/country/board';
+import { BoardForm, BoardScheduleType } from '@/types/country/board';
+import { SchedulePlaceType } from '@/types/country/place';
+import { getDateInRange } from '@/utils/date';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -9,17 +11,22 @@ const StepButton = ({
   step,
   content,
   searchCountry,
+  placeList,
   stepHandler,
   searchHandler,
 }: {
   step: number;
   content: string;
   searchCountry: string;
+  placeList: {
+    [key: string]: SchedulePlaceType[];
+  };
   stepHandler: (step: number) => void;
   searchHandler: (search: string) => void;
 }) => {
   const { watch, setValue, handleSubmit } = useFormContext<BoardForm>();
   const country = watch('countryName');
+  const startDate = watch('startDate');
   const endDate = watch('endDate');
   const language = watch('language');
   const maxCount = watch('maxCount');
@@ -42,6 +49,24 @@ const StepButton = ({
       if (isSubmit && title && content) return true;
       return false;
     }
+  };
+
+  const scheduleHandler = () => {
+    const dateArray = getDateInRange(startDate, endDate);
+    const boardScheduleArray: BoardScheduleType[] = [];
+    dateArray.forEach((date) => {
+      placeList[date].forEach((place, index) => {
+        boardScheduleArray.push({
+          date: date,
+          placeName: place.placeName,
+          number: index,
+          pointX: place.pointX,
+          pointY: place.pointY,
+          googlePlaceId: place.googlePlaceId,
+        });
+      });
+    });
+    setValue('createBoardSchedule', boardScheduleArray);
   };
 
   const submit = async (data: BoardForm) => {
@@ -69,12 +94,11 @@ const StepButton = ({
       if (isSubmit && content) {
         setIsSubmit(false);
         setValue('content', content);
+        scheduleHandler();
         handleSubmit(submit)();
       }
     } else {
-      /*일정 추가 페이지 완료되면 수정*/
-      if (step === 2 && checkValue()) stepHandler(step + 2);
-      else if (checkValue()) stepHandler(step + 1);
+      if (checkValue()) stepHandler(step + 1);
     }
   };
 

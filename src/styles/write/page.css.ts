@@ -3,28 +3,42 @@ import { style } from '@vanilla-extract/css';
 
 export const pageContainer = style({
   position: 'relative',
+  display: 'flex',
   top: 44,
-  left: '50%',
-  padding: '30px 20px',
-  transform: 'translate(-50%,0)',
-  maxWidth: 510,
+  height: 'calc(100vh - 40px)',
+  flexDirection: 'column',
+  alignItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
       top: 60,
-      padding: '80px 0px',
+      height: 'calc(100vh - 60px)',
+    },
+  },
+});
+
+export const pageContent = style({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '30px 20px',
+  width: '100%',
+  maxWidth: 540,
+  height: '100%',
+  boxSizing: 'border-box',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      padding: '40px 0px',
       maxWidth: 720,
     },
   },
 });
 
 export const contentContainer = style({
-  height: 'calc(100vh - 243px)',
+  flex: 1,
   margin: '20px 0px',
   overflowX: 'hidden',
   overflowY: 'scroll',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 'calc(100vh - 418px)',
       margin: '40px 0px',
     },
   },

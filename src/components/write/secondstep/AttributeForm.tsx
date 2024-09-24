@@ -4,7 +4,7 @@ import PhotoAttribute from './attribute/PhotoAttribute';
 import DrinkAttribute from './attribute/DrinkAttribute';
 import BudgetAttribute from './attribute/BudgetAttribute';
 
-const AttributeBox = () => {
+const AttributeForm = () => {
   return (
     <div>
       <GenderAttribute />
@@ -16,4 +16,4 @@ const AttributeBox = () => {
   );
 };
 
-export default AttributeBox;
+export default AttributeForm;
