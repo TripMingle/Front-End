@@ -30,7 +30,7 @@ const MapComponent = ({ placeList, date, index }: Props) => {
   const [zoom, setZoom] = useState<number>(6);
 
   const { watch } = useFormContext<BoardForm>();
-  // const country = watch('countryName');
+  const country = watch('countryName');
 
   const onLoad = useCallback((map: google.maps.Map) => {
     getCountryLocation();
@@ -43,7 +43,6 @@ const MapComponent = ({ placeList, date, index }: Props) => {
   };
 
   const getCountryLocation = () => {
-    const country = 'France';
     const geocoder = new window.google.maps.Geocoder();
 
     geocoder.geocode({ address: country }, (results, status) => {

@@ -11,19 +11,13 @@ import StepButton from '@/components/write/StepButton';
 import InfoInput from '@/components/write/secondstep/InfoInput';
 import ContentInput from '@/components/write/fourthstep/ContentInput';
 import { BoardForm, boardFormDefault } from '@/types/country/board';
-import { useUserStore } from '@/store/userStore';
-import { usePathname, useRouter } from 'next/navigation';
 import ScheduleInput from '@/components/write/thirdstep/ScheduleInput';
 import { SchedulePlaceType } from '@/types/country/place';
 
 const Page = () => {
   const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
 
-  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const [step, setStep] = useState<number>(3);
+  const [step, setStep] = useState<number>(1);
   const [searchCountry, setSearchCountry] = useState<string>('');
   const [languages, setLanguages] = useState<string[]>([]);
   const [content, setContent] = useState<string>('');

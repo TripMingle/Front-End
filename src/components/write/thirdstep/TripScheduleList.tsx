@@ -21,11 +21,8 @@ const TripScheduleList = ({
   mapHandler,
 }: Props) => {
   const { watch } = useFormContext<BoardForm>();
-  // const startDate = watch('startDate');
-  // const endDate = watch('endDate');
-
-  const startDate = '2023-09-24';
-  const endDate = '2023-09-27';
+  const startDate = watch('startDate');
+  const endDate = watch('endDate');
 
   const [dateArray, setDateArray] = useState<string[]>([]);
 

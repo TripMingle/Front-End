@@ -34,7 +34,7 @@ export const dayContainer = style({
   fontSize: 13,
   '@media': {
     'screen and (min-width: 1024px)': {
-      fontSize: 16,
+      fontSize: 15,
     },
   },
 });
@@ -44,8 +44,8 @@ export const airplaneIcon = style({
   height: 13,
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 16,
-      height: 16,
+      width: 14,
+      height: 14,
     },
   },
 });
@@ -56,8 +56,8 @@ export const mapIcon = style({
   height: 13,
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 15,
-      height: 15,
+      width: 14,
+      height: 14,
     },
   },
 });
@@ -67,7 +67,7 @@ export const date = style({
   fontSize: 13,
   '@media': {
     'screen and (min-width: 1024px)': {
-      fontSize: 16,
+      fontSize: 15,
     },
   },
 });
@@ -105,8 +105,8 @@ export const button = style({
   cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
-      padding: '10px 30px',
-      fontSize: 16,
+      padding: '8px 26px',
+      fontSize: 14,
     },
   },
 });
@@ -125,7 +125,7 @@ export const listOrderContainer = style({
     'screen and (min-width: 1024px)': {
       marginLeft: 20,
       marginRight: 16,
-      gap:12,
+      gap: 12,
     },
   },
 });

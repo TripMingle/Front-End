@@ -39,8 +39,6 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
           date={mapCenterDate}
           index={mapCenterIndex}
         />
-        {/* <TripDate />
-        TODO::여행 일정 들어가면 화면 차지가 너무 커서 일단 뺐음. */}
         <TripScheduleList
           placeListHandler={placeListHandler}
           placeList={placeList}
