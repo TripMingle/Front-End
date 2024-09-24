@@ -13,7 +13,7 @@ export const bgContainer = style({
   transform: 'translate(-50%, 0)',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 640,
+      height: 540,
     },
   },
 });
