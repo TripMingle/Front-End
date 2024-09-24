@@ -2,7 +2,6 @@ import {
   logo,
   logoContainer,
   title,
-  title2,
 } from '@/styles/components/header/header.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
