@@ -1,4 +1,4 @@
-import * as styles from '@/styles/write/thirdstep/place-result-item.css';
+import * as styles from '@/styles/write/thirdstep/place-search-result.css';
 import { SchedulePlaceType } from '@/types/country/place';
 import Image from 'next/image';
 
@@ -8,7 +8,7 @@ type Props = {
   select: number[];
 };
 
-const PlaceResultItem = ({ place, index, select }: Props) => {
+const PlaceSearchResult = ({ place, index, select }: Props) => {
   return (
     <div className={styles.container}>
       <Image
@@ -37,4 +37,4 @@ const PlaceResultItem = ({ place, index, select }: Props) => {
   );
 };
 
-export default PlaceResultItem;
+export default PlaceSearchResult;

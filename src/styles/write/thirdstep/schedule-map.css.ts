@@ -1,5 +1,5 @@
 import { vars } from '@/styles/globalTheme.css';
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 
 export const mapConatiner = style({
   width: '100%',
@@ -20,7 +20,6 @@ export const markerContainer = style({
 export const markerIcon = style({
   width: 28,
   height: 28,
-  zIndex: 5,
   '@media': {
     'screen and (min-width: 1024px)': {
       width: 48,
@@ -34,7 +33,6 @@ export const markerNumber = style({
   display: 'flex',
   top: 6,
   width: 28,
-  zIndex: 10,
   color: vars.color.secondary,
   fontWeight: 700,
   fontSize: 10,

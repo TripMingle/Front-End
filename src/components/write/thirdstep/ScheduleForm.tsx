@@ -1,12 +1,12 @@
 import { Libraries, LoadScript } from '@react-google-maps/api';
-import MapComponent from './MapComponent';
-import TripDate from './TripDate';
-import TripScheduleList from './TripScheduleList';
+import ScheduleMap from './ScheduleMap';
+// import ScheduleDate from './ScheduleDate';
+import ScheduleList from './ScheduleList';
 import { SchedulePlaceType } from '@/types/country/place';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
-import { scheduleInputContainer } from '@/styles/write/thirdstep/trip-schedule-list.css';
+import { scheduleInputContainer } from '@/styles/write/thirdstep/schedule-list.css';
 
 const libraries: Libraries = ['places'];
 
@@ -17,7 +17,7 @@ type Props = {
   placeList: { [key: string]: SchedulePlaceType[] };
 };
 
-const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
+const ScheduleForm = ({ placeListHandler, placeList }: Props) => {
   const { getValues } = useFormContext<BoardForm>();
   const [mapCenterDate, setMapCenterDate] = useState<string>(
     getValues('startDate'),
@@ -34,12 +34,12 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || ''}
         libraries={libraries}
       >
-        <MapComponent
+        <ScheduleMap
           placeList={placeList}
           date={mapCenterDate}
           index={mapCenterIndex}
         />
-        <TripScheduleList
+        <ScheduleList
           placeListHandler={placeListHandler}
           placeList={placeList}
           mapHandler={mapHandler}
@@ -49,4 +49,4 @@ const ScheduleInput = ({ placeListHandler, placeList }: Props) => {
   );
 };
 
-export default ScheduleInput;
+export default ScheduleForm;

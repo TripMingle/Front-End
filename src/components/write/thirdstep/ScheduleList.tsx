@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BoardForm } from '@/types/country/board';
 import { useFormContext } from 'react-hook-form';
 import { getDateInRange } from '@/utils/date';
-import TripSchedule from './TripSchedule';
-import * as styles from '@/styles/write/thirdstep/trip-schedule-list.css';
+import ScheduleListItem from './ScheduleListItem';
+import * as styles from '@/styles/write/thirdstep/schedule-list.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { SchedulePlaceType } from '@/types/country/place';
 
@@ -15,11 +15,7 @@ type Props = {
   mapHandler: (date: string, index: number) => void;
 };
 
-const TripScheduleList = ({
-  placeList,
-  placeListHandler,
-  mapHandler,
-}: Props) => {
+const ScheduleList = ({ placeList, placeListHandler, mapHandler }: Props) => {
   const { watch } = useFormContext<BoardForm>();
   const startDate = watch('startDate');
   const endDate = watch('endDate');
@@ -73,27 +69,25 @@ const TripScheduleList = ({
   }, [startDate, endDate]);
 
   return (
-    <>
-      <div className={styles.container}>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <ul className={styles.listContainer}>
-            {dateArray.map((date, index) => (
-              <li className={styles.listItemContainer} key={date}>
-                <span className={styles.listItemLine}></span>
-                <TripSchedule
-                  day={index + 1}
-                  date={date}
-                  data={placeList[date]}
-                  placeListHandler={placeListHandler}
-                  mapHandler={mapHandler}
-                />
-              </li>
-            ))}
-          </ul>
-        </DragDropContext>
-      </div>
-    </>
+    <div className={styles.container}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <ul className={styles.listContainer}>
+          {dateArray.map((date, index) => (
+            <li className={styles.listItemContainer} key={date}>
+              <span className={styles.listItemLine}></span>
+              <ScheduleListItem
+                day={index + 1}
+                date={date}
+                data={placeList[date]}
+                placeListHandler={placeListHandler}
+                mapHandler={mapHandler}
+              />
+            </li>
+          ))}
+        </ul>
+      </DragDropContext>
+    </div>
   );
 };
 
-export default TripScheduleList;
+export default ScheduleList;

@@ -1,10 +1,9 @@
 import * as styles from '@/styles/write/secondstep/people-count-box.css';
 import Image from 'next/image';
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 
-const PeopleCountBox = () => {
+const CapacityForm = () => {
   const { register } = useFormContext<BoardForm>();
 
   return (
@@ -13,11 +12,14 @@ const PeopleCountBox = () => {
       <input
         className={styles.input}
         type="number"
-        {...register('maxCount', { valueAsNumber: true })}
+        {...register('maxCount', {
+          valueAsNumber: true,
+          validate: (value) => value > 1 || '최소 2명 이상이어야 합니다.',
+        })}
       />
       <span>명</span>
     </div>
   );
 };
 
-export default PeopleCountBox;
+export default CapacityForm;

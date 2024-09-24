@@ -1,9 +1,9 @@
 import ModalWrapper from '@/components/common/ModalWrapper';
-import * as styles from '@/styles/write/thirdstep/add-place-modal.css';
+import * as styles from '@/styles/write/thirdstep/place-search-modal.css';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SchedulePlaceType } from '@/types/country/place';
-import PlaceResultItem from './PlaceResultItem';
+import PlaceSearchResult from './PlaceSearchResult';
 import { generateRandomId } from '@/utils/random';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
@@ -14,7 +14,7 @@ type Props = {
   addPlaceHandler: (placeList: SchedulePlaceType[]) => void;
 };
 
-const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
+const PlaceSearchModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
   const { watch } = useFormContext<BoardForm>();
 
   const country = watch('countryName');
@@ -151,7 +151,7 @@ const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
         <ul className={styles.resultContainer}>
           {result.map((e, i) => (
             <li key={e.id} onClick={() => selectHandler(i)}>
-              <PlaceResultItem place={e} index={i} select={select} />
+              <PlaceSearchResult place={e} index={i} select={select} />
             </li>
           ))}
         </ul>
@@ -169,4 +169,4 @@ const AddPlaceModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
   );
 };
 
-export default AddPlaceModal;
+export default PlaceSearchModal;

@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import { Droppable } from '@hello-pangea/dnd';
-import * as styles from '@/styles/write/thirdstep/trip-schedule.css';
+import * as styles from '@/styles/write/thirdstep/schedule-list-item.css';
 import SchedulePlace from './SchedulePlace';
 import { SchedulePlaceType } from '@/types/country/place';
-import AddPlaceModal from './AddPlaceModal';
+import PlaceSearchModal from './PlaceSearchModal';
 import useModal from '@/hooks/useModal';
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
   mapHandler: (date: string, index: number) => void;
 };
 
-const TripSchedule = ({
+const TripScheduleItem = ({
   date,
   day,
   data,
@@ -105,7 +105,7 @@ const TripSchedule = ({
           + 장소 추가
         </button>
       </div>
-      <AddPlaceModal
+      <PlaceSearchModal
         isOpen={isOpen}
         closeModal={closeModal}
         addPlaceHandler={addPlaceHandler}
@@ -114,4 +114,4 @@ const TripSchedule = ({
   );
 };
 
-export default TripSchedule;
+export default TripScheduleItem;

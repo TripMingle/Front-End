@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import * as styles from '@/styles/write/thirdstep/map-component.css';
+import * as styles from '@/styles/write/thirdstep/schedule-map.css';
 
-const MapMarker = ({ index }: { index: number }) => {
+const ScheduleMapMarker = ({ index }: { index: number }) => {
   return (
     <div className={styles.markerContainer}>
       <Image
@@ -16,4 +16,4 @@ const MapMarker = ({ index }: { index: number }) => {
   );
 };
 
-export default MapMarker;
+export default ScheduleMapMarker;

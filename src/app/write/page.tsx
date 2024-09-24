@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/write/page.css';
 import Header from '@/components/header/Header';
-import Progress from '@/components/write/Progress';
-import SearchBox from '@/components/write/firststep/SearchBox';
-import CountrySelect from '@/components/write/firststep/CountrySelect';
-import StepButton from '@/components/write/StepButton';
-import InfoInput from '@/components/write/secondstep/InfoInput';
-import ContentInput from '@/components/write/fourthstep/ContentInput';
 import { BoardForm, boardFormDefault } from '@/types/country/board';
-import ScheduleInput from '@/components/write/thirdstep/ScheduleInput';
 import { SchedulePlaceType } from '@/types/country/place';
+import CountrySearch from '@/components/write/firststep/CountrySearch';
+import CountryList from '@/components/write/firststep/CountryList';
+import InfoForm from '@/components/write/secondstep/InfoForm';
+import ScheduleForm from '@/components/write/thirdstep/ScheduleForm';
+import ContentForm from '@/components/write/fourthstep/ContentForm';
+import StepButton from '@/components/write/StepButton';
+import Progress from '@/components/write/Progress';
 
 const Page = () => {
   const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
@@ -58,26 +58,23 @@ const Page = () => {
 
   const components = [
     <>
-      <SearchBox
+      <CountrySearch
         searchCountry={searchCountry}
         countrySearchHandler={countrySearchHandler}
       />
-      <CountrySelect
+      <CountryList
         searchCountry={searchCountry}
         countrySearchHandler={countrySearchHandler}
       />
     </>,
     <>
-      <InfoInput languages={languages} languagesHandler={languagesHandler} />
+      <InfoForm languages={languages} languagesHandler={languagesHandler} />
     </>,
     <>
-      <ScheduleInput
-        placeListHandler={PlaceListHandler}
-        placeList={placeList}
-      />
+      <ScheduleForm placeListHandler={PlaceListHandler} placeList={placeList} />
     </>,
     <>
-      <ContentInput
+      <ContentForm
         content={content}
         contentHandler={contentHandler}
         scrollHandler={scrollToBottom}

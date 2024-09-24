@@ -1,9 +1,9 @@
-import * as styles from '@/styles/write/thirdstep/trip-date.css';
+import * as styles from '@/styles/write/thirdstep/schedule-date.css';
 import { BoardForm } from '@/types/country/board';
 import Image from 'next/image';
 import { useFormContext } from 'react-hook-form';
 
-const TripDate = () => {
+const ScheduleDate = () => {
   const { watch } = useFormContext<BoardForm>();
 
   const startDate = watch('startDate');
@@ -27,4 +27,4 @@ const TripDate = () => {
   );
 };
 
-export default TripDate;
+export default ScheduleDate;

@@ -10,7 +10,7 @@ import { typeContainer } from '@/styles/write/secondstep/info-input.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 
-const TypeBox = () => {
+const TypeForm = () => {
   const { watch, setValue } = useFormContext<BoardForm>();
 
   const tripType = watch('tripType');
@@ -62,4 +62,4 @@ const TypeBox = () => {
   );
 };
 
-export default TypeBox;
+export default TypeForm;

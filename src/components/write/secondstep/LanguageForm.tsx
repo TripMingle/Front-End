@@ -4,7 +4,7 @@ import * as styles from '@/styles/write/secondstep/language-box.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 
-const LanguageBox = ({
+const LanguageForm = ({
   languages,
   languagesHandler,
 }: {
@@ -75,4 +75,4 @@ const Languages = [
   { eng: 'French', kor: '프랑스어' },
 ];
 
-export default LanguageBox;
+export default LanguageForm;

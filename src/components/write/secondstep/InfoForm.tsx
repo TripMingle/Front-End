@@ -1,11 +1,11 @@
 import * as styles from '@/styles/write/secondstep/info-input.css';
-import CalendarBox from './CalendarBox';
-import LanguageBox from './LanguageBox';
-import AttributeBox from './AttributeBox';
-import TypeBox from './TypeBox';
-import PeopleCountBox from './PeopleCountBox';
+import CalendarForm from './CalendarForm';
+import LanguageForm from './LanguageForm';
+import AttributeForm from './AttributeForm';
+import TypeForm from './TypeForm';
+import PeopleCountForm from './CapacityForm';
 
-const InfoInput = ({
+const InfoForm = ({
   languages,
   languagesHandler,
 }: {
@@ -16,29 +16,29 @@ const InfoInput = ({
     <div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>날짜</p>
-        <CalendarBox />
+        <CalendarForm />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>언어</p>
-        <LanguageBox
+        <LanguageForm
           languages={languages}
           languagesHandler={languagesHandler}
         />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>인원</p>
-        <PeopleCountBox />
+        <PeopleCountForm />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>동행자 특성</p>
-        <AttributeBox />
+        <AttributeForm />
       </div>
       <div className={styles.fieldContainer}>
         <p className={styles.title}>동행 타입 (중복 가능)</p>
-        <TypeBox />
+        <TypeForm />
       </div>
     </div>
   );
 };
 
-export default InfoInput;
+export default InfoForm;

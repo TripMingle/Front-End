@@ -1,15 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  GoogleMap,
-  Marker,
-  MarkerClusterer,
-  OverlayView,
-} from '@react-google-maps/api';
-import * as styles from '@/styles/write/thirdstep/map-component.css';
+import { GoogleMap, OverlayView } from '@react-google-maps/api';
+import * as styles from '@/styles/write/thirdstep/schedule-map.css';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 import { SchedulePlaceType } from '@/types/country/place';
-import MapMarker from './MapMarker';
+import ScheduleMapMarker from './ScheduleMapMarker';
 
 type Props = {
   placeList: { [key: string]: SchedulePlaceType[] };
@@ -121,7 +116,7 @@ const MapComponent = ({ placeList, date, index }: Props) => {
             position={marker}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <MapMarker index={index} />
+            <ScheduleMapMarker index={index} />
           </OverlayView>
         ))}
       </GoogleMap>
