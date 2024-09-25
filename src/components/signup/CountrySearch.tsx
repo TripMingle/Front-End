@@ -1,5 +1,6 @@
 import { getCountryByKeyword } from '@/api/getCountryInfo';
 import * as styles from '@/styles/signup/country-search.css';
+import { CountryType } from '@/types/main/country';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -12,7 +13,7 @@ const CountrySearch = ({
 }) => {
   const [input, setInput] = useState<string>('');
   const [select, setSelect] = useState<string[]>([]);
-  const [countryList, setCountryList] = useState<Country[]>([]);
+  const [countryList, setCountryList] = useState<CountryType[]>([]);
 
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);

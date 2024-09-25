@@ -1,11 +1,13 @@
 import { countryContainer } from '@/styles/main/country.css';
 import { CountryType } from '@/types/main/country';
 import CountryListItem from './CountryListItem';
+import { useCountryStore } from '@/store/countryStore';
 
-const CountryList = ({ countryList }: { countryList: CountryType[] }) => {
+const CountryList = () => {
+  const { countries } = useCountryStore();
   return (
     <ul className={countryContainer}>
-      {countryList.map((country) => (
+      {countries.map((country) => (
         <li key={country.countryNameEnglish}>
           <CountryListItem country={country} />
         </li>

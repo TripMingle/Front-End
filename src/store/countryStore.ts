@@ -1,34 +1,18 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { CountryType } from '@/types/main/country';
 
-type CountryState = {
+interface CountryState {
+  countries: CountryType[];
   continent: string;
   continentKor: string;
-  country: string;
-  countryKor: string;
-  countryUrl: string;
   setContinent: (continent: string, continentKor: string) => void;
-  setCountry: (country: string, countryKor: string) => void;
-  setCountryUrl: (url: string) => void;
-};
+  setCountries: (countries: CountryType[]) => void;
+}
 
-export const useCountryStore = create<CountryState>()(
-  persist(
-    (set) => ({
-      continent: '',
-      continentKor: '',
-      country: '',
-      countryKor: '',
-      countryUrl: '',
-      setContinent: (continent: string, continentKor: string) =>
-        set({ continent, continentKor }),
-      setCountry: (country: string, countryKor: string) =>
-        set({ country, countryKor }),
-      setCountryUrl: (url: string) => set({ countryUrl: url }),
-    }),
-    {
-      name: 'country-store',
-      storage: createJSONStorage(() => sessionStorage),
-    },
-  ),
-);
+export const useCountryStore = create<CountryState>((set) => ({
+  countries: [],
+  continent: '',
+  continentKor: '',
+  setContinent: (continent, continentKor) => set({ continent, continentKor }),
+  setCountries: (countries) => set({ countries }),
+}));

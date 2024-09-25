@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getCountryInfo } from '@/api/getCountryInfo';
 import MoveToMain from './MoveToMain';
 import { getCountryName } from '@/utils/country';
+import { CountryInfo } from '@/types/main/country';
 
 const CountryBackground = () => {
   const pathname = usePathname();

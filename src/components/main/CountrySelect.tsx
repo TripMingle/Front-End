@@ -1,28 +1,25 @@
 'use client';
-import { useState } from 'react';
 import {
   selectContainer,
   moveToContinent,
   continentText,
 } from '@/styles/main/page.css';
 import { getCountryByContinent } from '@/api/getCountryInfo';
-import { CountryType } from '@/types/main/country';
 import ContinentList from './ContinentList';
 import CountryList from './CountryList';
+import { useCountryStore } from '@/store/countryStore';
 
 const CountrySelect = () => {
-  const [countries, setCountries] = useState<CountryType[]>([]);
-  const [continent, setContinent] = useState<string>('');
-  const [continentKor, setContinentKor] = useState<string>('');
+  const { countries, continent, continentKor, setCountries, setContinent } =
+    useCountryStore();
 
   const continentClick = async (continent: string, continentKor: string) => {
     const data = await getCountryByContinent(continent);
     setCountries(data.data);
-    setContinent(continent);
-    setContinentKor(continentKor);
+    setContinent(continent, continentKor);
   };
 
-  if (continent === '') {
+  if (continent === '' && countries.length == 0) {
     return (
       <div className={selectContainer}>
         <ContinentList clickHandler={continentClick} />
@@ -34,14 +31,14 @@ const CountrySelect = () => {
         <div
           className={moveToContinent}
           onClick={() => {
-            setContinent('');
-            setContinentKor('');
+            setContinent('', '');
+            setCountries([]);
           }}
         >
           <span className={moveToContinent}>{'홈 > '}</span>
           <span className={continentText}>{continentKor}</span>
         </div>
-        <CountryList countryList={countries} />
+        <CountryList />
       </div>
     );
   }
