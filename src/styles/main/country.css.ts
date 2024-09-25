@@ -4,11 +4,17 @@ import { vars } from '@/styles/globalTheme.css';
 export const container = style({
   position: 'relative',
   display: 'flex',
-  width: 160,
-  height: 160,
+  width: '100%',
+  aspectRatio: '1 / 1',
+  maxWidth: 160,
   alignItems: 'center',
   justifyItems: 'center',
   overflow: 'hidden',
+  '@media': {
+    'screen and (min-width: 370px)': {
+      width: 160,
+    },
+  },
 });
 
 export const bgImage = style({
@@ -46,10 +52,13 @@ export const name = style({
 
 export const countryContainer = style({
   display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
   gap: 15,
-  gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
   maxWidth: 1000,
   '@media': {
+    'screen and (min-width: 370px)': {
+      gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+    },
     'screen and (min-width: 1024px)': {
       gap: 40,
     },
