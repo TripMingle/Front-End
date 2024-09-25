@@ -2,7 +2,7 @@ import '@/styles/font.css';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 import TransparentHeader from '@/components/header/TransparentHeader';
-import SearchBox from '@/components/main/SearchBox';
+import CountrySearch from '@/components/main/CountrySearch';
 import CountrySelect from '@/components/main/CountrySelect';
 
 const Page = () => {
@@ -17,7 +17,7 @@ const Page = () => {
           sizes="1920px"
           alt="mainBackground"
         />
-        <SearchBox />
+        <CountrySearch />
       </div>
       <div className={styles.contentContainer}>
         <Image
