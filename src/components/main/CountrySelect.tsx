@@ -1,30 +1,28 @@
 'use client';
-import { useEffect, useState } from 'react';
 import {
   selectContainer,
   moveToContinent,
   continentText,
 } from '@/styles/main/page.css';
-import Countries from './Country';
-import Continents from './Continent';
 import { getCountryByContinent } from '@/api/getCountryInfo';
+import ContinentList from './ContinentList';
+import CountryList from './CountryList';
+import { useCountryStore } from '@/store/countryStore';
 
 const CountrySelect = () => {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [continent, setContinent] = useState<string>('');
-  const [continentKor, setContinentKor] = useState<string>('');
+  const { countries, continent, continentKor, setCountries, setContinent } =
+    useCountryStore();
 
   const continentClick = async (continent: string, continentKor: string) => {
     const data = await getCountryByContinent(continent);
     setCountries(data.data);
-    setContinent(continent);
-    setContinentKor(continentKor);
+    setContinent(continent, continentKor);
   };
 
-  if (continent === '') {
+  if (continent === '' && countries.length == 0) {
     return (
       <div className={selectContainer}>
-        <Continents clickHandler={continentClick} />
+        <ContinentList clickHandler={continentClick} />
       </div>
     );
   } else {
@@ -33,14 +31,14 @@ const CountrySelect = () => {
         <div
           className={moveToContinent}
           onClick={() => {
-            setContinent('');
-            setContinentKor('');
+            setContinent('', '');
+            setCountries([]);
           }}
         >
           <span className={moveToContinent}>{'홈 > '}</span>
           <span className={continentText}>{continentKor}</span>
         </div>
-        <Countries props={countries} />
+        <CountryList />
       </div>
     );
   }

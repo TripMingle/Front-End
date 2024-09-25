@@ -4,16 +4,28 @@ import { vars } from '@/styles/globalTheme.css';
 export const container = style({
   position: 'relative',
   display: 'flex',
-  width: 160,
-  height: 160,
+  width: '100%',
+  aspectRatio: '1 / 1',
+  maxWidth: 160,
   alignItems: 'center',
   justifyItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 240,
-      height: 240,
+      maxWidth: 240,
     },
   },
+});
+
+export const content = style({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 export const circle = style({
@@ -87,12 +99,12 @@ export const explain = style({
 export const continentContainer = style({
   display: 'grid',
   gap: 15,
-  gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', // 최소 크기를 140px로 조정
   maxWidth: 1000,
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 90,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
     },
   },
 });

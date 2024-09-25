@@ -6,6 +6,7 @@ import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
 import useModal from '@/hooks/useModal';
 import LoginModal from '../common/LoginModal';
+import HeaderLogo from './HeaderLogo';
 
 const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
   const color = theme === 'white' ? 'b_' : 'w_';
@@ -29,7 +30,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
     <div>
       <nav className={styles.fixedbar({ theme })}>
         <div className={styles.navbar({ theme })}>
-          <div className={styles.logo({ theme })}>TripMingle</div>
+          <HeaderLogo color={color}/>
           <div className={styles.user} onClick={userClickHandler}>
             <HeaderProfile />
             <Image

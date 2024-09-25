@@ -10,6 +10,7 @@ import {
 } from '@/api/getCountryInfo';
 import { BoardForm } from '@/types/country/board';
 import CountryListItem from './CountryListItem';
+import { CountryType } from '@/types/main/country';
 
 const CountrySelect = ({
   searchCountry,
@@ -21,7 +22,7 @@ const CountrySelect = ({
   const { watch, setValue } = useFormContext<BoardForm>();
   const country = watch('countryName');
 
-  const [countryList, setCountryList] = useState<Country[]>([]);
+  const [countryList, setCountryList] = useState<CountryType[]>([]);
 
   const getCountryList = async (keyword: string) => {
     if (continents.includes(searchCountry)) {

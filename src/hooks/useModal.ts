@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-interface UseModalReturn {
+type UseModalReturn = {
   isOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
   toggleModal: () => void;
-}
+};
 
 const useModal = (initialState: boolean = false): UseModalReturn => {
   const [isOpen, setIsOpen] = useState<boolean>(initialState);
