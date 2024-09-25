@@ -17,27 +17,29 @@ const Continent = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div
-        className={styles.circle}
-        onClick={() => clickHandler(props.continent, props.continentKor)}
-      ></div>
-      <Image
-        className={styles.bgImage}
-        src={props.url}
-        fill
-        sizes="(max-width: 1023px) 160px, 240px"
-        alt="continent"
-      />
-      <div
-        className={styles.bgOverlay}
-        onClick={() => clickHandler(props.continent, props.continentKor)}
-      ></div>
-      <div
-        className={styles.textContainer}
-        onClick={() => clickHandler(props.continent, props.continentKor)}
-      >
-        <span className={styles.name}>{props.continentKor}</span>
-        <span className={styles.explain}>{props.explain}</span>
+      <div className={styles.content}>
+        <div
+          className={styles.circle}
+          onClick={() => clickHandler(props.continent, props.continentKor)}
+        ></div>
+        <Image
+          className={styles.bgImage}
+          src={props.url}
+          fill
+          sizes="(max-width: 1023px) 160px, 240px"
+          alt="continent"
+        />
+        <div
+          className={styles.bgOverlay}
+          onClick={() => clickHandler(props.continent, props.continentKor)}
+        ></div>
+        <div
+          className={styles.textContainer}
+          onClick={() => clickHandler(props.continent, props.continentKor)}
+        >
+          <span className={styles.name}>{props.continentKor}</span>
+          <span className={styles.explain}>{props.explain}</span>
+        </div>
       </div>
     </div>
   );
