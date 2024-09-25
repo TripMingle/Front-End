@@ -101,17 +101,20 @@ export const smallCircle = style({
 });
 
 export const inputBox = style({
+  width: 'calc(100% - 36px)',
+  maxWidth: 400,
   padding: '12px 20px',
   borderRadius: '50px',
+  margin: '0px 12px',
   background: '#ffffff33',
   backdropFilter: 'blur(3px)',
   justifyItems: 'center',
   display: 'inline-flex',
-  minWidth: 300,
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
+      maxWidth: 600,
       padding: '16px 32px',
-      width: 600,
     },
   },
 });
