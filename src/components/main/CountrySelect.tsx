@@ -1,13 +1,13 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   selectContainer,
   moveToContinent,
   continentText,
 } from '@/styles/main/page.css';
 import Countries from './Country';
-import Continents from './Continent';
 import { getCountryByContinent } from '@/api/getCountryInfo';
+import ContinentList from './ContinentList';
 
 const CountrySelect = () => {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -24,7 +24,7 @@ const CountrySelect = () => {
   if (continent === '') {
     return (
       <div className={selectContainer}>
-        <Continents clickHandler={continentClick} />
+        <ContinentList clickHandler={continentClick} />
       </div>
     );
   } else {
