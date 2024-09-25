@@ -1,4 +1,4 @@
-type Country = {
+export type CountryType = {
   capitalName: string;
   capitalNameEnglish: string;
   continentName: string;
@@ -8,7 +8,7 @@ type Country = {
   primaryImageUrl: string;
 };
 
-type CountryInfo = {
+export type CountryInfo = {
   continentName: string;
   continentEnglishName: string;
   countryName: string;

@@ -5,12 +5,13 @@ import {
   moveToContinent,
   continentText,
 } from '@/styles/main/page.css';
-import Countries from './Country';
 import { getCountryByContinent } from '@/api/getCountryInfo';
+import { CountryType } from '@/types/main/country';
 import ContinentList from './ContinentList';
+import CountryList from './CountryList';
 
 const CountrySelect = () => {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const [countries, setCountries] = useState<CountryType[]>([]);
   const [continent, setContinent] = useState<string>('');
   const [continentKor, setContinentKor] = useState<string>('');
 
@@ -40,7 +41,7 @@ const CountrySelect = () => {
           <span className={moveToContinent}>{'홈 > '}</span>
           <span className={continentText}>{continentKor}</span>
         </div>
-        <Countries props={countries} />
+        <CountryList countryList={countries} />
       </div>
     );
   }

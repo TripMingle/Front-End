@@ -1,7 +1,7 @@
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 
-const SearchBox = () => {
+const CountrySearch = () => {
   return (
     <div className={styles.boxContainer}>
       <div className={styles.exploreContainer}>
@@ -33,4 +33,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default CountrySearch;
