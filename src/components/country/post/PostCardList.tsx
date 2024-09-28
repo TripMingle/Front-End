@@ -5,7 +5,7 @@ import * as styles from '@/styles/country/post/page.css';
 import { useEffect, useState } from 'react';
 import SelectCateogry from './SelectCategory';
 import { PostPreviewProps } from '@/types/country/post';
-import { getPost } from '@/api/getPost';
+import { getPostList } from '@/api/post';
 import { useCountryStore } from '@/store/countryStore';
 import { usePostStore } from '@/store/postStore';
 import EmptyPost from '../EmptyPost';
@@ -21,9 +21,9 @@ const PostCardList = () => {
   const category = usePostStore((state) => state.category);
   const setCategory = usePostStore((state) => state.setCategory);
 
-  const getPostList = async () => {
+  const getPost = async () => {
     if (country) {
-      const data = await getPost(country, category, page);
+      const data = await getPostList(country, category, page);
       setPostList(data.data.postings);
       setTotalPage(data.data.totalPageCount);
       console.log(data);
@@ -43,12 +43,12 @@ const PostCardList = () => {
   }, []);
 
   useEffect(() => {
-    getPostList();
+    getPost();
   }, [page, country]);
 
   useEffect(() => {
     setPage(0);
-    getPostList();
+    getPost();
   }, [category]);
 
   return (
