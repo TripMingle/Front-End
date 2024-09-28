@@ -3,7 +3,6 @@ import { kakaoLogin } from '@/api/user';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import { useUserStore } from '@/store/userStore';
 import { pageContainer } from '@/styles/login/page.css';
-import { getToken } from '@/utils/token';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -19,25 +18,27 @@ const Page = () => {
   memberState(false) : 비회원일 경우
   회원가입 페이지로 이동 
   */
+
   const kakaoLoginHandler = async (code: string) => {
     const data = await kakaoLogin(code);
-    const token = getToken();
     setIsLoading(false);
-    if (token && data) {
+    if (data) {
       const info = data.data;
       if (info.memberState) {
         login(info.profileImage, info.nickName);
+
         const prev = window.sessionStorage.getItem('prevPage');
+
         if (prev) {
           window.sessionStorage.removeItem('prevPage');
-          router.push(prev);
+          router.replace(prev);
         } else router.push('/');
       } else {
-        router.push('/signup');
+        router.replace('/signup');
       }
     } else {
       setResult('로그인 실패');
-      router.push('/signup');
+      router.push('/');
     }
   };
 

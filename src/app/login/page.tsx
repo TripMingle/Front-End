@@ -7,14 +7,8 @@ import Image from 'next/image';
 const Page = () => {
   const kakaoClickHandler = async () => {
     const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&response_type=code`;
-    window.location.href = KAKAO_AUTH_URL;
+    window.location.replace(KAKAO_AUTH_URL);
   };
-
-  //   TODO 회원가입 버튼 여부 결정하고 수정해야 할 듯
-  //   const signupClickHandler = async () => {
-  //     router.push('/signup');
-  //   };
-
 
   return (
     <>
@@ -34,12 +28,6 @@ const Page = () => {
           />
           <span className={styles.kakaoLoginText}>카카오로 간편 로그인</span>
         </button>
-        {/* <div className={styles.signupContainer}>
-          <span className={styles.text}>회원이 아니라면 ? </span>
-          <button onClick={signupClickHandler} className={styles.signupButton}>
-            회원가입
-          </button>
-        </div> */}
       </div>
     </>
   );

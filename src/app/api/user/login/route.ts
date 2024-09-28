@@ -1,8 +1,4 @@
-import {
-  getAccessToken,
-  storeKakaoAuthorization,
-  storeToken,
-} from '@/api/server/user';
+import { storeKakaoAuthorization, storeToken } from '@/utils/server/token';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {
