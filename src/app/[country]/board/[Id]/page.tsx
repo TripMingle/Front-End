@@ -10,7 +10,7 @@ import CommentInput from '@/components/common/CommentInput';
 import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
 import { usePathname } from 'next/navigation';
-import { getBoardDetail } from '@/api/getBoard';
+import { getBoardDetail } from '@/api/board';
 import { BoardDetailType } from '@/types/country/board';
 import { initialBoardDetail } from '@/store/boardStore';
 import { TripTypeButton } from '@/components/common/TripTypeButton';
