@@ -3,7 +3,7 @@ import { BoardForm } from '@/types/country/board';
 
 export const getBoardPreview = async (country: string) => {
   // TODO :: 내부 서버로는 board/country/preview가 더 나을거같음 .. -> 폴더 구조 바꾸자. app/api
-  return apiFetch(`/board/preview/${country}`);
+  return apiFetch(`/board/preview?country=${country}`);
 };
 
 export const getBoardList = async (
