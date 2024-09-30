@@ -26,7 +26,6 @@ const PostCardList = () => {
       const data = await getPostList(country, category, page);
       setPostList(data.data.postings);
       setTotalPage(data.data.totalPageCount);
-      console.log(data);
     }
   };
 
