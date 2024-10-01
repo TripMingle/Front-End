@@ -1,9 +1,8 @@
-# Tripmingle
 
 <div align="center">
-  <img src='https://github.com/user-attachments/assets/508ec400-9dc2-4995-af06-fdb2c0ae0a33' width=400 alt='Tripmingle 로고'/>
+  <img src='https://github.com/user-attachments/assets/508ec400-9dc2-4995-af06-fdb2c0ae0a33' width=480 alt='Tripmingle 로고'/>
   
-  <h3>글로벌 여행 동행 서비스</h3>
+  <h3>글로벌 여행 동행 서비스 Tripmingle</h3>
   <p></p>
 
   <img src="https://img.shields.io/badge/React-v18.0.0-61dafb?logo=React"/>
@@ -15,9 +14,9 @@
 
 </br>
 
-## 👀 TripMingle 구경가기
+## Tripmingle web site
 
-> [여행 동행 구하러 GO](https://www.tripmingle.net/)
+> [TripMingle](https://www.tripmingle.net/)
 
 </br>
 
@@ -26,9 +25,9 @@
 <table>
 
   <tr align="center">
-    <td><a href="https://github.com/dasssseul">김민지</a></td>
-    <td><a href="https://github.com/Junhyeong-B">김민규</a></td>
-    <td><a href="https://github.com/younoah">송현성</a></td>
+    <td><a href="https://github.com/kxmmxnzx">김민지</a></td>
+    <td><a href="https://github.com/min9yu98">김민규</a></td>
+    <td><a href="https://github.com/thdgustjd1">송현성</a></td>
   </tr>
 
   <tr align="center">
