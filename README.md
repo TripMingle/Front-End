@@ -1,121 +1,77 @@
 
 <div align="center">
-  <img src='https://github.com/user-attachments/assets/508ec400-9dc2-4995-af06-fdb2c0ae0a33' width=480 alt='Tripmingle 로고'/>
-  
-  <h3>글로벌 여행 동행 서비스 Tripmingle</h3>
-  <p></p>
-
-  <img src="https://img.shields.io/badge/React-v18.0.0-61dafb?logo=React"/>
-  <img src="https://img.shields.io/badge/NextJs-v14.2.3-3178c6?logo=Next.Js"/>
-  <img src="https://img.shields.io/badge/Typescript-v5.0.0-3178c6?logo=Typescript"/>
-  <img src="https://img.shields.io/badge/Zustand-v4.5.3-764abc?"/>
-  <img src="https://img.shields.io/badge/Vanilla--extract-v1.15.3-ff4785?"/>
+  <img src='https://github.com/user-attachments/assets/508ec400-9dc2-4995-af06-fdb2c0ae0a33' width=540 alt='Tripmingle 로고'/>
 </div>
 
 </br>
 
-## Tripmingle web site
+# Tripmingle
 
-> [TripMingle](https://www.tripmingle.net/)
+> 글로벌 여행 동행 웹 서비스 Tripmingle
+>
+> 팀구성 : **Frontend 1명** , Backend 2명 </br>
+> 개발 기간 : 2024.06 ~ 진행중 </br></br> 2024년도 과학기술정보통신부의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임. (2024-SW마에스트로과정)
 
-</br>
+## Tripmingle 배포 사이트
 
-## 🧑🏻‍💻 팀원 소개
+> [https://www.tripmingle.net](https://www.tripmingle.net/)
 
-<table>
+## Tripmingle 실행
+1. dependency 설치
+```bash
+pnpm install
+```
+2. 개발 서버 실행 (3000포트)
+```bash
+pnpm dev
+```
 
-  <tr align="center">
-    <td><a href="https://github.com/kxmmxnzx">김민지</a></td>
-    <td><a href="https://github.com/min9yu98">김민규</a></td>
-    <td><a href="https://github.com/thdgustjd1">송현성</a></td>
-  </tr>
+## 프로젝트 소개
+TripMingle은 글로벌 여행 동행 서비스로, `여행 동행 찾기`, `여행 일정 관리`, `여행 동행 매칭 및 추천`, `여행 동행 채팅` 서비스를 제공합니다.
 
-  <tr align="center">
-    <td><img src="https://user-images.githubusercontent.com/77623643/147047795-e8e64f10-34e9-4b5c-801d-3eca7ca39c68.png" width="150px"/></td>
-    <td><img src="https://user-images.githubusercontent.com/77623643/147047809-36e1d41d-42af-4953-b8a7-3619c88d5491.png"  width="150px"/></td>
-    <td><img src="https://user-images.githubusercontent.com/77623643/147047817-051405e1-df34-4ea5-b9d0-cfc2ca0d6034.png" width="150px"/></td>
-  </tr>
+## 프로젝트 주요 기능
+- 여행 동행 찾기 `프론트엔드 개발 완료` `백엔드 개발 완료`
+  - 여행 날짜, 여행 동행 인원, 여행 동행 스타일, 여행 일정 등을 입력해 동행글 작성
+  - 동행글 댓글 작성
+  - 여행장 정보 확인
+ 
+- 여행 일정 `프론트엔드 개발 완료` `백엔드 개발 완료`
+  - 방문할 장소 검색 및 추가
+  - 지도에서 방문 장소 확인
 
-  <tr>
-  <td><ul><li>팀원</li><li>FrontEnd</li><li></li></ul></td>
-  <td><ul><li>팀원</li><li>BackEnd</li><li></li></ul></td>
-  <td><ul><li>팀장</li><li>BackEnd</li><li></li></ul></td>
-  </tr>
+- 여행 동행 및 추천 `백엔드 개발 완료`
+  - 자신의 동행 스타일을 입력하여, 여행지와 날짜에 따라 자신과 맞는 여행 동행글 매칭 및 동행자 추천
+ 
+- 여행 동행 채팅 `백엔드 개발 완료`
+  - 동행글에서 동행 요청을 통해, 여행장이 수락하면 동행 채팅방 생성
+  - 동행 채팅방에서 동행 확정
+  - 프로필 클릭하여 1:1 채팅
+ 
+## 개발 환경
 
-</table>
+<div>
+  Frontend : 
+  <img src="https://img.shields.io/badge/React-v18.0.0-61dafb?style=flat-square&logo=React"/>
+  <img src="https://img.shields.io/badge/NextJs-v14.2.3-3178c6?style=flat-square&logo=Next.Js"/>
+  <img src="https://img.shields.io/badge/Typescript-v5.0.0-3178c6?style=flat-square&logo=Typescript"/>
+  <img src="https://img.shields.io/badge/Zustand-v4.5.3-764abc?style=flat-square&"/>
+  <img src="https://img.shields.io/badge/Vanilla--extract-v1.15.3-ff4785?style=flat-square&"/>
+  <img src="https://img.shields.io/badge/pnpm-v9.4.0-f69220?style=flat-square&"/>
+</div>
+<div>
+  Backend :
+  <img src="https://img.shields.io/badge/Java-555555?style=flat-square&logo=Java"/> 
+  <img src="https://img.shields.io/badge/Spring Boot-555555?style=flat-square&logo=Spring Boot"/>
+  <img src="https://img.shields.io/badge/Spring Data JPA-555555?style=flat-square&logo=Spring Data JPA"/> 
+  <img src="https://img.shields.io/badge/Spring Security-555555?style=flat-square&logo=Spring Security"/> 
+  <img src="https://img.shields.io/badge/MySQL-555555?style=flat-square&logo=MySQL"/>
+  <img src="https://img.shields.io/badge/Redis-555555?style=flat-square&logo=Redis"/> 
+  <img src="https://img.shields.io/badge/MongoDB-555555?style=flat-square&logo=MongoDB"/> 
+  <img src="https://img.shields.io/badge/EC2-555555?style=flat-square&logo=Amazon EC2"/> 
+  <img src="https://img.shields.io/badge/RDS-555555?style=flat-square&logo=Amazon RDS"/> 
+  <img src="https://img.shields.io/badge/AWS OpenSearch-555555?style=flat-square&logo=OpenSearch"/> 
+  <img src="https://img.shields.io/badge/S3-555555?style=flat-square&logo=Amazon S3"/>
 
-<br />
-
-## 📌 프로젝트 소개
-
-### 📝 프로젝트 주제
+</div>
 
 
-### 🔎 기획 배경
-
-
-### 💫 핵심 기능
-
-- 회원가입, 로그인 기능
-
-### 🧑‍🤝‍🧑 타겟 유저
-
-
-
-### ☝️ 기대 효과
-
-
-</br>
-
-## 📅 개발 기간 & 일정
-
-> 2024/06 ~ 진행중
-
-<table>
-
-  <tr align="center">
-    <td>주차</td>
-    <td>주요 일정</td>
-    <td>노션 링크</td>
-  </tr>
-
-  <tr align="center">
-    <td>1주차</td>
-    <td>세부 기획, 요구사항 명세</td>
-    <td><a href="https://">요구사항 MosCow</a></td>
-  </tr>
-    <tr align="center">
-    <td>2주차</td>
-    <td></td>
-    <td><a href="https://">피그마 UI</a></td>
-  </tr>
-    <tr align="center">
-    <td>3주차</td>
-    <td></td>
-    <td><a href="https://">라우터</a></td>
-  </tr>
-    <tr align="center">
-    <td>4주차</td>
-    <td></td>
-    <td><a href="https://">API</a></td>
-  </tr>
-
-</table>
-
-</br>
-
-## 📈 플로우 차트
-
-<img width="600" alt="흐름도" src="\">
-
-</br>
-
-## 🔥 페이지별 기능
-
-</br>
-
-|<p align="center">회원가입</p>|<p align="center">로그인</p>|
-|------|------|
-|<p align="center"><img src="" width=60%/></p> |<p align="center"><img src="" width=60%/></p> |
-
-## 🗂 협업 문서
