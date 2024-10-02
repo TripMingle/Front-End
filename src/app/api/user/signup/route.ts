@@ -6,7 +6,7 @@ import {
 import { NextRequest } from 'next/server';
 
 export const POST = async (req: NextRequest) => {
-  const baseurl = `${process.env.NEXT_PUBLIC_API_URL}`;
+  const baseurl = `${process.env.API_URL}`;
   const pathname = `/kakao/join`;
   const body = req.body;
   let kakaoAuthorization = await getKakaoAuthorization();

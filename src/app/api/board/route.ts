@@ -2,7 +2,7 @@ import { getAccessToken } from '@/utils/server/token';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {
-  const baseurl = `${process.env.NEXT_PUBLIC_API_URL}`;
+  const baseurl = `${process.env.API_URL}`;
   const pathname = `/board/show`;
   const boardId = req.nextUrl.searchParams.get('boardId');
   let accesstoken = await getAccessToken();
@@ -18,7 +18,7 @@ export const GET = async (req: NextRequest) => {
 };
 
 export const POST = async (req: NextRequest) => {
-  const baseurl = `${process.env.NEXT_PUBLIC_API_URL}`;
+  const baseurl = `${process.env.API_URL}`;
   const pathname = `/board`;
   const body = req.body;
   let token = await getAccessToken();

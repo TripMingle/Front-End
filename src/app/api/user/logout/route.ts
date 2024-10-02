@@ -2,7 +2,7 @@ import { getAccessToken } from '@/utils/server/token';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest) => {
-  const baseurl = `${process.env.NEXT_PUBLIC_API_URL}`;
+  const baseurl = `${process.env.API_URL}`;
   const pathname = `/auth/logout`;
   let token = await getAccessToken();
 
