@@ -1,12 +1,16 @@
 import { getAccessToken } from '@/utils/server/token';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest) => {
   const baseurl = `${process.env.NEXT_PUBLIC_API_URL}`;
   const pathname = `/board/comment`;
   const body = req.body;
-  let accesstoken = await getAccessToken();
-  let token = accesstoken?.value || process.env.ACCESS_TOKEN;
+  let token = await getAccessToken();
+  if (!token)
+    return NextResponse.json(
+      { error: 'access token이 없거나 만료되었습니다.' },
+      { status: 500 },
+    );
 
   return await fetch(`${baseurl}${pathname}`, {
     method: 'POST',
