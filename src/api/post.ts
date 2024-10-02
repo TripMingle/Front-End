@@ -1,7 +1,7 @@
-import { apiFetch } from '.';
+import { getFetch } from '.';
 
 export const getPostPreview = async (country: string, postingType: string) => {
-  return apiFetch(
+  return getFetch(
     `/post/preview?country=${country}&postingType=${postingType}`,
   );
 };
@@ -12,5 +12,5 @@ export const getPostList = async (
   page: number,
 ) => {
   const params = `country=${country}&postingType=${postingType}&page=${page}`;
-  return apiFetch(`/post/list?${params}`);
+  return getFetch(`/post/list?${params}`);
 };
