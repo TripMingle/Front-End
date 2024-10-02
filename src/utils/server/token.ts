@@ -9,7 +9,11 @@ export const storeKakaoAuthorization = (authorization: string) => {
   });
 };
 
-export const getKakaoAuthorization = () => {
+export const removeKakaoAuthorization = () => {
+  cookies().delete('kakaoAuthorization');
+};
+
+export const getKakaoAuthorization = async () => {
   return cookies().get('kakaoAuthorization');
 };
 
@@ -22,6 +26,11 @@ export const storeToken = async (access: string, refresh: string) => {
     httpOnly: true,
     secure: true,
   });
+};
+
+export const removeToken = () => {
+  cookies().delete('accessToken');
+  cookies().delete('refreshToken');
 };
 
 export const getAccessToken = async () => {
