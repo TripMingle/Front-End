@@ -1,13 +1,13 @@
-import { apiFetch } from '.';
+import { getFetch } from '.';
 
 export const getCountryByContinent = async (continent: string) => {
-  return apiFetch(`/continent/${continent}`);
+  return getFetch(`/continent/${continent}`);
 };
 
 export const getCountryByKeyword = async (keyword: string) => {
-  return apiFetch(`/country/search/${keyword}`);
+  return getFetch(`/country/search/${keyword}`);
 };
 
 export const getCountryInfo = async (country: string) => {
-  return apiFetch(`/country/${country}`);
+  return getFetch(`/country/${country}`);
 };
