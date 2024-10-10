@@ -122,13 +122,16 @@ TripMingle은 글로벌 여행 동행 서비스로, `여행 동행 찾기`, `여
     </tr>
     <tr>
         <td> 
-          <img src='https://github.com/user-attachments/assets/e10944e3-e8cd-42f9-bd8e-b1f311de998e'  alt='write_desk' />
+          <img src='https://github.com/user-attachments/assets/03566a4d-34af-4259-9cfd-7a3aca126bd8'  alt='write_desk' />
         </td>
         <td> 
-          <img src='https://github.com/user-attachments/assets/a6a94b93-dd3b-4384-8264-fc2a5fb2a7d5' alt='write_mobile' />
+          <img src='https://github.com/user-attachments/assets/fea6b145-7915-4671-aa59-d4e4dc95d492' alt='write_mobile' />
         </td>
     </tr>
 </table>
+
+
+
 
 
 > ### 로그인 페이지 (비로그인일 경우 동행 요청, 댓글 작성 비허용, 카카오 소셜 로그인)
