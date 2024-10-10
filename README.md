@@ -74,4 +74,76 @@ TripMingle은 글로벌 여행 동행 서비스로, `여행 동행 찾기`, `여
 
 </div>
 
+## 동작 화면
+> ### 메인 페이지 (나라 검색, 나라 선택)
 
+<table border="1" align='center'>
+    <tr>
+        <th>데스크톱 화면</th>
+        <th>모바일 화면</th>
+    </tr>
+    <tr>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/e10944e3-e8cd-42f9-bd8e-b1f311de998e'  alt='main_desk' />
+        </td>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/a6a94b93-dd3b-4384-8264-fc2a5fb2a7d5' alt='main_mobile' />
+        </td>
+    </tr>
+</table>
+
+> ### 동행 페이지 (동행글 리스트, 동행글 상세보기, 댓글 작성)
+
+<table border="1" align='center'>
+    <tr>
+        <th>데스크톱 화면</th>
+        <th>모바일 화면</th>
+    </tr>
+    <tr>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/5bdb6f47-3ce7-4c96-966a-fa550ad067fd'  alt='companion_desk' />
+        </td>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/6c0153e4-91ff-4bb2-bd56-7b09d5c929f3' alt='companion_mobile' />
+        </td>
+    </tr>
+</table>
+
+> ### 동행글 작성 페이지
+> 1step : 나라 선택, 나라 검색 </br>
+> 2step : 날짜, 동행 언어, 동행인원, 동행 스타일 선택 </br>
+> 3step : 여행 일정, 일정 추가, 일정 지도, 장소 검색 </br> 
+> 4step : 제목, 내용 작성
+
+<table border="1" align='center'>
+    <tr>
+        <th>데스크톱 화면</th>
+        <th>모바일 화면</th>
+    </tr>
+    <tr>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/e10944e3-e8cd-42f9-bd8e-b1f311de998e'  alt='write_desk' />
+        </td>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/a6a94b93-dd3b-4384-8264-fc2a5fb2a7d5' alt='write_mobile' />
+        </td>
+    </tr>
+</table>
+
+
+> ### 로그인 페이지 (비로그인일 경우 동행 요청, 댓글 작성 비허용, 카카오 소셜 로그인)
+
+<table border="1" align='center'>
+    <tr>
+        <th>데스크톱 화면</th>
+        <th>모바일 화면</th>
+    </tr>
+    <tr>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/5aeeb00a-68e1-4fc6-97d9-919579c48853'  alt='login_desk' />
+        </td>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/92cd85d1-4157-464d-9e7a-e1c3eb9dccd4' alt='login_mobile' />
+        </td>
+    </tr>
+</table>
