@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { closeIcon, title } from '@/styles/components/common/modal-wrapper.css';
 import * as styles from '@/styles/components/common/logout-modal.css';
 import { usePathname, useRouter } from 'next/navigation';
-import useModal from '@/hooks/useModal';
-import { useEffect } from 'react';
 
 type Props = {
   isOpen: boolean;
