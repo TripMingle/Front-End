@@ -4,10 +4,7 @@ import {
 } from '@/styles/write/firststep/country-list.css';
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import {
-  getCountryByContinent,
-  getCountryByKeyword,
-} from '@/api/getCountryInfo';
+import { getCountryByContinent, getCountryByKeyword } from '@/api/country';
 import { BoardForm } from '@/types/country/board';
 import CountryListItem from './CountryListItem';
 import { CountryType } from '@/types/main/country';

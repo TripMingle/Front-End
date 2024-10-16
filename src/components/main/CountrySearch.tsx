@@ -1,5 +1,5 @@
 'use client';
-import { getCountryByKeyword } from '@/api/getCountryInfo';
+import { getCountryByKeyword } from '@/api/country';
 import { useCountryStore } from '@/store/countryStore';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';

@@ -4,7 +4,7 @@ import {
   moveToContinent,
   continentText,
 } from '@/styles/main/page.css';
-import { getCountryByContinent } from '@/api/getCountryInfo';
+import { getCountryByContinent } from '@/api/country';
 import ContinentList from './ContinentList';
 import CountryList from './CountryList';
 import { useCountryStore } from '@/store/countryStore';

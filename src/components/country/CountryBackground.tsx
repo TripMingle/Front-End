@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { image, imageContainer } from '@/styles/country/page.css';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { getCountryInfo } from '@/api/getCountryInfo';
+import { getCountryInfo } from '@/api/country';
 import MoveToMain from './MoveToMain';
 import { getCountryName } from '@/utils/country';
 import { CountryInfo } from '@/types/main/country';
