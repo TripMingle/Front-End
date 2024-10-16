@@ -15,7 +15,7 @@ export const POST = async (req: NextRequest) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Kakao-Authorization': `${kakaoAuthorization}`,
+      'Kakao-Authorization': `${kakaoAuthorization?.value}`,
     },
     body,
     // @ts-ignore -- 연결이 단방향임을 나타냄

@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
 export const storeKakaoAuthorization = (authorization: string) => {
   cookies().set('kakaoAuthorization', authorization, {
@@ -43,4 +44,31 @@ export const getRefreshToken = async () => {
 
 export const hasAccessToken = async () => {
   return !!cookies().get('accessToken');
+};
+
+export const refreshAccessToken = async () => {
+  const baseurl = `${process.env.API_URL}`;
+  const pathname = `/auth/refresh`;
+
+  const token = await getRefreshToken();
+
+  if (!token) throw new Error('access token이 없거나 만료되었습니다.');
+
+  const res = await fetch(`${baseurl}${pathname}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Refresh: `${token.value}`,
+    },
+  });
+
+  if (!res.ok) throw new Error('액세스 토큰 재발급 실패');
+
+  const accessToken = res.headers.get('access-token');
+  const refreshToken = res.headers.get('refresh-token');
+
+  if (accessToken && refreshToken) {
+    storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+  }
+  return NextResponse.json('액세스토큰 재발급 성공', { status: 200 });
 };
