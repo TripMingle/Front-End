@@ -1,7 +1,4 @@
-import {
-  getRefreshToken,
-  storeToken,
-} from '@/utils/server/token';
+import { getRefreshToken, storeToken } from '@/utils/server/token';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {
@@ -24,7 +21,7 @@ export const GET = async (req: NextRequest) => {
     },
   });
 
-  if (!res.ok) throw new Error('액세스 토큰 재발급 실패');
+  if (!res.ok) NextResponse.json('액세스토큰 재발급 실패', { status: 500 });
 
   const accessToken = res.headers.get('access-token');
   const refreshToken = res.headers.get('refresh-token');

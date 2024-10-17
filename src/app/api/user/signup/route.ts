@@ -3,7 +3,7 @@ import {
   removeKakaoAuthorization,
   storeToken,
 } from '@/utils/server/token';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest) => {
   const baseurl = `${process.env.API_URL}`;
@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
   if (!res.ok) {
     const data = await res.json();
     if (res.status === 409 && data.code === 'U003') {
-      return '중복된 닉네임 입니다.';
+      return NextResponse.json(res, { status: res.status });
     }
   }
 

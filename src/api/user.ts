@@ -37,11 +37,17 @@ export const kakaoSignup = async (
       body: JSON.stringify(data),
     });
 
-    if (typeof res == 'string') return res;
+    if (!res.ok && res.status == 409) {
+      throw new Error('이미 존재하는 닉네임입니다.');
+    }
 
     return res.json();
   } catch (error) {
-    console.error(error);
+    if (typeof error == 'string') {
+      return error as string;
+    } else {
+      console.error(error);
+    }
   }
 };
 

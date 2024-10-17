@@ -48,10 +48,10 @@ export const GET = async (req: NextRequest) => {
 
         return res;
       } else {
-        return new Error('카카오 액세스토큰 발급 실패');
+        throw new Error('카카오 액세스토큰 발급 실패');
       }
     } else {
-      return new Error('카카오 액세스토큰 발급 실패');
+      throw new Error('카카오 액세스토큰 발급 실패');
     }
   } catch (error) {
     console.error('Login error:', error);
