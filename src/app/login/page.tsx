@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const Page = () => {
   const kakaoClickHandler = async () => {
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_REST_API_KEY}&redirect_uri=${window.location.origin}/login/kakao&response_type=code`;
     window.location.replace(KAKAO_AUTH_URL);
   };
 
