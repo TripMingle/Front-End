@@ -14,13 +14,9 @@ type Props = {
 const LogoutModal = ({ isOpen, closeModal }: Props) => {
   const logout = useUserStore((state) => state.logout);
 
-  const logoutHandler = async () => {
-    const result = await kakaoLogout();
-    if (result) {
-      removeToken();
-      logout();
-      location.reload();
-    }
+  const logoutHandler = () => {
+    logout();
+    location.reload();
   };
 
   return (
