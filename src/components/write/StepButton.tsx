@@ -1,4 +1,4 @@
-import { postBoard } from '@/api/postBoard';
+import { postBoard } from '@/api/board';
 import * as styles from '@/styles/write/step-button.css';
 import { BoardForm, BoardScheduleType } from '@/types/country/board';
 import { SchedulePlaceType } from '@/types/country/place';

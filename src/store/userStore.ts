@@ -16,18 +16,19 @@ export const useUserStore = create<userState>()((set) => ({
   nickName: '',
   initialize: () => {
     set({
-      isLoggedIn: !!Cookies.get('access_token'),
+      isLoggedIn: !!Cookies.get('isLoggedIn'),
       imageUrl: Cookies.get('imageUrl') || '',
       nickName: Cookies.get('nickName') || '',
     });
   },
   login: (imageUrl: string, nickName: string) => {
+    Cookies.set('isLoggedIn', 'true');
     Cookies.set('imageUrl', imageUrl);
     Cookies.set('nickName', nickName);
     set({ isLoggedIn: true, imageUrl, nickName });
   },
   logout: () => {
-    Cookies.remove('access_token');
+    Cookies.remove('isLoggedIn');
     Cookies.remove('imageUrl');
     Cookies.remove('nickName');
     set({ isLoggedIn: false, imageUrl: '', nickName: '' });

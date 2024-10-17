@@ -1,4 +1,4 @@
-import { getCountryByKeyword } from '@/api/getCountryInfo';
+import { getCountryByKeyword } from '@/api/country';
 import * as styles from '@/styles/signup/country-search.css';
 import { CountryType } from '@/types/main/country';
 import Image from 'next/image';

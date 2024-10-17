@@ -118,7 +118,7 @@ export const boardFormDefault: BoardForm = {
   countryName: '',
   startDate: '',
   endDate: '',
-  maxCount: 0,
+  maxCount: 1,
   language: '',
   preferGender: 3,
   preferSmoking: 3,

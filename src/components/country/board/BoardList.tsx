@@ -3,7 +3,7 @@
 import * as board from '@/styles/country/board/page.css';
 import * as styles from '@/styles/country/page.css';
 import BoardCard from '@/components/common/BoardCard';
-import { getBoard } from '@/api/getBoard';
+import { getBoardList } from '@/api/board';
 import { useEffect, useState } from 'react';
 import { BoardPreviewProps } from '@/types/country/board';
 import Pagination from '@/components/common/Pagination';
@@ -19,9 +19,9 @@ const BoardList = () => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [totalBoard, setTotalBoard] = useState<number>(0);
 
-  const getBoardList = async () => {
+  const getBoard = async () => {
     if (country) {
-      const data = await getBoard(country, page);
+      const data = await getBoardList(country, page);
       setTotalPage(data.data.totalPages);
       setTotalBoard(data.data.totalElements);
       setBoardList(data.data.content);
@@ -37,7 +37,7 @@ const BoardList = () => {
   }, []);
 
   useEffect(() => {
-    getBoardList();
+    getBoard();
   }, [country, page]);
 
   return (

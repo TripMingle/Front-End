@@ -4,7 +4,7 @@ import * as styles from '@/styles/country/page.css';
 import Person from './Icons/Person';
 import More from '../common/More';
 import BoardCard from '../common/BoardCard';
-import { getBoardPreview } from '@/api/getBoard';
+import { getBoardPreview } from '@/api/board';
 import { useEffect, useState } from 'react';
 import { BoardPreviewProps } from '@/types/country/board';
 import { EmptyBoard } from './EmptyBoard';

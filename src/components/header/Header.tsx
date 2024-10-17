@@ -30,7 +30,7 @@ const Header = ({ theme = 'white' }: { theme?: 'white' | 'clear' }) => {
     <div>
       <nav className={styles.fixedbar({ theme })}>
         <div className={styles.navbar({ theme })}>
-          <HeaderLogo color={color}/>
+          <HeaderLogo color={color} />
           <div className={styles.user} onClick={userClickHandler}>
             <HeaderProfile />
             <Image

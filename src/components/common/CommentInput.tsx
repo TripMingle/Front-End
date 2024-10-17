@@ -1,6 +1,6 @@
 import * as styles from '@/styles/components/common/comment-input.css';
 import Profile from './Profile';
-import { postBoardComment } from '@/api/postBoard';
+import { postBoardComment } from '@/api/board';
 import { useEffect, useRef, useState } from 'react';
 import { useUserStore } from '@/store/userStore';
 

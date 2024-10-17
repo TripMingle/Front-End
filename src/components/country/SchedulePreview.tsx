@@ -5,7 +5,7 @@ import More from '../common/More';
 import PostCard from '../common/PostCard';
 import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
-import { getPostPreview } from '@/api/getPost';
+import { getPostPreview } from '@/api/post';
 import EmptyPost from './EmptyPost';
 import { usePathname } from 'next/navigation';
 import { getCountryName } from '@/utils/country';
