@@ -1,0 +1,41 @@
+name: Deploy to Amazon EC2
+
+# main에 push 될 때 실행
+on:
+  push:
+    branches:
+      - main 
+
+env:
+  AWS_REGION: ap-southeast-1    # AWS 리전
+  EC2_HOST: ${{ secrets.EC2_HOST }}  # EC2 퍼블릭 IP 또는 도메인
+  EC2_USERNAME: ${{ secrets.EC2_USER }}       # Amazon Linux 기본 사용자명
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH agent
+      uses: webfactory/ssh-agent@v0.6.0
+      with:
+        ssh-private-key: ${{ secrets.EC2_KEY }}
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.2
+      with:
+        key: ${{ secrets.EC2_KEY }}
+        username: ${{ secrets.EC2_USER }}
+        host: ${{ secrets.EC2_HOST }}
+        port: 22
+        script: |
+          cd /home/ec2-user/Front-End
+          git fetch origin
+          git status
+          git pull
+          pnpm run build
+          pm2 restart tripmingle
