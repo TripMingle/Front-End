@@ -16,8 +16,6 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         script: |
           cd /home/${{ secrets.EC2_USER }}/Front-End
-          git fetch origin
           git pull
           pnpm install
-          pnpm run build
-          pm2 restart tripmingle
+          bash ./deploy.sh
