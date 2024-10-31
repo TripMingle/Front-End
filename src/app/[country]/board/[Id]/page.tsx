@@ -16,9 +16,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const host = headersList.get('host');
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
-  const boardData = await fetch(
+  const response = await fetch(
     `${protocol}://${host}/api/board?boardId=${params.id}`,
-  ).then((res) => res.json());
+  );
+
+  console.log(`${protocol}://${host}/api/board?boardId=${params.id}`);
+  const boardData = await response.json();
 
   const boardDetail: BoardDetailType = boardData.data;
 
