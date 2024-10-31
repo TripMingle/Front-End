@@ -11,17 +11,19 @@ import AttributeBox from '@/components/country/board/id/AttributeBox';
 import { BoardDetailType } from '@/types/country/board';
 import { headers } from 'next/headers';
 
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({
+  params,
+}: {
+  params: { country: string; id: string };
+}) => {
+  console.log(params);
   const headersList = headers();
   const host = headersList.get('host');
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
-  const response = await fetch(
+  const boardData = await fetch(
     `${protocol}://${host}/api/board?boardId=${params.id}`,
-  );
-
-  console.log(`${protocol}://${host}/api/board?boardId=${params.id}`);
-  const boardData = await response.json();
+  ).then((res) => res.json());
 
   const boardDetail: BoardDetailType = boardData.data;
 
