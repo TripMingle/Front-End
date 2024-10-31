@@ -1,12 +1,15 @@
 'use client';
+import { useCountryStore } from '@/store/countryStore';
 import { countryText, moveToMain } from '@/styles/country/page.css';
 import { CountryInfo } from '@/types/main/country';
 import { useRouter } from 'next/navigation';
 
 const MoveToMain = ({ props }: { props: CountryInfo }) => {
   const router = useRouter();
+  const { initialize, setContinent } = useCountryStore();
 
   const continentClickHandler = () => {
+    setContinent(props.continentEnglishName, props.continentName);
     router.push('/');
   };
 
@@ -15,6 +18,7 @@ const MoveToMain = ({ props }: { props: CountryInfo }) => {
   };
 
   const homeClickHandler = () => {
+    initialize();
     router.push('/');
   };
 
