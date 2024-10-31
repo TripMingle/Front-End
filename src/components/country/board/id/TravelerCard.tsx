@@ -12,13 +12,9 @@ type Props = {
   selfIntroduction: string;
 };
 
-const TravelerCard = ({
-  props,
-  openModal,
-}: {
-  props: Props;
-  openModal: () => void;
-}) => {
+// TODO: // OpenModal props
+
+const TravelerCard = ({ props }: { props: Props }) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.travelerTitle}>
@@ -56,7 +52,7 @@ const TravelerCard = ({
         <span className={styles.infoTitle}>동행 평점</span>
         <span className={styles.infoContent}>별 네개</span>
       </div>
-      <ChatButton openModal={openModal} />
+      <ChatButton />
     </div>
   );
 };

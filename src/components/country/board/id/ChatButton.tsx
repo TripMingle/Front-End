@@ -1,7 +1,10 @@
+'use client';
+import useModal from '@/hooks/useModal';
 import * as styles from '@/styles/country/board/id/chat-button.css';
 import Image from 'next/image';
 
-const ChatButton = ({ openModal }: { openModal: () => void }) => {
+const ChatButton = () => {
+  const { isOpen, openModal, closeModal } = useModal();
   return (
     <button className={styles.buttonContainer} onClick={openModal}>
       <Image

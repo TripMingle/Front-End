@@ -1,7 +1,5 @@
-'use client';
 import Image from 'next/image';
 import '@/styles/font.css';
-import { useEffect, useState } from 'react';
 import Header from '@/components/header/Header';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
@@ -9,34 +7,25 @@ import { Language } from '@/components/common/Language';
 import CommentInput from '@/components/common/CommentInput';
 import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
-import { usePathname } from 'next/navigation';
-import { getBoardDetail } from '@/api/board';
-import { BoardDetailType } from '@/types/country/board';
-import { initialBoardDetail } from '@/store/boardStore';
 import { TripTypeButton } from '@/components/common/TripTypeButton';
 import AttributeBox from '@/components/country/board/id/AttributeBox';
 import LoginModal from '@/components/common/LoginModal';
-import { useUserStore } from '@/store/userStore';
 import useModal from '@/hooks/useModal';
+import { hasAccessToken } from '@/utils/server/token';
+import { BoardDetailType } from '@/types/country/board';
+import { headers } from 'next/headers';
 
-const Page = () => {
-  const [boardDetail, setBoardDetail] =
-    useState<BoardDetailType>(initialBoardDetail);
-  const pathname = usePathname();
+const Page = async ({ params }: { params: { id: string } }) => {
+  const headersList = headers();
+  const host = headersList.get('host');
 
-  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
-  const { isOpen, openModal, closeModal } = useModal();
+  const boardData = await fetch(
+    `http://${host}/api/board?boardId=${params.id}`,
+  ).then((res) => {
+    return res.json();
+  });
 
-  const getBoardId = () => {
-    const idx = pathname.lastIndexOf('/');
-    return Number(pathname.slice(idx + 1));
-  };
-
-  const getBoardData = async () => {
-    const boardId = getBoardId();
-    const data = await getBoardDetail(boardId);
-    setBoardDetail(data.data);
-  };
+  const boardDetail: BoardDetailType = boardData.data;
 
   const hasTripStyle = () => {
     if (boardDetail.preferGender !== 3) return true;
@@ -47,23 +36,9 @@ const Page = () => {
     return false;
   };
 
-  useEffect(() => {
-    getBoardData();
-  }, []);
-
   return (
     <main>
       <Header />
-      {isLoggedIn ? (
-        <ChatModal
-          isOpen={isOpen}
-          nickName={boardDetail.nickName}
-          userId={boardDetail.userId}
-          closeModal={closeModal}
-        />
-      ) : (
-        <LoginModal isOpen={isOpen} closeModal={closeModal} />
-      )}
       <div className={styles.pageContainer}>
         <div className={styles.imageContainer}>
           <Image
@@ -157,7 +132,6 @@ const Page = () => {
               nationality: boardDetail.nationality,
               selfIntroduction: boardDetail.selfIntroduction ?? '',
             }}
-            openModal={openModal}
           />
         </div>
         <div className={styles.container}>
@@ -169,12 +143,7 @@ const Page = () => {
               </strong>
               {' 개'}
             </p>
-            <CommentInput
-              boardId={boardDetail.boardId}
-              inputHandler={getBoardData}
-              isOpen={isOpen}
-              openModal={openModal}
-            />
+            <CommentInput boardId={boardDetail.boardId} />
             <CommentList comments={boardDetail.boardComments} />
           </div>
         </div>
