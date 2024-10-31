@@ -1,45 +1,29 @@
 import * as styles from '@/styles/components/common/language.css';
 
-const Korean = () => {
-  return (
-    <div className={styles.koreanBox}>
-      <span className={styles.text}>한국어</span>
-    </div>
-  );
-};
-
-const English = () => {
-  return (
-    <div className={styles.englishBox}>
-      <span className={styles.text}>영어</span>
-    </div>
-  );
-};
-
-const Chinese = () => {
-  return (
-    <div className={styles.ChineseBox}>
-      <span className={styles.text}>중국어</span>
-    </div>
-  );
-};
-
-const Japanese = () => {
-  return (
-    <div className={styles.JapaneseBox}>
-      <span className={styles.text}>일본어</span>
-    </div>
-  );
-};
-
 export const Language = ({ language }: { language: string }) => {
   if (language === 'Korean') {
-    return <Korean />;
+    return (
+      <div>
+        <span className={styles.text({ language: 'korean' })}>한국어</span>
+      </div>
+    );
   } else if (language === 'English') {
-    return <English />;
+    return (
+      <div>
+        <span className={styles.text({ language: 'english' })}>영어</span>
+      </div>
+    );
   } else if (language === 'Chinese') {
-    return <Chinese />;
+    return (
+      <div>
+        <span className={styles.text({ language: 'chinese' })}>중국어</span>
+      </div>
+    );
   } else {
-    return <Japanese />;
+    return (
+      <div>
+        <span className={styles.text({ language: 'japanese' })}>일본어</span>
+      </div>
+    );
   }
 };
