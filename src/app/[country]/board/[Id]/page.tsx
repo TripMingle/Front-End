@@ -14,9 +14,10 @@ import { headers } from 'next/headers';
 const Page = async ({ params }: { params: { id: string } }) => {
   const headersList = headers();
   const host = headersList.get('host');
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
   const boardData = await fetch(
-    `http://${host}/api/board?boardId=${params.id}`,
+    `${protocol}://${host}/api/board?boardId=${params.id}`,
   ).then((res) => res.json());
 
   const boardDetail: BoardDetailType = boardData.data;
