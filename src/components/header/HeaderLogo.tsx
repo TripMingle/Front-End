@@ -1,3 +1,4 @@
+import { useCountryStore } from '@/store/countryStore';
 import {
   logo,
   logoContainer,
@@ -8,7 +9,10 @@ import { useRouter } from 'next/navigation';
 
 const HeaderLogo = ({ color = 'b_' }: { color?: string }) => {
   const router = useRouter();
+
+  const { initialize } = useCountryStore();
   const clickHandler = () => {
+    initialize();
     router.push('/');
   };
 
@@ -28,7 +32,6 @@ const HeaderLogo = ({ color = 'b_' }: { color?: string }) => {
         height={20}
         alt="title"
       />
-      {/* <div className={title2({ theme: 'clear' })}>TripMingle</div> */}
     </div>
   );
 };

@@ -1,3 +1,4 @@
+'use client';
 import ModalWrapper from './ModalWrapper';
 import { useUserStore } from '@/store/userStore';
 import Image from 'next/image';

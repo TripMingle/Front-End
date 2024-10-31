@@ -16,8 +16,9 @@ const CountrySearch = () => {
   const clickHandler = async () => {
     if (keyword) {
       const data = await getCountryByKeyword(keyword);
-      setCountries(data.data);
       setContinent('', '');
+      setCountries(data.data);
+      setKeyword('');
     }
   };
 

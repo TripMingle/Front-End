@@ -1,6 +1,7 @@
 'use client';
 import * as styles from '@/styles/components/common/modal-wrapper.css';
 import { ReactNode, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 type Props = {
   isOpen: boolean;
@@ -18,22 +19,15 @@ const ModalWrapper = ({ isOpen, closeModal, children }: Props) => {
     closeModal();
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpen]);
-
   if (!isOpen) return <></>;
 
-  return (
+  return createPortal(
     <div className={styles.background} onClick={backgroundHandler}>
       <div className={styles.modal} onClick={propagationHandler}>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
 

@@ -1,5 +1,4 @@
 import { countryContainer } from '@/styles/main/country.css';
-import { CountryType } from '@/types/main/country';
 import CountryListItem from './CountryListItem';
 import { useCountryStore } from '@/store/countryStore';
 

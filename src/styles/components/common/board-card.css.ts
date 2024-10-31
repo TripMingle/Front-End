@@ -1,16 +1,19 @@
 import { vars } from '@/styles/globalTheme.css';
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 
-export const postCard = style({
-  display: 'inline-block',
-  width: 160,
+export const boardCard = style({
+  display: 'block',
+  width: '100%',
+  minWidth: 148,
   height: 226,
-  borderRadius: 10,
+  borderRadius: 14,
   boxShadow: '0px 10px 20px 0px #0000000D',
   cursor: 'pointer',
   '@media': {
+    'screen and (min-width: 640px)': {
+      maxWidth: 255,
+    },
     'screen and (min-width: 1024px)': {
-      width: 255,
       height: 338,
       borderRadius: 20,
     },
@@ -30,6 +33,12 @@ export const imageBox = style({
 });
 
 export const image = style({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
   borderRadius: '10px 10px 0px 0px',
   '@media': {
     'screen and (min-width: 1024px)': {
@@ -56,23 +65,27 @@ export const bookMark = style({
 });
 
 export const contentContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  width: 'calc(100% - 20px)',
   padding: '10px 10px',
   background: vars.color.white,
   borderRadius: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
       padding: '15px 20px',
+      width: 'calc(100% - 30px)',
     },
   },
 });
 
 export const title = style({
-  display: 'flex',
   height: 15,
   fontSize: 12,
   fontWeight: 700,
   marginTop: 5,
-  justifyItems: 'center',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
   overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
@@ -84,6 +97,7 @@ export const title = style({
 });
 
 export const infoContainer = style({
+  width: '100%',
   display: 'flex',
   marginTop: 5,
   fontSize: 10,
@@ -132,4 +146,56 @@ export const profileInfo = style({
       fontSize: 12,
     },
   },
+});
+
+//애니메이션 정의도 같은 파일에 추가
+const pulse = keyframes({
+  '0%': { opacity: 1 },
+  '50%': { opacity: 0.5 },
+  '100%': { opacity: 1 },
+});
+
+export const skeleton = style({
+  background: vars.color.g200,
+  color: vars.color.g200,
+  animation: `${pulse} 1.5s ease-in-out infinite`,
+});
+
+export const containerSkeleton = style({
+  height: 226,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 338,
+    },
+  },
+});
+
+export const languageSkeleton = style({
+  width: 40,
+  height: 20,
+  borderRadius: 5,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 50,
+      height: 24,
+    },
+  },
+});
+
+export const profileSkeleton = style({
+  width: 16,
+  height: 16,
+  borderRadius: 24,
+  overflow: 'hidden',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 24,
+      height: 24,
+    },
+  },
+});
+
+export const profileInfoSkeleton = style({
+  flex: 1,
+  marginLeft: 5,
 });

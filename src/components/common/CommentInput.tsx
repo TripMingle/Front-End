@@ -1,23 +1,23 @@
+'use client';
 import * as styles from '@/styles/components/common/comment-input.css';
 import Profile from './Profile';
 import { postBoardComment } from '@/api/board';
 import { useEffect, useRef, useState } from 'react';
 import { useUserStore } from '@/store/userStore';
+import useModal from '@/hooks/useModal';
+import { useRouter } from 'next/navigation';
+import LoginModal from './LoginModal';
 
-const CommentInput = ({
-  boardId,
-  inputHandler,
-  isOpen,
-  openModal,
-}: {
-  boardId: number;
-  isOpen: boolean;
-  inputHandler: () => void;
-  openModal: () => void;
-}) => {
+// TODO :: isOpen, openModal
+const CommentInput = ({ boardId }: { boardId: number }) => {
   const [content, setContent] = useState<string>('');
 
+  const { isOpen, openModal, closeModal } = useModal();
+
+  const router = useRouter();
+
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ const CommentInput = ({
   const submitComment = async () => {
     if (content.trim()) {
       await postBoardComment(boardId, content.trim());
-      inputHandler();
+      router.refresh();
     }
     setContent('');
   };
@@ -48,6 +48,11 @@ const CommentInput = ({
 
   return (
     <>
+      {isLoggedIn ? (
+        <></>
+      ) : (
+        <LoginModal isOpen={isOpen} closeModal={closeModal} />
+      )}
       <div
         className={styles.commentInputProfileContainer}
         onClick={clickHandler}

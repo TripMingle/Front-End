@@ -106,14 +106,16 @@ export const more = style({
 
 export const boardContainer = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
-  justifyItems: 'center',
+  width: '100%',
+  gridTemplateColumns:
+    'calc((100% - 15px) / 2) calc((100% - 15px) / 2)',
   gap: 15,
   maxWidth: 1080,
   '@media': {
-    'screen and (min-width: 1024px)': {
+    'screen and (min-width: 640px)': {
       gap: 20,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
+      gridTemplateColumns:
+        'calc((100% - 60px) / 4) calc((100% - 60px) / 4) calc((100% - 60px) / 4) calc((100% - 60px) / 4)',
     },
   },
 });

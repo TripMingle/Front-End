@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import SelectCateogry from './SelectCategory';
 import { PostPreviewProps } from '@/types/country/post';
 import { getPostList } from '@/api/post';
-import { useCountryStore } from '@/store/countryStore';
 import { usePostStore } from '@/store/postStore';
 import EmptyPost from '../EmptyPost';
 import { usePathname } from 'next/navigation';

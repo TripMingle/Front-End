@@ -10,16 +10,19 @@ import { BoardPreviewProps } from '@/types/country/board';
 import { EmptyBoard } from './EmptyBoard';
 import { usePathname } from 'next/navigation';
 import { getCountryName } from '@/utils/country';
+import BoardPreviewSkeleton from './BoardPreviewSkeleton';
 
 const BoardPreview = () => {
   const pathname = usePathname();
   const [country, setCountry] = useState<string>('');
   const [boardPreview, setBoardPreview] = useState<BoardPreviewProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getBoardPreviewList = async () => {
     if (country) {
       const data = await getBoardPreview(country);
       setBoardPreview(data.data);
+      setIsLoading(false);
     }
   };
 
@@ -41,7 +44,9 @@ const BoardPreview = () => {
         </span>
         <More path="/board" category="" />
       </div>
-      {boardPreview.length ? (
+      {isLoading ? (
+        <BoardPreviewSkeleton />
+      ) : boardPreview.length ? (
         <ul className={styles.boardContainer}>
           {boardPreview.map((board) => (
             <li key={board.boardId}>
