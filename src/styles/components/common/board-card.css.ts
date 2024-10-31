@@ -1,16 +1,20 @@
 import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
-export const postCard = style({
+export const boardCard = style({
   display: 'block',
   width: '100%',
-  maxWidth: 255,
-  height: 'auto', // 비율 유지를 위해 auto로 변경
+  minWidth: 148,
+  height: 226,
   borderRadius: 14,
   boxShadow: '0px 10px 20px 0px #0000000D',
   cursor: 'pointer',
   '@media': {
+    'screen and (min-width: 640px)': {
+      maxWidth: 255,
+    },
     'screen and (min-width: 1024px)': {
+      height: 338,
       borderRadius: 20,
     },
   },
@@ -19,8 +23,13 @@ export const postCard = style({
 export const imageBox = style({
   position: 'relative',
   width: '100%',
-  paddingTop: '60%',
+  height: 95,
   overflow: 'hidden',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 150,
+    },
+  },
 });
 
 export const image = style({
@@ -71,14 +80,17 @@ export const contentContainer = style({
 });
 
 export const title = style({
-  fontSize: 'clamp(12px, 1.67vw, 18px)',
+  height: 15,
+  fontSize: 12,
   fontWeight: 700,
   marginTop: 5,
   whiteSpace: 'nowrap',
-  overflow: 'hidden',
   textOverflow: 'ellipsis',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
+      height: 21,
+      fontSize: 18,
       marginTop: 10,
     },
   },
@@ -88,11 +100,13 @@ export const infoContainer = style({
   width: '100%',
   display: 'flex',
   marginTop: 5,
-  alignItems: 'center',
-  fontSize: 'clamp(10px, 1.3vw, 14px)',
+  fontSize: 10,
+  fontWeight: 400,
+  alignContent: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
       marginTop: 10,
+      fontSize: 14,
     },
   },
 });

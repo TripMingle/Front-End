@@ -5,13 +5,9 @@ import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
 import { Language } from '@/components/common/Language';
 import CommentInput from '@/components/common/CommentInput';
-import ChatModal from '@/components/country/board/id/ChatModal';
 import CommentList from '@/components/common/CommentList';
 import { TripTypeButton } from '@/components/common/TripTypeButton';
 import AttributeBox from '@/components/country/board/id/AttributeBox';
-import LoginModal from '@/components/common/LoginModal';
-import useModal from '@/hooks/useModal';
-import { hasAccessToken } from '@/utils/server/token';
 import { BoardDetailType } from '@/types/country/board';
 import { headers } from 'next/headers';
 
