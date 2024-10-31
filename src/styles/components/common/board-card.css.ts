@@ -1,5 +1,5 @@
 import { vars } from '@/styles/globalTheme.css';
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 
 export const boardCard = style({
   display: 'block',
@@ -146,4 +146,56 @@ export const profileInfo = style({
       fontSize: 12,
     },
   },
+});
+
+//애니메이션 정의도 같은 파일에 추가
+const pulse = keyframes({
+  '0%': { opacity: 1 },
+  '50%': { opacity: 0.5 },
+  '100%': { opacity: 1 },
+});
+
+export const skeleton = style({
+  background: vars.color.g200,
+  color: vars.color.g200,
+  animation: `${pulse} 1.5s ease-in-out infinite`,
+});
+
+export const containerSkeleton = style({
+  height: 226,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      height: 338,
+    },
+  },
+});
+
+export const languageSkeleton = style({
+  width: 40,
+  height: 20,
+  borderRadius: 5,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 50,
+      height: 24,
+    },
+  },
+});
+
+export const profileSkeleton = style({
+  width: 16,
+  height: 16,
+  borderRadius: 24,
+  overflow: 'hidden',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 24,
+      height: 24,
+    },
+  },
+});
+
+export const profileInfoSkeleton = style({
+  flex: 1,
+  marginLeft: 5,
 });
