@@ -6,6 +6,7 @@ import ChatButton from './ChatButton';
 type Props = {
   userImageUrl: string;
   nickName: string;
+  userId: number;
   ageRange: string;
   gender: string;
   nationality: string;
@@ -52,7 +53,7 @@ const TravelerCard = ({ props }: { props: Props }) => {
         <span className={styles.infoTitle}>동행 평점</span>
         <span className={styles.infoContent}>별 네개</span>
       </div>
-      <ChatButton />
+      <ChatButton nickName={props.nickName} userId={props.userId} />
     </div>
   );
 };

@@ -17,6 +17,7 @@ const CommentInput = ({ boardId }: { boardId: number }) => {
   const router = useRouter();
 
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +48,11 @@ const CommentInput = ({ boardId }: { boardId: number }) => {
 
   return (
     <>
-      <LoginModal isOpen={isOpen} closeModal={closeModal} />
+      {isLoggedIn ? (
+        <></>
+      ) : (
+        <LoginModal isOpen={isOpen} closeModal={closeModal} />
+      )}
       <div
         className={styles.commentInputProfileContainer}
         onClick={clickHandler}

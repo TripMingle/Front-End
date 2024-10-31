@@ -127,6 +127,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             props={{
               userImageUrl: boardDetail.userImageUrl,
               nickName: boardDetail.nickName,
+              userId: boardDetail.userId,
               ageRange: boardDetail.ageRange,
               gender: boardDetail.gender,
               nationality: boardDetail.nationality,
