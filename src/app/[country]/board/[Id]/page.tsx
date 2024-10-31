@@ -17,9 +17,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   const boardData = await fetch(
     `http://${host}/api/board?boardId=${params.id}`,
-  ).then((res) => {
-    return res.json();
-  });
+  ).then((res) => res.json());
 
   const boardDetail: BoardDetailType = boardData.data;
 
