@@ -2,16 +2,15 @@ import { vars } from '@/styles/globalTheme.css';
 import { style } from '@vanilla-extract/css';
 
 export const postCard = style({
-  display: 'inline-block',
-  width: 160,
-  height: 226,
-  borderRadius: 10,
+  display: 'block',
+  width: '100%',
+  maxWidth: 255,
+  height: 'auto', // 비율 유지를 위해 auto로 변경
+  borderRadius: 14,
   boxShadow: '0px 10px 20px 0px #0000000D',
   cursor: 'pointer',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 255,
-      height: 338,
       borderRadius: 20,
     },
   },
@@ -20,16 +19,17 @@ export const postCard = style({
 export const imageBox = style({
   position: 'relative',
   width: '100%',
-  height: 95,
+  paddingTop: '60%',
   overflow: 'hidden',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      height: 150,
-    },
-  },
 });
 
 export const image = style({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
   borderRadius: '10px 10px 0px 0px',
   '@media': {
     'screen and (min-width: 1024px)': {
@@ -56,43 +56,43 @@ export const bookMark = style({
 });
 
 export const contentContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  width: 'calc(100% - 20px)',
   padding: '10px 10px',
   background: vars.color.white,
   borderRadius: 10,
   '@media': {
     'screen and (min-width: 1024px)': {
       padding: '15px 20px',
+      width: 'calc(100% - 30px)',
     },
   },
 });
 
 export const title = style({
-  display: 'flex',
-  height: 15,
-  fontSize: 12,
+  fontSize: 'clamp(12px, 1.67vw, 18px)',
   fontWeight: 700,
   marginTop: 5,
-  justifyItems: 'center',
+  whiteSpace: 'nowrap',
   overflow: 'hidden',
+  textOverflow: 'ellipsis',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 21,
-      fontSize: 18,
       marginTop: 10,
     },
   },
 });
 
 export const infoContainer = style({
+  width: '100%',
   display: 'flex',
   marginTop: 5,
-  fontSize: 10,
-  fontWeight: 400,
-  alignContent: 'center',
+  alignItems: 'center',
+  fontSize: 'clamp(10px, 1.3vw, 14px)',
   '@media': {
     'screen and (min-width: 1024px)': {
       marginTop: 10,
-      fontSize: 14,
     },
   },
 });
