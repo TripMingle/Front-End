@@ -1,4 +1,5 @@
 import * as styles from '@/styles/components/common/board-card.css';
+import { skeleton } from '@/styles/components/common/common.css';
 import { boardContainer } from '@/styles/country/page.css';
 
 const BoardPreviewSkeleton = () => {
@@ -7,26 +8,16 @@ const BoardPreviewSkeleton = () => {
       {[...Array(4)].map((_, index) => (
         <div className={styles.containerSkeleton}>
           <div className={`${styles.imageBox}`}>
-            <div className={`${styles.image} ${styles.skeleton}`}></div>
+            <div className={`${styles.image} ${skeleton}`}></div>
           </div>
           <div className={`${styles.contentContainer}`}>
-            <div
-              className={`${styles.languageSkeleton} ${styles.skeleton}`}
-            ></div>
-            <span className={`${styles.title} ${styles.skeleton}`}></span>
-            <div className={`${styles.infoContainer} ${styles.skeleton}`}>
-              -
-            </div>
-            <div className={`${styles.infoContainer} ${styles.skeleton}`}>
-              -
-            </div>
+            <div className={`${styles.languageSkeleton} ${skeleton}`}></div>
+            <span className={`${styles.title} ${skeleton}`}></span>
+            <div className={`${styles.infoContainer} ${skeleton}`}>-</div>
+            <div className={`${styles.infoContainer} ${skeleton}`}>-</div>
             <div className={`${styles.profileContainer}`}>
-              <div
-                className={`${styles.profileSkeleton} ${styles.skeleton}`}
-              ></div>
-              <span
-                className={`${styles.profileInfoSkeleton} ${styles.skeleton}`}
-              >
+              <div className={`${styles.profileSkeleton} ${skeleton}`}></div>
+              <span className={`${styles.profileInfoSkeleton} ${skeleton}`}>
                 f
               </span>
             </div>

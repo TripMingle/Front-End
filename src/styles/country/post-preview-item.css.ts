@@ -70,3 +70,36 @@ export const profileInfo = style({
   fontWeight: 400,
   fontSize: 12,
 });
+
+export const postCardSkeleton = style({
+  width: 191,
+  height: 99,
+  borderRadius: 10,
+  padding: 15,
+  cursor: 'pointer',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 215,
+      height: 118,
+      padding: 20,
+    },
+  },
+});
+
+export const profileSkeleton = style({
+  width: 18,
+  height: 18,
+  borderRadius: 24,
+  overflow: 'hidden',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      width: 24,
+      height: 24,
+    },
+  },
+});
+
+export const profileInfoSkeleton = style({
+  flex: 1,
+  marginLeft: 5,
+});

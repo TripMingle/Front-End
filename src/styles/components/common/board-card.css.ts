@@ -1,5 +1,5 @@
 import { vars } from '@/styles/globalTheme.css';
-import { keyframes, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 export const boardCard = style({
   display: 'block',
@@ -146,19 +146,6 @@ export const profileInfo = style({
       fontSize: 12,
     },
   },
-});
-
-//애니메이션 정의도 같은 파일에 추가
-const pulse = keyframes({
-  '0%': { opacity: 1 },
-  '50%': { opacity: 0.5 },
-  '100%': { opacity: 1 },
-});
-
-export const skeleton = style({
-  background: vars.color.g200,
-  color: vars.color.g200,
-  animation: `${pulse} 1.5s ease-in-out infinite`,
 });
 
 export const containerSkeleton = style({

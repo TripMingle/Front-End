@@ -74,6 +74,7 @@ const PostCardList = () => {
   );
 };
 
+// postcard와 css가 다름
 const PostPreview = ({ props }: { props: PostPreviewProps }) => {
   return (
     <div className={styles.postCard}>
