@@ -107,8 +107,7 @@ export const more = style({
 export const boardContainer = style({
   display: 'grid',
   width: '100%',
-  gridTemplateColumns:
-    'calc((100% - 15px) / 2) calc((100% - 15px) / 2)',
+  gridTemplateColumns: 'calc((100% - 15px) / 2) calc((100% - 15px) / 2)',
   gap: 15,
   maxWidth: 1080,
   '@media': {
@@ -121,17 +120,15 @@ export const boardContainer = style({
 });
 
 export const postContainer = style({
-  display: 'grid',
-  gridAutoFlow: 'column',
+  display: 'flex',
+  flexDirection: 'row',
   overflowX: 'auto',
   gap: 15,
   padding: '20px 0px',
   maxWidth: 1080,
-  gridTemplateColumns: 'repeat(auto-fill, minmax(221px, 1fr))',
   '@media': {
     'screen and (min-width: 1024px)': {
       gap: 20,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))',
     },
   },
 });
