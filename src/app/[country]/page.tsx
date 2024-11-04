@@ -3,9 +3,7 @@ import * as styles from '@/styles/country/page.css';
 import Header from '@/components/header/Header';
 import BoardPreview from '@/components/country/BoardPreview';
 import CountryBackground from '@/components/country/CountryBackground';
-import RestaurantPreview from '@/components/country/RestaurantPreview';
-import RentalHomePreview from '@/components/country/RentalHomePreview';
-import SchedulePreview from '@/components/country/SchedulePreview';
+import PostPreview from '@/components/country/PostPreivew';
 
 const Page = () => {
   return (
@@ -15,9 +13,9 @@ const Page = () => {
         <CountryBackground />
         <div className={styles.contentContainer}>
           <BoardPreview />
-          <RestaurantPreview />
-          <RentalHomePreview />
-          <SchedulePreview />
+          <PostPreview type="restaurant" />
+          <PostPreview type="rentalHome" />
+          <PostPreview type="schedule" />
         </div>
       </div>
     </main>
