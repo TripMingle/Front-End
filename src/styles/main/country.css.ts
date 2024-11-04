@@ -64,3 +64,9 @@ export const countryContainer = style({
     },
   },
 });
+
+export const bgimageSkeleton = style({
+  borderRadius: '50%',
+  width: '100%',
+  height: '100%',
+});

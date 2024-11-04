@@ -1,5 +1,4 @@
 'use client';
-import { getCountryByKeyword } from '@/api/country';
 import { useCountryStore } from '@/store/countryStore';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
@@ -7,17 +6,15 @@ import { useState } from 'react';
 
 const CountrySearch = () => {
   const [keyword, setKeyword] = useState<string>('');
-  const { setCountries, setContinent } = useCountryStore();
+  const { setCountrySearch } = useCountryStore();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   };
 
-  const clickHandler = async () => {
+  const clickHandler = () => {
     if (keyword) {
-      const data = await getCountryByKeyword(keyword);
-      setContinent('', '');
-      setCountries(data.data);
+      setCountrySearch(keyword);
       setKeyword('');
     }
   };

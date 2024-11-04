@@ -239,3 +239,24 @@ export const moveToContinent = style({
 export const continentText = style({
   color: vars.color.black,
 });
+
+export const emptyCountry = style({
+  display: 'flex',
+  width: '100%',
+  height: 100,
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: vars.color.g400,
+  fontSize: 20,
+  fontFamily: vars.font.menu,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  lineHeight: 1.5,
+  borderRadius: 16,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 24,
+      borderRadius: 20,
+    },
+  },
+});
