@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import { getCountryName } from '@/utils/country';
 import Calendar from './Icons/Calendar';
 import Good from './Icons/Good';
+import PostPreviewSkeleton from './PostPreviewSkeleton';
 
 type postType = {
   title: string;
@@ -48,11 +49,13 @@ const PostPreview = ({
   const pathname = usePathname();
   const [country, setCountry] = useState<string>('');
   const [postPreview, setPostPreview] = useState<PostPreviewProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getPreview = async () => {
     if (country) {
       const data = await getPostPreview(country, post[type].cateogry);
       setPostPreview(data.data);
+      setIsLoading(false);
     }
   };
 
@@ -72,7 +75,9 @@ const PostPreview = ({
         <span className={styles.explain}>{post[type].explain}</span>
         <More path="/post" category={post[type].cateogry} />
       </div>
-      {postPreview.length ? (
+      {isLoading ? (
+        <PostPreviewSkeleton />
+      ) : postPreview.length ? (
         <ul className={styles.postContainer}>
           {postPreview.map((post) => (
             <li key={post.postingId}>

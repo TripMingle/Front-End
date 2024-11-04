@@ -8,7 +8,7 @@ const pulse = keyframes({
 });
 
 export const skeleton = style({
-  background: vars.color.g200,
-  color: vars.color.g200,
-  animation: `${pulse} 1.5s ease-in-out infinite`,
+  background: `${vars.color.g200} !important`,
+  color: `${vars.color.g200} !important`,
+  animation: `${pulse} 1.5s ease-in-out infinite !important`,
 });
