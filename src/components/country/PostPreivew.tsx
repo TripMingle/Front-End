@@ -2,7 +2,7 @@
 import * as styles from '@/styles/country/page.css';
 import House from './Icons/House';
 import More from '../common/More';
-import PostCard from '../common/PostCard';
+import PostPreviewItem from './PostPreviewItem';
 import { PostPreviewProps } from '@/types/country/post';
 import { useEffect, useState } from 'react';
 import { getPostPreview } from '@/api/post';
@@ -76,7 +76,7 @@ const PostPreview = ({
         <ul className={styles.postContainer}>
           {postPreview.map((post) => (
             <li key={post.postingId}>
-              <PostCard props={post} />
+              <PostPreviewItem props={post} />
             </li>
           ))}
         </ul>

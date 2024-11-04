@@ -1,8 +1,8 @@
-import Profile from './Profile';
-import * as styles from '@/styles/components/common/post-card.css';
+import Profile from '../common/Profile';
+import * as styles from '@/styles/country/post-preview-item.css';
 import { PostPreviewProps } from '@/types/country/post';
 
-const PostCard = ({ props }: { props: PostPreviewProps }) => {
+const PostPreviewItem = ({ props }: { props: PostPreviewProps }) => {
   return (
     <div className={styles.postCard}>
       <span className={styles.title}>{props.title}</span>
@@ -24,4 +24,4 @@ const PostCard = ({ props }: { props: PostPreviewProps }) => {
   );
 };
 
-export default PostCard;
+export default PostPreviewItem;
