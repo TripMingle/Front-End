@@ -1,10 +1,16 @@
 import * as styles from '@/styles/write/progress.css';
 import Image from 'next/image';
 
-const Progress = ({ step }: { step: number }) => {
+const Progress = ({
+  currentStep,
+  allStep,
+}: {
+  currentStep: number;
+  allStep: number;
+}) => {
   return (
     <div className={styles.container}>
-      {Array(step - 1)
+      {Array(currentStep - 1)
         .fill(0)
         .map((element, index) => (
           <div className={styles.circle({ pass: true })} key={index}></div>
@@ -16,7 +22,7 @@ const Progress = ({ step }: { step: number }) => {
         height={20}
         alt="stepIcon"
       />
-      {Array(4 - step)
+      {Array(allStep - currentStep)
         .fill(0)
         .map((element, index) => (
           <div className={styles.circle({ pass: false })} key={index}></div>
