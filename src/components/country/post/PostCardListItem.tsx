@@ -1,14 +1,15 @@
-import Profile from '../common/Profile';
-import * as styles from '@/styles/country/post-preview-item.css';
 import { PostPreviewProps } from '@/types/country/post';
+import Profile from '@/components/common/Profile';
+import * as styles from '@/styles/country/post/page.css';
 import { usePathname, useRouter } from 'next/navigation';
 
-const PostPreviewItem = ({ props }: { props: PostPreviewProps }) => {
+// postcard와 css가 다름
+const PostCardListItem = ({ props }: { props: PostPreviewProps }) => {
   const router = useRouter();
   const pathname = usePathname();
 
   const clickHandler = async () => {
-    router.push(pathname + `/post/${props.postingId}`);
+    router.push(pathname + `/${props.postingId}`);
   };
 
   return (
@@ -25,11 +26,11 @@ const PostPreviewItem = ({ props }: { props: PostPreviewProps }) => {
         />
         <span className={styles.profileInfo}>
           {`${props.userNickName} · ${props.userAgeRange.slice(0, 2)}대 · 
-          ${props.userGender === 'male' ? '남' : '여'} · ${props.userNationality}`}
+            ${props.userGender === 'male' ? '남' : '여'} · ${props.userNationality}`}
         </span>
       </div>
     </div>
   );
 };
 
-export default PostPreviewItem;
+export default PostCardListItem;

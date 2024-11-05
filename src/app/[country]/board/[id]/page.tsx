@@ -144,7 +144,7 @@ const Page = async ({
               </strong>
               {' 개'}
             </p>
-            <CommentInput boardId={boardDetail.boardId} />
+            <CommentInput id={boardDetail.boardId} />
             <CommentList comments={boardDetail.boardComments} />
           </div>
         </div>

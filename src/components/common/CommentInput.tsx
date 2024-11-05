@@ -7,9 +7,16 @@ import { useUserStore } from '@/store/userStore';
 import useModal from '@/hooks/useModal';
 import { useRouter } from 'next/navigation';
 import LoginModal from './LoginModal';
+import { postPostComment } from '@/api/post';
 
 // TODO :: isOpen, openModal
-const CommentInput = ({ boardId }: { boardId: number }) => {
+const CommentInput = ({
+  id,
+  type = 'board',
+}: {
+  id: number;
+  type?: string;
+}) => {
   const [content, setContent] = useState<string>('');
 
   const { isOpen, openModal, closeModal } = useModal();
@@ -33,7 +40,11 @@ const CommentInput = ({ boardId }: { boardId: number }) => {
 
   const submitComment = async () => {
     if (content.trim()) {
-      await postBoardComment(boardId, content.trim());
+      if (type == 'board') {
+        await postBoardComment(id, content.trim());
+      } else {
+        await postPostComment(id, content.trim());
+      }
       router.refresh();
     }
     setContent('');

@@ -66,6 +66,7 @@ export const category = style({
   fontFamily: vars.font.menu,
   fontSize: 20,
   fontWeight: 'bold',
+  height: '1.2em',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 30,
@@ -181,7 +182,7 @@ export const emptyBoardContainer = style({
 export const emptyPostContainer = style({
   display: 'flex',
   width: '100%',
-  height: 129,
+  height: 169,
   alignItems: 'center',
   justifyContent: 'center',
   background: vars.color.g200,
@@ -194,7 +195,7 @@ export const emptyPostContainer = style({
   borderRadius: 16,
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 158,
+      height: 198,
       fontSize: 24,
       borderRadius: 20,
     },

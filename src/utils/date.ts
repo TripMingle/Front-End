@@ -1,5 +1,6 @@
 export const formatDate = (date: string) => {
   const dateData = new Date(date);
+  dateData.setHours(dateData.getHours() + 9);
 
   const year = dateData.getFullYear();
   const month = String(dateData.getMonth() + 1).padStart(2, '0');

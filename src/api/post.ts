@@ -19,3 +19,15 @@ export const getPostList = async (
 export const postPost = async (data: PostForm) => {
   return postFetch(`/post`, data);
 };
+
+export const postPostComment = async (
+  postId: number,
+  comment: string,
+  parentCommentId?: number,
+) => {
+  const data = {
+    parentCommentId: parentCommentId ?? -1,
+    comment: comment,
+  };
+  return postFetch(`/post/comment?postId=${postId}`, data);
+};
