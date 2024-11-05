@@ -1,4 +1,5 @@
-import { getFetch } from '.';
+import { getFetch, postFetch } from '.';
+import { PostForm } from '@/types/country/post';
 
 export const getPostPreview = async (country: string, postingType: string) => {
   return getFetch(
@@ -13,4 +14,8 @@ export const getPostList = async (
 ) => {
   const params = `country=${country}&postingType=${postingType}&page=${page}`;
   return getFetch(`/post/list?${params}`);
+};
+
+export const postPost = async (data: PostForm) => {
+  return postFetch(`/post`, data);
 };

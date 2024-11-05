@@ -84,7 +84,7 @@ export const languageListContainer = style({
   top: 44,
   left: 0,
   width: '100%',
-  height: 282,
+  maxHeight: 282,
   zIndex: 5,
   padding: '8px 20px',
   overflow: 'scroll',
@@ -96,7 +96,6 @@ export const languageListContainer = style({
   '@media': {
     'screen and (min-width: 1024px)': {
       top: 54,
-      padding: '0px 20px',
     },
   },
 });
@@ -109,9 +108,19 @@ export const languageContainer = recipe({
     fontFamily: vars.font.body,
     fontSize: 14,
     alignItems: 'center',
+    ':hover': {
+      background: '#3688FF1A',
+      margin: '0px -12px',
+      padding: '10px 12px',
+      borderRadius: 6,
+    },
     '@media': {
       'screen and (min-width: 1024px)': {
         padding: '15px 0px',
+        ':hover': {
+          margin: '0px -12px',
+          padding: '15px 12px',
+        },
       },
     },
   },

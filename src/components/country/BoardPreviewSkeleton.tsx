@@ -6,7 +6,7 @@ const BoardPreviewSkeleton = () => {
   return (
     <div className={boardContainer}>
       {[...Array(4)].map((_, index) => (
-        <div className={styles.containerSkeleton}>
+        <div className={styles.containerSkeleton} key={index}>
           <div className={`${styles.imageBox}`}>
             <div className={`${styles.image} ${skeleton}`}></div>
           </div>

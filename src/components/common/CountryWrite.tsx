@@ -13,8 +13,10 @@ const CountryWrite = ({ type }: { type: string }) => {
   const router = useRouter();
 
   const clickHandler = (type: string) => {
-    if (isLoggedIn) router.push(`/write`);
-    else openModal();
+    if (isLoggedIn) {
+      if (type == 'board') router.push('/write/board');
+      else router.push('/write/post');
+    } else openModal();
   };
 
   return (

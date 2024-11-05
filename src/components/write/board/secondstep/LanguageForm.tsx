@@ -70,9 +70,6 @@ const Languages = [
   { eng: 'English', kor: '영어' },
   { eng: 'Chinese', kor: '중국어' },
   { eng: 'Japanese', kor: '일본어' },
-  { eng: 'Vietnamese', kor: '베트남어' },
-  { eng: 'German', kor: '독일어' },
-  { eng: 'French', kor: '프랑스어' },
 ];
 
 export default LanguageForm;

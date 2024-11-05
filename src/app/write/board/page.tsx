@@ -6,13 +6,13 @@ import * as styles from '@/styles/write/page.css';
 import Header from '@/components/header/Header';
 import { BoardForm, boardFormDefault } from '@/types/country/board';
 import { SchedulePlaceType } from '@/types/country/place';
-import CountrySearch from '@/components/write/firststep/CountrySearch';
-import CountryList from '@/components/write/firststep/CountryList';
-import InfoForm from '@/components/write/secondstep/InfoForm';
-import ScheduleForm from '@/components/write/thirdstep/ScheduleForm';
-import ContentForm from '@/components/write/fourthstep/ContentForm';
-import StepButton from '@/components/write/StepButton';
-import Progress from '@/components/write/Progress';
+import CountrySearch from '@/components/write/board/firststep/CountrySearch';
+import CountryList from '@/components/write/board/firststep/CountryList';
+import InfoForm from '@/components/write/board/secondstep/InfoForm';
+import ScheduleForm from '@/components/write/board/thirdstep/ScheduleForm';
+import ContentForm from '@/components/write/board/fourthstep/ContentForm';
+import StepButton from '@/components/write/board/StepButton';
+import Progress from '@/components/write/board/Progress';
 
 const Page = () => {
   const methods = useForm<BoardForm>({ defaultValues: boardFormDefault });
@@ -104,7 +104,7 @@ const Page = () => {
       <Header />
       <div className={styles.pageContainer}>
         <div className={styles.pageContent}>
-          <Progress step={step} />
+          <Progress currentStep={step} allStep={4} />
           <p className={styles.explainText}>{explains[step - 1]}</p>
           <FormProvider {...methods}>
             <div className={styles.contentContainer} ref={pageContentRef}>
