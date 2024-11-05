@@ -91,7 +91,7 @@ const PlaceSearchModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
               imageUrl = e.photos[0].getUrl({ maxHeight: 64, maxWidth: 64 });
 
             return {
-              id: generateRandomId(),
+              boardScheduleId: generateRandomId(),
               pointX,
               pointY,
               placeName: e.name || '',
@@ -150,7 +150,7 @@ const PlaceSearchModal = ({ isOpen, closeModal, addPlaceHandler }: Props) => {
         </div>
         <ul className={styles.resultContainer}>
           {result.map((e, i) => (
-            <li key={e.id} onClick={() => selectHandler(i)}>
+            <li key={e.boardScheduleId} onClick={() => selectHandler(i)}>
               <PlaceSearchResult place={e} index={i} select={select} />
             </li>
           ))}

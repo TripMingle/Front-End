@@ -1,5 +1,5 @@
 export type SchedulePlaceType = {
-  id: string;
+  boardScheduleId: string;
   googlePlaceId: string;
   placeName: string;
   pointX: number;
