@@ -76,7 +76,7 @@ const Page = async ({
               </strong>
               {' 개'}
             </p>
-            <CommentInput boardId={postDetail.postingId} />
+            <CommentInput id={postDetail.postingId} type="post" />
             <CommentList comments={postDetail.postingComments} />
           </div>
         </div>
