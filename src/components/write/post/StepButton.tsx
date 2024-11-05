@@ -44,6 +44,7 @@ const StepButton = ({
     }
   };
 
+  // TODO :: 정보글 보기 페이지 만들면, 이동하는 걸로 수정해야함!
   const submit = async (data: PostForm) => {
     console.log(data);
     const response = await postPost(data);
