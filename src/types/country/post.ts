@@ -8,3 +8,17 @@ export type PostPreviewProps = {
   userGender: string; // 사용자 성별
   userNationality: string; // 사용자 국적
 };
+
+export type PostForm = {
+  title: string;
+  content: string;
+  postingType: 'RESTAURANT' | 'RENTAL_HOME' | 'SCHEDULE' | '';
+  country: string;
+};
+
+export const PostFormDefault: PostForm = {
+  title: '',
+  content: '',
+  postingType: '',
+  country: '',
+};
