@@ -63,6 +63,8 @@ const Page = async ({
               nationality: postDetail.userNationality,
               selfIntroduction: postDetail.selfIntroduce ?? '',
             }}
+            title="작성자"
+            type="post"
           />
         </div>
         <div className={styles.container}>

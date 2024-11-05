@@ -15,12 +15,20 @@ type Props = {
 
 // TODO: // OpenModal props
 
-const TravelerCard = ({ props }: { props: Props }) => {
+const TravelerCard = ({
+  props,
+  title = '여행장',
+  type = 'board',
+}: {
+  props: Props;
+  title?: string;
+  type?: string;
+}) => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.travelerTitle}>
         <Image src="/icons/flag.svg" width={24} height={24} alt="flagIcon" />
-        여행장
+        {title}
       </div>
       <div className={styles.profileContainer}>
         <Profile
@@ -53,7 +61,11 @@ const TravelerCard = ({ props }: { props: Props }) => {
         <span className={styles.infoTitle}>동행 평점</span>
         <span className={styles.infoContent}>별 네개</span>
       </div>
-      <ChatButton nickName={props.nickName} userId={props.userId} />
+      {type == 'board' ? (
+        <ChatButton nickName={props.nickName} userId={props.userId} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
