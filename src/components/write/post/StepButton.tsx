@@ -49,10 +49,8 @@ const StepButton = ({
     console.log(data);
     const response = await postPost(data);
     console.log(response.data);
-    // if (response.data)
-    //   router.push(
-    //     `/${response.data.countryName}/post/${response.data.boardId}`,
-    //   );
+    if (response.data)
+      router.push(`/${response.data.country}/post/${response.data.postingId}`);
     setIsSubmit(true);
   };
 
