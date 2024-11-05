@@ -15,7 +15,7 @@ const Comment = ({ props }: { props: PostCommentType }) => {
       />
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
-          <span className={styles.name}>{props.userNickname}</span>
+          <span className={styles.name}>{props.userNickName}</span>
           <span className={styles.time}>{formatDate(props.createdAt)}</span>
         </div>
         <p className={styles.content}>{props.comment}</p>
