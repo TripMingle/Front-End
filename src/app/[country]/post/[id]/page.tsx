@@ -7,6 +7,7 @@ import CommentInput from '@/components/common/CommentInput';
 import CommentList from '@/components/country/post/id/CommentList';
 import { headers } from 'next/headers';
 import { PostDetailType } from '@/types/country/post';
+import Like from '@/components/country/post/id/Like';
 
 const Page = async ({
   params,
@@ -32,16 +33,10 @@ const Page = async ({
           <div className={styles.contentContainer}>
             <p className={styles.title}>{postDetail.title}</p>
             <div>
-              <span className={styles.iconContainer}>
-                <Image
-                  className={styles.icon}
-                  src="/icons/empty_heart.svg"
-                  width={20}
-                  height={20}
-                  alt="commendIcon"
-                />
-                <span>{postDetail.likeCount}</span>
-              </span>
+              <Like
+                isLike={postDetail.myLikeState}
+                likeCount={postDetail.likeCount}
+              />
               <span className={styles.iconContainer}>
                 <Image
                   className={styles.icon}
