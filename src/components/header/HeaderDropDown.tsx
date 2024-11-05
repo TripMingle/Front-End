@@ -22,9 +22,14 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
   };
   */
 
-  const writeHandler = () => {
+  const writeBoardHandler = () => {
     closeHandler();
-    router.push('/write');
+    router.push('/write/board');
+  };
+
+  const writePostHandler = () => {
+    closeHandler();
+    router.push('/write/post');
   };
 
   const logoutHandler = () => {
@@ -46,8 +51,11 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
       <div className={styles.background} onClick={closeHandler}>
         <div className={styles.container}>
           <ul className={styles.menuContainer}>
-            <li className={styles.menuItem} onClick={writeHandler}>
+            <li className={styles.menuItem} onClick={writeBoardHandler}>
               동행글 작성
+            </li>
+            <li className={styles.menuItem} onClick={writePostHandler}>
+              정보글 작성
             </li>
             <li className={styles.menuItem} onClick={logoutHandler}>
               로그아웃
