@@ -19,12 +19,6 @@ const CountrySearch = () => {
     }
   };
 
-  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      clickHandler();
-    }
-  };
-
   return (
     <div className={styles.boxContainer}>
       <div className={styles.exploreContainer}>
@@ -38,14 +32,19 @@ const CountrySearch = () => {
           </span>
         </div>
       </div>
-      <div className={styles.inputBox}>
+      <form
+        className={styles.inputBox}
+        onSubmit={(e) => {
+          e.preventDefault();
+          clickHandler();
+        }}
+      >
         <input
           className={styles.input}
           value={keyword}
           type="text"
           placeholder="나라를 입력하세요."
           onChange={changeHandler}
-          onKeyDown={keyDownHandler}
         />
         <Image
           className={styles.searchIcon}
@@ -55,7 +54,7 @@ const CountrySearch = () => {
           alt="search"
           onClick={clickHandler}
         />
-      </div>
+      </form>
     </div>
   );
 };
