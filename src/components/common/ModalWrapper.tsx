@@ -19,6 +19,15 @@ const ModalWrapper = ({ isOpen, closeModal, children }: Props) => {
     closeModal();
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [isOpen]);
+
   if (!isOpen) return <></>;
 
   return createPortal(

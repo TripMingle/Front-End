@@ -18,6 +18,10 @@ export const getBoardDetail = async (boardId: number) => {
   return getFetch(`/board?boardId=${boardId}`);
 };
 
+export const getBoardSchedule = async (boardId: number) => {
+  return getFetch(`/board/schedule?boardId=${boardId}`);
+};
+
 export const postBoard = async (data: BoardForm) => {
   return postFetch(`/board`, data);
 };

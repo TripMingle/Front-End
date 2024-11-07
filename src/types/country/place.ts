@@ -7,3 +7,9 @@ export type SchedulePlaceType = {
   imageUrl: string;
   address: string;
 };
+
+export interface SchedulePlaceIdType extends SchedulePlaceType {
+  boardId: number;
+  number: number;
+  date: string;
+}
