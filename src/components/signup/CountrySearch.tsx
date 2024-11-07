@@ -19,12 +19,6 @@ const CountrySearch = ({
     setInput(event.target.value);
   };
 
-  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      searchHandler();
-    }
-  };
-
   const propagationHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
@@ -57,14 +51,19 @@ const CountrySearch = ({
             onClick={closeModal}
           />
         </div>
-        <div className={styles.inputContainer}>
+        <form
+          className={styles.inputContainer}
+          onSubmit={(e) => {
+            e.preventDefault();
+            searchHandler();
+          }}
+        >
           <input
             className={styles.input}
             type="text"
             value={input}
             placeholder="나라를 검색하세요."
             onChange={inputChangeHandler}
-            onKeyDown={keyDownHandler}
           />
           <Image
             className={styles.searchIcon}
@@ -74,7 +73,7 @@ const CountrySearch = ({
             alt="search"
             onClick={searchHandler}
           />
-        </div>
+        </form>
         <ul className={styles.countryContainer}>
           {countryList ? (
             countryList.map((country, index) => (
