@@ -10,6 +10,7 @@ import { TripTypeButton } from '@/components/common/TripTypeButton';
 import AttributeBox from '@/components/country/board/id/AttributeBox';
 import { BoardDetailType } from '@/types/country/board';
 import { headers } from 'next/headers';
+import ScheduleButton from '@/components/country/board/id/ScheduleButton';
 
 const Page = async ({
   params,
@@ -110,14 +111,12 @@ const Page = async ({
             ) : (
               <></>
             )}
-            <div className={styles.infoContainer}>
-              <p className={styles.infoTitle}>여행 일정</p>
-              <div className={styles.infoContent}>
-                <span>
-                  {boardDetail.startDate} ~ {boardDetail.endDate}
-                </span>
-              </div>
-            </div>
+            <ScheduleButton
+              startDate={boardDetail.startDate}
+              endDate={boardDetail.endDate}
+              boardId={boardDetail.boardId}
+              country={boardDetail.countryName}
+            />
             <div className={styles.infoContainer}>
               <p className={styles.infoTitle}>내용</p>
               <div className={styles.infoContent}>{boardDetail.content}</div>

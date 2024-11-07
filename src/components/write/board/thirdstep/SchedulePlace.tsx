@@ -14,7 +14,7 @@ type Props = {
 
 const SchedulePlace = ({ place, index, removeHandler }: Props) => {
   return (
-    <Draggable draggableId={place.id} index={index}>
+    <Draggable draggableId={place.boardScheduleId} index={index}>
       {(provided) => (
         <div
           className={styles.container}

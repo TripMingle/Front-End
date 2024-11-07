@@ -1,5 +1,5 @@
 export type SchedulePlaceType = {
-  id: string;
+  boardScheduleId: string;
   googlePlaceId: string;
   placeName: string;
   pointX: number;
@@ -7,3 +7,9 @@ export type SchedulePlaceType = {
   imageUrl: string;
   address: string;
 };
+
+export interface SchedulePlaceIdType extends SchedulePlaceType {
+  boardId: number;
+  number: number;
+  date: string;
+}

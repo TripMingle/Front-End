@@ -73,7 +73,7 @@ const ScheduleListItem = ({
       <div className={styles.schedulePlaceContainer}>
         <ul className={styles.listOrderContainer}>
           {data.map((element, index) => (
-            <li className={styles.listOrderItem} key={element.id}>
+            <li className={styles.listOrderItem} key={element.boardScheduleId}>
               <span className={styles.listLine}></span>
               <span className={styles.listNumber}>{index + 1}</span>
             </li>
@@ -87,7 +87,10 @@ const ScheduleListItem = ({
               ref={provided.innerRef}
             >
               {data.map((element, index) => (
-                <li key={element.id} onClick={() => mapHandler(date, index)}>
+                <li
+                  key={element.boardScheduleId}
+                  onClick={() => mapHandler(date, index)}
+                >
                   <SchedulePlace
                     place={element}
                     index={index}
