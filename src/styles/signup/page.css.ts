@@ -69,6 +69,8 @@ export const fieldContainer = style({
 
 export const container = recipe({
   base: {
+    display: 'flex',
+    alignContent: 'center',
     flex: 1,
     padding: '12px 20px',
     outline: 'none',

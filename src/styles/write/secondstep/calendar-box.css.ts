@@ -57,6 +57,7 @@ export const calendarIcon = style({
 
 export const calendar = recipe({
   base: {
+    position: 'absolute',
     zIndex: 10,
   },
   variants: {

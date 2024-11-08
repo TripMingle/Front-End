@@ -1,13 +1,14 @@
 .react-calendar {
   position: absolute;
-  width: 400px;
+  width: 320px;
   height: 312px;
-  top: 68px;
+  top: 100%; /* 부모 높이의 100% 위치에서 시작 */
   right: 12px;
   border-radius: 20px;
   padding: 20px;
   background: #ffffff;
   box-shadow: 0px 10px 20px 0px #0000000d;
+  z-index: 1000; /* 다른 요소들 위에 표시되도록 */
 }
 
 .react-calendar__navigation {
@@ -186,8 +187,9 @@
   .react-calendar {
     position: absolute;
     width: calc(100% - 16px);
+    max-width: 320px;
     height: 312px;
-    top: 58px;
+    top: 100%;
     right: 8px;
     border-radius: 20px;
     padding: 12px;
@@ -363,5 +365,96 @@
     color: white;
     border-radius: 50%;
     align-content: center;
+  }
+}
+
+/* decade view wrapper */
+.react-calendar__decade-view__years {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 개별 연도 컴포넌트 */
+.react-calendar__decade-view__years__year {
+  width: 36px;
+  height: 60px !important;
+  padding: 0px 12px;
+  border: none;
+  background: none;
+}
+
+/* 선택된 연도 범위 전체 */
+.react-calendar__decade-view__years .react-calendar__tile--range {
+  height: 30px !important;
+  margin: 15px 0px;
+  background: #3686ff20;
+}
+
+/* 범위의 시작 연도 */
+.react-calendar__decade-view__years .react-calendar__tile--rangeStart {
+  position: relative;
+  height: 30px;
+  color: white;
+  background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+}
+
+/* 범위의 끝 연도 */
+.react-calendar__decade-view__years .react-calendar__tile--rangeEnd {
+  position: relative;
+  height: 30px;
+  color: white;
+  background: linear-gradient(to right, #3688ff20 50%, white 50%);
+}
+
+/* 범위 시작 연도의 텍스트 스타일 */
+.react-calendar__decade-view__years .react-calendar__tile--rangeStart abbr {
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+/* 범위 끝 연도의 텍스트 스타일 */
+.react-calendar__decade-view__years .react-calendar__tile--rangeEnd abbr {
+  position: absolute;
+  display: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: #3688ff;
+  color: white;
+  border-radius: 50%;
+  align-content: center;
+}
+
+/* 모바일 대응을 위한 미디어 쿼리도 추가 */
+@media (max-width: 1023px) {
+  .react-calendar__decade-view__years .react-calendar__tile--range {
+    height: 30px !important;
+    margin: 15px 0px;
+    background: #3686ff20;
+  }
+
+  .react-calendar__decade-view__years .react-calendar__tile--rangeStart {
+    position: relative;
+    height: 30px;
+    color: white;
+    background: linear-gradient(to right, white 50%, #3688ff20 50%) !important;
+  }
+
+  .react-calendar__decade-view__years .react-calendar__tile--rangeEnd {
+    position: relative;
+    height: 30px;
+    color: white;
+    background: linear-gradient(to right, #3688ff20 50%, white 50%);
   }
 }
