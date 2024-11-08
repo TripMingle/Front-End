@@ -7,7 +7,7 @@ import useModal from '@/hooks/useModal';
 import { formatCalendarDay, formatDay } from '@/utils/date';
 import Calendar from 'react-calendar';
 import { useState } from 'react';
-import { icon, calendar } from '@/styles/signup/birth-box.css';
+import { icon, calendar, background } from '@/styles/signup/birth-box.css';
 import { calendarContainer } from '@/styles/write/secondstep/calendar-box.css';
 import '@/styles/write/secondstep/calendar-custom.css';
 
@@ -39,6 +39,10 @@ const BirthBox = () => {
     }
   };
 
+  const calendarClickHandler = (e: React.MouseEvent) => {
+    e.stopPropagation(); // 이벤트 전파 중단
+  };
+
   return (
     <div className={calendarContainer}>
       <FormField title="생년월일" required={true}>
@@ -54,16 +58,23 @@ const BirthBox = () => {
             height={20}
             alt="calendarIcon"
           />
-          <Calendar
-            className={calendar({ show: isOpen })}
-            locale="ko"
-            selectRange={false}
-            onChange={dateChangeHandler}
-            formatDay={formatCalendarDay}
-            maxDate={new Date()}
-            showNeighboringMonth={false}
-            minDetail="decade"
-          />
+          {isOpen && (
+            <>
+              <div className={background} onClick={closeModal} />
+              <div onClick={calendarClickHandler}>
+                <Calendar
+                  className={calendar({ show: isOpen })}
+                  locale="ko"
+                  selectRange={false}
+                  onChange={dateChangeHandler}
+                  formatDay={formatCalendarDay}
+                  maxDate={new Date()}
+                  showNeighboringMonth={false}
+                  minDetail="decade"
+                />
+              </div>
+            </>
+          )}
         </div>
       </FormField>
     </div>
