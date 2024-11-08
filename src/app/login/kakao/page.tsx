@@ -3,6 +3,7 @@ import { kakaoLogin } from '@/api/user';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import { useUserStore } from '@/store/userStore';
 import { pageContainer } from '@/styles/login/page.css';
+import { removeKakaoAuthorization } from '@/utils/server/token';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -25,10 +26,9 @@ const Page = () => {
     if (data) {
       const info = data.data;
       if (info.memberState) {
+        removeKakaoAuthorization();
         login(info.profileImage, info.nickName);
-
         const prev = window.sessionStorage.getItem('prevPage');
-
         if (prev) {
           window.sessionStorage.removeItem('prevPage');
           router.replace(prev);
