@@ -32,3 +32,11 @@ export const getDateInRange = (date1: string, date2: string) => {
 
   return dateArray;
 };
+
+export const formatCalendarDay = (
+  locale: string | undefined,
+  date: Date,
+): string => {
+  const day = date.getDate();
+  return day < 10 ? `0${day}` : `${day}`;
+};
