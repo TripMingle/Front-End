@@ -16,7 +16,7 @@ const NickNameBox = () => {
   const [result, setResult] = useState<string>('');
   const { watch, register } = useFormContext<UserSignupType>();
   // 닉네임 특수문자나 다른 공백 확인용
-  const regex = /^[가-힣a-zA-Z0-9_-]+$/;
+  const regex = /^[가-힣ㄱ-ㅎa-zA-Z0-9_-]+$/;
   const nickName = watch('nickName');
 
   useEffect(() => {
@@ -54,6 +54,7 @@ const NickNameBox = () => {
           className={nickNameButton}
           onClick={checkDuplilcated}
           disabled={!nickName || !regex.test(nickName)}
+          tabIndex={3}
         >
           중복 확인
         </button>
