@@ -15,6 +15,7 @@ import NameBox from '@/components/signup/NameBox';
 import IntroductionBox from '@/components/signup/IntroductionBox';
 import { kakaoSignup } from '@/api/user';
 import { useEffect } from 'react';
+import { removeKakaoAuthorization } from '@/utils/server/token';
 
 const Page = () => {
   const methods = useForm<UserSignupType>({
@@ -29,12 +30,6 @@ const Page = () => {
 
   const router = useRouter();
   const login = useUserStore((state) => state.login);
-
-  // 디버깅용
-  console.log('Form State:', {
-    isValid,
-    values: watch(), // 현재 모든 필드값
-  });
 
   const onSubmit = async (data: UserSignupType) => {
     // 필수 필드 검증
@@ -56,6 +51,7 @@ const Page = () => {
         alert('이미 사용 중인 닉네임입니다.');
         return;
       }
+      removeKakaoAuthorization();
       login(response.data.profileImage, response.data.nickName);
       const prev = window.sessionStorage.getItem('prevPage');
       if (prev) {

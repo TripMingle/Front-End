@@ -1,9 +1,4 @@
-import {
-  removeKakaoAuthorization,
-  storeKakaoAuthorization,
-  storeToken,
-} from '@/utils/server/token';
-import { storeUserInfo } from '@/utils/server/user';
+import { storeKakaoAuthorization, storeToken } from '@/utils/server/token';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {
@@ -36,8 +31,6 @@ export const GET = async (req: NextRequest) => {
         });
 
         if (!res.ok) throw new Error('액세스토큰 발급 실패');
-
-        removeKakaoAuthorization();
 
         const accessToken = res.headers.get('access-token');
         const refreshToken = res.headers.get('refresh-token');
