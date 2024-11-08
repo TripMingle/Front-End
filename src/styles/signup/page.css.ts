@@ -43,11 +43,12 @@ export const contentContainer = style({
   margin: '30px 0px',
   overflowX: 'hidden',
   overflowY: 'scroll',
+  alignContent: 'start',
   '@media': {
     'screen and (min-width: 1024px)': {
       height: 'calc(100vh - 418px)',
       margin: '40px 0px',
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: 20,
     },
   },
@@ -151,12 +152,13 @@ export const nickNameResult = recipe({
   base: {
     position: 'absolute',
     height: 20,
-    bottom: 12,
+    bottom: 0,
     fontSize: 10,
     marginLeft: 8,
     '@media': {
       'screen and (min-width: 1024px)': {
         fontSize: 12,
+        bottom: 4,
       },
     },
   },
