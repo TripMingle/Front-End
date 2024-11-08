@@ -8,7 +8,7 @@ export const container = recipe({
     textAlign: 'center',
     fontWeight: 700,
     fontSize: 14,
-    padding: '10px 20px',
+    padding: '12px 20px',
     borderRadius: 10,
     boxShadow: '0px 5px 15px 0px rgba(0, 0, 0, 0.05)',
     cursor: 'pointer',
@@ -16,7 +16,7 @@ export const container = recipe({
     '@media': {
       'screen and (min-width: 1024px)': {
         fontSize: 16,
-        padding: '14px 20px',
+        padding: '16px 20px',
         boxShadow: '0px 10px 20px 0px rgba(0, 0, 0, 0.05)',
       },
     },
