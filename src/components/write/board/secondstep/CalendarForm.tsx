@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import * as styles from '@/styles/write/secondstep/calendar-box.css';
 import '@/styles/write/secondstep/calendar-custom.css';
 import { useState } from 'react';
-import { formatDay } from '@/utils/date';
+import { formatCalendarDay, formatDay } from '@/utils/date';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 
@@ -17,14 +17,6 @@ const CalendarForm = () => {
   const endDate = watch('endDate');
 
   const [showCalendar, setShowCalendar] = useState<boolean>(false);
-
-  const formatCalendarDay = (
-    locale: string | undefined,
-    date: Date,
-  ): string => {
-    const day = date.getDate();
-    return day < 10 ? `0${day}` : `${day}`;
-  };
 
   const clickHandler = () => {
     setShowCalendar(!showCalendar);

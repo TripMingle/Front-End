@@ -1,13 +1,17 @@
+'use client';
 import { getCountryByKeyword } from '@/api/country';
 import * as styles from '@/styles/signup/country-search.css';
 import { CountryType } from '@/types/main/country';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ModalWrapper from '../common/ModalWrapper';
 
 const CountrySearch = ({
+  isOpen,
   handler,
   closeModal,
 }: {
+  isOpen: boolean;
   handler: (country: string[]) => void;
   closeModal: () => void;
 }) => {
@@ -17,16 +21,6 @@ const CountrySearch = ({
 
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
-  };
-
-  const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      searchHandler();
-    }
-  };
-
-  const propagationHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
   };
 
   const confirmHandler = () => {
@@ -44,8 +38,8 @@ const CountrySearch = ({
   };
 
   return (
-    <div className={styles.background} onClick={closeModal}>
-      <div className={styles.modalContainer} onClick={propagationHandler}>
+    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
+      <div className={styles.modalContainer}>
         <div className={styles.titleContainer}>
           <span className={styles.title}>나라 검색</span>
           <Image
@@ -57,14 +51,19 @@ const CountrySearch = ({
             onClick={closeModal}
           />
         </div>
-        <div className={styles.inputContainer}>
+        <form
+          className={styles.inputContainer}
+          onSubmit={(e) => {
+            e.preventDefault();
+            searchHandler();
+          }}
+        >
           <input
             className={styles.input}
             type="text"
             value={input}
             placeholder="나라를 검색하세요."
             onChange={inputChangeHandler}
-            onKeyDown={keyDownHandler}
           />
           <Image
             className={styles.searchIcon}
@@ -74,7 +73,7 @@ const CountrySearch = ({
             alt="search"
             onClick={searchHandler}
           />
-        </div>
+        </form>
         <ul className={styles.countryContainer}>
           {countryList ? (
             countryList.map((country, index) => (
@@ -101,7 +100,7 @@ const CountrySearch = ({
           확인
         </button>
       </div>
-    </div>
+    </ModalWrapper>
   );
 };
 

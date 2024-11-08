@@ -2,152 +2,124 @@
 import '@/styles/font.css';
 import NonProfileHeader from '@/components/header/NonProfileHeader';
 import * as styles from '@/styles/signup/page.css';
-import { useState } from 'react';
-import { checkNickName, kakaoSignup } from '@/api/user';
-import CountrySearch from '@/components/signup/CountrySearch';
-import useModal from '@/hooks/useModal';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
+import { FormProvider, useForm } from 'react-hook-form';
+import { UserSignupType, UserSingupDefault } from '@/types/country/user';
+import GenderBox from '@/components/signup/GenderBox';
+import NickNameBox from '@/components/signup/NickNameBox';
+import CountryBox from '@/components/signup/CountryBox';
+import PhoneBox from '@/components/signup/PhoneBox';
+import BirthBox from '@/components/signup/BirthBox';
+import NameBox from '@/components/signup/NameBox';
+import IntroductionBox from '@/components/signup/IntroductionBox';
+import { kakaoSignup } from '@/api/user';
+import { useEffect } from 'react';
 
 const Page = () => {
-  // 닉네임 특수문자나 다른 공백 확인용
-  const regex = /^[가-힣a-zA-Z0-9_-]+$/;
+  const methods = useForm<UserSignupType>({
+    defaultValues: UserSingupDefault,
+  });
 
-  const [nickName, setNickName] = useState<string>('');
-  const [nickNameInput, setNickNameInput] = useState<string>('');
-  const [nickNameResult, setNickNameResult] = useState<string>('');
-  const [isNickNameAvailable, setIsNickNameAvailable] =
-    useState<boolean>(false);
-
-  const [nationality, setNationaliy] = useState<string[]>([]);
-
-  const [introduction, setIntroduction] = useState<string>('');
-
-  const { isOpen, openModal, closeModal } = useModal();
+  const {
+    handleSubmit,
+    formState: { isValid },
+    watch,
+  } = methods;
 
   const router = useRouter();
   const login = useUserStore((state) => state.login);
 
-  const nickNameChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setNickNameInput(event.target.value);
-  };
+  // 디버깅용
+  console.log('Form State:', {
+    isValid,
+    values: watch(), // 현재 모든 필드값
+  });
 
-  const nationalityHandler = (nationality: string[]) => {
-    setNationaliy(nationality);
-  };
+  const onSubmit = async (data: UserSignupType) => {
+    // 필수 필드 검증
+    if (
+      !data.name ||
+      !data.nickName ||
+      !data.birthDay ||
+      !data.gender ||
+      !data.phoneNumber
+    ) {
+      alert('모든 필수 항목을 입력해주세요.');
+      return;
+    }
 
-  const introductionHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIntroduction(event.target.value);
-  };
-
-  const checkDuplilcated = async () => {
-    setNickName('');
-    console.log(regex.test(nickNameInput));
-    if (regex.test(nickNameInput)) {
-      const data = await checkNickName(nickNameInput);
-      const result = !data.data.duplicationStatus;
-      setIsNickNameAvailable(result);
-      if (result) {
-        setNickName(nickNameInput);
-        setNickNameResult('사용 가능한 닉네임입니다.');
+    // 여기서 회원가입 API 호출
+    try {
+      const response = await kakaoSignup(data);
+      if (typeof response === 'string') {
+        alert('이미 사용 중인 닉네임입니다.');
+        return;
+      }
+      login(response.data.profileImage, response.data.nickName);
+      const prev = window.sessionStorage.getItem('prevPage');
+      if (prev) {
+        window.sessionStorage.removeItem('prevPage');
+        router.push(prev);
       } else {
-        setNickNameResult('이미 사용 중인 닉네임입니다.');
+        router.push('/');
       }
-    } else {
-      setIsNickNameAvailable(false);
-      setNickNameResult(
-        '닉네임이 유효하지 않습니다. 닉네임은 영문자, 숫자, 밑줄 및 하이픈만 포함할 수 있으며 공백이나 특수 문자를 포함할 수 없습니다',
-      );
+    } catch (error) {
+      alert('회원가입 중 오류가 발생했습니다.');
+      console.error(error);
     }
   };
 
-  const signupHandler = async () => {
-    if (!!nickName && !!nationality[0]) {
-      const data = await kakaoSignup(nickName, nationality[0], introduction);
+  useEffect(() => {
+    // BirthBox
+    methods.register('birthDay', {
+      required: '생년월일은 필수입니다',
+    });
 
-      if (typeof data === 'string') {
-        // 회원 가입 했을 때 닉네임이 중복된 경우 에러 메세지(data)를 리턴해준다.
-        setIsNickNameAvailable(false);
-        setNickNameResult('이미 사용 중인 닉네임입니다.');
-      } else if (data) {
-        // 회원가입에 성공했을 때
-        login(data.data.profileImage, data.data.nickName);
-        const prev = window.sessionStorage.getItem('prevPage');
-        if (prev) {
-          window.sessionStorage.removeItem('prevPage');
-          router.push(prev);
-        } else router.push('/');
-      }
-    }
-  };
+    // GenderBox
+    methods.register('gender', {
+      required: '성별을 선택해주세요',
+      validate: (value) =>
+        value === 'male' || value === 'female' || '올바른 성별을 선택해주세요',
+    });
+
+    methods.register('nationality', {
+      required: '국적을 선택해주세요.',
+      validate: (value) => value !== '' || '국적을 선택해주세요.',
+    });
+  }, []);
 
   return (
     <>
       <NonProfileHeader />
       <div className={styles.pageContainer}>
         <p className={styles.text}>환영합니다!</p>
-        <div className={styles.contentContainer}>
-          <div className={styles.fieldContainer}>
-            <p className={styles.title}>닉네임</p>
-            <div className={styles.nickNameContainer}>
-              <input
-                className={styles.container({ select: true })}
-                type="text"
-                placeholder="닉네임을 입력하세요."
-                value={nickNameInput}
-                onChange={nickNameChangeHandler}
-              />
-              <button
-                className={styles.nickNameButton}
-                onClick={checkDuplilcated}
-              >
-                중복 확인
-              </button>
+        <span className={styles.explain}>
+          <span className={styles.red}>*</span>는 필수항목 입니다.
+        </span>
+        <FormProvider {...methods}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.contentContainer}>
+              <NameBox />
+              <NickNameBox />
+              <BirthBox />
+              <GenderBox />
+              <CountryBox />
+              <PhoneBox />
+              <IntroductionBox />
             </div>
-            <span
-              className={styles.nickNameResult({ result: isNickNameAvailable })}
+            <button
+              type="submit"
+              className={styles.signupButton({
+                select: isValid,
+              })}
+              disabled={!isValid}
             >
-              {nickNameResult}
-            </span>
-          </div>
-          <div className={styles.fieldContainer}>
-            <p className={styles.title}>국적</p>
-            <div className={styles.nickNameContainer}>
-              <span
-                className={styles.container({ select: !!nationality[0] })}
-                onClick={openModal}
-              >
-                {nationality[1] || '나라 선택'}
-              </span>
-            </div>
-          </div>
-          <div className={styles.fieldContainer}>
-            <p className={styles.title}>자기소개</p>
-            <div className={styles.nickNameContainer}>
-              <input
-                className={styles.container({ select: true })}
-                type="text"
-                placeholder="자기 소개를 입력하세요.(선택 사항)"
-                value={introduction}
-                onChange={introductionHandler}
-              />
-            </div>
-          </div>
-        </div>
-        <button
-          className={styles.signupButton({
-            select: !!nickName && !!nationality[0],
-          })}
-          onClick={signupHandler}
-        >
-          완료
-        </button>
+              완료
+            </button>
+          </form>
+        </FormProvider>
       </div>
-      {isOpen && (
-        <CountrySearch handler={nationalityHandler} closeModal={closeModal} />
-      )}
     </>
   );
 };

@@ -2,32 +2,18 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '../globalTheme.css';
 import { recipe } from '@vanilla-extract/recipes';
 
-export const background = style({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100vw',
-  height: '100vh',
-  zIndex: 110,
-  background: 'rgba(0,0,0,0.3)',
-});
-
 export const modalContainer = style({
   position: 'relative',
   display: 'flex',
-  top: '50%',
-  left: '50%',
-  width: 'calc(100% - 40px)',
+  width: 'calc(100vw - 40px)',
   maxWidth: 380,
-  height: 'calc(100% - 60px)',
+  height: 'calc(100vh - 60px)',
   maxHeight: 420,
-  padding: 30,
   gap: 20,
   flexDirection: 'column',
   borderRadius: 20,
   background: vars.color.white,
   boxSizing: 'border-box',
-  transform: 'translate(-50%,-50%)',
   '@media': {
     'screen and (min-width: 1024px)': {
       maxHeight: 560,
