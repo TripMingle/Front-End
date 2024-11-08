@@ -28,11 +28,15 @@ const CountryBox = () => {
           {nationality[1] || '나라 선택'}
         </span>
       </FormField>
-      <CountrySearch
-        isOpen={isOpen}
-        handler={nationalityHandler}
-        closeModal={closeModal}
-      />
+      {isOpen ? (
+        <CountrySearch
+          isOpen={isOpen}
+          handler={nationalityHandler}
+          closeModal={closeModal}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 };

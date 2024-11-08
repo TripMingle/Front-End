@@ -1,8 +1,9 @@
+'use client';
 import { getCountryByKeyword } from '@/api/country';
 import * as styles from '@/styles/signup/country-search.css';
 import { CountryType } from '@/types/main/country';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalWrapper from '../common/ModalWrapper';
 
 const CountrySearch = ({
@@ -20,10 +21,6 @@ const CountrySearch = ({
 
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
-  };
-
-  const propagationHandler = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
   };
 
   const confirmHandler = () => {
