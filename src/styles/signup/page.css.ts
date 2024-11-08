@@ -13,7 +13,7 @@ export const pageContainer = style({
     'screen and (min-width: 1024px)': {
       top: 60,
       padding: '80px 0px',
-      maxWidth: 720,
+      maxWidth: 1020,
     },
   },
 });
@@ -29,7 +29,16 @@ export const text = style({
   },
 });
 
+export const explain = style({
+  display: 'flex',
+  alignItems: 'center',
+  fontSize: 14,
+  color: 'red',
+});
+
 export const contentContainer = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
   height: 'calc(100vh - 243px)',
   margin: '30px 0px',
   overflowX: 'hidden',
@@ -38,6 +47,8 @@ export const contentContainer = style({
     'screen and (min-width: 1024px)': {
       height: 'calc(100vh - 418px)',
       margin: '40px 0px',
+      gridTemplateColumns: '1fr 1fr',
+      gap: 20,
     },
   },
 });
@@ -72,9 +83,9 @@ export const container = recipe({
         fontSize: 16,
       },
     },
-    '::placeholder' : {
-      color: vars.color.g400
-    }
+    '::placeholder': {
+      color: vars.color.g400,
+    },
   },
   variants: {
     select: {
@@ -85,9 +96,11 @@ export const container = recipe({
 });
 
 export const title = style({
+  display: 'flex',
   fontFamily: vars.font.body,
   fontWeight: 500,
   fontSize: 14,
+  alignItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 16,
@@ -95,6 +108,7 @@ export const title = style({
   },
 });
 
+// 이건 FormField에서 필드 감싸는 컨테이너 (닉네임 이름 무시)
 export const nickNameContainer = style({
   display: 'flex',
   width: '100%',
@@ -106,6 +120,14 @@ export const nickNameContainer = style({
       height: 52,
     },
   },
+});
+
+// 이건 NickNameBox에서 사용하는 컨테이너
+export const nickNamefieldContainer = style({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
 });
 
 export const nickNameButton = style({
@@ -127,7 +149,9 @@ export const nickNameButton = style({
 
 export const nickNameResult = recipe({
   base: {
+    position: 'absolute',
     height: 20,
+    bottom: 12,
     fontSize: 10,
     marginLeft: 8,
     '@media': {
@@ -179,6 +203,18 @@ export const signupButton = recipe({
         background: vars.color.g200,
         color: vars.color.g400,
       },
+    },
+  },
+});
+
+export const red = style({
+  height: '0.8em',
+  color: 'red',
+  fontWeight: 600,
+  marginRight: 4,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      marginRight: 8,
     },
   },
 });
