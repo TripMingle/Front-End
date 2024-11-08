@@ -3,11 +3,14 @@ import * as styles from '@/styles/signup/country-search.css';
 import { CountryType } from '@/types/main/country';
 import Image from 'next/image';
 import { useState } from 'react';
+import ModalWrapper from '../common/ModalWrapper';
 
 const CountrySearch = ({
+  isOpen,
   handler,
   closeModal,
 }: {
+  isOpen: boolean;
   handler: (country: string[]) => void;
   closeModal: () => void;
 }) => {
@@ -38,8 +41,8 @@ const CountrySearch = ({
   };
 
   return (
-    <div className={styles.background} onClick={closeModal}>
-      <div className={styles.modalContainer} onClick={propagationHandler}>
+    <ModalWrapper isOpen={isOpen} closeModal={closeModal}>
+      <div className={styles.modalContainer}>
         <div className={styles.titleContainer}>
           <span className={styles.title}>나라 검색</span>
           <Image
@@ -100,7 +103,7 @@ const CountrySearch = ({
           확인
         </button>
       </div>
-    </div>
+    </ModalWrapper>
   );
 };
 
