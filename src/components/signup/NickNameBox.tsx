@@ -22,9 +22,7 @@ const NickNameBox = () => {
   useEffect(() => {
     if (nickName && !regex.test(nickName)) {
       setIsAvailable(false);
-      setResult(
-        '닉네임이 유효하지 않습니다. 닉네임은 영문자, 숫자, 밑줄 및 하이픈만 포함할 수 있으며 공백이나 특수 문자를 포함할 수 없습니다',
-      );
+      setResult('닉네임은 한글, 영문, 숫자, 밑줄, 하이픈만 사용 가능합니다.');
     } else {
       setResult(''); // 유효한 경우 메시지 초기화
     }
@@ -48,7 +46,14 @@ const NickNameBox = () => {
           type="text"
           placeholder="닉네임을 입력하세요."
           tabIndex={2}
-          {...register('nickName', { required: true })}
+          {...register('nickName', {
+            required: true,
+            pattern: {
+              value: regex,
+              message:
+                '닉네임은 한글, 영문, 숫자, 밑줄, 하이픈만 사용 가능합니다',
+            },
+          })}
         />
         <button
           className={nickNameButton}

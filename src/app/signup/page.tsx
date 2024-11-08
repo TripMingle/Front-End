@@ -6,38 +6,88 @@ import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
 import { FormProvider, useForm } from 'react-hook-form';
 import { UserSignupType, UserSingupDefault } from '@/types/country/user';
-import TextBox from '@/components/signup/TextBox';
 import GenderBox from '@/components/signup/GenderBox';
 import NickNameBox from '@/components/signup/NickNameBox';
 import CountryBox from '@/components/signup/CountryBox';
+import PhoneBox from '@/components/signup/PhoneBox';
+import BirthBox from '@/components/signup/BirthBox';
+import NameBox from '@/components/signup/NameBox';
+import IntroductionBox from '@/components/signup/IntroductionBox';
+import { kakaoSignup } from '@/api/user';
+import { useEffect } from 'react';
 
 const Page = () => {
   const methods = useForm<UserSignupType>({
     defaultValues: UserSingupDefault,
   });
 
+  const {
+    handleSubmit,
+    formState: { isValid },
+    watch,
+  } = methods;
+
   const router = useRouter();
   const login = useUserStore((state) => state.login);
 
-  const signupHandler = async () => {
-    // if (!!nickName && !!nationality[0]) {
-    //   const nickName = watch('nickName');
-    //const data = await kakaoSignup(nickName, nationality[0], introduction);
-    // if (typeof data === 'string') {
-    //   // 회원 가입 했을 때 닉네임이 중복된 경우 에러 메세지(data)를 리턴해준다.
-    //   setIsNickNameAvailable(false);
-    //   setNickNameResult('이미 사용 중인 닉네임입니다.');
-    // } else if (data) {
-    //   // 회원가입에 성공했을 때
-    //   login(data.data.profileImage, data.data.nickName);
-    //   const prev = window.sessionStorage.getItem('prevPage');
-    //   if (prev) {
-    //     window.sessionStorage.removeItem('prevPage');
-    //     router.push(prev);
-    //   } else router.push('/');
-    // }
-    // }
+  // 디버깅용
+  console.log('Form State:', {
+    isValid,
+    values: watch(), // 현재 모든 필드값
+  });
+
+  const onSubmit = async (data: UserSignupType) => {
+    // 필수 필드 검증
+    if (
+      !data.name ||
+      !data.nickName ||
+      !data.birthDay ||
+      !data.gender ||
+      !data.phoneNumber
+    ) {
+      alert('모든 필수 항목을 입력해주세요.');
+      return;
+    }
+
+    // 여기서 회원가입 API 호출
+    try {
+      const response = await kakaoSignup(data);
+      if (typeof response === 'string') {
+        alert('이미 사용 중인 닉네임입니다.');
+        return;
+      }
+      login(response.data.profileImage, response.data.nickName);
+      const prev = window.sessionStorage.getItem('prevPage');
+      if (prev) {
+        window.sessionStorage.removeItem('prevPage');
+        router.push(prev);
+      } else {
+        router.push('/');
+      }
+    } catch (error) {
+      alert('회원가입 중 오류가 발생했습니다.');
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    // BirthBox
+    methods.register('birthDay', {
+      required: '생년월일은 필수입니다',
+    });
+
+    // GenderBox
+    methods.register('gender', {
+      required: '성별을 선택해주세요',
+      validate: (value) =>
+        value === 'male' || value === 'female' || '올바른 성별을 선택해주세요',
+    });
+
+    methods.register('nationality', {
+      required: '국적을 선택해주세요.',
+      validate: (value) => value !== '' || '국적을 선택해주세요.',
+    });
+  }, []);
 
   return (
     <>
@@ -48,33 +98,26 @@ const Page = () => {
           <span className={styles.red}>*</span>는 필수항목 입니다.
         </span>
         <FormProvider {...methods}>
-          <div className={styles.contentContainer}>
-            <TextBox
-              title="이름"
-              placeholder="이름을 입력하세요."
-              required={true}
-              registerTitle="name"
-              tabIndex={1}
-            />
-            <NickNameBox />
-            <GenderBox />
-            <CountryBox />
-            <TextBox
-              title="자기소개"
-              placeholder="자기 소개를 입력하세요.(선택 사항)"
-              required={false}
-              registerTitle="selfIntroduction"
-              tabIndex={7}
-            />
-          </div>
-          <button
-            className={styles.signupButton({
-              select: true,
-            })}
-            onClick={signupHandler}
-          >
-            완료
-          </button>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.contentContainer}>
+              <NameBox />
+              <NickNameBox />
+              <BirthBox />
+              <GenderBox />
+              <CountryBox />
+              <PhoneBox />
+              <IntroductionBox />
+            </div>
+            <button
+              type="submit"
+              className={styles.signupButton({
+                select: isValid,
+              })}
+              disabled={!isValid}
+            >
+              완료
+            </button>
+          </form>
         </FormProvider>
       </div>
     </>

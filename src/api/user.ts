@@ -1,3 +1,4 @@
+import { UserSignupType } from '@/types/country/user';
 import { getFetch, postFetch } from '.';
 
 export const kakaoLogin = async (code: string) => {
@@ -20,18 +21,8 @@ export const kakaoLogout = async () => {
   }
 };
 
-export const kakaoSignup = async (
-  nickName: string,
-  nationality: string,
-  selfIntroduction: string,
-) => {
+export const kakaoSignup = async (data: UserSignupType) => {
   try {
-    const data = {
-      nickName,
-      nationality,
-      selfIntroduction,
-    };
-
     const res = await fetch('/api/user/signup', {
       method: 'POST',
       body: JSON.stringify(data),
