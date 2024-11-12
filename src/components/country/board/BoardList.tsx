@@ -10,6 +10,7 @@ import Pagination from '@/components/common/Pagination';
 import { EmptyBoard } from '../EmptyBoard';
 import { getCountryName } from '@/utils/country';
 import { usePathname } from 'next/navigation';
+import BoardPreviewSkeleton from '../BoardPreviewSkeleton';
 
 const BoardList = () => {
   const pathname = usePathname();
@@ -18,6 +19,7 @@ const BoardList = () => {
   const [page, setPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
   const [totalBoard, setTotalBoard] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getBoard = async () => {
     if (country) {
@@ -25,6 +27,7 @@ const BoardList = () => {
       setTotalPage(data.data.totalPages);
       setTotalBoard(data.data.totalElements);
       setBoardList(data.data.content);
+      setIsLoading(false);
     }
   };
 
@@ -50,7 +53,9 @@ const BoardList = () => {
           기다리고 있어요!
         </span>
       </div>
-      {boardList.length ? (
+      {isLoading ? (
+        <BoardPreviewSkeleton />
+      ) : boardList.length ? (
         <div>
           <ul className={styles.boardContainer}>
             {boardList.map((board) => (
