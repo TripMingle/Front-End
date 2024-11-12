@@ -78,7 +78,7 @@ const Page = async ({
                 <span>{boardDetail.commentCount}</span>
               </span>
             </div>
-            {hasTripStyle() ? (
+            {hasTripStyle() && (
               <div className={styles.infoContainer}>
                 <p className={styles.infoTitle}>동행자 특성</p>
                 <div className={styles.infoItem}>
@@ -93,10 +93,8 @@ const Page = async ({
                   />
                 </div>
               </div>
-            ) : (
-              <></>
             )}
-            {boardDetail.tripType.length ? (
+            {boardDetail.tripType.length > 0 && (
               <div className={styles.infoContainer}>
                 <p className={styles.infoTitle}>동행 타입</p>
                 <div className={styles.infoItem}>
@@ -110,8 +108,6 @@ const Page = async ({
                   ))}
                 </div>
               </div>
-            ) : (
-              <></>
             )}
             <ScheduleButton
               startDate={boardDetail.startDate}

@@ -7,15 +7,13 @@ import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/post/select-category.css';
 import { usePostStore } from '@/store/postStore';
 
-const SelectCateogry = ({
-  categoryHandler,
-}: {
-  categoryHandler: (category: string) => void;
-}) => {
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    categoryHandler(event.target.value);
-  };
+const SelectCateogry = () => {
   const category = usePostStore((state) => state.category);
+  const setCategory = usePostStore((state) => state.setCategory);
+
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setCategory(event.target.value);
+  };
 
   return (
     <div className={styles.categoryContainer}>

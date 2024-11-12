@@ -20,7 +20,6 @@ const PostCardList = () => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const category = usePostStore((state) => state.category);
-  const setCategory = usePostStore((state) => state.setCategory);
 
   const getPost = async () => {
     if (country) {
@@ -33,10 +32,6 @@ const PostCardList = () => {
 
   const pageMove = (page: number) => {
     setPage(page);
-  };
-
-  const categoryHandler = (category: string) => {
-    setCategory(category);
   };
 
   useEffect(() => {
@@ -54,7 +49,7 @@ const PostCardList = () => {
 
   return (
     <>
-      <SelectCateogry categoryHandler={categoryHandler} />
+      <SelectCateogry />
       {isLoading ? (
         <PostCardListSkeleton />
       ) : postList.length ? (
