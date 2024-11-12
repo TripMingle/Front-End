@@ -11,20 +11,22 @@ import AttributeBox from '@/components/country/board/id/AttributeBox';
 import { BoardDetailType } from '@/types/country/board';
 import { headers } from 'next/headers';
 import ScheduleButton from '@/components/country/board/id/ScheduleButton';
+import { getBoardDetail } from '@/utils/server/board';
 
 const Page = async ({
   params,
 }: {
   params: { country: string; id: string };
 }) => {
-  console.log(params);
-  const headersList = headers();
-  const host = headersList.get('host');
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  // const headersList = headers();
+  // const host = headersList.get('host');
+  // const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
-  const boardData = await fetch(
-    `${protocol}://${host}/api/board?boardId=${params.id}`,
-  ).then((res) => res.json());
+  // const boardData = await fetch(
+  //   `${protocol}://${host}/api/board?boardId=${params.id}`,
+  // ).then((res) => res.json());
+
+  const boardData = await getBoardDetail(params.id);
 
   const boardDetail: BoardDetailType = boardData.data;
 
