@@ -91,7 +91,7 @@ const StepButton = ({
 
   const nextClickHandler = () => {
     if (step === 4) {
-      if (isSubmit && content) {
+      if (checkValue()) {
         setIsSubmit(false);
         setValue('content', content);
         scheduleHandler();
