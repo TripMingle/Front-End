@@ -10,6 +10,7 @@ import EmptyPost from '../EmptyPost';
 import { usePathname } from 'next/navigation';
 import { getCountryName } from '@/utils/country';
 import PostCardListItem from './PostCardListItem';
+import PostCardListSkeleton from './PostCardListSkeleton';
 
 const PostCardList = () => {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ const PostCardList = () => {
   const [postList, setPostList] = useState<PostPreviewProps[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const category = usePostStore((state) => state.category);
   const setCategory = usePostStore((state) => state.setCategory);
 
@@ -25,6 +27,7 @@ const PostCardList = () => {
       const data = await getPostList(country, category, page);
       setPostList(data.data.postings);
       setTotalPage(data.data.totalPageCount);
+      setIsLoading(false);
     }
   };
 
@@ -52,7 +55,9 @@ const PostCardList = () => {
   return (
     <>
       <SelectCateogry categoryHandler={categoryHandler} />
-      {postList.length ? (
+      {isLoading ? (
+        <PostCardListSkeleton />
+      ) : postList.length ? (
         <>
           <ul className={styles.postContainer}>
             {postList.map((post) => (

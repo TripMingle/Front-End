@@ -34,7 +34,7 @@ const SelectCateogry = ({
         htmlFor="RESTAURANT"
       >
         <Good className={styles.icon} width={28} height={28} />
-        {'맛집'}
+        맛집
       </label>
       <input
         className={styles.inputContainer}
@@ -51,7 +51,7 @@ const SelectCateogry = ({
         htmlFor="RENTAL_HOME"
       >
         <House className={styles.icon} width={28} height={28} />
-        {'숙소'}
+        숙소
       </label>
       <input
         className={styles.inputContainer}
@@ -68,7 +68,7 @@ const SelectCateogry = ({
         htmlFor="SCHEDULE"
       >
         <Calendar className={styles.icon} width={28} height={28} />
-        {'일정'}
+        일정
       </label>
     </div>
   );
