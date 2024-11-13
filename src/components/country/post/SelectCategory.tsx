@@ -7,15 +7,13 @@ import { ChangeEvent } from 'react';
 import * as styles from '@/styles/country/post/select-category.css';
 import { usePostStore } from '@/store/postStore';
 
-const SelectCateogry = ({
-  categoryHandler,
-}: {
-  categoryHandler: (category: string) => void;
-}) => {
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    categoryHandler(event.target.value);
-  };
+const SelectCateogry = () => {
   const category = usePostStore((state) => state.category);
+  const setCategory = usePostStore((state) => state.setCategory);
+
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setCategory(event.target.value);
+  };
 
   return (
     <div className={styles.categoryContainer}>
@@ -34,7 +32,7 @@ const SelectCateogry = ({
         htmlFor="RESTAURANT"
       >
         <Good className={styles.icon} width={28} height={28} />
-        {'맛집'}
+        맛집
       </label>
       <input
         className={styles.inputContainer}
@@ -51,7 +49,7 @@ const SelectCateogry = ({
         htmlFor="RENTAL_HOME"
       >
         <House className={styles.icon} width={28} height={28} />
-        {'숙소'}
+        숙소
       </label>
       <input
         className={styles.inputContainer}
@@ -68,7 +66,7 @@ const SelectCateogry = ({
         htmlFor="SCHEDULE"
       >
         <Calendar className={styles.icon} width={28} height={28} />
-        {'일정'}
+        일정
       </label>
     </div>
   );

@@ -31,15 +31,18 @@ export const labelContainer = recipe({
     display: 'inline-flex',
     alignItems: 'center',
     gap: 6,
+    width: 100,
     fontFamily: vars.font.menu,
     fontWeight: 'normal',
     fontSize: 16,
     padding: '10px 20px',
     borderRight: `1px solid ${vars.color.g300}`,
     cursor: 'pointer',
+    boxSizing: 'border-box',
     ':last-child': { borderRight: 0 },
     '@media': {
       'screen and (min-width: 1024px)': {
+        width: 136,
         gap: 8,
         fontSize: 20,
         padding: '10px 30px',

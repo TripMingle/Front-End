@@ -50,25 +50,38 @@ export const refreshAccessToken = async () => {
   const baseurl = `${process.env.API_URL}`;
   const pathname = `/auth/refresh`;
 
-  const token = await getRefreshToken();
+  try {
+    const token = await getRefreshToken();
+    if (!token) {
+      throw new Error('refresh token이 없거나 만료되었습니다.');
+    }
 
-  if (!token) throw new Error('access token이 없거나 만료되었습니다.');
+    const res = await fetch(`${baseurl}${pathname}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Refresh: `${token.value}`,
+      },
+    });
 
-  const res = await fetch(`${baseurl}${pathname}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Refresh: `${token.value}`,
-    },
-  });
+    if (!res.ok) {
+      throw new Error('액세스 토큰 재발급 실패');
+    }
 
-  if (!res.ok) throw new Error('액세스 토큰 재발급 실패');
+    const accessToken = res.headers.get('access-token');
+    const refreshToken = res.headers.get('refresh-token');
 
-  const accessToken = res.headers.get('access-token');
-  const refreshToken = res.headers.get('refresh-token');
+    if (!accessToken || !refreshToken) {
+      throw new Error('토큰 값이 올바르지 않습니다.');
+    }
 
-  if (accessToken && refreshToken) {
-    storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+    // Bearer 제거하고 토큰 저장
+    await storeToken(accessToken.replace('Bearer ', ''), refreshToken);
+
+    // 토큰 재발급 성공시 새 accessToken 반환
+    return accessToken.replace('Bearer ', '');
+  } catch (error) {
+    console.error('Token refresh failed:', error);
+    return null;
   }
-  return NextResponse.json('액세스토큰 재발급 성공', { status: 200 });
 };
