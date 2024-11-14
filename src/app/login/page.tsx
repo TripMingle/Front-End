@@ -1,6 +1,5 @@
 'use client';
 import '@/styles/font.css';
-import NonProfileHeader from '@/components/header/NonProfileHeader';
 import * as styles from '@/styles/login/page.css';
 import Image from 'next/image';
 
@@ -12,7 +11,6 @@ const Page = () => {
 
   return (
     <>
-      <NonProfileHeader />
       <div className={styles.pageContainer}>
         <p className={styles.logo}>TripMingle</p>
         <span className={styles.explain}>로그인하고 여행을 계속해요</span>
