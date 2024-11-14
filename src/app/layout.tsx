@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <Initializer />
         <ConditionalHeader />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

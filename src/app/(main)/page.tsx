@@ -1,14 +1,12 @@
 import '@/styles/font.css';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
-import TransparentHeader from '@/components/header/TransparentHeader';
 import CountrySearch from '@/components/main/CountrySearch';
 import CountrySelect from '@/components/main/CountrySelect';
 
 const Page = () => {
   return (
-    <main>
-      <TransparentHeader />
+    <>
       <div className={styles.bgContainer}>
         <Image
           className={styles.bg}
@@ -36,7 +34,7 @@ const Page = () => {
         </div>
         <CountrySelect />
       </div>
-    </main>
+    </>
   );
 };
 
