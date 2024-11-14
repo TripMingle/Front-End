@@ -47,3 +47,16 @@ globalStyle('p', {
   margin: 0,
 });
 
+globalStyle('::-webkit-scrollbar', {
+  width: 6,
+});
+
+globalStyle('::-webkit-scrollbar-track', {
+  background: 'transparent',
+  WebkitBoxShadow: 'none',
+});
+
+globalStyle('::-webkit-scrollbar-thumb', {
+  backgroundColor: vars.color.g500,
+  borderRadius: 10,
+});
