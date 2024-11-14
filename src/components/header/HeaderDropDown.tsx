@@ -16,7 +16,7 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
 
   const myPageHandler = () => {
     closeHandler();
-    router.push('/mypage');
+    router.push('/mypage/info');
   };
 
   const writeBoardHandler = () => {
