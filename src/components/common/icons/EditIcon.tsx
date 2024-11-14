@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const PersonIcon = (props: SVGProps<SVGSVGElement>) => {
+const EditIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="24"
@@ -21,4 +21,4 @@ const PersonIcon = (props: SVGProps<SVGSVGElement>) => {
   );
 };
 
-export default PersonIcon;
+export default EditIcon;
