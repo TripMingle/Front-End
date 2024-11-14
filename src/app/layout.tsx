@@ -1,4 +1,5 @@
 import Initializer from '@/components/common/Initializer';
+import ConditionalHeader from '@/components/header/ConditionalHeader';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
       </head>
       <body>
         <Initializer />
+        <ConditionalHeader />
         {children}
       </body>
     </html>
