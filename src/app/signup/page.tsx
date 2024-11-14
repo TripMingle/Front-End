@@ -1,6 +1,4 @@
 'use client';
-import '@/styles/font.css';
-import NonProfileHeader from '@/components/header/NonProfileHeader';
 import * as styles from '@/styles/signup/page.css';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
@@ -87,7 +85,6 @@ const Page = () => {
 
   return (
     <>
-      <NonProfileHeader />
       <div className={styles.pageContainer}>
         <p className={styles.text}>환영합니다!</p>
         <span className={styles.explain}>

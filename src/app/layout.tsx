@@ -1,5 +1,7 @@
 import Initializer from '@/components/common/Initializer';
+import ConditionalHeader from '@/components/header/ConditionalHeader';
 import type { Metadata } from 'next';
+import '@/styles/font.css';
 
 export const metadata: Metadata = {
   title: 'TripMingle',
@@ -20,7 +22,8 @@ export default function RootLayout({
       </head>
       <body>
         <Initializer />
-        {children}
+        <ConditionalHeader />
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -1,6 +1,5 @@
 'use client';
 import { kakaoLogin } from '@/api/user';
-import NonProfileHeader from '@/components/header/NonProfileHeader';
 import { useUserStore } from '@/store/userStore';
 import { pageContainer } from '@/styles/login/page.css';
 import { removeKakaoAuthorization } from '@/utils/server/token';
@@ -49,12 +48,7 @@ const Page = () => {
     }
   }, []);
 
-  return (
-    <>
-      <NonProfileHeader />
-      <div className={pageContainer}>{isLoading ? '로그인중' : result}</div>
-    </>
-  );
+  return <div className={pageContainer}>{isLoading ? '로그인중' : result}</div>;
 };
 
 export default Page;

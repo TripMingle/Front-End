@@ -1,9 +1,7 @@
 'use client';
-import '@/styles/font.css';
 import { useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/write/page.css';
-import Header from '@/components/header/Header';
 import CountrySearch from '@/components/write/board/firststep/CountrySearch';
 import CountryList from '@/components/write/post/firststep/CountryList';
 import ContentForm from '@/components/write/post/secondstep/ContentForm';
@@ -69,28 +67,23 @@ const Page = () => {
   ];
 
   return (
-    <main>
-      <Header />
-      <div className={styles.pageContainer}>
-        <div className={styles.pageContent}>
-          <Progress currentStep={step} allStep={2} />
-          <p className={styles.explainText}>{explains[step - 1]}</p>
-          <FormProvider {...methods}>
-            <div className={styles.contentContainer} ref={pageContentRef}>
-              {components[step - 1]}
-            </div>
-            <StepButton
-              step={step}
-              content={content}
-              searchCountry={searchCountry}
-              stepHandler={stepHandler}
-              searchHandler={countrySearchHandler}
-              contentHandler={contentHandler}
-            />
-          </FormProvider>
+    <>
+      <Progress currentStep={step} allStep={2} />
+      <p className={styles.explainText}>{explains[step - 1]}</p>
+      <FormProvider {...methods}>
+        <div className={styles.contentContainer} ref={pageContentRef}>
+          {components[step - 1]}
         </div>
-      </div>
-    </main>
+        <StepButton
+          step={step}
+          content={content}
+          searchCountry={searchCountry}
+          stepHandler={stepHandler}
+          searchHandler={countrySearchHandler}
+          contentHandler={contentHandler}
+        />
+      </FormProvider>
+    </>
   );
 };
 
