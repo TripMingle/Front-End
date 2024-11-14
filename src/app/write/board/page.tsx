@@ -1,5 +1,4 @@
 'use client';
-import '@/styles/font.css';
 import { useRef, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as styles from '@/styles/write/page.css';

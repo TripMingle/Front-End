@@ -1,5 +1,4 @@
 'use client';
-import '@/styles/font.css';
 import * as styles from '@/styles/signup/page.css';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';

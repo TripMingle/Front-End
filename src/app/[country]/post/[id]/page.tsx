@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import '@/styles/font.css';
 import * as styles from '@/styles/country/board/id/page.css';
 import TravelerCard from '@/components/country/board/id/TravelerCard';
 import CommentInput from '@/components/common/CommentInput';

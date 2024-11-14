@@ -1,8 +1,4 @@
-import {
-  StyleRule,
-  createGlobalTheme,
-  globalStyle,
-} from '@vanilla-extract/css';
+import { createGlobalTheme, globalStyle } from '@vanilla-extract/css';
 
 export const vars = createGlobalTheme(':root', {
   color: {

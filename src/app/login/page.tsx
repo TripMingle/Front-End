@@ -1,5 +1,4 @@
 'use client';
-import '@/styles/font.css';
 import * as styles from '@/styles/login/page.css';
 import Image from 'next/image';
 

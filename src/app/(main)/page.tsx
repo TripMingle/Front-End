@@ -1,4 +1,3 @@
-import '@/styles/font.css';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
 import CountrySearch from '@/components/main/CountrySearch';

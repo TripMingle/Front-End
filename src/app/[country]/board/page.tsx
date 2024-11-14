@@ -1,4 +1,3 @@
-import '@/styles/font.css';
 import * as country from '@/styles/country/page.css';
 import * as styles from '@/styles/country/board/page.css';
 import CountryBackground from '@/components/country/CountryBackground';
