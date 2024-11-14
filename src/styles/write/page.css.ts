@@ -4,14 +4,15 @@ import { style } from '@vanilla-extract/css';
 export const pageContainer = style({
   position: 'relative',
   display: 'flex',
-  top: 44,
-  height: 'calc(100vh - 40px)',
+  padding: '74px 20px 30px 20px',
+  width: '100%',
+  height: '100vh',
   flexDirection: 'column',
   alignItems: 'center',
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      top: 60,
-      height: 'calc(100vh - 60px)',
+      padding: '100px 0px 40px 0px',
     },
   },
 });
@@ -19,24 +20,26 @@ export const pageContainer = style({
 export const pageContent = style({
   display: 'flex',
   flexDirection: 'column',
-  padding: '30px 20px',
+  padding: '0px 20px',
   width: '100%',
   maxWidth: 540,
   height: '100%',
   boxSizing: 'border-box',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
-      padding: '40px 0px',
+      padding: '0px 0px',
       maxWidth: 720,
     },
   },
 });
 
 export const contentContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
   flex: 1,
   margin: '20px 0px',
-  overflowX: 'hidden',
-  overflowY: 'scroll',
+  overflowY: 'auto',
   '@media': {
     'screen and (min-width: 1024px)': {
       margin: '40px 0px',

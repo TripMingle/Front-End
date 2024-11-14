@@ -68,25 +68,23 @@ const Page = () => {
   ];
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.pageContent}>
-        <Progress currentStep={step} allStep={2} />
-        <p className={styles.explainText}>{explains[step - 1]}</p>
-        <FormProvider {...methods}>
-          <div className={styles.contentContainer} ref={pageContentRef}>
-            {components[step - 1]}
-          </div>
-          <StepButton
-            step={step}
-            content={content}
-            searchCountry={searchCountry}
-            stepHandler={stepHandler}
-            searchHandler={countrySearchHandler}
-            contentHandler={contentHandler}
-          />
-        </FormProvider>
-      </div>
-    </div>
+    <>
+      <Progress currentStep={step} allStep={2} />
+      <p className={styles.explainText}>{explains[step - 1]}</p>
+      <FormProvider {...methods}>
+        <div className={styles.contentContainer} ref={pageContentRef}>
+          {components[step - 1]}
+        </div>
+        <StepButton
+          step={step}
+          content={content}
+          searchCountry={searchCountry}
+          stepHandler={stepHandler}
+          searchHandler={countrySearchHandler}
+          contentHandler={contentHandler}
+        />
+      </FormProvider>
+    </>
   );
 };
 

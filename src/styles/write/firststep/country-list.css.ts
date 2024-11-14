@@ -43,15 +43,11 @@ export const countryContainer = recipe({
 });
 
 export const resultContainer = style({
-  height: 'calc(100% - 76px)',
+  flex: 1,
+  paddingTop: 20,
   paddingBottom: 20,
-  overflow: 'scroll',
+  overflowY: 'auto',
   boxSizing: 'border-box',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      height: 'calc(100% - 120px)',
-    },
-  },
 });
 
 export const listContainer = style({
