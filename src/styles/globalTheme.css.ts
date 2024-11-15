@@ -44,7 +44,7 @@ globalStyle('p', {
 });
 
 globalStyle('::-webkit-scrollbar', {
-  width: 6,
+  width: 0,
 });
 
 globalStyle('::-webkit-scrollbar-track', {
@@ -55,4 +55,5 @@ globalStyle('::-webkit-scrollbar-track', {
 globalStyle('::-webkit-scrollbar-thumb', {
   backgroundColor: vars.color.g500,
   borderRadius: 10,
+  backgroundClip: 'padding-box',
 });
