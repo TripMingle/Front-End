@@ -40,7 +40,7 @@ const HeaderItem = ({ title }: Props) => {
     >
       <Icon
         className={itemIcon}
-        color={select == title ? '#ffffff' : '#888888'}
+        color={select == title ? '#3688FF' : '#888888'}
       />
       <span className={itemTitle}>{titles[title]}</span>
     </div>

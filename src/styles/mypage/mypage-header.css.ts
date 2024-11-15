@@ -17,7 +17,7 @@ export const headerContainer = style({
   boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      width: 320,
+      width: 260,
       padding: 20,
       height: 'calc(100vh - 60px)',
       borderRight: `1px solid ${vars.color.g200}`,
@@ -48,8 +48,8 @@ export const itemContainer = recipe({
       'screen and (min-width: 1024px)': {
         display: 'flex',
         width: '100%',
-        height: 48,
-        padding: '15px 20px',
+        height: 40,
+        padding: 8,
         borderRadius: 10,
         gap: 5,
         boxSizing: 'border-box',
@@ -61,14 +61,13 @@ export const itemContainer = recipe({
   variants: {
     select: {
       true: {
-        color: vars.color.white,
-        background: vars.color.secondary,
-        boxShadow: `0px 5px 10px 0px rgba(54, 136, 255, 0.20)`,
+        color: vars.color.secondary,
+        background: '#3688FF1A',
       },
       false: {
         color: vars.color.g500,
         ':hover': {
-          background: 'rgba(54, 136, 255, 0.20)',
+          background: vars.color.g200,
         },
       },
     },
