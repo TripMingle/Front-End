@@ -1,4 +1,4 @@
 const Page = () => {
-  return <div>롸이트</div>;
+  return <div>개발중입니다..</div>;
 };
 export default Page;
