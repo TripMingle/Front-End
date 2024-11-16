@@ -1,10 +1,9 @@
-import { removeToken } from '@/utils/token';
 import ModalWrapper from './ModalWrapper';
 import { useUserStore } from '@/store/userStore';
 import Image from 'next/image';
 import { closeIcon, title } from '@/styles/components/common/modal-wrapper.css';
 import * as styles from '@/styles/components/common/logout-modal.css';
-import { kakaoLogout } from '@/api/user';
+import { removeToken } from '@/utils/server/token';
 
 type Props = {
   isOpen: boolean;
@@ -15,6 +14,7 @@ const LogoutModal = ({ isOpen, closeModal }: Props) => {
   const logout = useUserStore((state) => state.logout);
 
   const logoutHandler = () => {
+    removeToken();
     logout();
     location.reload();
   };
