@@ -38,10 +38,9 @@ const HeaderItem = ({ title }: Props) => {
       className={itemContainer({ select: select == title })}
       onClick={() => router.push(`/mypage/${title}`)}
     >
-      <Icon
-        className={itemIcon}
-        color={select == title ? '#3688FF' : '#888888'}
-      />
+      <span className={itemIcon}>
+        <Icon color={select == title ? '#3688FF' : '#888888'} />
+      </span>
       <span className={itemTitle}>{titles[title]}</span>
     </div>
   );
