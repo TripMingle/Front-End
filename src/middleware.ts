@@ -6,9 +6,6 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get('accessToken'); // 실제 사용하는 토큰 이름으로 변경
   const isLoggedIn = !!accessToken?.value;
 
-  console.log('--------------------');
-  console.log(accessToken?.value);
-
   // /mypage로 시작하는 경로에 대해서만 체크
   if (request.nextUrl.pathname.startsWith('/mypage')) {
     if (!isLoggedIn) {
