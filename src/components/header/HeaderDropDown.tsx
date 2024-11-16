@@ -14,13 +14,10 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
 
   const { isOpen, openModal, closeModal } = useModal();
 
-  /*
-  마이페이지 개발 시
   const myPageHandler = () => {
     closeHandler();
-    router.push('/mypage');
+    router.push('/mypage/info');
   };
-  */
 
   const writeBoardHandler = () => {
     closeHandler();
@@ -51,6 +48,9 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
       <div className={styles.background} onClick={closeHandler}>
         <div className={styles.container}>
           <ul className={styles.menuContainer}>
+            <li className={styles.menuItem} onClick={myPageHandler}>
+              마이페이지
+            </li>
             <li className={styles.menuItem} onClick={writeBoardHandler}>
               동행글 작성
             </li>

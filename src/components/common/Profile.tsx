@@ -20,7 +20,7 @@ const Profile = (props: Props) => {
 
   return (
     <Image
-      src={props.url ? props.url : '/icons/profile.svg'}
+      src={props.url || '/icons/profile.svg'}
       width={props.width}
       height={props.height}
       alt="profile"

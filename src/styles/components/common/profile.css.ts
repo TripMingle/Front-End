@@ -5,6 +5,7 @@ export const cHeight = createVar();
 
 export const profile = style({
   borderRadius: '50%',
+  objectFit: 'cover',
   '@media': {
     'screen and (min-width: 1024px)': {
       width: [cWidth],
