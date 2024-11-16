@@ -25,6 +25,16 @@ export const headerContainer = style({
   },
 });
 
+export const contentContainer = style({
+  flex: 1,
+  display: 'flex',
+  width: '100%',
+  padding: 20,
+  flexDirection: 'column',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+});
+
 export const mypageTitle = style({
   fontSize: 12,
   color: vars.color.g500,
@@ -44,17 +54,18 @@ export const itemListContainer = style({
 
 export const itemContainer = recipe({
   base: {
+    display: 'flex',
+    width: '100%',
+    height: 40,
+    padding: 8,
+    borderRadius: 10,
+    boxSizing: 'border-box',
+    alignItems: 'center',
+    gap: 2,
     '@media': {
       'screen and (min-width: 1024px)': {
-        display: 'flex',
-        width: '100%',
-        height: 40,
-        padding: 8,
-        borderRadius: 10,
-        gap: 5,
-        boxSizing: 'border-box',
-        alignItems: 'center',
         cursor: 'pointer',
+        gap: 5,
       },
     },
   },
@@ -62,7 +73,11 @@ export const itemContainer = recipe({
     select: {
       true: {
         color: vars.color.secondary,
-        background: '#3688FF1A',
+        '@media': {
+          'screen and (min-width: 1024px)': {
+            background: '#3688FF1A',
+          },
+        },
       },
       false: {
         color: vars.color.g500,
@@ -84,7 +99,7 @@ export const itemIcon = style({
 });
 
 export const itemTitle = style({
-  fontSize: 20,
+  fontSize: 16,
   fontWeight: 600,
   '@media': {
     'screen and (min-width: 1024px)': {

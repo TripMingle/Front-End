@@ -1,6 +1,9 @@
 import MypageHeader from '@/components/mypage/MypageHeader';
 import { pageContainer } from '@/styles/country/page.css';
-import { mypageContainer } from '@/styles/mypage/mypage-header.css';
+import {
+  contentContainer,
+  mypageContainer,
+} from '@/styles/mypage/mypage-header.css';
 
 export default function RootLayout({
   children,
@@ -11,7 +14,7 @@ export default function RootLayout({
     <div className={pageContainer}>
       <div className={mypageContainer}>
         <MypageHeader />
-        <div>{children}</div>
+        <div className={contentContainer}>{children}</div>
       </div>
     </div>
   );
