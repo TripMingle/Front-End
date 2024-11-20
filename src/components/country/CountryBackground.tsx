@@ -7,6 +7,7 @@ import { getCountryInfo } from '@/api/country';
 import MoveToMain from './MoveToMain';
 import { getCountryName } from '@/utils/country';
 import { CountryInfo } from '@/types/main/country';
+import { useApiHandler } from '@/hooks/useApiHandler';
 
 const CountryBackground = () => {
   const pathname = usePathname();
@@ -19,10 +20,16 @@ const CountryBackground = () => {
     countryEnglishName: '',
   });
 
+  const [error, setError] = useState<Error | null>(null);
+
   const getInformation = async (country: string) => {
-    const data = await getCountryInfo(country);
-    setImageUrl(data.data.countryImageUrl);
-    setCountryInfo(data.data);
+    try {
+      const data = await getCountryInfo(country);
+      setImageUrl(data.data.countryImageUrl);
+      setCountryInfo(data.data);
+    } catch (err) {
+      setError(new Error('없는 나라 입니다.'));
+    }
   };
 
   useEffect(() => {
@@ -37,8 +44,8 @@ const CountryBackground = () => {
           className={image}
           src={imageUrl || '/images/emptyBackground.png'}
           alt="countryBackgroundImage"
-          fill
-          sizes="1920px"
+          width={1920}
+          height={460}
         />
       </div>
       <MoveToMain props={countryInfo} />
