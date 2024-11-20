@@ -99,7 +99,7 @@ export const explain = style({
 export const continentContainer = style({
   display: 'grid',
   gap: 15,
-  gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', // 최소 크기를 140px로 조정
+  gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', // 최소 크기를 140px로 조정
   maxWidth: 1000,
   '@media': {
     'screen and (min-width: 1024px)': {
