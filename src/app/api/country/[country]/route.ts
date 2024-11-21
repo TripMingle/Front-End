@@ -1,13 +1,17 @@
+import { baseurl, withApiHandler } from '@/utils/server/api';
 import { NextRequest } from 'next/server';
 
-export const GET = async (req: NextRequest) => {
-  const baseurl = `${process.env.API_URL}`;
-  const pathname = req.nextUrl.pathname.slice(4);
-
-  return await fetch(`${baseurl}${pathname}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-};
+export const GET = withApiHandler(
+  async (req: NextRequest, config: RequestInit) => {
+    const pathname = req.nextUrl.pathname.slice(4);
+    return await fetch(`${baseurl}${pathname}`, {
+      ...config,
+      method: 'GET',
+      headers: {
+        ...config.headers,
+        'Content-Type': 'application/json',
+      },
+    });
+  },
+  false,
+);

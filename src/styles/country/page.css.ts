@@ -16,11 +16,15 @@ export const pageContainer = style({
 
 export const imageContainer = style({
   position: 'relative',
+  display: 'flex',
   width: '100%',
-  minHeight: 320,
-  height: 'auto',
+  height: 280,
   overflow: 'hidden',
+  justifyItems: 'center',
   '@media': {
+    'screen and (min-width: 768px)': {
+      height: 320,
+    },
     'screen and (min-width: 1024px)': {
       height: 460,
     },
@@ -29,6 +33,8 @@ export const imageContainer = style({
 
 export const image = style({
   objectFit: 'cover',
+  height: 'auto',
+  width: '100%',
 });
 
 export const contentContainer = style({

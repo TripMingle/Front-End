@@ -52,7 +52,7 @@ export const name = style({
 
 export const countryContainer = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
   gap: 15,
   maxWidth: 1000,
   '@media': {

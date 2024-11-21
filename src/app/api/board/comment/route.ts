@@ -1,25 +1,21 @@
-import { getAccessToken } from '@/utils/server/token';
-import { NextRequest, NextResponse } from 'next/server';
+import { baseurl, withApiHandler } from '@/utils/server/api';
+import { NextRequest } from 'next/server';
 
-export const POST = async (req: NextRequest) => {
-  const baseurl = `${process.env.API_URL}`;
-  const pathname = `/board/comment`;
-  const body = req.body;
-  let token = await getAccessToken();
-  if (!token)
-    return NextResponse.json(
-      { error: 'access token이 없거나 만료되었습니다.' },
-      { status: 500 },
-    );
+export const POST = withApiHandler(
+  async (req: NextRequest, config: RequestInit) => {
+    const pathname = `/board/comment`;
+    const body = req.body;
 
-  return await fetch(`${baseurl}${pathname}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token.value}`,
-    },
-    body,
-    // @ts-ignore -- 연결이 단방향임을 나타냄
-    duplex: 'half',
-  });
-};
+    return await fetch(`${baseurl}${pathname}`, {
+      ...config,
+      method: 'POST',
+      headers: {
+        ...config.headers,
+        'Content-Type': 'application/json',
+      },
+      body,
+      // @ts-ignore -- 연결이 단방향임을 나타냄
+      duplex: 'half',
+    });
+  },
+);

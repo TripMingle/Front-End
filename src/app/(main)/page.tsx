@@ -11,7 +11,8 @@ const Page = () => {
           className={styles.bg}
           src="/images/mainbg.png"
           fill
-          sizes="1920px"
+          priority
+          sizes="(max-width: 1920px) 100vw, 1920px"
           alt="mainBackground"
         />
         <CountrySearch />

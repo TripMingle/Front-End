@@ -3,10 +3,10 @@ import BoardPreview from '@/components/country/BoardPreview';
 import CountryBackground from '@/components/country/CountryBackground';
 import PostPreview from '@/components/country/PostPreivew';
 
-const Page = () => {
+const Page = ({ params }: { params: { country: string } }) => {
   return (
     <>
-      <CountryBackground />
+      <CountryBackground country={params.country} />
       <div className={styles.contentContainer}>
         <BoardPreview />
         <PostPreview type="restaurant" />

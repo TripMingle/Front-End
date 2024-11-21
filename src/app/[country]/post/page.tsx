@@ -3,10 +3,10 @@ import CountryBackground from '@/components/country/CountryBackground';
 import PostCardList from '@/components/country/post/PostCardList';
 import CountryWrite from '@/components/common/CountryWrite';
 
-const Page = () => {
+const Page = ({ params }: { params: { country: string } }) => {
   return (
     <>
-      <CountryBackground />
+      <CountryBackground country={params.country} />
       <div className={country.contentContainer}>
         <PostCardList />
       </div>

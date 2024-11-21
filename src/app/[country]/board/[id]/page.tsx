@@ -35,8 +35,9 @@ const Page = async ({
           className={styles.image}
           src={boardDetail.imageUrl || '/images/emptyBackground.png'}
           alt="boardImage"
+          priority
           fill
-          sizes="1920px"
+          sizes="(max-width: 1920px) 100vw, 1920px"
         />
       </div>
       <div className={styles.container}>

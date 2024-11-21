@@ -1,21 +1,20 @@
-import { getAccessToken } from '@/utils/server/token';
+import { baseurl, withApiHandler } from '@/utils/server/api';
 import { NextRequest } from 'next/server';
 
-export const GET = async (req: NextRequest) => {
-  const baseurl = `${process.env.API_URL}`;
-  const pathname = '/board';
-  const country = req.nextUrl.searchParams.get('country');
-  const page = req.nextUrl.searchParams.get('page');
-  let accesstoken = await getAccessToken();
-  let token = accesstoken?.value || process.env.ACCESS_TOKEN;
+export const GET = withApiHandler(
+  async (req: NextRequest, config: RequestInit) => {
+    const pathname = '/board';
+    const country = req.nextUrl.searchParams.get('country');
+    const page = req.nextUrl.searchParams.get('page');
 
-  console.log(`${baseurl}${pathname}/${country}?page=${page}`);
-
-  return await fetch(`${baseurl}${pathname}/${country}?page=${page}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+    return await fetch(`${baseurl}${pathname}/${country}?page=${page}`, {
+      ...config,
+      method: 'GET',
+      headers: {
+        ...config.headers,
+        'Content-Type': 'application/json',
+      },
+    });
+  },
+  false,
+);

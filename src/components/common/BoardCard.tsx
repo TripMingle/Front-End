@@ -21,8 +21,8 @@ const BoardCard = ({ props }: { props: BoardPreviewProps }) => {
       <div className={styles.imageBox}>
         <Image
           src={props.imageUrl}
-          fill
-          sizes="(max-width :1023px) 160px, 255px"
+          width={160}
+          height={255}
           className={styles.image}
           alt="countryImage"
         />
