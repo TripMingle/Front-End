@@ -25,6 +25,7 @@ const CountryBackground = async ({ country }: { country: string }) => {
           className={image}
           src={data?.data.countryImageUrl || '/images/emptyBackground.png'}
           alt="countryBackgroundImage"
+          priority
           fill
           sizes="(max-width: 1920px) 100vw, 1920px"
         />
