@@ -1,24 +1,17 @@
-import { getAccessToken } from '@/utils/server/token';
-import { NextRequest, NextResponse } from 'next/server';
+import { baseurl, withApiHandler } from '@/utils/server/api';
+import { NextRequest } from 'next/server';
 
-export const GET = async (req: NextRequest) => {
-  const baseurl = `${process.env.API_URL}`;
-  const pathname = `/auth/info`;
+export const GET = withApiHandler(
+  async (req: NextRequest, config: RequestInit) => {
+    const pathname = `/auth/info`;
 
-  const token = await getAccessToken();
-
-  if (!token)
-    return NextResponse.json(
-      { error: 'access token이 없거나 만료되었습니다.' },
-      { status: 500 },
-    );
-
-  return await fetch(`${baseurl}${pathname}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    cache: 'force-cache',
-  });
-};
+    return await fetch(`${baseurl}${pathname}`, {
+      method: 'GET',
+      headers: {
+        ...config.headers,
+        'Content-Type': 'application/json',
+      },
+      cache: 'force-cache',
+    });
+  },
+);
