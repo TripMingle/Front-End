@@ -9,7 +9,13 @@ const MoveToMain = ({ props }: { props: CountryInfo }) => {
   const { initialize, setContinent } = useCountryStore();
 
   const continentClickHandler = () => {
-    setContinent(props.continentEnglishName, props.continentName);
+    const continentEnglishName = props.continentEnglishName.includes('/')
+      ? props.continentEnglishName.split('/')[0]
+      : props.continentEnglishName;
+    const continentName = props.continentName.includes('/')
+      ? props.continentName.split('/')[0]
+      : props.continentName;
+    setContinent(continentEnglishName, continentName);
     router.push('/');
   };
 
