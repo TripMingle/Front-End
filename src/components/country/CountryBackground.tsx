@@ -1,54 +1,35 @@
-'use client';
 import Image from 'next/image';
 import { image, imageContainer } from '@/styles/country/page.css';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { getCountryInfo } from '@/api/country';
 import MoveToMain from './MoveToMain';
-import { getCountryName } from '@/utils/country';
-import { CountryInfo } from '@/types/main/country';
-import { useApiHandler } from '@/hooks/useApiHandler';
+import { headers } from 'next/headers';
 
-const CountryBackground = () => {
-  const pathname = usePathname();
+const CountryBackground = async ({ country }: { country: string }) => {
+  const headersList = headers();
+  const host = headersList.get('host');
+  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
 
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [countryInfo, setCountryInfo] = useState<CountryInfo>({
-    continentName: '',
-    continentEnglishName: '',
-    countryName: '',
-    countryEnglishName: '',
-  });
+  const response = await fetch(`${protocol}://${host}/api/country/${country}`);
 
-  const [error, setError] = useState<Error | null>(null);
+  if (!response.ok) {
+    throw new Error(`${country}에 대한 나라 정보를 찾을 수 없습니다.`);
+  }
 
-  const getInformation = async (country: string) => {
-    try {
-      const data = await getCountryInfo(country);
-      setImageUrl(data.data.countryImageUrl);
-      setCountryInfo(data.data);
-    } catch (err) {
-      setError(new Error('없는 나라 입니다.'));
-    }
-  };
+  const data = await response.json();
 
-  useEffect(() => {
-    const country = getCountryName(pathname);
-    getInformation(country);
-  }, []);
+  console.log(data.data);
 
   return (
     <>
       <div className={imageContainer}>
         <Image
           className={image}
-          src={imageUrl || '/images/emptyBackground.png'}
+          src={data?.data.countryImageUrl || '/images/emptyBackground.png'}
           alt="countryBackgroundImage"
-          width={1920}
-          height={460}
+          fill
+          sizes="100vw"
         />
       </div>
-      <MoveToMain props={countryInfo} />
+      <MoveToMain props={data?.data} />
     </>
   );
 };
