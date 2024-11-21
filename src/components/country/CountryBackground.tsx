@@ -26,7 +26,7 @@ const CountryBackground = async ({ country }: { country: string }) => {
           src={data?.data.countryImageUrl || '/images/emptyBackground.png'}
           alt="countryBackgroundImage"
           fill
-          sizes="100vw"
+          sizes="(max-width: 1920px) 100vw, 1920px"
         />
       </div>
       <MoveToMain props={data?.data} />
