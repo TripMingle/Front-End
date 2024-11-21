@@ -4,10 +4,10 @@ import CountryBackground from '@/components/country/CountryBackground';
 import BoardList from '@/components/country/board/BoardList';
 import CountryWrite from '@/components/common/CountryWrite';
 
-const Page = () => {
+const Page = ({ params }: { params: { country: string } }) => {
   return (
     <>
-      <CountryBackground />
+      <CountryBackground country={params.country} />
       <div className={styles.bgOverlay}>
         <div className={styles.mapContainer}>
           <span className={styles.mapText}>
