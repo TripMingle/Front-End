@@ -1,10 +1,10 @@
 import Initializer from '@/components/common/Initializer';
 import ConditionalHeader from '@/components/header/ConditionalHeader';
 import type { Metadata } from 'next';
-import '@/styles/font.css';
+import { noto, gmarket } from '@/styles/font';
 
 export const metadata: Metadata = {
-  title: 'TripMingle',
+  title: { template: '%s | Tripmingle', default: 'Tripmingle' },
   description:
     '글로벌 여행 동행 서비스 트립밍글에서 전 세계 사람들을 만나고, 여행 정보 공유하고, 여행 동행 추천도 받아보세요!',
 };
@@ -15,11 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <meta name="description" content={metadata.description!} />
-      </head>
+    <html lang="ko" className={`${noto.variable} ${gmarket.variable}`}>
       <body>
         <Initializer />
         <ConditionalHeader />
