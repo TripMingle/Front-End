@@ -10,6 +10,20 @@ const nextConfig = {
       'maps.googleapis.com',
     ], // 허용할 도메인 추가
   },
+  async redirects() {
+    return [
+      {
+        source: '/mypage',
+        destination: '/mypage/info', // mypage로 접속할 경우 -> mypage/info로 리다이렉트
+        permanent: true, // (true: 영구)
+      },
+      {
+        source: '/write',
+        destination: '/write/board',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withVanillaExtract(nextConfig);
