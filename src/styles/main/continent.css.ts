@@ -73,7 +73,7 @@ export const textContainer = style({
 export const name = style({
   display: 'block',
   fontFamily: vars.font.menu,
-  fontWeight: 'bold',
+  fontWeight: 700,
   fontSize: 22,
   color: vars.color.white,
   '@media': {
