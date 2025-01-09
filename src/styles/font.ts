@@ -8,9 +8,9 @@ export const noto = Noto_Sans({
 
 export const gmarket = localFont({
   src: [
-    { path: '../../public/font/GmarketSansTTFBold.ttf', weight: '700' },
-    { path: '../../public/font/GmarketSansTTFMedium.ttf', weight: '500' },
-    { path: '../../public/font/GmarketSansTTFLight.ttf', weight: '300' },
+    { path: '../../public/font/GmarketSansTTFBold.woff2', weight: '700' },
+    { path: '../../public/font/GmarketSansTTFMedium.woff2', weight: '500' },
+    { path: '../../public/font/GmarketSansTTFLight.woff2', weight: '300' },
   ],
   variable: '--font-gmarket-sans',
 });

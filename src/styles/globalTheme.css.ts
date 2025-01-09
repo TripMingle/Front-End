@@ -17,8 +17,8 @@ export const vars = createGlobalTheme(':root', {
     white: '#FFFFFF',
   },
   font: {
-    body: `var(--font-noto-sans)`,
-    menu: `var(--font-gmarket-sans)`,
+    body: 'var(--font-noto-sans)',
+    menu: 'var(--font-gmarket-sans)',
   },
   screen: {
     mobile: '',
