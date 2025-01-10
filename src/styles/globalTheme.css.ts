@@ -17,8 +17,8 @@ export const vars = createGlobalTheme(':root', {
     white: '#FFFFFF',
   },
   font: {
-    body: 'Noto_Sans',
-    menu: 'gmarketSans',
+    body: 'var(--font-noto-sans)',
+    menu: 'var(--font-gmarket-sans)',
   },
   screen: {
     mobile: '',
@@ -29,7 +29,7 @@ export const vars = createGlobalTheme(':root', {
 
 globalStyle('body', {
   margin: 0,
-  fontFamily: 'Noto_Sans',
+  fontFamily: vars.font.body,
   fontWeight: '400',
 });
 

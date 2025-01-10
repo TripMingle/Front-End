@@ -37,7 +37,7 @@ export const mapText = style({
   color: vars.color.white,
   fontFamily: vars.font.menu,
   fontSize: 24,
-  fontWeight: 'bold',
+  fontWeight: 700,
   textAlign: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {

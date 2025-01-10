@@ -25,7 +25,7 @@ export const logo = style({
   marginBottom: 80,
   fontFamily: vars.font.menu,
   fontSize: 48,
-  fontWeight: 'bold',
+  fontWeight: 700,
   lineHeight: 1.5,
   color: 'transparent',
   background: `linear-gradient(45deg, ${vars.color.primary}, ${vars.color.secondary})`,

@@ -71,7 +71,7 @@ export const category = style({
   color: vars.color.black,
   fontFamily: vars.font.menu,
   fontSize: 20,
-  fontWeight: 'bold',
+  fontWeight: 700,
   height: '1.2em',
   '@media': {
     'screen and (min-width: 1024px)': {
@@ -172,7 +172,7 @@ export const emptyBoardContainer = style({
   color: vars.color.g400,
   fontSize: 20,
   fontFamily: vars.font.menu,
-  fontWeight: 'bold',
+  fontWeight: 700,
   textAlign: 'center',
   lineHeight: 1.5,
   borderRadius: 16,
@@ -195,7 +195,7 @@ export const emptyPostContainer = style({
   color: vars.color.g400,
   fontSize: 20,
   fontFamily: vars.font.menu,
-  fontWeight: 'bold',
+  fontWeight: 700,
   textAlign: 'center',
   lineHeight: 1.5,
   borderRadius: 16,

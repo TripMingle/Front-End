@@ -21,5 +21,5 @@ export function middleware(request: NextRequest) {
 
 // 미들웨어가 적용될 경로 설정
 export const config = {
-  matcher: ['/mypage/:path*', '/mypage', '/write/:path*', '/write'],
+  matcher: ['/mypage/:path*', '/write/:path*'],
 };

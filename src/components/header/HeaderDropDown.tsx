@@ -3,6 +3,7 @@ import * as styles from '@/styles/components/header/header-drop-down.css';
 import useModal from '@/hooks/useModal';
 import LogoutModal from '../common/LogoutModal';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 type Props = {
   dropDownOpen: boolean;
@@ -10,29 +11,11 @@ type Props = {
 };
 
 const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
-  const router = useRouter();
-
   const { isOpen, openModal, closeModal } = useModal();
-
-  const myPageHandler = () => {
-    closeHandler();
-    router.push('/mypage/info');
-  };
-
-  const writeBoardHandler = () => {
-    closeHandler();
-    router.push('/write/board');
-  };
-
-  const writePostHandler = () => {
-    closeHandler();
-    router.push('/write/post');
-  };
 
   const logoutHandler = () => {
     closeHandler();
     openModal();
-    console.log(isOpen);
   };
 
   useEffect(() => {
@@ -48,14 +31,20 @@ const HeaderDropDown = ({ dropDownOpen, closeHandler }: Props) => {
       <div className={styles.background} onClick={closeHandler}>
         <div className={styles.container}>
           <ul className={styles.menuContainer}>
-            <li className={styles.menuItem} onClick={myPageHandler}>
-              마이페이지
+            <li className={styles.menuItem}>
+              <Link key="Mypage" href="/mypage/info">
+                마이페이지
+              </Link>
             </li>
-            <li className={styles.menuItem} onClick={writeBoardHandler}>
-              동행글 작성
+            <li className={styles.menuItem}>
+              <Link key="WriteBoard" href="/write/board">
+                동행글 작성
+              </Link>
             </li>
-            <li className={styles.menuItem} onClick={writePostHandler}>
-              정보글 작성
+            <li className={styles.menuItem}>
+              <Link key="WritePost" href="/write/post">
+                정보글 작성
+              </Link>
             </li>
             <li className={styles.menuItem} onClick={logoutHandler}>
               로그아웃

@@ -1,8 +1,9 @@
 'use client';
+
 import { useCountryStore } from '@/store/countryStore';
 import * as styles from '@/styles/main/page.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const CountrySearch = () => {
   const [keyword, setKeyword] = useState<string>('');
@@ -22,8 +23,8 @@ const CountrySearch = () => {
   return (
     <div className={styles.boxContainer}>
       <div className={styles.exploreContainer}>
-        <div className={styles.bigCircle}></div>
-        <div className={styles.smallCircle}></div>
+        <div className={styles.bigCircle} />
+        <div className={styles.smallCircle} />
         <div className={styles.exploreText}>
           <span>
             EXPLORE

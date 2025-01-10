@@ -33,7 +33,7 @@ export const labelContainer = recipe({
     gap: 6,
     width: 100,
     fontFamily: vars.font.menu,
-    fontWeight: 'normal',
+    fontWeight: 500,
     fontSize: 16,
     padding: '10px 20px',
     borderRight: `1px solid ${vars.color.g300}`,

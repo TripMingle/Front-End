@@ -7,7 +7,7 @@ export const text = recipe({
     borderRadius: 5,
     padding: '4px 5px',
     fontFamily: vars.font.menu,
-    fontWeight: 'medium',
+    fontWeight: 500,
     fontSize: 10,
     color: vars.color.white,
     '@media': {
