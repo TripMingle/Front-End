@@ -1,10 +1,11 @@
 'use client';
+
 import Image from 'next/image';
 import * as styles from '@/styles/components/header/header.css';
-import HeaderProfile from './HeaderProfile';
-import HeaderDropDown from './HeaderDropDown';
 import { useUserStore } from '@/store/userStore';
 import useModal from '@/hooks/useModal';
+import HeaderProfile from './HeaderProfile';
+import HeaderDropDown from './HeaderDropDown';
 import LoginModal from '../common/LoginModal';
 import HeaderLogo from './HeaderLogo';
 
