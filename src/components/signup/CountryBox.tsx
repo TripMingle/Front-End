@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CountrySearch from './CountrySearch';
 import FormField from './FormField';
 import useModal from '@/hooks/useModal';
-import { container } from '@/styles/signup/page.css';
+import { inputContent } from '@/styles/signup/page.css';
 import { useFormContext } from 'react-hook-form';
 import { UserSignupType } from '@/types/country/user';
 
@@ -22,7 +22,7 @@ const CountryBox = () => {
     <>
       <FormField title="국적" required={true}>
         <span
-          className={container({ select: !!nationality[0] })}
+          className={inputContent({ select: !!nationality[0] })}
           onClick={openModal}
         >
           {nationality[1] || '나라 선택'}

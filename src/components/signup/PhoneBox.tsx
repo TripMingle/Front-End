@@ -1,9 +1,9 @@
 import { useFormContext } from 'react-hook-form';
-import FormField from './FormField';
 import { UserSignupType } from '@/types/country/user';
 import { useEffect } from 'react';
 import { autoHyphen } from '@/utils/phone';
-import { container } from '@/styles/signup/page.css';
+import { inputContent } from '@/styles/signup/page.css';
+import FormField from './FormField';
 
 const PhoneBox = () => {
   const { watch, register, setValue } = useFormContext<UserSignupType>();
@@ -18,7 +18,7 @@ const PhoneBox = () => {
   return (
     <FormField title="전화번호" required={true}>
       <input
-        className={container({ select: true })}
+        className={inputContent({ select: true })}
         {...register('phoneNumber', {
           required: true,
           pattern: {

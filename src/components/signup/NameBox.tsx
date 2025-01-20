@@ -2,12 +2,7 @@
 import { UserSignupType } from '@/types/country/user';
 import { useFormContext } from 'react-hook-form';
 import FormField from './FormField';
-import {
-  container,
-  nickNameButton,
-  nickNamefieldContainer,
-  nickNameResult,
-} from '@/styles/signup/page.css';
+import { inputContent } from '@/styles/signup/page.css';
 import { useEffect, useState } from 'react';
 
 const NameBox = () => {
@@ -28,24 +23,21 @@ const NameBox = () => {
   }, [name]);
 
   return (
-    <div className={nickNamefieldContainer}>
-      <FormField title="이름" required={true}>
-        <input
-          className={container({ select: true })}
-          type="text"
-          placeholder="이름을 입력하세요."
-          tabIndex={1}
-          {...register('name', {
-            required: true,
-            pattern: {
-              value: regex,
-              message: '올바른 형식이 아닙니다',
-            },
-          })}
-        />
-      </FormField>
-      <span className={nickNameResult({ result: isAvailable })}>{result}</span>
-    </div>
+    <FormField title="이름" required={true}>
+      <input
+        className={inputContent({ select: true })}
+        type="text"
+        placeholder="이름을 입력하세요."
+        tabIndex={1}
+        {...register('name', {
+          required: true,
+          pattern: {
+            value: regex,
+            message: '올바른 형식이 아닙니다',
+          },
+        })}
+      />
+    </FormField>
   );
 };
 

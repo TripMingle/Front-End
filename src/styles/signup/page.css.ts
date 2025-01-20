@@ -99,15 +99,36 @@ export const buttonContent = style({
   },
 });
 
+export const title = style({
+  display: 'flex',
+  fontFamily: vars.font.body,
+  fontWeight: 500,
+  fontSize: 14,
+  alignItems: 'center',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 16,
+    },
+  },
+});
+
 export const fieldContainer = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
-  marginBottom: 12,
+  marginBottom: 20,
 });
 
-export const container = recipe({
+export const fieldInput = style({
+  display: 'flex',
+  width: '100%',
+  height: 42,
+  gap: 12,
+  alignItems: 'center',
+});
+
+export const inputContent = recipe({
   base: {
     display: 'flex',
     alignContent: 'center',
@@ -132,41 +153,6 @@ export const container = recipe({
   },
 });
 
-export const title = style({
-  display: 'flex',
-  fontFamily: vars.font.body,
-  fontWeight: 500,
-  fontSize: 14,
-  alignItems: 'center',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      fontSize: 16,
-    },
-  },
-});
-
-// 이건 FormField에서 필드 감싸는 컨테이너 (닉네임 이름 무시)
-export const nickNameContainer = style({
-  display: 'flex',
-  width: '100%',
-  height: 44,
-  gap: 12,
-  alignItems: 'center',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      height: 44,
-    },
-  },
-});
-
-// 이건 NickNameBox에서 사용하는 컨테이너
-export const nickNamefieldContainer = style({
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
-});
-
 export const nickNameButton = style({
   background: vars.color.secondary,
   height: '100%',
@@ -179,9 +165,8 @@ export const nickNameButton = style({
   cursor: 'pointer',
 });
 
-export const nickNameResult = recipe({
+export const error = recipe({
   base: {
-    position: 'absolute',
     height: 20,
     bottom: 0,
     fontSize: 10,

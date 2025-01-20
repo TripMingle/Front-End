@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import FormField from './FormField';
 import { UserSignupType } from '@/types/country/user';
-import { container } from '@/styles/signup/page.css';
+import { inputContent } from '@/styles/signup/page.css';
 import Image from 'next/image';
 import useModal from '@/hooks/useModal';
 import { formatCalendarDay, formatDay } from '@/utils/date';
@@ -47,7 +47,7 @@ const BirthBox = () => {
     <div className={calendarContainer}>
       <FormField title="생년월일" required={true}>
         <div
-          className={container({ select: !!birthDay })}
+          className={inputContent({ select: !!birthDay })}
           onClick={clickHandler}
         >
           <span>{birthDay || '생년월일을 입력해주세요.'}</span>

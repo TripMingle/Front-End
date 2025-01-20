@@ -2,12 +2,7 @@
 import { UserSignupType } from '@/types/country/user';
 import { useFormContext } from 'react-hook-form';
 import FormField from './FormField';
-import {
-  container,
-  nickNameButton,
-  nickNamefieldContainer,
-  nickNameResult,
-} from '@/styles/signup/page.css';
+import { inputContent, nickNameButton } from '@/styles/signup/page.css';
 import { checkNickName } from '@/api/user';
 import { useEffect, useState } from 'react';
 
@@ -39,33 +34,30 @@ const NickNameBox = () => {
   };
 
   return (
-    <div className={nickNamefieldContainer}>
-      <FormField title="닉네임" required={true}>
-        <input
-          className={container({ select: true })}
-          type="text"
-          placeholder="닉네임을 입력하세요."
-          tabIndex={2}
-          {...register('nickName', {
-            required: true,
-            pattern: {
-              value: regex,
-              message:
-                '닉네임은 한글, 영문, 숫자, 밑줄, 하이픈만 사용 가능합니다',
-            },
-          })}
-        />
-        <button
-          className={nickNameButton}
-          onClick={checkDuplilcated}
-          disabled={!nickName || !regex.test(nickName)}
-          tabIndex={3}
-        >
-          중복 확인
-        </button>
-      </FormField>
-      <span className={nickNameResult({ result: isAvailable })}>{result}</span>
-    </div>
+    <FormField title="닉네임" required={true}>
+      <input
+        className={inputContent({ select: true })}
+        type="text"
+        placeholder="닉네임을 입력하세요."
+        tabIndex={2}
+        {...register('nickName', {
+          required: true,
+          pattern: {
+            value: regex,
+            message:
+              '닉네임은 한글, 영문, 숫자, 밑줄, 하이픈만 사용 가능합니다',
+          },
+        })}
+      />
+      <button
+        className={nickNameButton}
+        onClick={checkDuplilcated}
+        disabled={!nickName || !regex.test(nickName)}
+        tabIndex={3}
+      >
+        중복 확인
+      </button>
+    </FormField>
   );
 };
 
