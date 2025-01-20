@@ -1,30 +1,40 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../globalTheme.css';
 import { recipe } from '@vanilla-extract/recipes';
+import { vars } from '../globalTheme.css';
 
 export const pageContainer = style({
+  display: 'flex',
   position: 'relative',
-  top: 44,
+  maxWidth: 520,
+  height: '100vh',
   left: '50%',
-  padding: '30px 20px',
+  padding: '64px 20px 90px',
   transform: 'translate(-50%,0)',
-  maxWidth: 510,
+  flexDirection: 'column',
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      top: 60,
-      padding: '80px 0px',
+      padding: '100px 20px 120px',
       maxWidth: 1020,
     },
   },
 });
 
-export const text = style({
+export const formContainer = style({
+  display: 'flex',
+  height: '100%',
+  flexDirection: 'column',
+  flex: 1,
+  overflowY: 'scroll',
+});
+
+export const welcomeText = style({
   fontFamily: vars.font.body,
   fontWeight: 700,
   fontSize: 20,
   '@media': {
     'screen and (min-width: 1024px)': {
-      fontSize: 36,
+      fontSize: 28,
     },
   },
 });
@@ -36,20 +46,63 @@ export const explain = style({
   color: 'red',
 });
 
-export const contentContainer = style({
+export const formContent = style({
   display: 'grid',
   gridTemplateColumns: '1fr',
-  height: 'calc(100vh - 243px)',
-  margin: '30px 0px',
-  overflowX: 'hidden',
-  overflowY: 'scroll',
+  paddingTop: 30,
   alignContent: 'start',
+  flex: 1,
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 'calc(100vh - 418px)',
-      margin: '40px 0px',
+      paddingTop: 40,
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: 20,
+    },
+  },
+});
+
+export const formButton = style({
+  position: 'fixed',
+  width: '100%',
+  bottom: 0,
+  left: 0,
+  boxSizing: 'border-box',
+  background: vars.color.white,
+  padding: 20,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      padding: 30,
+    },
+  },
+});
+
+export const buttonContent = recipe({
+  base: {
+    width: '100%',
+    height: 50,
+    border: 'none',
+    borderRadius: 10,
+    fontWeight: 500,
+    fontSize: 14,
+    '@media': {
+      'screen and (min-width: 1024px)': {
+        height: 60,
+        fontSize: 16,
+      },
+    },
+  },
+  variants: {
+    select: {
+      true: {
+        cursor: 'pointer',
+        background: vars.color.secondary,
+        color: vars.color.white,
+      },
+      false: {
+        background: vars.color.g200,
+        color: vars.color.g400,
+      },
     },
   },
 });
@@ -58,13 +111,8 @@ export const fieldContainer = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  gap: 10,
-  marginBottom: 20,
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      marginBottom: 32,
-    },
-  },
+  gap: 6,
+  marginBottom: 12,
 });
 
 export const container = recipe({
@@ -72,20 +120,14 @@ export const container = recipe({
     display: 'flex',
     alignContent: 'center',
     flex: 1,
-    padding: '12px 20px',
+    padding: 12,
     outline: 'none',
     border: `1px solid ${vars.color.g200}`,
-    borderRadius: 10,
+    borderRadius: 8,
     boxSizing: 'border-box',
     alignItems: 'center',
     cursor: 'pointer',
     fontSize: 14,
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        padding: '15px 20px',
-        fontSize: 16,
-      },
-    },
     '::placeholder': {
       color: vars.color.g400,
     },
@@ -115,12 +157,12 @@ export const title = style({
 export const nickNameContainer = style({
   display: 'flex',
   width: '100%',
-  height: 50,
+  height: 44,
   gap: 12,
   alignItems: 'center',
   '@media': {
     'screen and (min-width: 1024px)': {
-      height: 52,
+      height: 44,
     },
   },
 });
@@ -135,7 +177,7 @@ export const nickNamefieldContainer = style({
 
 export const nickNameButton = style({
   background: vars.color.secondary,
-  height: 42,
+  height: '100%',
   padding: '0px 20px',
   border: 'none',
   borderRadius: 10,
@@ -143,11 +185,6 @@ export const nickNameButton = style({
   fontWeight: 400,
   fontSize: 14,
   cursor: 'pointer',
-  '@media': {
-    'screen and (min-width: 1024px)': {
-      height: 52,
-    },
-  },
 });
 
 export const nickNameResult = recipe({
@@ -176,46 +213,12 @@ export const nickNameResult = recipe({
   },
 });
 
-export const signupButton = recipe({
-  base: {
-    position: 'relative',
-    left: '50%',
-    width: '100%',
-    maxWidth: 356,
-    height: 50,
-    marginTop: 'auto',
-    border: 'none',
-    borderRadius: 10,
-    fontWeight: 500,
-    fontSize: 14,
-    transform: 'translate(-50%,0)',
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        height: 60,
-        fontSize: 16,
-      },
-    },
-  },
-  variants: {
-    select: {
-      true: {
-        cursor: 'pointer',
-        background: vars.color.secondary,
-        color: vars.color.white,
-      },
-      false: {
-        background: vars.color.g200,
-        color: vars.color.g400,
-      },
-    },
-  },
-});
-
 export const red = style({
   height: '0.8em',
   color: 'red',
   fontWeight: 600,
   marginRight: 4,
+  marginTop: -4,
   '@media': {
     'screen and (min-width: 1024px)': {
       marginRight: 8,

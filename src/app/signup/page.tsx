@@ -84,36 +84,39 @@ const Page = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.pageContainer}>
-        <p className={styles.text}>환영합니다!</p>
-        <span className={styles.explain}>
-          <span className={styles.red}>*</span>는 필수항목 입니다.
-        </span>
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.contentContainer}>
-              <NameBox />
-              <NickNameBox />
-              <BirthBox />
-              <GenderBox />
-              <CountryBox />
-              <PhoneBox />
-              <IntroductionBox />
-            </div>
+    <div className={styles.pageContainer}>
+      <FormProvider {...methods}>
+        <form
+          className={styles.formContainer}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <p className={styles.welcomeText}>환영합니다!</p>
+          <span className={styles.explain}>
+            <span className={styles.red}>*</span>는 필수항목 입니다.
+          </span>
+          <div className={styles.formContent}>
+            <NameBox />
+            <NickNameBox />
+            <BirthBox />
+            <GenderBox />
+            <CountryBox />
+            <PhoneBox />
+            <IntroductionBox />
+          </div>
+          <div className={styles.formButton}>
             <button
               type="submit"
-              className={styles.signupButton({
+              className={styles.buttonContent({
                 select: isValid,
               })}
               disabled={!isValid}
             >
               완료
             </button>
-          </form>
-        </FormProvider>
-      </div>
-    </>
+          </div>
+        </form>
+      </FormProvider>
+    </div>
   );
 };
 
