@@ -7,6 +7,7 @@
     "airbnb-typescript",
     "eslint:recommended"
   ],
+  "plugins": ["prettier"],
   "parserOptions": {
     "project": "./tsconfig.json",
     "tsconfigRootDir": "./"
@@ -15,6 +16,7 @@
     "react/react-in-jsx-scope": "off",
     "arrow-body-style": "off",
     "react/jsx-props-no-spreading": "off",
+    "prefer-arrow-callback": "off",
     "react/function-component-definition": [
       2,
       { "namedComponents": ["arrow-function", "function-declaration"] }
