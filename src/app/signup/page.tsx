@@ -106,9 +106,7 @@ const Page = () => {
           <div className={styles.formButton}>
             <button
               type="submit"
-              className={styles.buttonContent({
-                select: isValid,
-              })}
+              className={styles.buttonContent}
               disabled={!isValid}
             >
               완료

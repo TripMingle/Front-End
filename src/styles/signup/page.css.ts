@@ -14,7 +14,7 @@ export const pageContainer = style({
   boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      padding: '100px 20px 120px',
+      padding: '100px 20px 116px',
       maxWidth: 1020,
     },
   },
@@ -31,7 +31,7 @@ export const formContainer = style({
 export const welcomeText = style({
   fontFamily: vars.font.body,
   fontWeight: 700,
-  fontSize: 20,
+  fontSize: 24,
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 28,
@@ -55,7 +55,6 @@ export const formContent = style({
   boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 1024px)': {
-      paddingTop: 40,
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: 20,
     },
@@ -77,32 +76,25 @@ export const formButton = style({
   },
 });
 
-export const buttonContent = recipe({
-  base: {
-    width: '100%',
-    height: 50,
-    border: 'none',
-    borderRadius: 10,
-    fontWeight: 500,
-    fontSize: 14,
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        height: 60,
-        fontSize: 16,
-      },
-    },
-  },
-  variants: {
-    select: {
-      true: {
-        cursor: 'pointer',
-        background: vars.color.secondary,
-        color: vars.color.white,
-      },
-      false: {
-        background: vars.color.g200,
-        color: vars.color.g400,
-      },
+// [height] 변경 시 pageContainer의 padding bottom값도 height로 변경
+export const buttonContent = style({
+  position: 'relative',
+  left: '50%',
+  width: '100%',
+  transform: 'translate(-50%, 0)',
+  height: 50,
+  border: 'none',
+  borderRadius: 10,
+  fontWeight: 500,
+  fontSize: 14,
+  cursor: 'pointer',
+  background: vars.color.secondary,
+  color: vars.color.white,
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      maxWidth: 500,
+      height: 56,
+      fontSize: 16,
     },
   },
 });
