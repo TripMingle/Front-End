@@ -14,8 +14,9 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "arrow-body-style": "off",
+    "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
     "react/function-component-definition": [
       2,
