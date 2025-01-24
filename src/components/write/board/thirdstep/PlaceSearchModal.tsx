@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { SchedulePlaceType } from '@/types/country/place';
 import PlaceSearchResult from './PlaceSearchResult';
-import { generateRandomId } from '@/utils/random';
+import { generateRandomId } from '@/utils/client/random';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 

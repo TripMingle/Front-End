@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { BoardPreviewProps } from '@/types/country/board';
 import { EmptyBoard } from './EmptyBoard';
 import { usePathname } from 'next/navigation';
-import { getCountryName } from '@/utils/country';
+import { getCountryName } from '@/utils/client/country';
 import BoardPreviewSkeleton from './BoardPreviewSkeleton';
 
 const BoardPreview = () => {

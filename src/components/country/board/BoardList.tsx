@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { BoardPreviewProps } from '@/types/country/board';
 import Pagination from '@/components/common/Pagination';
 import { EmptyBoard } from '../EmptyBoard';
-import { getCountryName } from '@/utils/country';
+import { getCountryName } from '@/utils/client/country';
 import { usePathname } from 'next/navigation';
 import BoardPreviewSkeleton from '../BoardPreviewSkeleton';
 
