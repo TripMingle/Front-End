@@ -123,26 +123,30 @@ export const fieldContainer = style({
 export const fieldInput = style({
   display: 'flex',
   width: '100%',
-  height: 42,
   gap: 12,
-  alignItems: 'center',
 });
 
 export const inputContent = recipe({
   base: {
     display: 'flex',
-    alignContent: 'center',
+    height: 44,
+    padding: '0px 12px',
     flex: 1,
-    padding: 12,
     outline: 'none',
-    border: `1px solid ${vars.color.g200}`,
+    border: `2px solid ${vars.color.g200}`,
     borderRadius: 8,
     boxSizing: 'border-box',
-    alignItems: 'center',
     cursor: 'pointer',
     fontSize: 14,
     '::placeholder': {
       color: vars.color.g400,
+    },
+    '@media': {
+      'screen and (min-width: 1024px)': {
+        height: 48,
+        padding: '0px 16px',
+        fontSize: 16,
+      },
     },
   },
   variants: {
