@@ -14,6 +14,7 @@ export const container = recipe({
     borderRadius: 10,
     cursor: 'pointer',
     boxSizing: 'border-box',
+    background: vars.color.white,
     '@media': {
       'screen and (min-width: 1024px)': {
         fontSize: 16,

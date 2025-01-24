@@ -1,21 +1,15 @@
 import { container } from '@/styles/components/common/button.css';
+import React from 'react';
 
-type ButtonProps = {
-  text: string;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   on: boolean;
-  tab?: number;
-  clickHandler: () => void;
-};
+}
 
-const Button = ({ text, on, clickHandler, tab = 0 }: ButtonProps) => {
+const Button = ({ on, children, ...props }: ButtonProps) => {
   return (
-    <div
-      className={container({ on: on })}
-      onClick={clickHandler}
-      tabIndex={tab}
-    >
-      {text}
-    </div>
+    <button className={container({ on })} {...props}>
+      {children}
+    </button>
   );
 };
 
