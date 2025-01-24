@@ -123,7 +123,8 @@ export const fieldContainer = style({
 export const fieldInput = style({
   display: 'flex',
   width: '100%',
-  gap: 12,
+  gap: 4,
+  flexDirection: 'column',
 });
 
 export const inputContent = recipe({
@@ -131,13 +132,13 @@ export const inputContent = recipe({
     display: 'flex',
     height: 44,
     padding: '0px 12px',
-    flex: 1,
+    alignItems: 'center',
     outline: 'none',
-    border: `2px solid ${vars.color.g200}`,
     borderRadius: 8,
     boxSizing: 'border-box',
     cursor: 'pointer',
     fontSize: 14,
+    color: vars.color.black,
     '::placeholder': {
       color: vars.color.g400,
     },
@@ -150,9 +151,9 @@ export const inputContent = recipe({
     },
   },
   variants: {
-    select: {
-      true: { color: vars.color.black },
-      false: { color: vars.color.g400 },
+    state: {
+      default: { border: `2px solid ${vars.color.g200}` },
+      error: { border: `2px solid red` },
     },
   },
 });

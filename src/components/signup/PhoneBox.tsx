@@ -6,7 +6,12 @@ import { inputContent } from '@/styles/signup/page.css';
 import FormField from './FormField';
 
 const PhoneBox = () => {
-  const { watch, register, setValue } = useFormContext<UserSignupType>();
+  const {
+    watch,
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext<UserSignupType>();
   const phoneNumber = watch('phoneNumber');
 
   useEffect(() => {
@@ -18,7 +23,7 @@ const PhoneBox = () => {
   return (
     <FormField title="전화번호" required={true}>
       <input
-        className={inputContent({ select: true })}
+        className={inputContent({ state: !!errors.name ? 'error' : 'default' })}
         {...register('phoneNumber', {
           required: true,
           pattern: {

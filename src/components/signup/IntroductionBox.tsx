@@ -10,7 +10,7 @@ const IntroductionBox = () => {
     <>
       <FormField title="자기소개" required={false}>
         <input
-          className={inputContent({ select: true })}
+          className={inputContent({ state: 'default' })}
           type="text"
           placeholder="자기 소개를 입력하세요.(선택 사항)"
           tabIndex={7}

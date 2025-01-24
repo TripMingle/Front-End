@@ -12,17 +12,17 @@ const GenderBox = () => {
   return (
     <FormField title="성별" required={true}>
       <Button1
-        on={gender == 'female'}
-        text={'여성'}
-        clickHandler={() => {
-          genderClickHandler('female');
-        }}
-      />
-      <Button1
         on={gender == 'male'}
         text={'남성'}
         clickHandler={() => {
           genderClickHandler('male');
+        }}
+      />
+      <Button1
+        on={gender == 'female'}
+        text={'여성'}
+        clickHandler={() => {
+          genderClickHandler('female');
         }}
       />
     </FormField>

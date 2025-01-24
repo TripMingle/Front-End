@@ -20,7 +20,6 @@ const FormField = ({ title, required = false, children }: FormFieldProps) => {
         {title}
       </p>
       <div className={fieldInput}>{children}</div>
-      {null && <span className={error({ result: false })}>result</span>}
     </div>
   );
 };

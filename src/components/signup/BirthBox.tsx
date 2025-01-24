@@ -44,40 +44,43 @@ const BirthBox = () => {
   };
 
   return (
-    <div className={calendarContainer}>
-      <FormField title="생년월일" required={true}>
-        <div
-          className={inputContent({ select: !!birthDay })}
-          onClick={clickHandler}
-        >
-          <span>{birthDay || '생년월일을 입력해주세요.'}</span>
-          <Image
-            className={icon}
-            src="/icons/calendar.svg"
-            width={20}
-            height={20}
-            alt="calendarIcon"
-          />
-          {isOpen && (
-            <>
-              <div className={background} onClick={closeModal} />
-              <div onClick={calendarClickHandler}>
-                <Calendar
-                  className={calendar({ show: isOpen })}
-                  locale="ko"
-                  selectRange={false}
-                  onChange={dateChangeHandler}
-                  formatDay={formatCalendarDay}
-                  maxDate={new Date()}
-                  showNeighboringMonth={false}
-                  minDetail="decade"
-                />
-              </div>
-            </>
-          )}
-        </div>
-      </FormField>
-    </div>
+    <div></div>
+    // <div className={calendarContainer}>
+    //   <FormField title="생년월일" required={true}>
+    //     <div
+    //       className={inputContent({
+    //         state: !!errors.name ? 'error' : 'default',
+    //       })}
+    //       onClick={clickHandler}
+    //     >
+    //       <span>{birthDay || '생년월일을 입력해주세요.'}</span>
+    //       <Image
+    //         className={icon}
+    //         src="/icons/calendar.svg"
+    //         width={20}
+    //         height={20}
+    //         alt="calendarIcon"
+    //       />
+    //       {isOpen && (
+    //         <>
+    //           <div className={background} onClick={closeModal} />
+    //           <div onClick={calendarClickHandler}>
+    //             <Calendar
+    //               className={calendar({ show: isOpen })}
+    //               locale="ko"
+    //               selectRange={false}
+    //               onChange={dateChangeHandler}
+    //               formatDay={formatCalendarDay}
+    //               maxDate={new Date()}
+    //               showNeighboringMonth={false}
+    //               minDetail="decade"
+    //             />
+    //           </div>
+    //         </>
+    //       )}
+    //     </div>
+    //   </FormField>
+    // </div>
   );
 };
 

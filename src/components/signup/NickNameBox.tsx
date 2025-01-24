@@ -9,7 +9,11 @@ import { useEffect, useState } from 'react';
 const NickNameBox = () => {
   const [isAvailable, setIsAvailable] = useState<boolean>(false);
   const [result, setResult] = useState<string>('');
-  const { watch, register } = useFormContext<UserSignupType>();
+  const {
+    watch,
+    register,
+    formState: { errors },
+  } = useFormContext<UserSignupType>();
   // 닉네임 특수문자나 다른 공백 확인용
   const regex = /^[가-힣ㄱ-ㅎa-zA-Z0-9_-]+$/;
   const nickName = watch('nickName');
@@ -36,7 +40,7 @@ const NickNameBox = () => {
   return (
     <FormField title="닉네임" required={true}>
       <input
-        className={inputContent({ select: true })}
+        className={inputContent({ state: !!errors.name ? 'error' : 'default' })}
         type="text"
         placeholder="닉네임을 입력하세요."
         tabIndex={2}

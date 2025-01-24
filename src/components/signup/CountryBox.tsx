@@ -8,7 +8,10 @@ import { useFormContext } from 'react-hook-form';
 import { UserSignupType } from '@/types/country/user';
 
 const CountryBox = () => {
-  const { setValue } = useFormContext<UserSignupType>();
+  const {
+    setValue,
+    formState: { errors },
+  } = useFormContext<UserSignupType>();
 
   const [nationality, setNationaliy] = useState<string[]>([]);
   const { isOpen, openModal, closeModal } = useModal();
@@ -22,7 +25,9 @@ const CountryBox = () => {
     <>
       <FormField title="국적" required={true}>
         <span
-          className={inputContent({ select: !!nationality[0] })}
+          className={inputContent({
+            state: !!errors.name ? 'error' : 'default',
+          })}
           onClick={openModal}
         >
           {nationality[1] || '나라 선택'}
