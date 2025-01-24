@@ -2,7 +2,7 @@
 import { UserSignupType } from '@/types/country/user';
 import { useFormContext } from 'react-hook-form';
 import FormField from './FormField';
-import { inputContent } from '@/styles/signup/page.css';
+import { error, inputContent } from '@/styles/signup/page.css';
 
 const NameBox = () => {
   const {
@@ -20,14 +20,14 @@ const NameBox = () => {
         placeholder="이름을 입력하세요."
         tabIndex={1}
         {...register('name', {
-          required: true,
+          required: '이름을 입력해주세요.',
           pattern: {
             value: regex,
-            message: '올바른 형식이 아닙니다',
+            message: '올바른 형식이 아닙니다.',
           },
         })}
       />
-      {errors?.name && <div>{errors.name.message}</div>}
+      {errors?.name && <div className={error}>{errors.name.message}</div>}
     </FormField>
   );
 };
