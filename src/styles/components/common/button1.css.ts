@@ -25,9 +25,9 @@ export const container = recipe({
     on: {
       true: {
         color: vars.color.secondary,
-        border: `2px solid ${vars.color.secondary}`,
+        border: `1px solid ${vars.color.secondary}`,
       },
-      false: { border: `2px solid ${vars.color.g200}` },
+      false: { border: `1px solid ${vars.color.g300}` },
     },
   },
 });

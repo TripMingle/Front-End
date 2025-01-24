@@ -130,6 +130,7 @@ export const fieldInput = style({
 export const inputContent = recipe({
   base: {
     display: 'flex',
+    width: '100%',
     height: 44,
     padding: '0px 12px',
     alignItems: 'center',
@@ -152,47 +153,45 @@ export const inputContent = recipe({
   },
   variants: {
     state: {
-      default: { border: `2px solid ${vars.color.g200}` },
-      error: { border: `2px solid red` },
+      default: { border: `1px solid ${vars.color.g300}` },
+      error: { border: `1px solid red` },
     },
   },
+});
+
+export const nickNameInputContainer = style({
+  display: 'flex',
+  width: '100%',
+  gap: 12,
 });
 
 export const nickNameButton = style({
+  display: 'flex',
+  width: 128,
+  justifyContent: 'center',
+  alignItems: 'center',
   background: vars.color.secondary,
-  height: '100%',
-  padding: '0px 20px',
   border: 'none',
   borderRadius: 10,
   color: vars.color.white,
-  fontWeight: 400,
+  fontWeight: 500,
   fontSize: 14,
   cursor: 'pointer',
+  '@media': {
+    'screen and (min-width: 1024px)': {
+      fontSize: 16,
+    },
+  },
 });
 
-export const error = recipe({
-  base: {
-    height: 20,
-    bottom: 0,
-    fontSize: 10,
-    marginLeft: 8,
-    '@media': {
-      'screen and (min-width: 1024px)': {
-        fontSize: 12,
-        bottom: 4,
-      },
-    },
-  },
-  variants: {
-    result: {
-      true: {
-        color: vars.color.secondary,
-      },
-      false: {
-        color: '#ff4343',
-      },
-    },
-  },
+export const error = style({
+  fontSize: 12,
+  color: 'red',
+});
+
+export const success = style({
+  fontSize: 12,
+  color: vars.color.g300,
 });
 
 export const red = style({
