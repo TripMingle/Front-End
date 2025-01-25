@@ -13,7 +13,7 @@ const IntroductionBox = () => {
           className={inputContent({ state: 'default' })}
           type="text"
           placeholder="자기 소개를 입력하세요.(선택 사항)"
-          tabIndex={7}
+          tabIndex={9}
           {...register('selfIntroduction', { required: false })}
         />
       </FormField>

@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import Button1 from '../common/Button1';
+import Button from '../common/Button';
 import FormField from './FormField';
 import { UserSignupType } from '@/types/country/user';
 import { error, nickNameInputContainer } from '@/styles/signup/page.css';
@@ -13,27 +13,29 @@ const GenderBox = () => {
 
   const gender = watch('gender');
 
-  const genderClickHandler = (gender: string) => {
-    setValue('gender', gender);
-  };
-
   return (
     <FormField title="성별" required={true}>
       <div className={nickNameInputContainer}>
-        <Button1
+        <Button
           on={gender == 'male'}
-          text={'남성'}
-          clickHandler={() => {
-            setValue('gender', 'male');
+          type="button"
+          tabIndex={5}
+          onClick={() => {
+            setValue('gender', 'male', { shouldValidate: true });
           }}
-        />
-        <Button1
+        >
+          남성
+        </Button>
+        <Button
           on={gender == 'female'}
-          text={'여성'}
-          clickHandler={() => {
-            setValue('gender', 'female');
+          type="button"
+          tabIndex={6}
+          onClick={() => {
+            setValue('gender', 'female', { shouldValidate: true });
           }}
-        />
+        >
+          여성
+        </Button>
       </div>
       {errors.gender && <div className={error}>{errors.gender.message}</div>}
     </FormField>
