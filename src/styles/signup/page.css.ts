@@ -117,7 +117,7 @@ export const fieldContainer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
-  marginBottom: 20,
+  marginBottom: 8,
 });
 
 export const fieldInput = style({
@@ -191,7 +191,7 @@ export const error = style({
 
 export const success = style({
   fontSize: 12,
-  color: vars.color.g300,
+  color: vars.color.secondary,
 });
 
 export const red = style({
