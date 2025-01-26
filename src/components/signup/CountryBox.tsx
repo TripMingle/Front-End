@@ -89,7 +89,7 @@ const CountryBox = () => {
           tabIndex={7}
           onKeyDown={handleKeyDown}
         />
-        {countryList && (
+        {countryList.length > 0 && (
           <CountryBoxList
             countries={countryList}
             countryHandler={handleCountry}

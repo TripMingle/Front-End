@@ -14,12 +14,8 @@ const CountryBoxList = ({ countries, countryHandler, closeHandler }: Props) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (listRef.current && !listRef.current.contains(event.target as Node)) {
         closeHandler();
-        console.log('click outside');
-      } else {
-        console.log('click inside');
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
