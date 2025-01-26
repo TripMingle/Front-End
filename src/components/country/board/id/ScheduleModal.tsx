@@ -6,7 +6,7 @@ import Image from 'next/image';
 import * as styles from '@/styles/country/board/id/schedule-modal.css';
 import ScheduleMap from './ScheduleMap';
 import { SchedulePlaceIdType, SchedulePlaceType } from '@/types/country/place';
-import { getDateInRange } from '@/utils/date';
+import { getDateInRange } from '@/utils/client/date';
 import ScheduleList from './ScheduleList';
 
 const ScheduleModal = ({

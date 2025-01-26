@@ -40,3 +40,14 @@ export const formatCalendarDay = (
   const day = date.getDate();
   return day < 10 ? `0${day}` : `${day}`;
 };
+
+export const dateString = (value: string) => {
+  const date = value.replace(/[^0-9]/g, '');
+  if (date.length <= 4) {
+    return date;
+  } else if (date.length <= 6) {
+    return `${date.slice(0, 4)}-${date.slice(4)}`;
+  } else {
+    return `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6)}`;
+  }
+};

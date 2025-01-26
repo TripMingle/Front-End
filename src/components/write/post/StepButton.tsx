@@ -4,7 +4,7 @@ import * as styles from '@/styles/write/step-button.css';
 import { BoardForm, BoardScheduleType } from '@/types/country/board';
 import { SchedulePlaceType } from '@/types/country/place';
 import { PostForm } from '@/types/country/post';
-import { getDateInRange } from '@/utils/date';
+import { getDateInRange } from '@/utils/client/date';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';

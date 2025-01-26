@@ -1,83 +1,59 @@
 import { useFormContext } from 'react-hook-form';
 import FormField from './FormField';
 import { UserSignupType } from '@/types/country/user';
-import { container } from '@/styles/signup/page.css';
-import Image from 'next/image';
-import useModal from '@/hooks/useModal';
-import { formatCalendarDay, formatDay } from '@/utils/date';
-import Calendar from 'react-calendar';
-import { useState } from 'react';
-import { icon, calendar, background } from '@/styles/signup/birth-box.css';
-import { calendarContainer } from '@/styles/write/secondstep/calendar-box.css';
+import { error, inputContent } from '@/styles/signup/page.css';
 import '@/styles/write/secondstep/calendar-custom.css';
-
-type Value = Date | null;
-type Range<T> = [T, T];
+import { dateString } from '@/utils/client/date';
 
 const BirthBox = () => {
-  const { watch, setValue } = useFormContext<UserSignupType>();
-  const { isOpen, openModal, closeModal } = useModal();
+  const {
+    register,
+    trigger,
+    formState: { errors },
+  } = useFormContext<UserSignupType>();
 
-  const [birth, setBirth] = useState<Value>(null);
-  const birthDay = watch('birthDay');
-
-  const clickHandler = () => {
-    if (isOpen) closeModal();
-    else openModal();
-  };
-
-  const dateChangeHandler = (
-    value: Value | Range<Value>,
-    event: React.MouseEvent<HTMLButtonElement>,
+  const handleKeyDown = async (
+    event: React.KeyboardEvent<HTMLInputElement>,
   ) => {
-    if (
-      value && // 단일 Date인 경우
-      value instanceof Date
-    ) {
-      setValue('birthDay', formatDay(value));
-      closeModal();
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const isValid = await trigger('birthDay');
+      if (isValid) {
+        // setTimeout을 걸지 않으면, focus가 이동될때 name의 마지막 글자가 다음 input에 전달됨
+        setTimeout(() => {
+          const nextElement = document.querySelector(`[tabindex="5"]`);
+          if (nextElement) (nextElement as HTMLElement).focus();
+        });
+      }
     }
   };
 
-  const calendarClickHandler = (e: React.MouseEvent) => {
-    e.stopPropagation(); // 이벤트 전파 중단
-  };
-
   return (
-    <div className={calendarContainer}>
-      <FormField title="생년월일" required={true}>
-        <div
-          className={container({ select: !!birthDay })}
-          onClick={clickHandler}
-        >
-          <span>{birthDay || '생년월일을 입력해주세요.'}</span>
-          <Image
-            className={icon}
-            src="/icons/calendar.svg"
-            width={20}
-            height={20}
-            alt="calendarIcon"
-          />
-          {isOpen && (
-            <>
-              <div className={background} onClick={closeModal} />
-              <div onClick={calendarClickHandler}>
-                <Calendar
-                  className={calendar({ show: isOpen })}
-                  locale="ko"
-                  selectRange={false}
-                  onChange={dateChangeHandler}
-                  formatDay={formatCalendarDay}
-                  maxDate={new Date()}
-                  showNeighboringMonth={false}
-                  minDetail="decade"
-                />
-              </div>
-            </>
-          )}
-        </div>
-      </FormField>
-    </div>
+    <FormField title="생년월일" required={true}>
+      <input
+        className={inputContent({
+          state: !!errors.birthDay ? 'error' : 'default',
+        })}
+        {...register('birthDay', {
+          onChange: (e) => {
+            e.target.value = dateString(e.target.value);
+          },
+          required: '생년월일을 입력해주세요.',
+          pattern: {
+            value: /^\d{4}-\d{2}-\d{2}$/,
+            message: 'YYYY-MM-DD 형식으로 입력해주세요.',
+          },
+        })}
+        onKeyDown={handleKeyDown}
+        tabIndex={4}
+        type="text"
+        maxLength={10}
+        placeholder="YYYY-MM-DD"
+      />
+      {errors?.birthDay && (
+        <div className={error}>{errors.birthDay.message}</div>
+      )}
+    </FormField>
   );
 };
 

@@ -1,5 +1,5 @@
 import { UserSignupType } from '@/types/country/user';
-import { getFetch, postFetch } from '.';
+import { getFetch } from '.';
 
 export const kakaoLogin = async (code: string) => {
   return getFetch(`/user/login?code=${code}`);

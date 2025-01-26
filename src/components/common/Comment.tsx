@@ -1,7 +1,7 @@
 import * as styles from '@/styles/components/common/comment.css';
 import Profile from './Profile';
 import { CommentType } from '@/types/country/board';
-import { formatDate } from '@/utils/date';
+import { formatDate } from '@/utils/client/date';
 
 const Comment = ({ props }: { props: CommentType }) => {
   return (

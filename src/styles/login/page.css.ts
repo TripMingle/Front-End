@@ -77,6 +77,7 @@ export const kakaoButtonContainer = style({
   boxSizing: 'border-box',
   alignItems: 'center',
   cursor: 'pointer',
+  textDecoration: 'none',
 });
 
 export const kakaoLoginText = style({

@@ -8,7 +8,7 @@ import { getPostList } from '@/api/post';
 import { usePostStore } from '@/store/postStore';
 import EmptyPost from '../EmptyPost';
 import { usePathname } from 'next/navigation';
-import { getCountryName } from '@/utils/country';
+import { getCountryName } from '@/utils/client/country';
 import PostCardListItem from './PostCardListItem';
 import PostCardListSkeleton from './PostCardListSkeleton';
 

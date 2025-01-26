@@ -2,7 +2,8 @@ import {
   fieldContainer,
   title as t,
   red,
-  nickNameContainer,
+  fieldInput,
+  error,
 } from '@/styles/signup/page.css';
 
 type FormFieldProps = {
@@ -18,7 +19,7 @@ const FormField = ({ title, required = false, children }: FormFieldProps) => {
         {required && <span className={red}>*</span>}
         {title}
       </p>
-      <div className={nickNameContainer}>{children}</div>
+      <div className={fieldInput}>{children}</div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BoardForm } from '@/types/country/board';
 import { useFormContext } from 'react-hook-form';
-import { getDateInRange } from '@/utils/date';
+import { getDateInRange } from '@/utils/client/date';
 import ScheduleListItem from './ScheduleListItem';
 import * as styles from '@/styles/write/thirdstep/schedule-list.css';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';

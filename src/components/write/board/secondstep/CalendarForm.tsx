@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import * as styles from '@/styles/write/secondstep/calendar-box.css';
 import '@/styles/write/secondstep/calendar-custom.css';
 import { useState } from 'react';
-import { formatCalendarDay, formatDay } from '@/utils/date';
+import { formatCalendarDay, formatDay } from '@/utils/client/date';
 import { useFormContext } from 'react-hook-form';
 import { BoardForm } from '@/types/country/board';
 

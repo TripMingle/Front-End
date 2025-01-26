@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { getPostPreview } from '@/api/post';
 import EmptyPost from './EmptyPost';
 import { usePathname } from 'next/navigation';
-import { getCountryName } from '@/utils/country';
+import { getCountryName } from '@/utils/client/country';
 import Calendar from './Icons/Calendar';
 import Good from './Icons/Good';
 import PostPreviewSkeleton from './PostPreviewSkeleton';
