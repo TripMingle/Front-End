@@ -10,6 +10,15 @@ export const POST = async (req: NextRequest) => {
   const pathname = `/kakao/join`;
   const body = req.body;
 
+  if (process.env.TEST) {
+    const body = await req.json();
+    const { nickName } = body;
+    storeToken('temporalAccessToken', 'temporalRefreshToken');
+    return NextResponse.json({
+      data: { profileImage: '', nickName: nickName },
+    });
+  }
+
   let kakaoAuthorization = await getKakaoAuthorization();
 
   const res = await fetch(`${baseurl}${pathname}`, {
@@ -24,9 +33,7 @@ export const POST = async (req: NextRequest) => {
   });
 
   if (!res.ok) {
-    console.log('-------------');
     console.log(res);
-    console.log('-------------');
     const data = await res.json();
     if (res.status === 409 && data.code === 'U003') {
       return NextResponse.json(res, { status: res.status });

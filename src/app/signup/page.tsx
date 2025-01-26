@@ -1,4 +1,5 @@
 'use client';
+
 import * as styles from '@/styles/signup/page.css';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/store/userStore';
@@ -11,49 +12,31 @@ import PhoneBox from '@/components/signup/PhoneBox';
 import BirthBox from '@/components/signup/BirthBox';
 import NameBox from '@/components/signup/NameBox';
 import IntroductionBox from '@/components/signup/IntroductionBox';
-import { kakaoSignup } from '@/api/user';
 import { useEffect } from 'react';
-import { removeKakaoAuthorization } from '@/utils/server/token';
+import { kakaoSignup } from '@/api/user';
 
 const Page = () => {
   const methods = useForm<UserSignupType>({
     defaultValues: UserSingupDefault,
   });
 
-  const {
-    handleSubmit,
-    formState: { isValid },
-    watch,
-  } = methods;
+  const { handleSubmit } = methods;
 
   const router = useRouter();
   const login = useUserStore((state) => state.login);
 
   const onSubmit = async (data: UserSignupType) => {
-    // 필수 필드 검증
-    if (
-      !data.name ||
-      !data.nickName ||
-      !data.birthDay ||
-      !data.gender ||
-      !data.phoneNumber
-    ) {
-      alert('모든 필수 항목을 입력해주세요.');
-      return;
-    }
-
-    // 여기서 회원가입 API 호출
+    console.log(data);
     try {
       const response = await kakaoSignup(data);
       if (typeof response === 'string') {
         alert('이미 사용 중인 닉네임입니다.');
         return;
       }
-      removeKakaoAuthorization();
       login(response.data.profileImage, response.data.nickName);
-      const prev = window.sessionStorage.getItem('prevPage');
+      const prev = sessionStorage.getItem('prevPage');
       if (prev) {
-        window.sessionStorage.removeItem('prevPage');
+        sessionStorage.removeItem('prevPage');
         router.push(prev);
       } else {
         router.push('/');
@@ -65,21 +48,13 @@ const Page = () => {
   };
 
   useEffect(() => {
-    // BirthBox
-    methods.register('birthDay', {
-      required: '생년월일은 필수입니다',
-    });
-
     // GenderBox
     methods.register('gender', {
-      required: '성별을 선택해주세요',
-      validate: (value) =>
-        value === 'male' || value === 'female' || '올바른 성별을 선택해주세요',
+      required: '성별을 선택해주세요.',
     });
 
     methods.register('nationality', {
       required: '국적을 선택해주세요.',
-      validate: (value) => value !== '' || '국적을 선택해주세요.',
     });
   }, []);
 
@@ -104,11 +79,7 @@ const Page = () => {
             <IntroductionBox />
           </div>
           <div className={styles.formButton}>
-            <button
-              type="submit"
-              className={styles.buttonContent}
-              disabled={!isValid}
-            >
+            <button type="submit" className={styles.buttonContent}>
               완료
             </button>
           </div>
