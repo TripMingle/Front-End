@@ -121,6 +121,7 @@ export const fieldContainer = style({
 });
 
 export const fieldInput = style({
+  position: 'relative',
   display: 'flex',
   width: '100%',
   gap: 4,
