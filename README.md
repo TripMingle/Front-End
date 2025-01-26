@@ -117,7 +117,7 @@ TripMingle은 글로벌 여행 동행 서비스로, `여행 동행 찾기`, `여
           <img src='https://github.com/user-attachments/assets/03566a4d-34af-4259-9cfd-7a3aca126bd8'  alt='write_desk' />
         </td>
         <td> 
-          <img src='https://github.com/user-attachments/assets/fea6b145-7915-4671-aa59-d4e4dc95d492' alt='write_mobile' />
+          <img src='https://github.com/user-attachments/assets/fea6b145-7915-4671-aa59-d4e4dc95d492' width="300" alt='write_mobile' />
         </td>
     </tr>
 </table>
@@ -139,6 +139,23 @@ TripMingle은 글로벌 여행 동행 서비스로, `여행 동행 찾기`, `여
         </td>
         <td> 
           <img src='https://github.com/user-attachments/assets/92cd85d1-4157-464d-9e7a-e1c3eb9dccd4' alt='login_mobile' />
+        </td>
+    </tr>
+</table>
+
+> ### 회원가입 페이지 (필수 입력 안할 시 화면에 에러 표시, 엔터 시 유효성 검사 후 다음 탭으로 이동)
+
+<table border="1" align='center'>
+    <tr>
+        <th>데스크톱 화면</th>
+        <th>모바일 화면</th>
+    </tr>
+    <tr>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/64049b4a-2430-4e16-ab05-5591a8c706b7'  alt='signup_desk' />
+        </td>
+        <td> 
+          <img src='https://github.com/user-attachments/assets/7dc28ba8-31d7-4ba5-b734-33f2f40fbf5a' alt='signup_mobile' />
         </td>
     </tr>
 </table>
