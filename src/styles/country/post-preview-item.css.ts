@@ -25,11 +25,15 @@ export const postCard = style({
 });
 
 export const title = style({
-  display: 'flex',
+  display: 'inline-block',
+  width: '100%',
   marginBottom: 10,
   color: vars.color.black,
-  fontSize: 13,
+  fontSize: 12,
   fontWeight: 700,
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 18,
