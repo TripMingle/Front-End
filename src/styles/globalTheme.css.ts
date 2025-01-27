@@ -43,6 +43,10 @@ globalStyle('p', {
   margin: 0,
 });
 
+globalStyle('a', {
+  textDecoration: 'none',
+});
+
 globalStyle('::-webkit-scrollbar', {
   width: 0,
 });
