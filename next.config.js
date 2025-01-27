@@ -9,6 +9,9 @@ const nextConfig = {
     domains: [
       'tripmingles3.s3.ap-northeast-2.amazonaws.com',
       'maps.googleapis.com',
+      'plus.unsplash.com',
+      'images.unsplash.com',
+      'randomuser.me',
     ], // 허용할 도메인 추가
   },
   async redirects() {
