@@ -7,6 +7,7 @@ const BookMark = ({ isMarked }: { isMarked: Boolean }) => {
   const [marked, setMarked] = useState(isMarked);
 
   const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
     event.stopPropagation();
     setMarked(!marked);
   };

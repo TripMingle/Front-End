@@ -1,63 +1,25 @@
-'use client';
-
 import * as styles from '@/styles/country/page.css';
-import Person from './Icons/Person';
-import More from '../common/More';
 import BoardCard from '../common/BoardCard';
-import { getBoardPreview } from '@/api/board';
-import { useEffect, useState } from 'react';
-import { BoardPreviewProps } from '@/types/country/board';
 import { EmptyBoard } from './EmptyBoard';
-import { usePathname } from 'next/navigation';
-import { getCountryName } from '@/utils/client/country';
-import BoardPreviewSkeleton from './BoardPreviewSkeleton';
+import { BoardPreviewProps } from '@/types/country/board';
 
-const BoardPreview = () => {
-  const pathname = usePathname();
-  const [country, setCountry] = useState<string>('');
-  const [boardPreview, setBoardPreview] = useState<BoardPreviewProps[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+const BoardPreview = async ({ country }: { country: string }) => {
+  const res = await fetch(
+    `${process.env.FRONT_URL}/api/board/preview?country=${country}`,
+  );
+  const data = await res.json();
+  const boardPreview: BoardPreviewProps[] = data.data;
 
-  const getBoardPreviewList = async () => {
-    if (country) {
-      const data = await getBoardPreview(country);
-      setBoardPreview(data.data);
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    setCountry(getCountryName(pathname));
-  }, []);
-
-  useEffect(() => {
-    getBoardPreviewList();
-  }, [country]);
-
-  return (
-    <div className={styles.categoryContainer}>
-      <Person className={styles.icon} width={36} height={36} />
-      <span className={styles.category}>여행 동행글</span>
-      <div className={styles.textContainer}>
-        <span className={styles.explain}>
-          전 세계 친구들과 자유롭게 동행해 보세요!
-        </span>
-        <More path="/board" category="" />
-      </div>
-      {isLoading ? (
-        <BoardPreviewSkeleton />
-      ) : boardPreview.length ? (
-        <ul className={styles.boardContainer}>
-          {boardPreview.map((board) => (
-            <li key={board.boardId}>
-              <BoardCard props={board} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <EmptyBoard />
-      )}
-    </div>
+  return boardPreview.length ? (
+    <ul className={styles.boardContainer}>
+      {boardPreview.map((board) => (
+        <li key={board.boardId}>
+          <BoardCard country={country} props={board} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <EmptyBoard />
   );
 };
 
