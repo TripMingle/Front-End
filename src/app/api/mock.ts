@@ -7,6 +7,29 @@ export const mockCountryData = {
   countryEnglishName: 'Italy',
 };
 
+export const mockCountriesData = [
+  {
+    capitalName: '로마',
+    capitalNameEnglish: 'Rome',
+    continentName: '유럽',
+    continentNameEnglish: 'Europe',
+    countryName: '이탈리아',
+    countryNameEnglish: 'Italy',
+    primaryImageUrl:
+      'https://plus.unsplash.com/premium_photo-1661962874730-5d52a4f30d04?q=80&w=2816&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+];
+
+export type CountryType = {
+  capitalName: string;
+  capitalNameEnglish: string;
+  continentName: string;
+  continentNameEnglish: string;
+  countryName: string;
+  countryNameEnglish: string;
+  primaryImageUrl: string;
+};
+
 export const mockBoardPreviewData = [
   {
     continent: 'Europe',
