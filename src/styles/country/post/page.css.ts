@@ -16,8 +16,8 @@ export const postContainer = style({
 });
 
 export const postCard = style({
-  width: 'calc(100% - 70px)',
-  height: 99,
+  width: '100%',
+  height: 132,
   padding: 15,
   borderRadius: 10,
   boxShadow: '0px 10px 20px 0px #0000000D',
@@ -25,13 +25,14 @@ export const postCard = style({
   color: vars.color.g500,
   background: vars.color.white,
   cursor: 'pointer',
+  boxSizing: 'border-box',
   '@media': {
     'screen and (min-width: 500px)': {
-      width: 191,
+      width: 220,
     },
     'screen and (min-width: 1024px)': {
-      width: 215,
-      height: 118,
+      width: 256,
+      height: 156,
       padding: 20,
       borderRadius: 20,
     },
@@ -43,11 +44,15 @@ export const postCard = style({
 });
 
 export const title = style({
-  display: 'flex',
+  display: 'inline-block',
+  width: '100%',
   marginBottom: 10,
   color: vars.color.black,
   fontSize: 13,
   fontWeight: 700,
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
   '@media': {
     'screen and (min-width: 1024px)': {
       fontSize: 18,
