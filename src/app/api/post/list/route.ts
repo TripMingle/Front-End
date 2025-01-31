@@ -1,9 +1,9 @@
 import { baseurl, withApiHandler } from '@/utils/server/api';
 import { NextRequest, NextResponse } from 'next/server';
 import {
-  mockRentalHomePreviewData,
-  mockRestaurantPreviewData,
-  mockSchedulePreviewData,
+  mockTotalRentalHomePreviewData,
+  mockTotalRestaurantPreviewData,
+  mockTotalSchedulePreviewData,
 } from '../../mock';
 
 export const GET = withApiHandler(
@@ -16,11 +16,13 @@ export const GET = withApiHandler(
     if (process.env.TEST) {
       switch (postingType) {
         case 'rentalHome':
-          return NextResponse.json({ data: mockRentalHomePreviewData });
+          return NextResponse.json({
+            data: mockTotalRentalHomePreviewData,
+          });
         case 'schedule':
-          return NextResponse.json({ data: mockSchedulePreviewData });
+          return NextResponse.json({ data: mockTotalSchedulePreviewData });
         case 'restaurant':
-          return NextResponse.json({ data: mockRestaurantPreviewData });
+          return NextResponse.json({ data: mockTotalRestaurantPreviewData });
       }
     }
 

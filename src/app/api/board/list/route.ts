@@ -1,6 +1,6 @@
 import { baseurl, withApiHandler } from '@/utils/server/api';
 import { NextRequest, NextResponse } from 'next/server';
-import { mockBoardPreviewData, mockTotalBoardPreviewData } from '../../mock';
+import { mockTotalBoardPreviewData } from '../../mock';
 
 export const GET = withApiHandler(
   async (req: NextRequest, config: RequestInit) => {

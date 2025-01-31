@@ -141,6 +141,12 @@ export const mockBoardPreviewData = [
   },
 ];
 
+export const mockTotalBoardPreviewData = {
+  totalPages: 1,
+  totalElements: 4,
+  content: mockBoardPreviewData,
+};
+
 export const mockRentalHomePreviewData = [
   {
     postingId: 1,
@@ -188,10 +194,9 @@ export const mockRentalHomePreviewData = [
   },
 ];
 
-export const mockTotalBoardPreviewData = {
-  totalPages: 1,
-  totalElements: 4,
-  content: mockBoardPreviewData,
+export const mockTotalRentalHomePreviewData = {
+  totalPagecount: 1,
+  postings: mockRentalHomePreviewData,
 };
 
 export const mockSchedulePreviewData = [
@@ -218,6 +223,11 @@ export const mockSchedulePreviewData = [
     userNationality: '대한민국',
   },
 ];
+
+export const mockTotalSchedulePreviewData = {
+  totalPagecount: 1,
+  postings: mockSchedulePreviewData,
+};
 
 export const mockRestaurantPreviewData = [
   {
@@ -265,3 +275,8 @@ export const mockRestaurantPreviewData = [
     userNationality: '대한민국',
   },
 ];
+
+export const mockTotalRestaurantPreviewData = {
+  totalPagecount: 1,
+  postings: mockRestaurantPreviewData,
+};
