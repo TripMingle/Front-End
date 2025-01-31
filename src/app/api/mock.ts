@@ -188,6 +188,12 @@ export const mockRentalHomePreviewData = [
   },
 ];
 
+export const mockTotalBoardPreviewData = {
+  totalPages: 1,
+  totalElements: 4,
+  content: mockBoardPreviewData,
+};
+
 export const mockSchedulePreviewData = [
   {
     postingId: 5,
