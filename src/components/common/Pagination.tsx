@@ -1,32 +1,35 @@
 'use client';
 import * as styles from '@/styles/components/common/pagination.css';
 import Image from 'next/image';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const Pagination = ({
-  current,
-  total,
-  clickHandler,
-}: {
-  current: number;
-  total: number;
-  clickHandler: (page: number) => void;
-}) => {
-  const [currentPage, setCurrentPage] = useState<number>(current);
-  const [pageArray, setPageArray] = useState<number[]>([]);
+const Pagination = ({ current, total }: { current: string; total: number }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
+  const [pageArray, setPageArray] = useState<number[]>([]);
   const [startIndex, setStartIndex] = useState<number>(0);
   const [endIndex, setEndIndex] = useState<number>(0);
 
+  const createPageURL = (pagenumber: number | string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', String(pagenumber));
+    return `${pathname}?${params.toString()}`;
+  };
+
   const arrowClickHandler = (isLeft: boolean) => {
-    if (isLeft && currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    } else if (!isLeft && currentPage < total - 1) {
-      setCurrentPage(currentPage + 1);
+    const currentPage = Number(current);
+    if (isLeft && currentPage > 1) {
+      router.replace(createPageURL(currentPage - 1));
+    } else if (!isLeft && currentPage < total) {
+      router.replace(createPageURL(currentPage + 1));
     }
   };
 
   const calculatePageIndex = () => {
+    const currentPage = Number(current);
     if (currentPage <= 1) {
       setStartIndex(0);
       setEndIndex(total > 5 ? 5 : total);
@@ -43,13 +46,8 @@ const Pagination = ({
   };
 
   const pageClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
-    setCurrentPage(Number(event.currentTarget.textContent) - 1);
+    router.replace(createPageURL(Number(event.currentTarget.textContent) - 1));
   };
-
-  useEffect(() => {
-    clickHandler(currentPage);
-    calculatePageIndex();
-  }, [currentPage]);
 
   useEffect(() => {
     setPageArray(
@@ -74,7 +72,7 @@ const Pagination = ({
         {pageArray.slice(startIndex, endIndex).map((page) => (
           <li
             key={page}
-            className={styles.page({ select: currentPage === page })}
+            className={styles.page({ select: Number(current) === page + 1 })}
             onClick={pageClickHandler}
           >
             {page + 1}
