@@ -1,75 +1,46 @@
-'use client';
-import Pagenation from '@/components/common/Pagination';
+import { Suspense } from 'react';
 import * as styles from '@/styles/country/post/page.css';
-import { useEffect, useState } from 'react';
-import SelectCateogry from './SelectCategory';
 import { PostPreviewProps } from '@/types/country/post';
-import { getPostList } from '@/api/post';
-import { usePostStore } from '@/store/postStore';
-import EmptyPost from '../EmptyPost';
-import { usePathname } from 'next/navigation';
-import { getCountryName } from '@/utils/client/country';
+import Pagenation from '@/components/common/Pagination';
+import SelectCateogry from './SelectCategory';
 import PostCardListItem from './PostCardListItem';
 import PostCardListSkeleton from './PostCardListSkeleton';
+import EmptyPost from '../EmptyPost';
 
-const PostCardList = () => {
-  const pathname = usePathname();
-  const [country, setCountry] = useState<string>('');
-  const [postList, setPostList] = useState<PostPreviewProps[]>([]);
-  const [page, setPage] = useState<number>(0);
-  const [totalPage, setTotalPage] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const category = usePostStore((state) => state.category);
-
-  const getPost = async () => {
-    if (country) {
-      const data = await getPostList(country, category, page);
-      setPostList(data.data.postings);
-      setTotalPage(data.data.totalPageCount);
-      setIsLoading(false);
-    }
-  };
-
-  const pageMove = (page: number) => {
-    setPage(page);
-  };
-
-  useEffect(() => {
-    setCountry(getCountryName(pathname));
-  }, []);
-
-  useEffect(() => {
-    getPost();
-  }, [page, country]);
-
-  useEffect(() => {
-    setPage(0);
-    getPost();
-  }, [category]);
+const PostCardList = async ({
+  country,
+  page,
+  category,
+}: {
+  country: string;
+  page: string;
+  category: string;
+}) => {
+  const res = await fetch(
+    `${process.env.FRONT_URL}/api/post/list?country=${country}&page=${Number(page) - 1}&postingType=${category}`,
+  );
+  const data = await res.json();
+  const postList: PostPreviewProps[] = data.data.postings;
+  const totalPage = data.data.totalPageCount;
+  if (page > totalPage) page = totalPage;
 
   return (
     <>
       <SelectCateogry />
-      {isLoading ? (
-        <PostCardListSkeleton />
-      ) : postList.length ? (
-        <>
+      <Suspense fallback={<PostCardListSkeleton />}>
+        {postList.length ? (
           <ul className={styles.postContainer}>
             {postList.map((post) => (
               <li key={post.postingId} className={styles.postItemContainer}>
-                <PostCardListItem props={post} />
+                <PostCardListItem country={country} props={post} />
               </li>
             ))}
           </ul>
-          <Pagenation
-            current={page}
-            total={totalPage}
-            clickHandler={pageMove}
-          />
-        </>
-      ) : (
-        <EmptyPost />
-      )}
+        ) : (
+          <EmptyPost />
+        )}
+        {postList.length && <Pagenation current={page} total={totalPage} />}
+      </Suspense>
     </>
   );
 };
