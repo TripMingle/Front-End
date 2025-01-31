@@ -8,7 +8,10 @@ const Page = async ({
   searchParams,
 }: {
   params: { country: string };
-  searchParams: { page: string; category: string };
+  searchParams: {
+    page: string;
+    category: 'rentalHome' | 'restaurant' | 'schedule';
+  };
 }) => {
   return (
     <>

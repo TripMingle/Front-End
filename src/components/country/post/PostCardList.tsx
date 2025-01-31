@@ -10,11 +10,11 @@ import EmptyPost from '../EmptyPost';
 const PostCardList = async ({
   country,
   page,
-  category,
+  category = 'restaurant',
 }: {
   country: string;
   page: string;
-  category: string;
+  category: 'rentalHome' | 'restaurant' | 'schedule';
 }) => {
   const res = await fetch(
     `${process.env.FRONT_URL}/api/post/list?country=${country}&page=${Number(page) - 1}&postingType=${category}`,
@@ -26,7 +26,7 @@ const PostCardList = async ({
 
   return (
     <>
-      <SelectCateogry />
+      <SelectCateogry country={country} category={category} />
       <Suspense fallback={<PostCardListSkeleton />}>
         {postList.length ? (
           <ul className={styles.postContainer}>

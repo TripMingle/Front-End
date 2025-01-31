@@ -1,75 +1,50 @@
-'use client';
-
+import * as styles from '@/styles/country/post/select-category.css';
 import Good from '@/components/country/Icons/Good';
 import House from '@/components/country/Icons/House';
 import Calendar from '@/components/country/Icons/Calendar';
-import { ChangeEvent } from 'react';
-import * as styles from '@/styles/country/post/select-category.css';
-import { usePostStore } from '@/store/postStore';
+import Link from 'next/link';
 
-const SelectCateogry = () => {
-  const category = usePostStore((state) => state.category);
-  const setCategory = usePostStore((state) => state.setCategory);
-
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setCategory(event.target.value);
-  };
-
+const SelectCateogry = async ({
+  country,
+  category,
+}: {
+  country: string;
+  category: 'rentalHome' | 'restaurant' | 'schedule';
+}) => {
   return (
     <div className={styles.categoryContainer}>
-      <input
-        className={styles.inputContainer}
-        type="radio"
-        id="RESTAURANT"
-        value="RESTAURANT"
-        checked={category === 'RESTAURANT'}
-        onChange={changeHandler}
-      />
-      <label
-        className={styles.labelContainer({
-          select: category === 'RESTAURANT',
-        })}
-        htmlFor="RESTAURANT"
-      >
-        <Good className={styles.icon} width={28} height={28} />
-        맛집
-      </label>
-      <input
-        className={styles.inputContainer}
-        type="radio"
-        id="RENTAL_HOME"
-        value="RENTAL_HOME"
-        checked={category === 'RENTAL_HOME'}
-        onChange={changeHandler}
-      />
-      <label
-        className={styles.labelContainer({
-          select: category === 'RENTAL_HOME',
-        })}
-        htmlFor="RENTAL_HOME"
-      >
-        <House className={styles.icon} width={28} height={28} />
-        숙소
-      </label>
-      <input
-        className={styles.inputContainer}
-        type="radio"
-        id="SCHEDULE"
-        value="SCHEDULE"
-        checked={category === 'SCHEDULE'}
-        onChange={changeHandler}
-      />
-      <label
-        className={styles.labelContainer({
-          select: category === 'SCHEDULE',
-        })}
-        htmlFor="SCHEDULE"
-      >
-        <Calendar className={styles.icon} width={28} height={28} />
-        일정
-      </label>
+      {categories.map((element) => (
+        <Link href={`/${country}/post?category=${element.category}`}>
+          <div
+            className={styles.labelContainer({
+              select: element.category === category,
+            })}
+          >
+            {element.icon}
+            {element.title}
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
+
+const categories = [
+  {
+    category: 'restaurant',
+    title: '맛집',
+    icon: <Good className={styles.icon} width={28} height={28} />,
+  },
+  {
+    category: 'rentalHome',
+    title: '숙소',
+    icon: <House className={styles.icon} width={28} height={28} />,
+  },
+  {
+    category: 'schedule',
+    title: '일정',
+    icon: <Calendar className={styles.icon} width={28} height={28} />,
+  },
+];
 
 export default SelectCateogry;
