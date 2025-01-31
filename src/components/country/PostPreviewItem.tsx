@@ -3,7 +3,7 @@ import Profile from '@/components/common/Profile';
 import * as styles from '@/styles/country/post-preview-item.css';
 import { PostPreviewProps } from '@/types/country/post';
 
-const PostPreviewItem = ({
+const PostPreviewItem = async ({
   country,
   props,
 }: {
