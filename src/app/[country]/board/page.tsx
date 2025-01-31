@@ -4,7 +4,13 @@ import CountryBackground from '@/components/country/CountryBackground';
 import BoardList from '@/components/country/board/BoardList';
 import CountryWrite from '@/components/common/CountryWrite';
 
-const Page = ({ params }: { params: { country: string } }) => {
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: { country: string };
+  searchParams: { page: string };
+}) => {
   return (
     <>
       <CountryBackground country={params.country} />
@@ -19,7 +25,7 @@ const Page = ({ params }: { params: { country: string } }) => {
         </div>
       </div>
       <div className={country.contentContainer}>
-        <BoardList />
+        <BoardList country={params.country} page={searchParams.page || '1'} />
       </div>
       <CountryWrite type="board" />
     </>

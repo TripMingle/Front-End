@@ -4,7 +4,7 @@ import { vars } from '../../globalTheme.css';
 export const bgOverlay = style({
   position: 'absolute',
   width: '100%',
-  height: 320,
+  height: 280,
   top: 0,
   left: 0,
   zIndex: 1,
@@ -12,6 +12,9 @@ export const bgOverlay = style({
     'linear-gradient(45deg, rgba(47, 144, 255, 0.3) 0%, rgba(4, 190, 255, 0.3) 100%)',
   textAlign: 'center',
   '@media': {
+    'screen and (min-width: 768px)': {
+      height: 320,
+    },
     'screen and (min-width: 1024px)': {
       height: 460,
     },
