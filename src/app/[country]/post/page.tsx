@@ -3,12 +3,25 @@ import CountryBackground from '@/components/country/CountryBackground';
 import PostCardList from '@/components/country/post/PostCardList';
 import CountryWrite from '@/components/common/CountryWrite';
 
-const Page = ({ params }: { params: { country: string } }) => {
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: { country: string };
+  searchParams: {
+    page: string;
+    category: 'rentalHome' | 'restaurant' | 'schedule';
+  };
+}) => {
   return (
     <>
       <CountryBackground country={params.country} />
       <div className={country.contentContainer}>
-        <PostCardList />
+        <PostCardList
+          country={params.country}
+          page={searchParams.page || '1'}
+          category={searchParams.category}
+        />
       </div>
       <CountryWrite type="post" />
     </>

@@ -9,6 +9,7 @@ export const boardCard = style({
   borderRadius: 14,
   boxShadow: '0px 10px 20px 0px #0000000D',
   cursor: 'pointer',
+  color: vars.color.g800,
   '@media': {
     'screen and (min-width: 640px)': {
       maxWidth: 255,

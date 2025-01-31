@@ -1,36 +1,25 @@
 import Image from 'next/image';
-import { image, imageContainer } from '@/styles/country/page.css';
 import MoveToMain from './MoveToMain';
-import { headers } from 'next/headers';
+import { image, imageContainer } from '@/styles/country/page.css';
 
 const CountryBackground = async ({ country }: { country: string }) => {
-  const headersList = headers();
-  const host = headersList.get('host');
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-
-  const response = await fetch(`${protocol}://${host}/api/country/${country}`);
-
-  if (!response.ok) {
-    throw new Error(`${country}에 대한 나라 정보를 찾을 수 없습니다.`);
-  }
-
-  const data = await response.json();
-
-  console.log(data.data);
+  const res = await fetch(`${process.env.FRONT_URL}/api/country/${country}`);
+  const data = await res.json();
+  const countryInfo = data.data;
 
   return (
     <>
       <div className={imageContainer}>
         <Image
           className={image}
-          src={data?.data.countryImageUrl || '/images/emptyBackground.png'}
+          src={countryInfo.countryImageUrl || '/images/emptyBackground.png'}
           alt="countryBackgroundImage"
           priority
           fill
           sizes="(max-width: 1920px) 100vw, 1920px"
         />
       </div>
-      <MoveToMain props={data?.data} />
+      <MoveToMain props={countryInfo} />
     </>
   );
 };
