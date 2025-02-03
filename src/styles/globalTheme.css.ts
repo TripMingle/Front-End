@@ -31,6 +31,7 @@ globalStyle('body', {
   margin: 0,
   fontFamily: vars.font.body,
   fontWeight: '400',
+  color: vars.color.g800,
 });
 
 globalStyle('ul', {
@@ -45,6 +46,7 @@ globalStyle('p', {
 
 globalStyle('a', {
   textDecoration: 'none',
+  color: vars.color.g800,
 });
 
 globalStyle('::-webkit-scrollbar', {
