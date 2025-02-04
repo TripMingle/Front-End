@@ -49,6 +49,11 @@ globalStyle('a', {
   color: vars.color.g800,
 });
 
+globalStyle('button', {
+  cursor: 'pointer',
+  border: 'none',
+});
+
 globalStyle('::-webkit-scrollbar', {
   width: 0,
 });
