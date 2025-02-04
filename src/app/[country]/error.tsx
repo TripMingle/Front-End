@@ -1,5 +1,6 @@
 'use client';
 
+import ErrorComponent from '@/components/common/ErrorComponent';
 import { useRouter } from 'next/navigation';
 
 export default function Error({
@@ -12,10 +13,11 @@ export default function Error({
   console.error('Error occurred:', error);
   const router = useRouter();
   return (
-    <div>
-      <h2>잘못된 나라 입력입니다.</h2>
-      <p>{error.message}</p>
-      <button onClick={() => router.replace('/')}>메인 페이지로 이동하기</button>
-    </div>
+    <ErrorComponent
+      title="입력한 나라를 찾을 수 없습니다."
+      message="현재는 Italy만 가능합니다"
+      button="메인페이지로 이동하기"
+      handler={() => router.replace('/')}
+    />
   );
 }

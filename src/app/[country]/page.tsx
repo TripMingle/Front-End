@@ -5,6 +5,7 @@ import PostPreview from '@/components/country/PostPreivew';
 import CategorySection from '@/components/country/CategorySection';
 
 const Page = async ({ params }: { params: { country: string } }) => {
+  if (params.country !== 'Italy') throw new Error('you can access only Italy');
   return (
     <>
       <CountryBackground country={params.country} />
