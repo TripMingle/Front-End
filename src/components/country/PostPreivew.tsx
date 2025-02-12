@@ -10,27 +10,25 @@ const PostPreview = async ({
   country: string;
   category: string;
 }) => {
-  try {
-    const res = await fetch(
-      `${process.env.FRONT_URL}/api/post/preview?country=${country}&postingType=${category}`,
-    );
-    const data = await res.json();
-    const postPreview: PostPreviewProps[] = data.data;
+  const res = await fetch(
+    `${process.env.FRONT_URL}/api/post/preview?country=${country}&postingType=${category}`,
+  );
+  if (!res.ok) throw new Error(`error on loading ${category} post preview`);
 
-    return postPreview.length ? (
-      <ul className={styles.postContainer}>
-        {postPreview.map((post) => (
-          <li key={post.postingId}>
-            <PostPreviewItem country={country} props={post} />
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <EmptyPost />
-    );
-  } catch (error) {
-    throw new Error('에러다.');
-  }
+  const data = await res.json();
+  const postPreview: PostPreviewProps[] = data.data;
+
+  return postPreview.length ? (
+    <ul className={styles.postContainer}>
+      {postPreview.map((post) => (
+        <li key={post.postingId}>
+          <PostPreviewItem country={country} props={post} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <EmptyPost />
+  );
 };
 
 export default PostPreview;

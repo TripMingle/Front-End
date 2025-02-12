@@ -41,3 +41,22 @@ export const button = style({
   background: vars.color.secondary,
   borderRadius: 10,
 });
+
+export const errorboundary = style({
+  display: 'flex',
+  width: '100%',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontWeight: 700,
+  color: vars.color.g700,
+  gap: 12,
+});
+
+export const retry = style({
+  padding: '12px 20px',
+  background: '#d3e5ff',
+  color: vars.color.secondary,
+  fontWeight: 600,
+  borderRadius: 8,
+});
