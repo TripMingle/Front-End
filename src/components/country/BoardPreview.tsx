@@ -7,6 +7,7 @@ const BoardPreview = async ({ country }: { country: string }) => {
   const res = await fetch(
     `${process.env.FRONT_URL}/api/board/preview?country=${country}`,
   );
+  if (!res.ok) throw new Error('error on loading board preview');
   const data = await res.json();
   const boardPreview: BoardPreviewProps[] = data.data;
 

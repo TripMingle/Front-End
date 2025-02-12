@@ -7,6 +7,7 @@ import Calendar from './Icons/Calendar';
 import More from '../common/More';
 import BoardPreviewSkeleton from './BoardPreviewSkeleton';
 import PostPreviewSkeleton from './PostPreviewSkeleton';
+import ErrorBoundary from '../common/ErrorBoundary';
 
 type CategoryProps = {
   category: string;
@@ -22,7 +23,11 @@ const CategorySection = async ({ category, children }: CategoryProps) => {
         <span className={styles.explain}>{categoryInfo[category].explain}</span>
         <More path={categoryInfo[category].path} />
       </div>
-      <Suspense fallback={categoryInfo[category].skeleton}>{children}</Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={categoryInfo[category].skeleton}>
+          {children}
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };
