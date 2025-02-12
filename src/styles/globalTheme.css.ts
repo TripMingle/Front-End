@@ -29,7 +29,6 @@ export const vars = createGlobalTheme(':root', {
 
 globalStyle('body', {
   margin: 0,
-  fontFamily: vars.font.body,
   fontWeight: '400',
   color: vars.color.g800,
 });
@@ -52,6 +51,7 @@ globalStyle('a', {
 globalStyle('button', {
   cursor: 'pointer',
   border: 'none',
+  background: 'none',
 });
 
 globalStyle('::-webkit-scrollbar', {

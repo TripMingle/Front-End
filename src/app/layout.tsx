@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${noto.variable} ${gmarket.variable}`}>
-      <body>
+      <body className={`${noto.className}`}>
         <Initializer />
         <ConditionalHeader />
         <main>{children}</main>
