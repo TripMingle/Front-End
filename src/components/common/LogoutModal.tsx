@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { closeIcon, title } from '@/styles/components/common/modal-wrapper.css';
 import * as styles from '@/styles/components/common/logout-modal.css';
 import { removeToken } from '@/utils/server/token';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   isOpen: boolean;
@@ -12,11 +13,12 @@ type Props = {
 
 const LogoutModal = ({ isOpen, closeModal }: Props) => {
   const logout = useUserStore((state) => state.logout);
+  const router = useRouter();
 
   const logoutHandler = () => {
     removeToken();
     logout();
-    location.reload();
+    router.refresh();
   };
 
   return (
